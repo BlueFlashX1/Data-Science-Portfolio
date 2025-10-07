@@ -58,7 +58,7 @@
 |------------|--------------------------|------------------|
 | **Healthcare Data Analysis** | EHR data processing, synthetic healthcare analysis (Synthea), patient-condition relationships | `MySQL` `Python` `Healthcare Analytics` |
 | **Biological Research** | Ecological data visualization, wildlife predation analysis, population studies | `R` `ggplot2` `Statistical Computing` |
-| **Database Systems** | Normalized schema design, complex SQL queries, data validation, performance optimization | `SQL/NoSQL` `Database Design` `Python Integration` |
+| **Database Systems** | Normalized schema design, complex SQL queries, temporal analysis, data validation, performance optimization | `SQL/NoSQL` `Database Design` `Python Integration` |
 | **Machine Learning** | End-to-end ML pipelines, feature engineering, model validation, healthcare prediction | `Python` `Scikit-learn` `Pandas` `Model Validation` |
 | **System Integration** | Voice control automation, error management, AppleScript integration, workflow optimization | `Python` `Shell Scripting` `System Automation` `APIs` |
 | **Data Visualization** | Publication-quality statistical visualizations, reproducible research, data storytelling | `R` `ggplot2` `RMarkdown` `Quarto` |
