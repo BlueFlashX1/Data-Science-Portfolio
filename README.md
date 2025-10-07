@@ -27,7 +27,6 @@
 ### **Data Science & Analytics**
 ![Tidyverse](https://img.shields.io/badge/Tidyverse-1A162D?style=for-the-badge&logo=r&logoColor=white)
 ![ggplot2](https://img.shields.io/badge/ggplot2-E34F26?style=for-the-badge&logo=r&logoColor=white)
-![Plotly](https://img.shields.io/badge/Plotly-3F4F75?style=for-the-badge&logo=plotly&logoColor=white)
 ![Pandas](https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white)
 ![NumPy](https://img.shields.io/badge/NumPy-013243?style=for-the-badge&logo=numpy&logoColor=white)
 ![Scikit-Learn](https://img.shields.io/badge/scikit--learn-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white)
@@ -62,7 +61,7 @@
 | **Database Systems** | Normalized schema design, complex SQL queries, data validation, performance optimization | `SQL/NoSQL` `Database Design` `Python Integration` |
 | **Machine Learning** | End-to-end ML pipelines, feature engineering, model validation, healthcare prediction | `Python` `Scikit-learn` `Pandas` `Model Validation` |
 | **System Integration** | Voice control automation, error management, AppleScript integration, workflow optimization | `Python` `Shell Scripting` `System Automation` `APIs` |
-| **Data Visualization** | Publication-quality statistical visualizations, reproducible research, data storytelling | `R` `ggplot2` `Plotly` `RMarkdown` `Quarto` |
+| **Data Visualization** | Publication-quality statistical visualizations, reproducible research, data storytelling | `R` `ggplot2` `RMarkdown` `Quarto` |
 
 ## Key Achievements
 
