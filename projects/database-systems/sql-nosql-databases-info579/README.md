@@ -32,19 +32,19 @@ The project utilizes structured synthetic healthcare datasets with the following
 
 | Dataset | File | Size | Records | Description | Download |
 |---------|------|------|---------|-------------|----------|
-| **Patients** | [`patients.csv`](./data/patients.csv) | 325KB | 1,171 | Demographics, addresses, financial info | 📁 [Download](./data/patients.csv) |
-| **Encounters** | [`encounters.csv`](./data/encounters.csv) | 16MB | 53,346 | Medical visits, appointments, billing | 📁 [Download](./data/encounters.csv) |
-| **Conditions** | [`conditions.csv`](./data/conditions.csv) | 1MB | 8,376 | Medical diagnoses and ICD-10 codes | 📁 [Download](./data/conditions.csv) |
-| **Procedures** | [`procedures.csv`](./data/procedures.csv) | 5.4MB | ~25,000 | Medical procedures and CPT codes | 📁 [Download](./data/procedures.csv) |
-| **Observations** | [`observations.csv`](./data/observations.csv) | 41MB | ~180,000 | Lab results, vital signs, measurements | 📁 [Download](./data/observations.csv) |
-| **Providers** | [`providers.csv`](./data/providers.csv) | 1MB | 5,855 | Healthcare facilities and practitioners | 📁 [Download](./data/providers.csv) |
+| Patients | [`patients.csv`](./data/patients.csv) | 325KB | 1,171 | Demographics, addresses, financial info | [Download](./data/patients.csv) |
+| Encounters | [`encounters.csv`](./data/encounters.csv) | 16MB | 53,346 | Medical visits, appointments, billing | [Download](./data/encounters.csv) |
+| Conditions | [`conditions.csv`](./data/conditions.csv) | 1MB | 8,376 | Medical diagnoses and ICD-10 codes | [Download](./data/conditions.csv) |
+| Procedures | [`procedures.csv`](./data/procedures.csv) | 5.4MB | ~25,000 | Medical procedures and CPT codes | [Download](./data/procedures.csv) |
+| Observations | [`observations.csv`](./data/observations.csv) | 41MB | ~180,000 | Lab results, vital signs, measurements | [Download](./data/observations.csv) |
+| Providers | [`providers.csv`](./data/providers.csv) | 1MB | 5,855 | Healthcare facilities and practitioners | [Download](./data/providers.csv) |
 
 ### Sample Data (Preview Files)
 
 | Sample File | Size | Description | Access |
 |-------------|------|-------------|--------|
-| [`patients_sample.csv`](./data/patients_sample.csv) | 5KB | First 100 patient records | 🗋 [Preview](./data/patients_sample.csv) |
-| [`conditions_sample.csv`](./data/conditions_sample.csv) | 6KB | Sample condition diagnoses | 🗋 [Preview](./data/conditions_sample.csv) |
+| [`patients_sample.csv`](./data/patients_sample.csv) | 5KB | First 100 patient records | [Preview](./data/patients_sample.csv) |
+| [`conditions_sample.csv`](./data/conditions_sample.csv) | 6KB | Sample condition diagnoses | [Preview](./data/conditions_sample.csv) |
 
 ### Data Relationships & Complexity
 - **Primary Keys**: UUID-based patient, encounter, provider identifiers
@@ -169,12 +169,12 @@ WHERE EXISTS (
 
 | Technique Category | Skills Demonstrated | Complexity Level |
 |-------------------|--------------------|-----------------|
-| **Joins & Relationships** | Multi-table joins, self-joins, temporal joins | 🔴 Advanced |
-| **Aggregation & Grouping** | Complex GROUP BY, HAVING, statistical functions | 🔴 Advanced |
-| **Window Functions** | ROW_NUMBER, RANK, LAG/LEAD, analytical functions | 🔴 Advanced |
-| **Temporal Analysis** | Date arithmetic, time-series patterns, intervals | 🔴 Advanced |
-| **Subqueries** | Correlated subqueries, EXISTS, nested analytics | 🔴 Advanced |
-| **Healthcare Domain** | Clinical coding, quality metrics, population health | 🔴 Expert |
+| Joins & Relationships | Multi-table joins, self-joins, temporal joins | Advanced |
+| Aggregation & Grouping | Complex GROUP BY, HAVING, statistical functions | Advanced |
+| Window Functions | ROW_NUMBER, RANK, LAG/LEAD, analytical functions | Advanced |
+| Temporal Analysis | Date arithmetic, time-series patterns, intervals | Advanced |
+| Subqueries | Correlated subqueries, EXISTS, nested analytics | Advanced |
+| Healthcare Domain | Clinical coding, quality metrics, population health | Expert |
 
 **Total Analytical Reports Created**: 13+ comprehensive healthcare intelligence tables
 **Query Complexity**: Enterprise-level healthcare analytics suitable for clinical decision support
@@ -194,20 +194,20 @@ WHERE EXISTS (
 ### Clinical Relationship Patterns
 The analysis reveals significant patterns in healthcare data relationships:
 
-**Multi-condition Patients**:
+Multi-condition Patients:
 - Identification of patients with complex medical histories
 - Analysis of comorbidity patterns and disease correlations
 - Healthcare resource utilization patterns
 
-**Procedure-Patient Relationships**:
+Procedure-Patient Relationships:
 - Treatment pathway analysis for common conditions
 - Resource allocation patterns across different patient populations
 - Quality metrics for care delivery and patient outcomes
 
 ### Data Quality Findings
-- **Referential Integrity**: Comprehensive validation of patient-condition linkages
-- **Data Completeness**: Analysis of missing data patterns across healthcare entities
-- **Temporal Consistency**: Verification of encounter sequences and care continuity
+- Referential Integrity: Comprehensive validation of patient-condition linkages
+- Data Completeness: Analysis of missing data patterns across healthcare entities
+- Temporal Consistency: Verification of encounter sequences and care continuity
 
 
 ## Project Structure
@@ -223,22 +223,22 @@ sql-nosql-databases-info579/
 ## Technical Achievements
 
 ### Advanced SQL Techniques
-- **Complex Multi-table Joins**: Efficient querying across 6+ healthcare entities
-- **Temporal Analysis**: Time-series queries for longitudinal patient tracking
-- **Aggregate Functions**: Advanced grouping and statistical analysis queries
-- **Subquery Optimization**: Nested queries for complex healthcare analytics
+- Complex Multi-table Joins: Efficient querying across 6+ healthcare entities
+- Temporal Analysis: Time-series queries for longitudinal patient tracking
+- Aggregate Functions: Advanced grouping and statistical analysis queries
+- Subquery Optimization: Nested queries for complex healthcare analytics
 
 ### Data Analysis Innovation
-- **Relationship Validation**: Automated verification of data integrity across entities
-- **Pattern Recognition**: Identification of significant healthcare utilization patterns
-- **Quality Metrics**: Comprehensive data quality assessment and reporting
-- **Performance Optimization**: Efficient processing of large healthcare datasets
+- Relationship Validation: Automated verification of data integrity across entities
+- Pattern Recognition: Identification of significant healthcare utilization patterns
+- Quality Metrics: Comprehensive data quality assessment and reporting
+- Performance Optimization: Efficient processing of large healthcare datasets
 
 ### Healthcare Domain Application
-- **Clinical Workflow Understanding**: Database design supporting real healthcare operations
-- **Privacy Considerations**: Awareness of HIPAA and healthcare data protection requirements
-- **Interoperability**: Database structures supporting healthcare data exchange standards
-- **Population Health**: Analysis supporting public health and epidemiological research
+- Clinical Workflow Understanding: Database design supporting real healthcare operations
+- Privacy Considerations: Awareness of HIPAA and healthcare data protection requirements
+- Interoperability: Database structures supporting healthcare data exchange standards
+- Population Health: Analysis supporting public health and epidemiological research
 
 ## Academic Information
 
@@ -249,35 +249,35 @@ sql-nosql-databases-info579/
 **Data Scale**: Large-scale (67MB) healthcare dataset analysis  
 
 ### Learning Objectives Demonstrated
-- **Advanced SQL Proficiency**: Complex query development for healthcare analytics
-- **NoSQL Integration**: Document-based data handling and analysis approaches  
-- **Data Integrity Management**: Automated validation and quality assurance processes
-- **Healthcare Informatics**: Specialized knowledge in medical data standards and relationships
-- **Python-SQL Integration**: Seamless integration of database queries with analytical processing
-- **Large-Scale Data Handling**: Efficient processing of substantial healthcare datasets
+- Advanced SQL Proficiency: Complex query development for healthcare analytics
+- NoSQL Integration: Document-based data handling and analysis approaches  
+- Data Integrity Management: Automated validation and quality assurance processes
+- Healthcare Informatics: Specialized knowledge in medical data standards and relationships
+- Python-SQL Integration: Seamless integration of database queries with analytical processing
+- Large-Scale Data Handling: Efficient processing of substantial healthcare datasets
 
 ## Healthcare Analytics Applications
 
 ### Clinical Decision Support
-- **Patient Risk Assessment**: Multi-condition analysis for care planning
-- **Resource Allocation**: Procedure utilization analysis for capacity planning
-- **Quality Improvement**: Pattern identification for care optimization
+- Patient Risk Assessment: Multi-condition analysis for care planning
+- Resource Allocation: Procedure utilization analysis for capacity planning
+- Quality Improvement: Pattern identification for care optimization
 
 ### Population Health Management
-- **Epidemiological Analysis**: Disease pattern recognition across patient populations  
-- **Healthcare Utilization**: Service usage patterns and trend analysis
-- **Outcome Prediction**: Data foundations for predictive healthcare modeling
+- Epidemiological Analysis: Disease pattern recognition across patient populations  
+- Healthcare Utilization: Service usage patterns and trend analysis
+- Outcome Prediction: Data foundations for predictive healthcare modeling
 
 ### Research Applications
-- **Clinical Research**: Database foundations for medical research studies
-- **Health Services Research**: Healthcare delivery pattern analysis
-- **Quality Metrics**: Evidence-based quality improvement initiatives
+- Clinical Research: Database foundations for medical research studies
+- Health Services Research: Healthcare delivery pattern analysis
+- Quality Metrics: Evidence-based quality improvement initiatives
 
 ## File Recommendations
 
-**For Complete Project Review**: Use [`INFO579_Final Project_Report_Thompson.pdf`](./INFO579_Final%20Project_Report_Thompson.pdf) - contains comprehensive analysis, methodology, findings, and healthcare insights with full technical documentation.
+For Complete Project Review: Use [`INFO579_Final Project_Report_Thompson.pdf`](./INFO579_Final%20Project_Report_Thompson.pdf) - contains comprehensive analysis, methodology, findings, and healthcare insights with full technical documentation.
 
-**For Database Access**: Explore [`database-backup/`](./database-backup/) - contains SQL database dumps and comprehensive documentation for database restoration and analysis.
+For Database Access: Explore [`database-backup/`](./database-backup/) - contains SQL database dumps and comprehensive documentation for database restoration and analysis.
 
 ## Future Enhancements
 
