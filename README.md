@@ -71,17 +71,17 @@
 ## Featured Projects
 
 ### [SQL & NoSQL Healthcare Analytics](./projects/database-systems/sql-nosql-databases-info579/)
-**Healthcare data analysis with synthetic EHR systems**  
+**Advanced database querying and schema design skills applied to healthcare domain**  
 *INFO 579 Final Project - SQL & NoSQL Databases*
 
 **Project Scope:**
-- **Healthcare Data Analysis**: Synthetic EHR data (Synthea) analysis with 6 healthcare entities
-- **Database Design**: Normalized database schemas with patient-condition-procedure relationships
-- **SQL Development**: Complex queries for healthcare analytics and relationship validation
-- **Python Integration**: Data validation scripts for healthcare relationship verification
-- **Large-Scale Processing**: 67MB healthcare datasets with multi-entity analysis
+- **Advanced SQL Querying**: Complex joins, subqueries, and analytical queries on healthcare datasets
+- **Database Schema Design**: Normalized schemas with patient-condition-procedure relationship modeling
+- **Data Analysis**: Statistical analysis and relationship validation across 6 healthcare entities
+- **Python Integration**: Database connectivity and automated data validation scripts
+- **Large-Scale Processing**: 67MB synthetic healthcare datasets (Synthea EHR data)
 
-**Technologies Used**: `MySQL | Python | NoSQL | Healthcare Data | Data Validation`
+**Technologies Used**: `MySQL | Python | NoSQL | Advanced SQL | Database Design | Data Analysis`
 
 ### [Data Visualization Portfolio](./projects/r-analytics/data-visualization-portfolio/)
 **Statistical visualization and R programming coursework**  
