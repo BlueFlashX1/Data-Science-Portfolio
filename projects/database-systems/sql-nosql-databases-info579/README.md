@@ -31,16 +31,14 @@ The project utilizes structured synthetic healthcare datasets with the following
 
 ## Advanced SQL Analysis
 
-| Technique | Application |
-|-----------|-------------|
-| Complex Multi-table Joins | Patient, encounter, provider, and condition data integration |
-| Temporal Analysis | 30-day readmission tracking and longitudinal healthcare trends |
-| Window Functions | Provider utilization rankings and time-series analytics |
-| Advanced Aggregation | Condition prevalence rates and statistical healthcare metrics |
-| Subqueries & CTEs | High-risk patient identification and nested healthcare analytics |
-| Healthcare Domain Analytics | Clinical quality indicators and population health surveillance |
-| Data Validation | Automated referential integrity checks across healthcare entities |
-| Performance Optimization | Efficient processing of large-scale healthcare datasets |
+| Technique | Application | Implementation |
+|-----------|-------------|----------------|
+| Complex Multi-table Joins | Patient, encounter, provider, and condition data integration across normalized schema | Foreign key relationships between patient→encounter→provider→diagnosis tables |
+| Temporal Analysis | 30-day readmission tracking with date calculations and interval analysis | DATEDIFF operations in rpt_readmissions_30d table with prev_start and days_since_prior columns |
+| Advanced Aggregation | Disease prevalence statistics and patient count analysis by medical condition | GROUP BY operations producing condition counts in rpt_condition_prevalence and visit counts in rpt_er_frequenters |
+| Healthcare Domain Analytics | Clinical quality indicators and population health surveillance across 14 analytical reports | Specialized healthcare metrics including readmissions, ER utilization, and provider performance analysis |
+| Data Validation | Referential integrity enforcement through foreign key constraints | Multiple FOREIGN KEY constraints including diagnosis_ibfk_1, fk_encounter_patient, and fk_encounter_provider_org |
+| Performance Optimization | Database indexing and query optimization for large-scale healthcare datasets | Strategic indexes on primary keys and foreign key columns for efficient join operations |
 
 ## Project Files
 
