@@ -1,0 +1,12 @@
+{
+  "hash": "598735d054e71317555ca5ffbcebf8c3",
+  "result": {
+    "engine": "jupyter",
+    "markdown": "---\ntitle: \"Trait-Based Prediction of Animal Taxa\"\nsubtitle: \"INFO 523 - Final Project\"\nauthor: \n  - name: \"Matthew Qi Lan Thompson\"\n    affiliations:\n      - name: \"College of Information Science, University of Arizona\"\ndescription: \"This project uses machine learning methods to predict animal taxa based on sexually selected traits. It works with binary trait presence and continuous evolutionary rates to evaluate predictive performance and interpretability.\"\nformat:\n   html:\n    code-tools: true\n    code-overflow: wrap\n    embed-resources: true\neditor: visual\nexecute:\n  warning: false\n  echo: false\njupyter: python3\n---\n\n## Abstract\n\nWill update abstract after working through the project...\n\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}

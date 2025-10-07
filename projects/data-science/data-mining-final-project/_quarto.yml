@@ -1,0 +1,40 @@
+project:
+  type: website
+  render:
+    - index.ipynb
+    - about.qmd
+    - proposal.qmd
+    - presentation.qmd
+    - data.qmd
+    - citations.qmd
+  output-dir: docs
+
+website:
+  title: Trait-Based Prediction of Animal Taxa
+  navbar:
+    right:
+      - icon: github
+        href: https://github.com/INFO-523-SU25/final-project-thompson
+    left:
+      - text: About
+        href: about.qmd
+      - text: Project
+        href: index.html
+      - text: Data
+        href: data.qmd
+      - text: Proposal
+        href: proposal.qmd
+      - text: Presentation
+        href: presentation.qmd
+      - text: Citations
+        href: citations.html
+
+format:
+  html:
+    theme:
+      light: flatly
+      dark: darkly
+    toc: true
+
+execute:
+  freeze: auto

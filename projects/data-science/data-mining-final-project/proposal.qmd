@@ -1,0 +1,236 @@
+---
+title: "Trait-Based Prediction of Animal Taxa"
+subtitle: "Proposal"
+author: 
+  - name: "Matthew Qi Lan Thompson"
+    affiliations:
+      - name: "College of Information Science, University of Arizona"
+description: "This project will involve creating two predictive models for classifying animal taxa using binary presence and evolutionary rate features of sexual traits."
+format:
+  html:
+    code-tools: true
+    code-overflow: wrap
+    code-line-numbers: true
+    embed-resources: true
+editor: visual
+code-annotations: hover
+execute:
+  echo: false
+  warning: false
+  output: true
+jupyter: python3
+---
+
+```{python}
+#| label: load-pkgs
+#| message: false
+
+import numpy as np
+import pandas as pd
+import os
+
+#machine learning models
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.linear_model import LogisticRegression
+
+#model evaluation and validation
+from sklearn.model_selection import train_test_split, cross_val_score
+from sklearn.metrics import (
+    accuracy_score, classification_report, confusion_matrix, roc_auc_score
+)
+
+#SHAP for model explainability
+import shap
+
+#visualization
+import matplotlib.pyplot as plt
+import seaborn as sns
+import statsmodels.api as sm
+
+```
+
+## Dataset
+
+```{python}
+#| label: load-dataset
+#| message: false
+folder_path = "/Users/matthewthompson/Documents/Academics/DS Masters Academics/Data Mining and Discovery/Assignments/final-project-thompson/data"
+
+#list of dataset paths
+folder_path = "/Users/matthewthompson/Documents/Academics/DS Masters Academics/Data Mining and Discovery/Assignments/final-project-thompson/data"
+evolution_path = os.path.join(folder_path, "animals_rateof_evolution.csv")
+family_path = os.path.join(folder_path, "family_related_data.csv")
+
+#loadsdatasets
+evolution_df = pd.read_csv(evolution_path)
+family_df = pd.read_csv(family_path)
+
+#dataset shapes
+evo_shape = evolution_df.shape
+fam_shape = family_df.shape
+
+#confirms loaded data
+print("Evolution Data:")
+print(evolution_df.info())
+
+print("\nFamily Data:")
+print(family_df.info())
+
+```
+
+Family-related metadata: 1 indicates trait presence, a whereas 0 indicates trait absence. SS: Combined (any sexually selected trait), A: Auditory, G: Gustatory, O: Olfactory, T:Tactile, V: Visual, C: Male-male competition, F: Female choice, K: Female-female competition, M: Male choice, S: Intersexual conflict.
+
+Rates of trait evolution metadata: A: Auditory, G: Gustatory, O:Olfactory, T:Tactile, V: Visual, C: Male-male competition, F: Female choice, K: Female-female competition, M: Male choice, S: Intersexual conflict.
+
+```{python}
+#description of each dataset
+print("1. Evolution Rate Dataset")
+print(f"- File: animals_rateof_evolution.csv")
+print(f"- Dimensions: {evo_shape[0]} rows × {evo_shape[1]} columns")
+print("- Description: Contains continuous values representing the evolutionary rate of various sexual traits across different animal taxa.")
+
+print("2. Family-Level Trait Dataset")
+print(f"- File: family-related_data.csv")
+print(f"- Dimensions: {fam_shape[0]} rows × {fam_shape[1]} columns")
+print("- Description: Encodes presence (1) or absence (0) of various sexually selected traits (e.g., visual, auditory, male-male competition) at the family level.")
+```
+
+I chose these two datasets because the family-related data contains binary values (0 or 1) for various sexually selected traits, which makes it good for training machine learning models across a wide range of animal families. This gives me hands-on experience with multi-class classification and feature selection, and I may use SHAP to interpret the model’s predictions and feature contributions depending on how the models perform. The evolutionary rates data, on the other hand, includes continuous values (some zeros and some greater than zero), which lets me compare whether binary presence/absence data or continuous evolutionary rates give better predictive power. The phylum-level data seems more redundant with the family-level data, but the evolutionary rates dataset provides a different kind of information. Even though it is model-derived, I can still use the rates as input features to predict superphyla classes, since they reflect repeated origins of sexually selected traits across lineages.
+
+Both datasets have a large number of distinct phyla. To reduce sparsity and improve interpretability, I will group these into higher-level clades called superphyla. This grouping stays below the kingdom level (since all taxa fall under Animalia) but still captures important evolutionary structure. Specifically, I will classify them into:
+
+-   Ecdysozoa
+
+-   Lophotrochozoa
+
+-   Deuterostomia
+
+-   Basal Metazoa & Non-Bilaterians
+
+-   Basal Bilateria
+
+So overall, the family-level dataset gives raw binary trait data, while the evolutionary rates dataset gives continuous, model-derived estimates of trait origins. Using both together lets me compare which type of data—binary or continuous—works better for predicting evolutionary groupings.
+
+Dataset Source: <https://frontiersin.figshare.com/articles/dataset/Data_Sheet_3_Evolution_of_sexually_selected_traits_across_animals_XLSX/21921510?file=38886321>
+
+(DataCite) Citation: Tuschhoff, E.; Wiens, John J. (2023). Data_Sheet_3_Evolution of sexually selected traits across animals.XLSX. Frontiers. Dataset. <https://doi.org/10.3389/fevo.2023.1042747.s003>
+
+Other Sources:
+
+“Animal.” *Wikipedia*, 16 Aug. 2025. *Wikipedia*, <https://en.wikipedia.org/w/index.php?title=Animal&oldid=1306191709>.
+
+Collins, Allen G., et al. “Phylogenetic Context and Basal Metazoan Model Systems.” *Integrative and Comparative Biology*, vol. 45, no. 4, Aug. 2005, pp. 585–94. *academic.oup.com*, <https://doi.org/10.1093/icb/45.4.585>.
+
+“Deuterostome.” *Wikipedia*, 9 Jul. 2025. *Wikipedia*, <https://en.wikipedia.org/w/index.php?title=Deuterostome&oldid=1299664913>.
+
+“Ecdysozoa.” *Wikipedia*, 12 Aug. 2025. *Wikipedia*, <https://en.wikipedia.org/w/index.php?title=Ecdysozoa&oldid=1305526962>.
+
+“Lophotrochozoa.” *Wikipedia*, 26 Jul. 2025. *Wikipedia*, <https://en.wikipedia.org/w/index.php?title=Lophotrochozoa&oldid=1302526625>.
+
+## Motivation
+
+I was motivated to try out the machine learning-based project with the animal classification because there are challenges to accurately classify each animal based on characteristics such as physiology, geographical distribution, and other traits, and even down to genomic sequence similarity (Tessler et al., 2022; van der Gulik et al., 2023). The idea of using machine learning for taxonomic classification already existed, but it still seems like a fairly new approach, so I wanted to evaluate how effective machine learning can be in this area (Alipour et al., 2024). If the project works out, it could be a stepping stone for further tweaks and improvements before applying it to more taxonomic classification problems using various numeric traits in a practical setting. This would help narrow down more relevant relative candidates when classifying while also saving time assuming the model accuracy is good.
+
+Sources:
+
+Alipour, Fatemeh, et al. “Leveraging Machine Learning for Taxonomic Classification of Emerging Astroviruses.” *Frontiers in Molecular Biosciences*, vol. 10, Jan. 2024. *Frontiers*, <https://doi.org/10.3389/fmolb.2023.1305506>.
+
+Tessler, Michael, et al. “Phylogenomics and the First Higher Taxonomy of Placozoa, an Ancient and Enigmatic Animal Phylum.” *Frontiers in Ecology and Evolution*, vol. 10, Dec. 2022. *Frontiers*, <https://doi.org/10.3389/fevo.2022.1016357>.
+
+van der Gulik, Peter T. S., et al. “Renewing Linnaean Taxonomy: A Proposal to Restructure the Highest Levels of the Natural System.” *Biological Reviews*, vol. 98, no. 2, 2023, pp. 584–602. *Wiley Online Library*, <https://doi.org/10.1111/brv.12920>.
+
+## Questions
+
+-   How accurately can a machine learning model classify animal taxa based on the binary presence of sexually selected traits?
+-   Do evolutionary origin rates of sexual traits provide stronger predictive power than binary trait presence when classifying animal taxa?
+
+------------------------------------------------------------------------
+
+## Analysis plan
+
+### Overview
+
+The primary objective is to assess and compare the predictive power and interpretability of both data.
+
+### Dataset Descriptions
+
+**1. Family-Level Trait Data (`family_df`)**
+
+-   Format: Binary indicators (`0` or `1`) for the presence or absence of sexually selected traits.
+
+-   Traits include: `SS`, `A`, `G`, `O`, `T`, `V`, `C`, `F`, `K`, `M`, `S`
+
+-   Each row represents a taxonomic family.
+
+-   The target variable will likely be a categorical label such as `Class` or a user-defined taxon.
+
+**2. Evolutionary Rates Data (`evolution_df`)**
+
+-   Format: Continuous numerical values representing the origin rates of the same traits listed above.
+
+-   Each row represents a taxonomic group.
+
+-   Target variable will match the one used in the binary dataset for comparison.
+
+### Exploratory Data Analysis (EDA)
+
+EDA will be performed separately for both datasets:
+
+-   Distribution plots for each trait in histogram
+
+-   Visualization of binary presence in sexually selected traits if possible
+
+-   Correlation matrix of sexually selected traits related to each other
+
+-   Summary statistics for continuous traits.
+
+-   Count plots or bar charts showing trait prevalence by taxonomic group (e.g., class or family).
+
+### Modeling Approach
+
+For both datasets:
+
+1\. Data Preparation
+
+-   I will double check for any null values.
+
+-   I will encode target variable (animals taxa) using `LabelEncoder`. For the evolutionary rates, I will convert any values \> 0 to 1 and hot-encode these numerical columns (sexually selected traits) for the presence of sexually selected traits.
+
+-   For `evolution_df`, I will standardize these sexually selected traits feature using `StandardScaler`.
+
+2\. Models to Use
+
+-   `DecisionTreeClassifier`
+
+-   `RandomForestClassifier`
+
+-   `LogisticRegression`
+
+3\. Evaluation Metrics
+
+-   Accuracy score
+
+-   Confusion matrix
+
+-   Classification report
+
+-   Cross-validation score (`cross_val_score`)
+
+-   ROC-AUC score
+
+4\. Model Interpretation
+
+-   I will use SHAP to interpret trained models.
+
+-   I will generate SHAP summary plots and bar plots to highlight influential traits.
+
+-   I will compare interpretability between models trained on binary and continuous data for the evolutionary rates.
+
+### Comparison and Interpretation
+
+-   I will interpret the classification performance across both data and answer both questions. Then, I will draw conclusions about which dataset format (binary or continuous) provides stronger predictive insights for question #2.
+
+-   I will analyze SHAP outputs to identify which traits contribute most to predictions.
+
+-   I may also interpret which family has sexually selected traits and explain the results (if I have more time during the presentation).

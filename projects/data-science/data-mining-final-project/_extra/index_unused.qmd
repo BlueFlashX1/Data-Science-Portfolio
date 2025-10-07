@@ -1,0 +1,23 @@
+---
+title: "Trait-Based Prediction of Animal Taxa"
+subtitle: "INFO 523 - Final Project"
+author: 
+  - name: "Matthew Qi Lan Thompson"
+    affiliations:
+      - name: "College of Information Science, University of Arizona"
+description: "This project uses machine learning methods to predict animal taxa based on sexually selected traits. It works with binary trait presence and continuous evolutionary rates to evaluate predictive performance and interpretability."
+format:
+   html:
+    code-tools: true
+    code-overflow: wrap
+    embed-resources: true
+editor: visual
+execute:
+  warning: false
+  echo: false
+jupyter: python3
+---
+
+## Abstract
+
+Will update abstract after working through the project...
