@@ -96,7 +96,7 @@
 
 **Technologies Used**: `R | ggplot2 | RMarkdown | Data Visualization | Statistical Analysis`
 
-### [Healthcare Readmission Prediction](./projects/data-science/data-mining-final-project/)
+### [Healthcare Readmission Prediction](./projects/data-science/foundation-of-data-science/)
 **Machine learning course project and academic competition**  
 *INFO 521 Final Project - Foundation of Data Science*
 
@@ -108,6 +108,19 @@
 - **Academic Learning**: Applied course concepts in data preprocessing, model selection, and evaluation
 
 **Technologies Used**: `Python | Scikit-learn | Pandas | Machine Learning | Healthcare Data | Model Validation`
+
+### [Data Mining Discovery - Trait Taxa Classification](./projects/data-science/data-mining-final-project/)
+**Machine learning analysis of sexually selected traits for animal taxonomic classification**  
+*INFO 523 Final Project - Data Mining & Machine Learning*
+
+**Research Focus:**
+- **Evolutionary Biology**: Investigating sexually selected traits as predictors of taxonomic groups
+- **Cross-Platform Analysis**: Binary presence/absence data vs evolutionary origin rates comparison
+- **Advanced ML**: Logistic regression, decision trees, and random forest with SHAP analysis
+- **Model Explainability**: Feature importance analysis revealing visual, competition, and auditory traits
+- **Academic Research**: Applied machine learning to biological classification problems
+
+**Technologies Used**: `Python | Scikit-learn | SHAP | Machine Learning | Biological Data | Model Explainability`
 
 ### [Database Management Systems](./projects/database-systems/database-management-info570/)
 **Multi-platform database design and enterprise development**  
