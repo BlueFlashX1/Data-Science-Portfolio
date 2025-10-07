@@ -15,67 +15,36 @@
 
 ## Project Overview
 
-This project involves comprehensive analysis of large-scale healthcare data using advanced SQL techniques and Python integration. The work demonstrates proficiency in handling complex many-to-many relationships, data integrity verification, and analytical query development with real-world healthcare datasets.
+This project demonstrates advanced database querying and schema design skills through analysis of patient relationships with multiple variables. The work showcases proficiency in handling complex many-to-many relationships and analytical query development.
 
 ### Research Focus
-- **Healthcare Data Management**: Analysis of patient-condition and patient-procedure relationships
-- **Large-Scale Data Processing**: Handling 67MB of structured healthcare data
-- **Relationship Analysis**: Complex many-to-many relationship patterns in healthcare systems  
-- **Data Quality Assurance**: Automated integrity verification and validation processes
+- **Patient Relationship Analysis**: Analysis of patient relationships across multiple healthcare variables
+- **Healthcare Data Processing**: Structured synthetic healthcare data (Synthea^1)
+- **Complex Relationship Patterns**: Many-to-many relationship modeling in healthcare systems  
 - **NoSQL Integration**: Document-based data handling and analysis approaches
+
+^1 *Synthea: Synthetic Patient Population Simulator - https://synthetichealth.github.io/synthea/*
 
 ## Dataset Overview
 
-### Healthcare Data Complexity
-The project utilizes comprehensive healthcare datasets representing real-world clinical data:
+The project utilizes structured synthetic healthcare datasets with the following entities:
 
-| Entity | Volume | Description | Key Relationships |
-|--------|--------|-------------|------------------|
-| **Patients** | 333KB | Patient demographic and identity information | Core entity linking all clinical data |
-| **Encounters** | 16MB | Medical visits and appointments | Patient ↔ Provider interactions |
-| **Conditions** | 1.1MB | Medical diagnoses and conditions | Patient ↔ Diagnosis (many-to-many) |
-| **Procedures** | 5.7MB | Medical procedures and treatments | Patient ↔ Treatment (many-to-many) |
-| **Observations** | 43MB | Clinical measurements and test results | Patient ↔ Clinical data (time-series) |
-| **Providers** | 1.0MB | Healthcare providers and facilities | Provider ↔ Patient relationships |
+| Entity | Description | Key Relationships |
+|--------|-------------|------------------|
+| **Patients** | Patient demographic and identity information | Core entity linking all clinical data |
+| **Encounters** | Medical visits and appointments | Patient ↔ Provider interactions |
+| **Conditions** | Medical diagnoses and conditions | Patient ↔ Diagnosis (many-to-many) |
+| **Procedures** | Medical procedures and treatments | Patient ↔ Treatment (many-to-many) |
+| **Observations** | Clinical measurements and test results | Patient ↔ Clinical data (time-series) |
+| **Providers** | Healthcare providers and facilities | Provider ↔ Patient relationships |
 
-**Total Dataset Size**: ~67MB of structured healthcare data  
 **Relationship Complexity**: Multiple overlapping many-to-many relationships  
-**Time Dimension**: Longitudinal patient records across multiple encounters  
+**Time Dimension**: Longitudinal patient records across multiple encounters
 
-## Technical Implementation
-
-### Advanced SQL Analysis
+## Advanced SQL Analysis
 - **Complex Relationship Queries**: Multi-table joins across healthcare entities
 - **Temporal Data Analysis**: Time-series queries for patient progression tracking
 - **Aggregate Analytics**: Patient outcome patterns and healthcare utilization metrics
-- **Data Quality Queries**: Integrity verification and consistency checking
-
-### Python Integration & Analysis
-**Relationship Verification Script**: [`relationship_verify.py`](./relationship_verify.py)
-
-The Python analysis focuses on validating complex healthcare relationships:
-
-```python
-# Patient-Condition Relationship Analysis
-unique_conditions_per_patient = conditions.groupby("PATIENT")["CODE"].nunique()
-patients_per_condition = conditions.groupby("CODE")["PATIENT"].nunique()
-
-# Patient-Procedure Relationship Analysis  
-unique_procedures_per_patient = procedures.groupby("PATIENT")["CODE"].nunique()
-patients_per_procedure = procedures.groupby("CODE")["PATIENT"].nunique()
-```
-
-### Key Analysis Results
-
-#### Patient-Condition Relationships
-- **Multi-morbidity Analysis**: Patients with multiple chronic conditions
-- **Condition Prevalence**: Distribution of diagnoses across patient population
-- **Comorbidity Patterns**: Frequently co-occurring medical conditions
-
-#### Patient-Procedure Relationships
-- **Treatment Complexity**: Patients requiring multiple procedures
-- **Procedure Utilization**: Most common medical procedures and their frequency
-- **Care Pathway Analysis**: Sequential procedure patterns for patient treatment
 
 ## Project Files
 
@@ -85,13 +54,8 @@ patients_per_procedure = procedures.groupby("CODE")["PATIENT"].nunique()
 | [`INFO579_Final Project_Report_Thompson.pdf`](./INFO579_Final%20Project_Report_Thompson.pdf) | 8.1MB | **Complete project analysis with findings and methodology** |
 | [`INFO579_Final Project_Update2_Thompson.pdf`](./INFO579_Final%20Project_Update2_Thompson.pdf) | 709KB | Project development progress and interim analysis |
 
-### Implementation Files
-| File | Size | Description |
-|------|------|-------------|
-| [`relationship_verify.py`](./relationship_verify.py) | 1.4KB | Python script for healthcare relationship analysis and validation |
-
 ### Data Architecture
-**Note**: Original healthcare datasets (67MB total) are referenced in the complete project report but not included in this portfolio version to maintain repository efficiency while preserving full analytical context.
+**Note**: Original healthcare datasets are referenced in the complete project report but not included in this portfolio version to maintain repository efficiency while preserving full analytical context.
 
 ## Healthcare Data Insights
 
@@ -113,44 +77,14 @@ The analysis reveals significant patterns in healthcare data relationships:
 - **Data Completeness**: Analysis of missing data patterns across healthcare entities
 - **Temporal Consistency**: Verification of encounter sequences and care continuity
 
-## Usage Instructions
-
-### Python Analysis Setup
-```python
-# Install required packages
-pip install pandas numpy
-
-# Run relationship analysis
-python relationship_verify.py
-
-# Expected output includes:
-# - Patient-condition relationship statistics
-# - Patient-procedure relationship patterns  
-# - Data quality metrics and validation results
-```
-
-### Healthcare Data Processing
-```python
-import pandas as pd
-
-# Load healthcare datasets
-conditions = pd.read_csv("conditions.csv")
-procedures = pd.read_csv("procedures.csv")
-patients = pd.read_csv("patients.csv")
-
-# Analyze patient-condition relationships
-condition_analysis = conditions.groupby("PATIENT")["CODE"].nunique()
-print(f"Patients with multiple conditions: {(condition_analysis > 1).sum()}")
-```
 
 ## Project Structure
 
 ```
 sql-nosql-databases-info579/
 ├── README.md                                          # This documentation
-├── INFO579_Final Project_Report_Thompson.pdf          # Complete project analysis (8.1MB)
-├── INFO579_Final Project_Update2_Thompson.pdf         # Project development progress (709KB)
-└── relationship_verify.py                             # Python healthcare data analysis script
+├── INFO579_Final Project_Report_Thompson.pdf          # Complete project analysis
+└── INFO579_Final Project_Update2_Thompson.pdf         # Project development progress
 ```
 
 ## Technical Achievements
@@ -211,8 +145,6 @@ sql-nosql-databases-info579/
 **For Complete Project Review**: Use [`INFO579_Final Project_Report_Thompson.pdf`](./INFO579_Final%20Project_Report_Thompson.pdf) - contains comprehensive analysis, methodology, findings, and healthcare insights with full technical documentation.
 
 **For Development Process**: Examine [`INFO579_Final Project_Update2_Thompson.pdf`](./INFO579_Final%20Project_Update2_Thompson.pdf) - shows project evolution, interim findings, and analytical development process.
-
-**For Code Implementation**: Run [`relationship_verify.py`](./relationship_verify.py) - demonstrates advanced healthcare data analysis techniques and relationship validation methods.
 
 ## Future Enhancements
 
