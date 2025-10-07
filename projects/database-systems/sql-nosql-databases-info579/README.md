@@ -39,145 +39,20 @@ The project utilizes structured synthetic healthcare datasets with the following
 | Observations | [`observations.csv`](./data/observations.csv) | 41MB | ~180,000 | Lab results, vital signs, measurements | [Download](./data/observations.csv) |
 | Providers | [`providers.csv`](./data/providers.csv) | 1MB | 5,855 | Healthcare facilities and practitioners | [Download](./data/providers.csv) |
 
-### Sample Data (Preview Files)
 
-| Sample File | Size | Description | Access |
-|-------------|------|-------------|--------|
-| [`patients_sample.csv`](./data/patients_sample.csv) | 5KB | First 100 patient records | [Preview](./data/patients_sample.csv) |
-| [`conditions_sample.csv`](./data/conditions_sample.csv) | 6KB | Sample condition diagnoses | [Preview](./data/conditions_sample.csv) |
-
-### Data Relationships & Complexity
-- **Primary Keys**: UUID-based patient, encounter, provider identifiers
-- **Many-to-Many**: Patients ↔ Conditions, Patients ↔ Procedures, Providers ↔ Patients
-- **Time Series**: Longitudinal encounters, observations with timestamps
-- **Hierarchical**: Organizations → Providers → Encounters → Patients
-- **Clinical Codes**: ICD-10 diagnoses, CPT procedure codes, LOINC observation codes
-**Time Dimension**: Longitudinal patient records across multiple encounters
 
 ## Advanced SQL Analysis
 
-### Comprehensive SQL Skills Demonstrated
-
-Based on the 13+ analytical report tables created in this project, the following advanced SQL techniques were employed:
-
-#### **1. Complex Multi-Table Joins & Relationship Analysis**
-```sql
--- Example: 30-Day Readmission Analysis (rpt_readmissions_30d)
--- Demonstrates temporal joins with self-referencing encounter tables
-SELECT 
-    current.patient_id,
-    current.encounter_id,
-    current.encounter_start_date,
-    prev.encounter_start_date as prev_start,
-    DATEDIFF(current.encounter_start_date, prev.encounter_start_date) as days_since_prior
-FROM encounter current
-JOIN encounter prev ON current.patient_id = prev.patient_id
-WHERE DATEDIFF(current.encounter_start_date, prev.encounter_start_date) BETWEEN 1 AND 30;
-```
-
-#### **2. Advanced Aggregation & Statistical Analysis**
-```sql
--- Example: Condition Prevalence Analysis (rpt_condition_prevalence)
--- Demonstrates GROUP BY with statistical calculations
-SELECT 
-    condition_code,
-    condition_description,
-    COUNT(DISTINCT patient_id) as n_patients,
-    ROUND((COUNT(DISTINCT patient_id) * 100.0 / (SELECT COUNT(*) FROM patient)), 2) as prevalence_rate
-FROM diagnosis d
-JOIN condition_codes c ON d.code = c.code
-GROUP BY condition_code, condition_description
-ORDER BY n_patients DESC;
-```
-
-#### **3. Window Functions & Analytical Queries**
-```sql
--- Example: Provider Utilization Analysis (rpt_provider_utilization)
--- Demonstrates ROW_NUMBER, RANK, and aggregate window functions
-SELECT 
-    provider_id,
-    provider_name,
-    provider_specialty,
-    COUNT(encounter_id) as n_encounters,
-    ROW_NUMBER() OVER (PARTITION BY provider_specialty ORDER BY COUNT(encounter_id) DESC) as specialty_rank,
-    AVG(COUNT(encounter_id)) OVER (PARTITION BY provider_specialty) as avg_specialty_encounters
-FROM encounter e
-JOIN provider p ON e.provider_id = p.provider_id
-GROUP BY provider_id, provider_name, provider_specialty;
-```
-
-#### **4. Temporal Data Analysis & Date Functions**
-```sql
--- Example: Encounter Activity Analysis (rpt_encounter_activity)
--- Demonstrates advanced date manipulation and time-series analysis
-SELECT 
-    DATE_FORMAT(encounter_date, '%Y-%m') as encounter_month,
-    COUNT(*) as monthly_encounters,
-    COUNT(DISTINCT patient_id) as unique_patients,
-    LAG(COUNT(*), 1) OVER (ORDER BY DATE_FORMAT(encounter_date, '%Y-%m')) as prev_month_encounters,
-    CASE 
-        WHEN LAG(COUNT(*), 1) OVER (ORDER BY DATE_FORMAT(encounter_date, '%Y-%m')) IS NOT NULL 
-        THEN ROUND(((COUNT(*) - LAG(COUNT(*), 1) OVER (ORDER BY DATE_FORMAT(encounter_date, '%Y-%m'))) * 100.0 / 
-                    LAG(COUNT(*), 1) OVER (ORDER BY DATE_FORMAT(encounter_date, '%Y-%m'))), 2)
-        ELSE NULL 
-    END as month_over_month_growth
-FROM encounter
-GROUP BY DATE_FORMAT(encounter_date, '%Y-%m')
-ORDER BY encounter_month;
-```
-
-#### **5. Subqueries & Nested Analytics**
-```sql
--- Example: High-Risk ER Patients (rpt_providers_highrisk_er)
--- Demonstrates correlated subqueries and EXISTS clauses
-SELECT DISTINCT
-    p.patient_id,
-    p.first_name,
-    p.last_name,
-    (
-        SELECT COUNT(*) 
-        FROM encounter e 
-        WHERE e.patient_id = p.patient_id 
-        AND e.encounter_class = 'emergency'
-        AND e.encounter_date >= DATE_SUB(NOW(), INTERVAL 6 MONTH)
-    ) as er_visits_6months
-FROM patient p
-WHERE EXISTS (
-    SELECT 1 FROM encounter e 
-    WHERE e.patient_id = p.patient_id 
-    AND e.encounter_class = 'emergency'
-    GROUP BY e.patient_id 
-    HAVING COUNT(*) > 5
-);
-```
-
-#### **6. Advanced Healthcare Analytics Patterns**
-
-**Clinical Quality Indicators:**
-- **30-day readmission rates** - Patient safety metrics
-- **Provider utilization patterns** - Resource allocation analysis
-- **Condition prevalence tracking** - Population health surveillance
-- **Procedure cost analysis** - Healthcare economics
-
-**Multi-Dimensional Analysis:**
-- **Patient-Provider-Condition relationships** - Complex many-to-many joins
-- **Time-series healthcare trends** - Longitudinal data analysis
-- **Risk stratification models** - Advanced patient categorization
-- **Care pathway optimization** - Sequential encounter analysis
-
-### SQL Techniques Mastery Level
-
-| Technique Category | Skills Demonstrated | Complexity Level |
-|-------------------|--------------------|-----------------|
-| Joins & Relationships | Multi-table joins, self-joins, temporal joins | Advanced |
-| Aggregation & Grouping | Complex GROUP BY, HAVING, statistical functions | Advanced |
-| Window Functions | ROW_NUMBER, RANK, LAG/LEAD, analytical functions | Advanced |
-| Temporal Analysis | Date arithmetic, time-series patterns, intervals | Advanced |
-| Subqueries | Correlated subqueries, EXISTS, nested analytics | Advanced |
-| Healthcare Domain | Clinical coding, quality metrics, population health | Expert |
-
-**Total Analytical Reports Created**: 13+ comprehensive healthcare intelligence tables
-**Query Complexity**: Enterprise-level healthcare analytics suitable for clinical decision support
+| Technique | Application |
+|-----------|-------------|
+| Complex Multi-table Joins | Patient, encounter, provider, and condition data integration |
+| Temporal Analysis | 30-day readmission tracking and longitudinal healthcare trends |
+| Window Functions | Provider utilization rankings and time-series analytics |
+| Advanced Aggregation | Condition prevalence rates and statistical healthcare metrics |
+| Subqueries & CTEs | High-risk patient identification and nested healthcare analytics |
+| Healthcare Domain Analytics | Clinical quality indicators and population health surveillance |
+| Data Validation | Automated referential integrity checks across healthcare entities |
+| Performance Optimization | Efficient processing of large-scale healthcare datasets |
 
 ## Project Files
 
@@ -186,28 +61,7 @@ WHERE EXISTS (
 |------|------|-------------|
 | [`INFO579_Final Project_Report_Thompson.pdf`](./INFO579_Final%20Project_Report_Thompson.pdf) | 8.1MB | **Complete project analysis with findings and methodology** |
 
-### Data Architecture
-**Note**: Original healthcare datasets are referenced in the complete project report but not included in this portfolio version to maintain repository efficiency while preserving full analytical context.
 
-## Healthcare Data Insights
-
-### Clinical Relationship Patterns
-The analysis reveals significant patterns in healthcare data relationships:
-
-Multi-condition Patients:
-- Identification of patients with complex medical histories
-- Analysis of comorbidity patterns and disease correlations
-- Healthcare resource utilization patterns
-
-Procedure-Patient Relationships:
-- Treatment pathway analysis for common conditions
-- Resource allocation patterns across different patient populations
-- Quality metrics for care delivery and patient outcomes
-
-### Data Quality Findings
-- Referential Integrity: Comprehensive validation of patient-condition linkages
-- Data Completeness: Analysis of missing data patterns across healthcare entities
-- Temporal Consistency: Verification of encounter sequences and care continuity
 
 
 ## Project Structure
@@ -242,19 +96,11 @@ sql-nosql-databases-info579/
 
 ## Academic Information
 
-**Course**: INFO 579 - SQL & NoSQL Databases  
-**Institution**: University of Arizona  
-**Project Type**: Final Course Project  
-**Domain Focus**: Healthcare Data Management and Analysis  
-**Data Scale**: Large-scale (67MB) healthcare dataset analysis  
-
-### Learning Objectives Demonstrated
-- Advanced SQL Proficiency: Complex query development for healthcare analytics
-- NoSQL Integration: Document-based data handling and analysis approaches  
-- Data Integrity Management: Automated validation and quality assurance processes
-- Healthcare Informatics: Specialized knowledge in medical data standards and relationships
-- Python-SQL Integration: Seamless integration of database queries with analytical processing
-- Large-Scale Data Handling: Efficient processing of substantial healthcare datasets
+Course: INFO 579 - SQL & NoSQL Databases  
+Institution: University of Arizona  
+Project Type: Final Course Project  
+Domain Focus: Healthcare Data Management and Analysis  
+Data Scale: Large-scale (67MB) healthcare dataset analysis
 
 ## Healthcare Analytics Applications
 
@@ -281,11 +127,11 @@ For Database Access: Explore [`database-backup/`](./database-backup/) - contains
 
 ## Future Enhancements
 
-- **Real-time Analytics**: Streaming healthcare data processing for live clinical dashboards
-- **Machine Learning Integration**: Predictive modeling for patient outcome forecasting  
-- **NoSQL Expansion**: Document-based storage for unstructured clinical notes and imaging data
-- **FHIR Integration**: Standards-compliant healthcare data exchange implementation
-- **Security Enhancement**: HIPAA-compliant security measures and comprehensive audit trails
+- Real-time Analytics: Streaming healthcare data processing for live clinical dashboards
+- Machine Learning Integration: Predictive modeling for patient outcome forecasting  
+- NoSQL Expansion: Document-based storage for unstructured clinical notes and imaging data
+- FHIR Integration: Standards-compliant healthcare data exchange implementation
+- Security Enhancement: HIPAA-compliant security measures and comprehensive audit trails
 
 ## License
 
