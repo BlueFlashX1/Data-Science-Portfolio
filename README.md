@@ -74,12 +74,14 @@
 **Advanced database querying and schema design skills applied to healthcare domain**  
 *INFO 579 Final Project - SQL & NoSQL Databases*
 
+**Key Findings**: Analyzed 1,171 synthetic patients across 53K+ encounters, identifying that 90% of patients experienced 30-day readmissions with viral sinusitis affecting 63% of the population - demonstrating population health surveillance capabilities.
+
 **Project Scope:**
-- **Advanced SQL Querying**: Complex joins, subqueries, and analytical queries on healthcare datasets
-- **Database Schema Design**: Normalized schemas with patient-condition-procedure relationship modeling
-- **Data Analysis**: Statistical analysis and relationship validation across 6 healthcare entities
-- **Python Integration**: Database connectivity and automated data validation scripts
-- **Large-Scale Processing**: 67MB synthetic healthcare datasets (Synthea EHR data)
+- Advanced SQL Querying: Complex joins, subqueries, and analytical queries on healthcare datasets
+- Database Schema Design: Normalized schemas with patient-condition-procedure relationship modeling
+- Data Analysis: Statistical analysis and relationship validation across 6 healthcare entities
+- Python Integration: Database connectivity and automated data validation scripts
+- Large-Scale Processing: 67MB synthetic healthcare datasets (Synthea EHR data)
 
 **Technologies Used**: `MySQL | Python | NoSQL | Advanced SQL | Database Design | Data Analysis`
 
@@ -87,12 +89,14 @@
 **Statistical visualization and R programming coursework**  
 *INFO 526 Portfolio - Data Visualization*
 
-**Academic Projects:**
-- **Ecological Data Analysis**: Course assignment analyzing cougar predation patterns using R and ggplot2
-- **Statistical Visualizations**: Created multiple visualization types including alluvial diagrams and faceted plots
-- **R Programming Skills**: Developed proficiency in advanced ggplot2 techniques and data manipulation
-- **Reproducible Research**: Used RMarkdown to create documented, reproducible analysis workflows
-- **Data Storytelling**: Applied visualization principles to communicate insights from ecological and economic datasets
+**Key Findings**: Analyzed cougar predation patterns revealing seasonal hunting behaviors and prey preferences, demonstrating advanced ggplot2 techniques and reproducible research methodologies through comprehensive ecological visualizations.
+
+**Project Scope:**
+- Ecological Data Analysis: Course assignment analyzing cougar predation patterns using R and ggplot2
+- Statistical Visualizations: Created multiple visualization types including alluvial diagrams and faceted plots
+- R Programming Skills: Developed proficiency in advanced ggplot2 techniques and data manipulation
+- Reproducible Research: Used RMarkdown to create documented, reproducible analysis workflows
+- Data Storytelling: Applied visualization principles to communicate insights from ecological and economic datasets
 
 **Technologies Used**: `R | ggplot2 | RMarkdown | Data Visualization | Statistical Analysis`
 
@@ -100,12 +104,14 @@
 **Machine learning course project and academic competition**  
 *INFO 521 Final Project - Foundation of Data Science*
 
-**Academic Competition Results:**
-- **Student Competition**: Healthcare readmission prediction using synthetic patient data
-- **Performance**: Achieved 5th place (development phase) and 13th place (final testing) out of 35+ participants
-- **ML Pipeline**: Developed end-to-end machine learning workflow for healthcare prediction task
-- **Feature Engineering**: Created clinical features from synthetic EHR data for patient risk assessment
-- **Academic Learning**: Applied course concepts in data preprocessing, model selection, and evaluation
+**Key Findings**: Achieved 5th place (development) and 13th place (final) out of 35+ participants in healthcare readmission prediction competition, developing feature engineering techniques that improved model performance on synthetic EHR data.
+
+**Project Scope:**
+- Student Competition: Healthcare readmission prediction using synthetic patient data
+- Performance Achievement: Competitive ranking in class-wide machine learning competition
+- ML Pipeline Development: End-to-end machine learning workflow for healthcare prediction task
+- Feature Engineering: Created clinical features from synthetic EHR data for patient risk assessment
+- Academic Application: Applied course concepts in data preprocessing, model selection, and evaluation
 
 **Technologies Used**: `Python | Scikit-learn | Pandas | Machine Learning | Healthcare Data | Model Validation`
 
@@ -113,12 +119,14 @@
 **Machine learning analysis of sexually selected traits for animal taxonomic classification**  
 *INFO 523 Final Project - Data Mining & Machine Learning*
 
-**Research Focus:**
-- **Evolutionary Biology**: Investigating sexually selected traits as predictors of taxonomic groups
-- **Cross-Platform Analysis**: Binary presence/absence data vs evolutionary origin rates comparison
-- **Advanced ML**: Logistic regression, decision trees, and random forest with SHAP analysis
-- **Model Explainability**: Feature importance analysis revealing visual, competition, and auditory traits
-- **Academic Research**: Applied machine learning to biological classification problems
+**Key Findings**: Discovered that evolutionary rate data significantly outperformed binary data for taxonomic classification, with visual and competition traits identified as strongest predictors through SHAP analysis across 1,087 animal families.
+
+**Project Scope:**
+- Evolutionary Biology Research: Investigating sexually selected traits as predictors of taxonomic groups
+- Cross-Platform Analysis: Binary presence/absence data vs evolutionary origin rates comparison
+- Advanced ML Implementation: Logistic regression, decision trees, and random forest with SHAP analysis
+- Model Explainability: Feature importance analysis revealing visual, competition, and auditory traits
+- Academic Research Application: Applied machine learning to biological classification problems
 
 **Technologies Used**: `Python | Scikit-learn | SHAP | Machine Learning | Biological Data | Model Explainability`
 
@@ -126,12 +134,14 @@
 **Multi-platform database design and enterprise development**  
 *INFO 570 Final Project - Database Management*
 
+**Key Findings**: Successfully implemented normalized database schemas across three platforms (MySQL, SQL Server, Access), demonstrating cross-platform SQL compatibility and referential integrity management for both retail and healthcare business applications.
+
 **Project Scope:**
-- **Cross-Platform Development**: MySQL, SQL Server, Microsoft Access implementations
-- **Business Applications**: KIMTAY pet store and STAYWELL healthcare systems
-- **Enterprise Database Design**: Normalized schemas with complete referential integrity
-- **Advanced SQL Development**: Business intelligence queries, performance optimization
-- **Database Administration**: Schema management, constraints, and multi-platform deployment
+- Cross-Platform Development: MySQL, SQL Server, Microsoft Access implementations
+- Business Applications: KIMTAY pet store and STAYWELL healthcare systems
+- Enterprise Database Design: Normalized schemas with complete referential integrity
+- Advanced SQL Development: Business intelligence queries, performance optimization
+- Database Administration: Schema management, constraints, and multi-platform deployment
 
 **Technologies Used**: `MySQL | SQL Server | Microsoft Access | Database Design | Business Intelligence`
 
