@@ -52,7 +52,6 @@ The project utilizes structured synthetic healthcare datasets with the following
 | File | Size | Description |
 |------|------|-------------|
 | [`INFO579_Final Project_Report_Thompson.pdf`](./INFO579_Final%20Project_Report_Thompson.pdf) | 8.1MB | **Complete project analysis with findings and methodology** |
-| [`INFO579_Final Project_Update2_Thompson.pdf`](./INFO579_Final%20Project_Update2_Thompson.pdf) | 709KB | Project development progress and interim analysis |
 
 ### Data Architecture
 **Note**: Original healthcare datasets are referenced in the complete project report but not included in this portfolio version to maintain repository efficiency while preserving full analytical context.
@@ -84,7 +83,8 @@ The analysis reveals significant patterns in healthcare data relationships:
 sql-nosql-databases-info579/
 ├── README.md                                          # This documentation
 ├── INFO579_Final Project_Report_Thompson.pdf          # Complete project analysis
-└── INFO579_Final Project_Update2_Thompson.pdf         # Project development progress
+├── data/                                              # Healthcare dataset files
+└── database-backup/                                   # SQL database backup files
 ```
 
 ## Technical Achievements
@@ -144,7 +144,7 @@ sql-nosql-databases-info579/
 
 **For Complete Project Review**: Use [`INFO579_Final Project_Report_Thompson.pdf`](./INFO579_Final%20Project_Report_Thompson.pdf) - contains comprehensive analysis, methodology, findings, and healthcare insights with full technical documentation.
 
-**For Development Process**: Examine [`INFO579_Final Project_Update2_Thompson.pdf`](./INFO579_Final%20Project_Update2_Thompson.pdf) - shows project evolution, interim findings, and analytical development process.
+**For Database Access**: Explore [`database-backup/`](./database-backup/) - contains SQL database dumps and comprehensive documentation for database restoration and analysis.
 
 ## Future Enhancements
 
