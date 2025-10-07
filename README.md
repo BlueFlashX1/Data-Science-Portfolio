@@ -41,6 +41,7 @@
 ### **Development Tools & Automation**
 ![Positron](https://img.shields.io/badge/Positron-FF6B35?style=for-the-badge&logo=rstudio&logoColor=white)
 ![VS Code](https://img.shields.io/badge/VS_Code-007ACC?style=for-the-badge&logo=visual-studio-code&logoColor=white)
+![Warp](https://img.shields.io/badge/Warp_Terminal-01A4FF?style=for-the-badge&logo=warp&logoColor=white)
 ![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
 ![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)
 ![System Automation](https://img.shields.io/badge/System%20Automation-4A4A4A?style=for-the-badge&logo=apple&logoColor=white)
