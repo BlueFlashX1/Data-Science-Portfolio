@@ -109,6 +109,19 @@
 
 **Technologies Used**: `Python | Scikit-learn | Pandas | Machine Learning | Healthcare Data | Model Validation`
 
+### [Database Management Systems](./projects/database-systems/database-management-info570/)
+**Multi-platform database design and enterprise development**  
+*INFO 570 Final Project - Database Management*
+
+**Project Scope:**
+- **Cross-Platform Development**: MySQL, SQL Server, Microsoft Access implementations
+- **Business Applications**: KIMTAY pet store and STAYWELL healthcare systems
+- **Enterprise Database Design**: Normalized schemas with complete referential integrity
+- **Advanced SQL Development**: Business intelligence queries, performance optimization
+- **Database Administration**: Schema management, constraints, and multi-platform deployment
+
+**Technologies Used**: `MySQL | SQL Server | Microsoft Access | Database Design | Business Intelligence`
+
 ## External Projects
 
 ### [System Automation Projects](https://github.com/BlueFlashX1/system-automation-projects)
