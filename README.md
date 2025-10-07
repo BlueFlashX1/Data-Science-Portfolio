@@ -10,7 +10,7 @@
 > **Focus**: Applying computational methods to solve biological and healthcare challenges through data-driven insights, with demonstrated experience in EHR data processing, ecological analysis, and system integration projects.
 
 ## Quick Navigation
-**Jump to:** [Skills & Technical Stack](#skills--technical-stack) | [Featured Projects](#featured-projects) | [GitHub Stats](#github-stats) | [Academic Excellence](#achievements--academic-excellence) | [Connect](#connect-with-me)
+**Jump to:** [Skills & Technical Stack](#skills--technical-stack) | [Key Achievements](#key-achievements) | [Featured Projects](#featured-projects) | [External Projects](#external-projects) | [Connect](#connect-with-me)
 
 ## Skills & Technical Stack
 
@@ -62,6 +62,14 @@
 | **System Integration** | Voice control automation, error management, AppleScript integration, workflow optimization | `Python` `Shell Scripting` `System Automation` `APIs` |
 | **Data Visualization** | Publication-quality statistical visualizations, reproducible research, data storytelling | `R` `ggplot2` `Plotly` `RMarkdown` `Quarto` |
 
+## Key Achievements
+
+- **Healthcare Analytics**: Hospital performance analytics with 6+ entities using Synthea EHR data and complex SQL queries
+- **Machine Learning Competition**: 5th place (dev) / 13th place (final) out of 35+ participants in healthcare readmission prediction
+- **Advanced R Visualization**: Publication-quality statistical visualizations including alluvial diagrams and faceted plots
+- **Database Architecture**: Enterprise-grade relational systems with normalized schemas and optimized performance
+- **System Automation**: Voice-controlled automation with speech recognition and natural language processing
+
 ## Featured Projects
 
 ### [Healthcare Database Systems](./projects/database-systems/)
@@ -103,124 +111,24 @@
 
 **Technologies Used**: `Python | Scikit-learn | Pandas | Machine Learning | Healthcare Data | Model Validation`
 
-### [System Automation & Voice Control](https://github.com/BlueFlashX1/system-automation-projects)
-**Advanced Python automation and system integration projects**  
-*Personal productivity and workflow optimization tools*
-
-**Key Achievements:**
-- **Voice-Controlled System Management**: Speech recognition automation for macOS system control (volume, WiFi, applications)
-- **Smart Error Management**: Automated error documentation and resolution tracking system with unique ID management
-- **Development Workflow Automation**: Environment configuration, backup systems, and cross-platform compatibility
-- **Natural Language Processing**: Command processing with regex pattern matching and speech-to-system integration
-- **System Integration**: AppleScript automation, subprocess management, and comprehensive logging systems
-
-**Technologies Used**: `Python | Speech Recognition | Shell Scripting | macOS AppleScript | System Administration | Process Automation`
-
-**GitHub Repository**: [system-automation-projects](https://github.com/BlueFlashX1/system-automation-projects)
-
-## Standalone Repositories
+## External Projects
 
 ### [System Automation Projects](https://github.com/BlueFlashX1/system-automation-projects)
 **Voice-controlled macOS automation and error management system**
 
-**Repository Highlights:**
-- **400+ lines of clean Python code** with speech recognition and system integration
-- **300+ lines of shell scripting** for automated error documentation
-- **Interactive demo system** showcasing all functionality
-- **Production-ready installation** with dependency management
-- **Comprehensive documentation** with usage examples and technical specifications
-
-**Technical Achievements:**
-- Speech-to-system integration using Google Speech API and AppleScript
-- Natural language command processing with regex pattern matching
-- Automated error tracking with unique ID generation and resolution testing
-- Cross-environment compatibility (Terminal, VS Code, Python, System)
-- Professional logging, error handling, and user experience design
-
-**Skills Demonstrated**: System Programming, API Integration, Natural Language Processing, DevOps Automation, Technical Documentation
-
-## GitHub Stats
-
-<div align="center">
-
-![GitHub Stats](https://github-readme-stats.vercel.app/api?username=BlueFlashX1&show_icons=true&theme=radical&hide_border=true)
-
-![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=BlueFlashX1&layout=compact&theme=radical&hide_border=true)
-
-</div>
-
-## Achievements & Academic Excellence
-
-### **Academic Projects**
-- **Healthcare Analytics Expert**: Developed comprehensive hospital performance analytics using real EHR data (Synthea), analyzing 6+ healthcare entities with complex SQL queries for patient outcomes and provider performance optimization
-- **Advanced R Visualization**: Created publication-quality statistical visualizations including alluvial diagrams, faceted plots, and grouped analytics for ecological and economic datasets
-- **Database Architecture**: Designed and implemented enterprise-grade relational database systems with many-to-many relationships and optimized query performance
-- **Machine Learning Pipeline**: Built end-to-end ML workflows with automated feature engineering and model validation frameworks
-- **System Automation**: Developed voice-controlled automation systems with speech recognition and natural language processing
-- **DevOps & Error Management**: Created automated error documentation and resolution tracking systems
-
-### **Technical Expertise**
-- **Professional Development Setup**: Created comprehensive development environment with Positron, VS Code, and advanced terminal configuration with Python auto-detection
-- **Data Science Workflows**: Implemented automated pipelines for data ingestion, cleaning, modeling, and reporting using R, Python, and Quarto
-- **Automation Expert**: Developed intelligent scripts for environment management, including location-based virtual environment creation
-- **Documentation**: Created comprehensive guides and tutorials for R development workflows and statistical analysis
-
-### **Research & Analysis**
-- **Wildlife Ecology**: Analyzed cougar predation patterns across multiple prey categories and temporal distributions
-- **Healthcare Intelligence**: Developed KPIs for clinical quality improvement, readmission reduction, and provider utilization optimization
-- **Economic Analytics**: Conducted multi-state housing price index comparative analysis with trend identification
-
-## Academic Work & Documentation
-
-### **Featured Academic Reports**
-- **[Hospital Performance Analytics - Final Project Report](./projects/database-systems/)** - Comprehensive healthcare analytics using SQL/NoSQL databases with Synthea EHR data
-- **[Advanced R Visualization Portfolio](./projects/r-analytics/data-visualization-portfolio/)** - Publication-quality statistical visualizations with ecological and economic datasets
-- **[Database Management Systems Design](./projects/database-systems/database-management-info570/)** - Enterprise database architecture and optimization strategies
-
-### **Technical Guides & Tutorials**
-- [Development Environment Setup Guide](./assets/docs/setup-guide.md)
-- [Healthcare Data Analysis with Synthetic EHR Data](./projects/database-systems/README.md)
-- [Statistical Visualization Best Practices in R](./projects/r-analytics/README.md)
+- **400+ lines of Python code** with speech recognition and system integration  
+- **300+ lines of shell scripting** for automated error documentation  
+- **Production-ready installation** with comprehensive documentation  
+- **Skills**: System Programming, API Integration, NLP, DevOps Automation
 
 ## Connect With Me
+
+<div align="center">
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/matthewqilanthompson/)
 [![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/BlueFlashX1)
 [![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:matthewqilanthompson.work@gmail.com)
 
-## Activity Graph
-
-![GitHub Activity Graph](https://github-readme-activity-graph.vercel.app/graph?username=BlueFlashX1&theme=react-dark&hide_border=true)
-
-## Career Goals
-
-**Seeking entry-level Data Scientist or Data Analyst positions** in biological sciences, healthcare, or related fields where I can apply my academic training and continue developing expertise in computational approaches to scientific problems.
-
-### **Academic Background**
-- **Master's in Data Science** (in progress) with coursework in healthcare informatics, database systems, and statistical computing
-- **Hands-on Experience**: Academic projects in healthcare data analysis, ecological modeling, and machine learning
-- **Technical Skills Development**: Building proficiency in R, Python, SQL, and data visualization through coursework and projects
-- **Research Interest**: Applying data science methods to biological and healthcare challenges
-
-### **Seeking Opportunities In**
-- **Entry-level positions**: Junior Data Scientist, Data Analyst, Research Analyst roles
-- **Internships**: Data science internships in healthcare, pharmaceuticals, or life sciences
-- **Research positions**: Academic or industry research assistant roles
-- **Learning opportunities**: Positions that provide mentorship and professional development in data science
-
-### **What I Offer**
-- **Academic Foundation**: Strong coursework background in data science fundamentals
-- **Project Experience**: Demonstrated ability to complete data analysis projects from start to finish, including system automation
-- **Technical Versatility**: Experience in data analysis, system programming, automation, and error management systems
-- **Learning Mindset**: Eager to grow and contribute while continuing to develop technical skills
-- **Domain Interest**: Genuine passion for applying data science to biological and healthcare applications
-
----
-
-<div align="center">
-
-**Ready to learn and contribute to your team's data science initiatives!**
-
-*Combining academic training with genuine interest in biological and healthcare applications*
+**Seeking entry-level Data Scientist or Data Analyst positions** in biological sciences, healthcare, or related fields.
 
 </div>
