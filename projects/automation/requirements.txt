@@ -1,0 +1,15 @@
+# Voice Automation Dependencies
+speechrecognition>=3.10.0
+pyaudio>=0.2.11
+
+# System and Utility Dependencies  
+requests>=2.31.0
+psutil>=5.9.0
+
+# Development and Testing
+pytest>=7.4.0
+black>=23.0.0
+flake8>=6.0.0
+
+# Documentation
+markdown>=3.4.0

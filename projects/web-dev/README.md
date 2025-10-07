@@ -1,8 +1,8 @@
-# 🌐 Web Development Projects
+# Web Development Projects
 
 Modern web applications and interactive experiences.
 
-## 🎯 Featured Applications
+## Featured Applications
 
 ### R Shiny Dashboard Suite
 - **Description**: Collection of professional Shiny applications
@@ -14,7 +14,7 @@ Modern web applications and interactive experiences.
 - **Features**: D3.js integrations, responsive charts, narrative elements
 - **Technologies**: JavaScript, D3.js, R htmlwidgets
 
-## 💡 Development Approach
+## Development Approach
 
 - **Frontend**: Modern JavaScript, responsive design
 - **Backend**: R Shiny server, API development
