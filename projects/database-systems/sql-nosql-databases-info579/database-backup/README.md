@@ -123,6 +123,94 @@ SELECT * FROM rpt_provider_utilization
 WHERE utilization_score > 0.8;
 ```
 
+## 📊 Key Analytical Findings
+
+> **Real insights extracted from the healthcare analytics database demonstrating advanced SQL analysis capabilities**
+
+### Dataset Overview
+- **Total Patients**: 1,171 synthetic patient records
+- **Total Encounters**: 53,346 medical visits and appointments  
+- **Total Diagnoses**: 8,376 diagnosed conditions
+- **Healthcare Providers**: 5,855 providers and facilities
+
+### Disease Prevalence Analysis
+**Top 5 Most Common Conditions:**
+
+| Condition | Patient Count | Prevalence Rate |
+|-----------|---------------|----------------|
+| Viral sinusitis (disorder) | 743 | 63.5% |
+| Acute viral pharyngitis (disorder) | 492 | 42.0% |
+| Acute bronchitis (disorder) | 464 | 39.6% |
+| Body mass index 30+ - obesity (finding) | 449 | 38.4% |
+| Prediabetes | 317 | 27.1% |
+
+**Key Insights:**
+- **Respiratory conditions dominate**: Viral sinusitis and bronchitis affect majority of patients
+- **Obesity epidemic**: 38.4% of patients have BMI 30+ obesity diagnosis
+- **Diabetes concern**: 27.1% show prediabetic conditions, indicating population health risk
+
+### 30-Day Readmission Analysis
+**Readmission Metrics:**
+- **Total 30-day readmissions**: 21,804 events
+- **Patients with readmissions**: 1,059 (90.4% of all patients)
+- **Average readmission interval**: 12.8 days
+- **Highest-risk patient**: 1,892 readmission events
+
+**Healthcare Quality Indicators:**
+- **High readmission rate**: 90.4% of patients experienced at least one 30-day readmission
+- **Short intervals**: Average 12.8 days between readmissions indicates potential care gaps
+- **Frequent flyers**: Some patients with 1,500+ readmissions suggest complex chronic conditions
+
+### Population Health Patterns
+**Healthcare Utilization:**
+- **Average encounters per patient**: 45.6 visits
+- **Provider network size**: 5,855 healthcare providers
+- **Condition burden per patient**: 7.1 diagnosed conditions average
+
+**Risk Stratification Insights:**
+- **High-utilization patients**: Identified through frequent readmission patterns
+- **Complex cases**: Multi-morbidity patterns visible in condition co-occurrence
+- **Care coordination opportunities**: Large provider network suggests fragmentation
+
+### Advanced Analytics Capabilities Demonstrated
+
+**1. Epidemiological Analysis**
+```sql
+-- Disease prevalence ranking with population impact
+SELECT condition_description, n_patients,
+       ROUND((n_patients * 100.0 / 1171), 1) as prevalence_rate
+FROM rpt_condition_prevalence 
+ORDER BY n_patients DESC;
+```
+
+**2. Healthcare Quality Metrics**
+```sql
+-- 30-day readmission risk assessment
+SELECT patient_id, COUNT(*) as readmission_events,
+       AVG(days_since_prior) as avg_interval
+FROM rpt_readmissions_30d 
+GROUP BY patient_id 
+HAVING readmission_events > 100;
+```
+
+**3. Population Health Surveillance**
+```sql
+-- Multi-morbidity analysis for chronic disease management
+SELECT patient_id, COUNT(DISTINCT condition_code) as condition_count
+FROM diagnosis 
+GROUP BY patient_id 
+ORDER BY condition_count DESC;
+```
+
+### Healthcare Informatics Value
+
+This analysis demonstrates:
+- **Clinical decision support** through risk stratification
+- **Population health management** via disease prevalence tracking  
+- **Healthcare quality improvement** through readmission analysis
+- **Resource allocation** insights from utilization patterns
+- **Epidemiological surveillance** capabilities for public health
+
 ## 🛡️ Data Privacy Notes
 
 ### Synthetic Data Source
