@@ -101,6 +101,106 @@ docker run -d \
 docker exec -i healthcare_analytics mysql -u root -pyour_password healthcare_demo < Final_Project_schema.sql
 ```
 
+## 🔧 Database Access Troubleshooting
+
+### Issue: Authentication Problems with MySQL Container
+
+**Problem Encountered:**
+Initial attempts to access the Docker MySQL container failed with authentication errors:
+```bash
+# Failed attempts
+docker exec NoSQL_Assignments mysql -u root -pkeegoing -e "SHOW DATABASES;"
+# ERROR 1045 (28000): Access denied for user 'root'@'localhost' (using password: YES)
+
+docker exec NoSQL_Assignments mysql -u matthewqthompson -pkeegoing -e "SHOW DATABASES;"
+# ERROR 1045 (28000): Access denied for user 'matthewqthompson'@'localhost' (using password: YES)
+```
+
+**Root Cause Analysis:**
+1. **Container State**: MySQL container was running but potentially had stale authentication state
+2. **Password Authentication**: MySQL 8.0 authentication plugin compatibility issues
+3. **Connection Timing**: Database service may not have been fully initialized
+
+**Resolution Steps:**
+
+**Step 1: Container Restart**
+```bash
+# Restart the container to refresh MySQL service
+docker restart NoSQL_Assignments
+```
+
+**Step 2: Verify Container Status**
+```bash
+# Confirm container is running properly
+docker ps
+# CONTAINER ID   IMAGE          COMMAND                  CREATED        STATUS         PORTS      NAMES
+# b18a44482a12   mysql:8.0.36   "docker-entrypoint.s…"   2 months ago   Up 6 seconds   3306/tcp   NoSQL_Assignments
+```
+
+**Step 3: Extract Authentication Details**
+```bash
+# Inspect container environment variables for correct credentials
+docker inspect NoSQL_Assignments | grep -A 5 -B 5 -i env
+# Found: MYSQL_ROOT_PASSWORD=keepgoing
+```
+
+**Step 4: Successful Connection**
+```bash
+# Use correct password with proper syntax
+docker exec NoSQL_Assignments mysql -u root -p'keepgoing' -e "SHOW DATABASES;"
+# SUCCESS: Database list returned
+```
+
+### Key Lessons Learned
+
+**1. Container State Management**
+- Docker containers can have authentication state issues after prolonged inactivity
+- Restarting the container often resolves MySQL authentication problems
+- Always verify container status before troubleshooting application-level issues
+
+**2. MySQL 8.0 Authentication**
+- Password must be enclosed in single quotes: `-p'password'` not `-ppassword`
+- MySQL 8.0 uses `caching_sha2_password` by default, which can cause compatibility issues
+- Environment variables in container provide authoritative credential source
+
+**3. Debugging Process**
+- Check container logs: `docker logs container_name`
+- Inspect container configuration: `docker inspect container_name`  
+- Verify service readiness before application connections
+- Test with simple queries before complex operations
+
+### Best Practices for MySQL Containers
+
+**Container Management:**
+```bash
+# Always check container status first
+docker ps -a
+
+# Restart if needed
+docker restart container_name
+
+# Check logs for errors
+docker logs container_name --tail 20
+```
+
+**Authentication Best Practices:**
+```bash
+# Use environment variables for credentials
+docker inspect container_name | grep -i mysql
+
+# Test connection with simple query first
+docker exec container_name mysql -u root -p'password' -e "SELECT 1;"
+
+# Then proceed with complex operations
+docker exec container_name mysql -u root -p'password' -e "SHOW DATABASES;"
+```
+
+**Security Considerations:**
+- Store database passwords in environment variables or secrets management
+- Avoid hardcoding credentials in scripts or documentation
+- Use least-privilege access for production environments
+- Consider using MySQL configuration files for authentication
+
 ## 🎯 Key Analytics Demonstrations
 
 ### Sample Queries You Can Run
