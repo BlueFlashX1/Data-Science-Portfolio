@@ -9,8 +9,6 @@
 [![Pandas](https://img.shields.io/badge/Pandas-Data%20Processing-150458?style=flat-square&logo=pandas)](https://pandas.pydata.org)
 [![Healthcare](https://img.shields.io/badge/Domain-Healthcare%20Data-green?style=flat-square)](https://github.com)
 
-Healthcare database analysis using advanced SQL and NoSQL technologies for large-scale data processing and analytics.
-
 ## Project Overview
 
 Advanced database querying and schema design applied to healthcare data analysis. Features complex multi-table joins, temporal analysis, and healthcare domain analytics across 67MB of synthetic patient data.
