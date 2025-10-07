@@ -9,9 +9,21 @@
 [![Pandas](https://img.shields.io/badge/Pandas-Data%20Processing-150458?style=flat-square&logo=pandas)](https://pandas.pydata.org)
 [![Healthcare](https://img.shields.io/badge/Domain-Healthcare%20Data-green?style=flat-square)](https://github.com)
 
+## Project Structure
+
+```
+sql-nosql-databases-info579/
+├── README.md                                          # This documentation
+├── INFO579_Final Project_Report_Thompson.pdf          # Complete project analysis
+├── data/                                              # Healthcare dataset files
+└── database-backup/                                   # SQL database backup files
+```
+
 ## Project Overview
 
 Advanced database querying and schema design applied to healthcare data analysis. Features complex multi-table joins, temporal analysis, and healthcare domain analytics across 67MB of synthetic patient data.
+
+The complete project analysis and methodology can be found in the [final project report](./INFO579_Final%20Project_Report_Thompson.pdf) (8.1MB PDF download).
 
 ## Dataset Overview
 The project utilizes structured synthetic healthcare datasets with the following entities:
@@ -40,25 +52,10 @@ The project utilizes structured synthetic healthcare datasets with the following
 | Data Validation | Referential integrity enforcement through foreign key constraints | Multiple FOREIGN KEY constraints including diagnosis_ibfk_1, fk_encounter_patient, and fk_encounter_provider_org |
 | Performance Optimization | Database indexing and query optimization for large-scale healthcare datasets | Strategic indexes on primary keys and foreign key columns for efficient join operations |
 
-## Project Files
-
-### Core Documentation
-| File | Size | Description |
-|------|------|-------------|
-| [`INFO579_Final Project_Report_Thompson.pdf`](./INFO579_Final%20Project_Report_Thompson.pdf) | 8.1MB | Complete project analysis with findings and methodology |
 
 
 
 
-## Project Structure
-
-```
-sql-nosql-databases-info579/
-├── README.md                                          # This documentation
-├── INFO579_Final Project_Report_Thompson.pdf          # Complete project analysis
-├── data/                                              # Healthcare dataset files
-└── database-backup/                                   # SQL database backup files
-```
 
 ## Technical Achievements
 
@@ -81,36 +78,8 @@ sql-nosql-databases-info579/
 - Population Health: Analysis supporting public health and epidemiological research
 
 
-## Healthcare Analytics Applications
 
-### Clinical Decision Support
-- Patient Risk Assessment: Multi-condition analysis for care planning
-- Resource Allocation: Procedure utilization analysis for capacity planning
-- Quality Improvement: Pattern identification for care optimization
 
-### Population Health Management
-- Epidemiological Analysis: Disease pattern recognition across patient populations  
-- Healthcare Utilization: Service usage patterns and trend analysis
-- Outcome Prediction: Data foundations for predictive healthcare modeling
-
-### Research Applications
-- Clinical Research: Database foundations for medical research studies
-- Health Services Research: Healthcare delivery pattern analysis
-- Quality Metrics: Evidence-based quality improvement initiatives
-
-## File Recommendations
-
-For Complete Project Review: Use [`INFO579_Final Project_Report_Thompson.pdf`](./INFO579_Final%20Project_Report_Thompson.pdf) - contains comprehensive analysis, methodology, findings, and healthcare insights with full technical documentation.
-
-For Database Access: Explore [`database-backup/`](./database-backup/) - contains SQL database dumps and comprehensive documentation for database restoration and analysis.
-
-## Future Enhancements
-
-- Real-time Analytics: Streaming healthcare data processing for live clinical dashboards
-- Machine Learning Integration: Predictive modeling for patient outcome forecasting  
-- NoSQL Expansion: Document-based storage for unstructured clinical notes and imaging data
-- FHIR Integration: Standards-compliant healthcare data exchange implementation
-- Security Enhancement: HIPAA-compliant security measures and comprehensive audit trails
 
 ## License
 
