@@ -3,7 +3,7 @@
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0077B5?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/matthewqilanthompson/)
 [![Email](https://img.shields.io/badge/Contact-Email-D14836?style=for-the-badge&logo=gmail)](mailto:matthewqilanthompson.work@gmail.com)
 
-> **Master's Data Science Student** developing expertise in biological and healthcare data systems. Proficient in R, Python, SQL/NoSQL databases, and statistical computing with demonstrated academic experience in healthcare analytics, EHR data processing, and biological research applications.
+> **Master's Data Science Student** developing expertise in biological and healthcare data systems. Core competencies: `R | Python | SQL/NoSQL | Statistical Computing | Machine Learning | Healthcare Analytics | Database Design | System Automation | Data Visualization | Git/GitHub` with demonstrated academic experience in EHR data processing, ecological analysis, and system integration projects.
 
 ## Quick Navigation
 **Jump to:** [Key Skills](#key-skills--competencies) | [Featured Projects](#featured-projects) | [Technical Stack](#technical-stack) | [GitHub Stats](#github-stats) | [Career Objective](#career-objective) | [Connect](#connect-with-me)
