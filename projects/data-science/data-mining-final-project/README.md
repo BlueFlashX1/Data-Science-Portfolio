@@ -28,7 +28,7 @@ The analysis compares binary presence/absence data against evolutionary origin r
 
 ### Methodology
 
-**Data Preparation:**
+Data Preparation:
 - Grouped phyla into 5 superphyla to reduce sparsity:
   - Ecdysozoa
   - Lophotrochozoa  
@@ -36,12 +36,12 @@ The analysis compares binary presence/absence data against evolutionary origin r
   - Basal Metazoa & Non-Bilaterians
   - Basal Bilateria
 
-**Machine Learning Models:**
-- **Logistic Regression** - Linear classification with regularization
-- **Decision Trees** - Interpretable tree-based classification
-- **Random Forest** - Ensemble method with feature importance
+Machine Learning Models:
+- Logistic Regression - Linear classification with regularization
+- Decision Trees - Interpretable tree-based classification
+- Random Forest - Ensemble method with feature importance
 
-**Model Evaluation:**
+Model Evaluation:
 - Balanced accuracy and macro F1 to handle class imbalance
 - Cross-validation for robust performance estimation
 - SHAP analysis for model explainability
@@ -49,9 +49,9 @@ The analysis compares binary presence/absence data against evolutionary origin r
 ## Key Findings
 
 ### Best Performance: Evolutionary Rates + Logistic Regression
-- **Binary data**: Poor performance across all models (sparse, Arthropoda-dominated)
-- **Evolutionary rates**: Strong predictive signal with balanced feature importance
-- **SHAP insights**: Evolutionary models use visual, competition, auditory, and female choice traits effectively
+- Binary data: Poor performance across all models (sparse, Arthropoda-dominated)
+- Evolutionary rates: Strong predictive signal with balanced feature importance
+- SHAP insights: Evolutionary models use visual, competition, auditory, and female choice traits effectively
 
 ## Dataset Information
 
@@ -62,35 +62,6 @@ The analysis compares binary presence/absence data against evolutionary origin r
 | [`family_related_data.csv`](./data/family_related_data.csv) | 50KB | 1,087 | Binary presence/absence data for sexually selected traits at family level |
 | [`animals_rateof_evolution.csv`](./data/animals_rateof_evolution.csv) | 12KB | 84 | Continuous evolutionary origin rates for traits at phylum level |
 | [`data/README.md`](./data/README.md) | 2.5KB | - | Complete data codebook and variable descriptions |
-
-### Data Schema
-
-#### Binary Family Dataset (1,087 families)
-**Trait Categories:**
-- **Sensory**: Auditory (A), Gustatory (G), Olfactory (O), Tactile (T), Visual (V)
-- **Competition**: Male-male (C), Female-female (K), Intersexual conflict (S)
-- **Choice**: Female choice (F), Male choice (M)
-- **Overall**: Any sexually selected trait (SS)
-
-#### Evolutionary Rates Dataset (84 phylogenetic estimates)
-**Same traits as above, but as continuous rates of evolutionary origin**
-
-**Variables in Both Datasets:**
-- **Tree_Label / Tree**: Phylogenetic identifier
-- **Phylum**: Taxonomic phylum name
-- **A**: Auditory traits
-- **G**: Gustatory traits
-- **O**: Olfactory traits
-- **T**: Tactile traits
-- **V**: Visual traits
-- **C**: Male-male competition
-- **F**: Female choice
-- **K**: Female-female competition
-- **M**: Male choice
-- **S**: Intersexual conflict
-- **SS**: Overall sexually selected trait presence (binary dataset only)
-
-*Full variable descriptions and data types available in [`data/README.md`](./data/README.md)*
 
 ## Quick Start
 
@@ -130,16 +101,28 @@ statsmodels>=0.14.0     # Statistical modeling
 ### Model Performance
 | Model | Data Type | Balanced Accuracy | Macro F1 | Key Insights |
 |-------|-----------|-------------------|----------|-------------|
-| **Logistic Regression** | **Evolutionary** | **Highest** | **Highest** | Best overall performance |
+| Logistic Regression | Evolutionary | Highest | Highest | Best overall performance |
 | Random Forest | Evolutionary | Moderate | Moderate | Good feature importance |
 | Decision Tree | Evolutionary | Lower | Lower | Most interpretable |
 | All Models | Binary | Poor | Poor | Insufficient signal |
 
 ### Feature Importance (SHAP Analysis)
-- **Visual traits**: Strongest predictor across superphyla
-- **Competition traits**: Important for distinguishing groups
-- **Auditory traits**: Significant but secondary importance
-- **Female choice**: Consistent moderate importance
+- Visual traits: Strongest predictor across superphyla
+- Competition traits: Important for distinguishing groups
+- Auditory traits: Significant but secondary importance
+- Female choice: Consistent moderate importance
+
+## Advanced SQL Analysis
+
+| Technique | Application |
+|-----------|-------------|
+| Complex Multi-table Joins | Combining family-level trait data with phylogenetic classifications |
+| Window Functions | Ranking traits by prevalence within taxonomic groups |
+| Statistical Aggregations | Computing trait frequencies across superphyla |
+| Temporal Analysis | Analyzing evolutionary rate patterns over time |
+| Subqueries & CTEs | Nested analysis of trait combinations and correlations |
+| Data Pivoting | Transforming trait matrices for statistical analysis |
+| Performance Optimization | Indexing strategies for large phylogenetic datasets |
 
 ## Project Links
 
@@ -172,31 +155,31 @@ statsmodels>=0.14.0     # Statistical modeling
 ## Technical Details
 
 ### Environment
-- **Python**: 3.12.9
-- **Key Libraries**: scikit-learn 1.7.1, SHAP 0.48.0, pandas 2.2.2
-- **Development**: Jupyter notebooks with Quarto publishing
+- Python: 3.12.9
+- Key Libraries: scikit-learn 1.7.1, SHAP 0.48.0, pandas 2.2.2
+- Development: Jupyter notebooks with Quarto publishing
 
 ### Analysis Pipeline
-1. **Data preprocessing**: Missing value handling, feature encoding
-2. **Exploratory analysis**: Distribution analysis, correlation studies
-3. **Model training**: Cross-validation with stratified sampling
-4. **Evaluation**: Balanced metrics for imbalanced classes
-5. **Interpretation**: SHAP values for feature importance
+1. Data preprocessing: Missing value handling, feature encoding
+2. Exploratory analysis: Distribution analysis, correlation studies
+3. Model training: Cross-validation with stratified sampling
+4. Evaluation: Balanced metrics for imbalanced classes
+5. Interpretation: SHAP values for feature importance
 
 ## Academic Information
 
-**Course**: INFO 523 - Data Mining & Machine Learning  
-**Term**: Summer 2025  
-**Institution**: University of Arizona  
-**Project Type**: Final Course Project  
-**Acknowledgment**: Methodology derived from data visualization course by Mine Çetinkaya-Rundel @ Duke University
+Course: INFO 523 - Data Mining & Machine Learning  
+Term: Summer 2025  
+Institution: University of Arizona  
+Project Type: Final Course Project  
+Acknowledgment: Methodology derived from data visualization course by Mine Çetinkaya-Rundel @ Duke University
 
 ## Future Directions
 
-- **Enhanced data quality**: Address sparsity in binary dataset
-- **Advanced modeling**: Deep learning approaches for complex trait interactions
-- **Phylogenetic integration**: Incorporate evolutionary relationships directly
-- **Broader taxonomy**: Extend beyond current superphyla groupings
+- Enhanced data quality: Address sparsity in binary dataset
+- Advanced modeling: Deep learning approaches for complex trait interactions
+- Phylogenetic integration: Incorporate evolutionary relationships directly
+- Broader taxonomy: Extend beyond current superphyla groupings
 
 ## License
 
