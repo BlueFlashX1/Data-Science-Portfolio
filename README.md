@@ -6,9 +6,9 @@
 > **Master's Data Science Student (In Progress)** | University of Arizona  
 > *Seeking growth opportunities through mentorship, internships, or entry-level positions*
 > 
-> **Core Competencies**: `R | Python | SQL/NoSQL | Statistical Computing | Machine Learning | Healthcare Analytics | Database Design | System Automation | Data Visualization | Git/GitHub`
+> **Core Competencies**: `R | Python | Structured Query Language (SQL)/NoSQL | Statistical Computing | Machine Learning | Healthcare Analytics | Database Design | System Automation | Data Visualization | Git/GitHub`
 > 
-> **Focus**: Applying computational methods to solve biological and healthcare challenges through data-driven insights, with demonstrated experience in EHR data processing, ecological analysis, and system integration projects.
+> **Focus**: Applying computational methods to solve biological and healthcare challenges through data-driven insights, with demonstrated experience in Electronic Health Records (EHR) data processing, ecological analysis, and system integration projects.
 
 ## Quick Navigation
 **Jump to:** [Skills & Technical Stack](#skills--technical-stack) | [Key Achievements](#key-achievements) | [Featured Projects](#featured-projects) | [External Projects](#external-projects) | [Connect](#connect-with-me)
@@ -152,7 +152,7 @@
 - **400+ lines of Python code** with speech recognition and system integration  
 - **300+ lines of shell scripting** for automated error documentation  
 - **Production-ready installation** with comprehensive documentation  
-- **Skills**: System Programming, API Integration, NLP, DevOps Automation
+- **Skills**: System Programming, Application Programming Interface (API) Integration, Natural Language Processing (NLP), Development Operations (DevOps) Automation
 
 ## Connect With Me
 
