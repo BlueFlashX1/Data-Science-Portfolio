@@ -1,7 +1,7 @@
 # Matthew Thompson - Data Science & Development Portfolio
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0077B5?style=for-the-badge&logo=linkedin)](https://linkedin.com/in/your-profile)
-[![Email](https://img.shields.io/badge/Contact-Email-D14836?style=for-the-badge&logo=gmail)](mailto:your-email@example.com)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0077B5?style=for-the-badge&logo=linkedin)](https://linkedin.com/in/matthew-thompson-datasci)
+[![Email](https://img.shields.io/badge/Contact-Email-D14836?style=for-the-badge&logo=gmail)](mailto:contact@matthewthompson.dev)
 
 > **Master's Data Science Student** developing expertise in biological and healthcare data systems. Proficient in R, Python, SQL/NoSQL databases, and statistical computing with demonstrated academic experience in healthcare analytics, EHR data processing, and biological research applications.
 
@@ -108,14 +108,6 @@
 
 **Technologies Used**: `Python | Scikit-learn | Pandas | Machine Learning | Healthcare Data | Model Validation`
 
-### [Database Management Systems](./projects/database-systems/database-management-info570/)
-**Enterprise database design and optimization**
-- **Relational database architecture** with normalized schemas
-- **Advanced SQL scripting** for complex business queries
-- **Performance optimization** and indexing strategies
-- **Microsoft Access integration** for business applications
-- `Technologies: SQL Server, Microsoft Access, Database Design, Query Optimization`
-
 ### [System Automation & Voice Control](https://github.com/BlueFlashX1/system-automation-projects)
 **Advanced Python automation and system integration projects**  
 *Personal productivity and workflow optimization tools*
@@ -191,17 +183,15 @@
 - **[Database Management Systems Design](./projects/database-systems/database-management-info570/)** - Enterprise database architecture and optimization strategies
 
 ### **Technical Guides & Tutorials**
-- [Setting Up a Professional R Development Environment with Positron](./assets/docs/positron-setup-guide.md)
-- [Advanced Terminal Configuration for Data Scientists](./assets/docs/terminal-setup.md)
-- [Building Interactive Dashboards with R Shiny](./assets/docs/shiny-dashboard-guide.md)
+- [Development Environment Setup Guide](./assets/docs/setup-guide.md)
 - [Healthcare Data Analysis with Synthetic EHR Data](./projects/database-systems/README.md)
 - [Statistical Visualization Best Practices in R](./projects/r-analytics/README.md)
 
 ## Connect With Me
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/your-profile)
-[![Twitter](https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/your-handle)
-[![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:your-email@example.com)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/matthew-thompson-datasci)
+[![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/BlueFlashX1)
+[![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:contact@matthewthompson.dev)
 
 ## Activity Graph
 
