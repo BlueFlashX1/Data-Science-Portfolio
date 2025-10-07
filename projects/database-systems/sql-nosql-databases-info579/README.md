@@ -9,21 +9,11 @@
 [![Pandas](https://img.shields.io/badge/Pandas-Data%20Processing-150458?style=flat-square&logo=pandas)](https://pandas.pydata.org)
 [![Healthcare](https://img.shields.io/badge/Domain-Healthcare%20Data-green?style=flat-square)](https://github.com)
 
-> **COURSE FINAL PROJECT**: Advanced healthcare database analysis using SQL and NoSQL technologies with large-scale data processing
-
-**Academic Context**: This is a final project for INFO 579 (SQL & NoSQL Databases) demonstrating advanced database querying, data analysis, and relationship modeling skills applied to complex healthcare datasets.
+Healthcare database analysis using advanced SQL and NoSQL technologies for large-scale data processing and analytics.
 
 ## Project Overview
 
-This project demonstrates advanced database querying and schema design skills through analysis of patient relationships with multiple variables. The work showcases proficiency in handling complex many-to-many relationships and analytical query development.
-
-### Research Focus
-- **Patient Relationship Analysis**: Analysis of patient relationships across multiple healthcare variables
-- **Healthcare Data Processing**: Structured synthetic healthcare data (Synthea^1)
-- **Complex Relationship Patterns**: Many-to-many relationship modeling in healthcare systems  
-- **NoSQL Integration**: Document-based data handling and analysis approaches
-
-^1 *Synthea: Synthetic Patient Population Simulator - https://synthetichealth.github.io/synthea/*
+Advanced database querying and schema design applied to healthcare data analysis. Features complex multi-table joins, temporal analysis, and healthcare domain analytics across 67MB of synthetic patient data.
 
 ## Dataset Overview
 The project utilizes structured synthetic healthcare datasets with the following entities:
@@ -59,7 +49,7 @@ The project utilizes structured synthetic healthcare datasets with the following
 ### Core Documentation
 | File | Size | Description |
 |------|------|-------------|
-| [`INFO579_Final Project_Report_Thompson.pdf`](./INFO579_Final%20Project_Report_Thompson.pdf) | 8.1MB | **Complete project analysis with findings and methodology** |
+| [`INFO579_Final Project_Report_Thompson.pdf`](./INFO579_Final%20Project_Report_Thompson.pdf) | 8.1MB | Complete project analysis with findings and methodology |
 
 
 
@@ -94,13 +84,6 @@ sql-nosql-databases-info579/
 - Interoperability: Database structures supporting healthcare data exchange standards
 - Population Health: Analysis supporting public health and epidemiological research
 
-## Academic Information
-
-Course: INFO 579 - SQL & NoSQL Databases  
-Institution: University of Arizona  
-Project Type: Final Course Project  
-Domain Focus: Healthcare Data Management and Analysis  
-Data Scale: Large-scale (67MB) healthcare dataset analysis
 
 ## Healthcare Analytics Applications
 
