@@ -10,41 +10,18 @@
 > **Focus**: Applying computational methods to solve biological and healthcare challenges through data-driven insights, with demonstrated experience in EHR data processing, ecological analysis, and system integration projects.
 
 ## Quick Navigation
-**Jump to:** [Key Skills](#key-skills--competencies) | [Featured Projects](#featured-projects) | [Technical Stack](#technical-stack) | [GitHub Stats](#github-stats) | [Career Objective](#career-objective) | [Connect](#connect-with-me)
+**Jump to:** [Skills & Technical Stack](#skills--technical-stack) | [Featured Projects](#featured-projects) | [GitHub Stats](#github-stats) | [Academic Excellence](#achievements--academic-excellence) | [Connect](#connect-with-me)
 
-## About Me
+## Skills & Technical Stack
 
-**Master's Data Science Student** passionate about applying computational methods to solve biological and healthcare challenges. Currently completing my degree with coursework focus on healthcare informatics, database systems, and statistical computing, while building practical experience through academic projects.
-
-**Developing Skills In**: Healthcare data systems, biological data analysis, statistical computing, and database design through comprehensive academic projects and hands-on coursework.
-
-## Skills & Academic Experience
-
-### **Technical Skills (Academic Projects)**
-- **Healthcare Data Analysis**: EHR data processing through coursework, synthetic healthcare data analysis (Synthea)
-- **Biological Data Projects**: Ecological data visualization, wildlife predation pattern analysis
-- **Statistical Computing**: R programming for data analysis and visualization, Python for data science applications
-- **Database Development**: SQL/NoSQL database design through course projects, normalized schema implementation
-
-### **Programming & Tools**
-- **Languages**: R (proficient), Python (intermediate-advanced), SQL (proficient), Shell Scripting (proficient), JavaScript (learning)
-- **System Integration**: Speech recognition APIs, macOS AppleScript, subprocess management, system automation
-- **Academic Focus Areas**: Healthcare informatics concepts, database management systems, data visualization, process automation
-- **Project Experience**: Academic database design, statistical analysis, reproducible research, voice control automation, error management systems
-- **Development Tools**: RStudio/Positron, VS Code, Git version control, Jupyter notebooks, terminal automation
-
-### **Coursework Applications**
-- **Healthcare Projects**: Patient-condition relationship analysis, healthcare database normalization
-- **Ecological Analysis**: Cougar predation data visualization, wildlife population studies
-- **Academic Research**: Course-based projects in statistical modeling and data visualization
-
-## Technical Stack
+<div align="center">
 
 ### **Programming Languages**
 ![R](https://img.shields.io/badge/R-276DC3?style=for-the-badge&logo=r&logoColor=white)
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 ![SQL](https://img.shields.io/badge/SQL-4479A1?style=for-the-badge&logo=postgresql&logoColor=white)
+![Shell](https://img.shields.io/badge/Shell_Script-121011?style=for-the-badge&logo=gnu-bash&logoColor=white)
 
 ### **Data Science & Analytics**
 ![Tidyverse](https://img.shields.io/badge/Tidyverse-1A162D?style=for-the-badge&logo=r&logoColor=white)
@@ -54,22 +31,36 @@
 ![NumPy](https://img.shields.io/badge/NumPy-013243?style=for-the-badge&logo=numpy&logoColor=white)
 ![Scikit-Learn](https://img.shields.io/badge/scikit--learn-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white)
 
-### **Database & Analytics**
+### **Databases & Healthcare Analytics**
 ![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
 ![NoSQL](https://img.shields.io/badge/NoSQL-4DB33D?style=for-the-badge&logo=mongodb&logoColor=white)
 ![Healthcare Analytics](https://img.shields.io/badge/Healthcare%20Analytics-FF6B6B?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEyIDJMMTMuMDkgOC4yNkwyMCA5TDEzLjA5IDE1Ljc0TDEyIDIyTDEwLjkxIDE1Ljc0TDQgOUwxMC45MSA4LjI2TDEyIDJaIiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4K&logoColor=white)
 ![Statistical Computing](https://img.shields.io/badge/Statistical%20Computing-276DC3?style=for-the-badge&logo=r&logoColor=white)
 
-### **Development Tools**
+### **Development Tools & Automation**
 ![Positron](https://img.shields.io/badge/Positron-FF6B35?style=for-the-badge&logo=rstudio&logoColor=white)
 ![VS Code](https://img.shields.io/badge/VS_Code-007ACC?style=for-the-badge&logo=visual-studio-code&logoColor=white)
 ![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
 ![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)
+![System Automation](https://img.shields.io/badge/System%20Automation-4A4A4A?style=for-the-badge&logo=apple&logoColor=white)
 
 ### **Publishing & Documentation**
 ![Quarto](https://img.shields.io/badge/Quarto-75AADB?style=for-the-badge&logo=quarto&logoColor=white)
 ![RMarkdown](https://img.shields.io/badge/R_Markdown-FF6B35?style=for-the-badge&logo=r&logoColor=white)
 ![Jupyter](https://img.shields.io/badge/Jupyter-F37626?style=for-the-badge&logo=jupyter&logoColor=white)
+
+</div>
+
+### **Academic Experience & Project Applications**
+
+| **Domain** | **Skills Demonstrated** | **Technologies** |
+|------------|--------------------------|------------------|
+| **Healthcare Data Analysis** | EHR data processing, synthetic healthcare analysis (Synthea), patient-condition relationships | `MySQL` `Python` `Healthcare Analytics` |
+| **Biological Research** | Ecological data visualization, wildlife predation analysis, population studies | `R` `ggplot2` `Statistical Computing` |
+| **Database Systems** | Normalized schema design, complex SQL queries, data validation, performance optimization | `SQL/NoSQL` `Database Design` `Python Integration` |
+| **Machine Learning** | End-to-end ML pipelines, feature engineering, model validation, healthcare prediction | `Python` `Scikit-learn` `Pandas` `Model Validation` |
+| **System Integration** | Voice control automation, error management, AppleScript integration, workflow optimization | `Python` `Shell Scripting` `System Automation` `APIs` |
+| **Data Visualization** | Publication-quality statistical visualizations, reproducible research, data storytelling | `R` `ggplot2` `Plotly` `RMarkdown` `Quarto` |
 
 ## Featured Projects
 
