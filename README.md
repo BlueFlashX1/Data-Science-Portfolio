@@ -76,7 +76,7 @@
 
 **Key Findings**: Analyzed 1,171 synthetic patients across 53K+ encounters, identifying that 90% of patients experienced 30-day readmissions with viral sinusitis affecting 63% of the population - demonstrating population health surveillance capabilities.
 
-**Project Scope:**
+**Project Components:**
 - Advanced SQL Querying: Complex joins, subqueries, and analytical queries on healthcare datasets
 - Database Schema Design: Normalized schemas with patient-condition-procedure relationship modeling
 - Data Analysis: Statistical analysis and relationship validation across 6 healthcare entities
@@ -91,7 +91,7 @@
 
 **Key Findings**: Analyzed cougar predation patterns revealing seasonal hunting behaviors and prey preferences, demonstrating advanced ggplot2 techniques and reproducible research methodologies through comprehensive ecological visualizations.
 
-**Project Scope:**
+**Project Components:**
 - Ecological Data Analysis: Course assignment analyzing cougar predation patterns using R and ggplot2
 - Statistical Visualizations: Created multiple visualization types including alluvial diagrams and faceted plots
 - R Programming Skills: Developed proficiency in advanced ggplot2 techniques and data manipulation
@@ -106,7 +106,7 @@
 
 **Key Findings**: Achieved 5th place (development) and 13th place (final) out of 35+ participants in healthcare readmission prediction competition, developing feature engineering techniques that improved model performance on synthetic EHR data.
 
-**Project Scope:**
+**Project Components:**
 - Student Competition: Healthcare readmission prediction using synthetic patient data
 - Performance Achievement: Competitive ranking in class-wide machine learning competition
 - ML Pipeline Development: End-to-end machine learning workflow for healthcare prediction task
@@ -121,7 +121,7 @@
 
 **Key Findings**: Discovered that evolutionary rate data significantly outperformed binary data for taxonomic classification, with visual and competition traits identified as strongest predictors through SHAP analysis across 1,087 animal families.
 
-**Project Scope:**
+**Project Components:**
 - Evolutionary Biology Research: Investigating sexually selected traits as predictors of taxonomic groups
 - Cross-Platform Analysis: Binary presence/absence data vs evolutionary origin rates comparison
 - Advanced ML Implementation: Logistic regression, decision trees, and random forest with SHAP analysis
@@ -136,7 +136,7 @@
 
 **Key Findings**: Successfully implemented normalized database schemas across three platforms (MySQL, SQL Server, Access), demonstrating cross-platform SQL compatibility and referential integrity management for both retail and healthcare business applications.
 
-**Project Scope:**
+**Project Components:**
 - Cross-Platform Development: MySQL, SQL Server, Microsoft Access implementations
 - Business Applications: KIMTAY pet store and STAYWELL healthcare systems
 - Enterprise Database Design: Normalized schemas with complete referential integrity
