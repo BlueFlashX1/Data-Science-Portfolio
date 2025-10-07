@@ -4,6 +4,7 @@
 [![Email](https://img.shields.io/badge/Contact-Email-D14836?style=for-the-badge&logo=gmail)](mailto:matthewqilanthompson.work@gmail.com)
 
 > **Master's Data Science Student (In Progress)** | University of Arizona  
+> *Seeking growth opportunities through mentorship, internships, or entry-level positions*
 > 
 > **Core Competencies**: `R | Python | SQL/NoSQL | Statistical Computing | Machine Learning | Healthcare Analytics | Database Design | System Automation | Data Visualization | Git/GitHub`
 > 
@@ -64,10 +65,7 @@
 
 ## Key Achievements
 
-- **Healthcare Analytics**: Hospital performance analytics with 6+ entities using Synthea EHR data and complex SQL queries
 - **Machine Learning Competition**: 5th place (dev) / 13th place (final) out of 35+ participants in healthcare readmission prediction
-- **Advanced R Visualization**: Publication-quality statistical visualizations including alluvial diagrams and faceted plots
-- **Database Architecture**: Enterprise-grade relational systems with normalized schemas and optimized performance
 - **System Automation**: Voice-controlled automation with speech recognition and natural language processing
 
 ## Featured Projects
