@@ -80,10 +80,9 @@
 - Advanced SQL Querying: Complex joins, subqueries, and analytical queries on healthcare datasets
 - Database Schema Design: Normalized schemas with patient-condition-procedure relationship modeling
 - Data Analysis: Statistical analysis and relationship validation across 6 healthcare entities
-- Python Integration: Database connectivity and automated data validation scripts
-- Large-Scale Processing: 67MB synthetic healthcare datasets (Synthea EHR data)
+- Large-Scale Processing: 67MB synthetic healthcare datasets (Synthea Electronic Health Records data)
 
-**Technologies Used**: `MySQL | Python | NoSQL | Advanced SQL | Database Design | Data Analysis`
+**Technologies Used**: `MySQL | Advanced SQL | Database Design | Data Analysis | Healthcare Analytics`
 
 ### [Data Visualization Portfolio](./projects/r-analytics/data-visualization-portfolio/)
 **Statistical visualization and R programming coursework**  
