@@ -10,43 +10,60 @@
 
 This directory contains database systems projects showcasing proficiency in database design, implementation, optimization, and analysis. The projects demonstrate both theoretical knowledge and practical application of database technologies in real-world scenarios.
 
-## Projects
+## Projects Dashboard
 
-### Database Management Systems (INFO 570)
-**Path**: [`database-management-info570/`](./database-management-info570/)  
-**Course**: INFO 570 - Database Management  
-**Focus**: Multi-platform database design and implementation  
+<table>
+<tr>
+<td width="50%">
 
-**Key Technologies**:
-- MySQL, SQL Server, Microsoft Access
-- Cross-platform SQL development
+### 🏢 **Business Database Systems**
+**[INFO 570 - Database Management](./database-management-info570/)**
+
+**Technologies & Tools**
+![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=flat-square&logo=mysql&logoColor=white)
+![SQL Server](https://img.shields.io/badge/SQL_Server-CC2927?style=flat-square&logo=microsoft-sql-server&logoColor=white)
+![Microsoft Access](https://img.shields.io/badge/Access-A4373A?style=flat-square&logo=microsoft-access&logoColor=white)
+
+**Key Features**
+- **Multi-Platform Development**: MySQL, SQL Server, Access
+- **Business Applications**: KIMTAY pet store, STAYWELL healthcare
+- **Enterprise Design**: Normalized schemas, referential integrity
+- **Business Intelligence**: Sales analysis, inventory management
+- **Cross-Platform SQL**: Different SQL dialects and optimizations
+
+**Skills Demonstrated**
 - Database normalization and ER modeling
-- Business application database design
+- Cross-platform SQL development
+- Business application design
+- Database administration
 
-**Project Highlights**:
-- Complete normalized database schemas (KIMTAY, STAYWELL)
-- Multi-platform SQL implementations
-- Microsoft Access advanced features
-- Real-world business data modeling
-- Professional database administration practices
+</td>
+<td width="50%">
 
-### SQL & NoSQL Databases (INFO 579)
-**Path**: [`sql-nosql-databases-info579/`](./sql-nosql-databases-info579/)  
-**Course**: INFO 579 - SQL & NoSQL Databases  
-**Focus**: Advanced healthcare data analysis and large-scale data processing  
+### 🏥 **Healthcare Analytics Systems**
+**[INFO 579 - SQL & NoSQL Databases](./sql-nosql-databases-info579/)**
 
-**Key Technologies**:
+**Technologies & Tools**
+![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=flat-square&logo=mysql&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
+![NoSQL](https://img.shields.io/badge/NoSQL-4DB33D?style=flat-square&logo=mongodb&logoColor=white)
+
+**Key Features**
+- **Healthcare Data Analysis**: Synthea EHR data processing
+- **Python Integration**: Data validation and verification scripts
+- **Large-Scale Processing**: 67MB healthcare datasets
+- **Multi-Entity Analysis**: 6+ healthcare entities and relationships
+- **NoSQL Concepts**: Document-based storage integration
+
+**Skills Demonstrated**
 - Advanced SQL querying techniques
 - Python-SQL integration
-- Healthcare data standards and analysis
-- Large-scale data processing (67MB datasets)
-
-**Project Highlights**:
-- Complex healthcare relationship analysis
-- Multi-entity data integrity verification
-- Python-based data validation scripts
+- Healthcare data standards
 - Population health analytics
-- NoSQL integration concepts
+
+</td>
+</tr>
+</table>
 
 ## Technical Skills Demonstrated
 
@@ -92,23 +109,6 @@ This directory contains database systems projects showcasing proficiency in data
 - **Reporting**: Automated report generation from database queries
 - **Performance Monitoring**: Database performance analysis and optimization
 - **Data Visualization**: Integration with visualization tools for insights
-
-## Academic Context
-
-These projects were completed as part of the Master of Science in Data Science program at the University of Arizona, demonstrating:
-
-- **Advanced database design principles**
-- **Real-world application of database technologies**
-- **Integration of database systems with data science workflows**
-- **Professional-level documentation and project management**
-
-## Future Directions
-
-- **Big Data Integration**: Expansion to distributed database systems
-- **Real-time Analytics**: Streaming data processing and real-time dashboards
-- **Cloud Migration**: Database deployment on cloud platforms
-- **Machine Learning Integration**: Database-driven ML pipeline development
-- **API Development**: RESTful services for database access
 
 ---
 

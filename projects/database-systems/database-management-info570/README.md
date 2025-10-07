@@ -162,33 +162,29 @@ database-management-info570/
     └── SQL10e_Module3_STAYWELL_SCRIPT_MYSQL.sql     # STAYWELL health services (MySQL)
 ```
 
-## Academic Information
+## Skills Demonstrated
 
-**Course**: INFO 570 - Database Management  
-**Institution**: University of Arizona  
-**Project Type**: Multi-Module Course Projects  
-**Focus Areas**: Database design, SQL development, cross-platform implementation  
+<div align="center">
 
-### Skills Demonstrated
-- **Database Design**: Complete ER modeling and normalization processes
-- **Multi-Platform Development**: MySQL, SQL Server, Microsoft Access proficiency
-- **SQL Proficiency**: Advanced query development and database manipulation
-- **Business Application**: Real-world database scenarios and implementations
-- **Professional Documentation**: Comprehensive project documentation and reflection
+### **Technologies & Platforms**
+![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
+![SQL Server](https://img.shields.io/badge/SQL_Server-CC2927?style=for-the-badge&logo=microsoft-sql-server&logoColor=white)
+![Microsoft Access](https://img.shields.io/badge/Microsoft_Access-A4373A?style=for-the-badge&logo=microsoft-access&logoColor=white)
+![Database Design](https://img.shields.io/badge/Database_Design-2E8B57?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEyIDJMMTMuMDkgOC4yNkwyMCA5TDEzLjA5IDE1Ljc0TDEyIDIyTDEwLjkxIDE1Ljc0TDQgOUwxMC45MSA4LjI2TDEyIDJaIiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4K&logoColor=white)
 
-## Learning Outcomes
+### **Technical Skills**
+![Cross Platform SQL](https://img.shields.io/badge/Cross_Platform_SQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)
+![Business Intelligence](https://img.shields.io/badge/Business_Intelligence-FF6B35?style=for-the-badge&logo=tableau&logoColor=white)
+![Schema Design](https://img.shields.io/badge/Schema_Design-20B2AA?style=for-the-badge&logo=database&logoColor=white)
+![Data Normalization](https://img.shields.io/badge/Data_Normalization-DC143C?style=for-the-badge&logo=database&logoColor=white)
 
-### Technical Mastery
-- **Cross-Platform Compatibility**: Demonstrated ability to work across multiple database systems
-- **SQL Dialect Expertise**: Proficient in MySQL and SQL Server T-SQL variations
-- **Database Administration**: Schema management, constraint implementation, data integrity
-- **Performance Considerations**: Optimized database design for query efficiency
+</div>
 
-### Professional Development
-- **Business Analysis**: Translation of business requirements into database design
-- **Project Management**: Multi-module project completion and documentation
-- **Quality Assurance**: Thorough testing and validation of database implementations
-- **Communication**: Clear technical documentation and reflection on learning process
+### **Core Competencies**
+- **Multi-Platform Development**: MySQL, SQL Server, Microsoft Access expertise
+- **Enterprise Database Design**: Normalized schemas with complete referential integrity
+- **Business Intelligence**: Sales analysis, inventory management, performance tracking
+- **Database Administration**: Schema management, constraint implementation, optimization
 
 ## File Recommendations
 
