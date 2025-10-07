@@ -1,0 +1,2 @@
+description: "Scoring program for Healthcare Equity Explorer"
+command: python3 scoring.py /app/input /app/output

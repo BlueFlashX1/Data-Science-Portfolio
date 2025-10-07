@@ -1,0 +1,591 @@
+---
+title: "Assignment 3"
+author: "Matthew Thompson"
+date: "`r Sys.Date()`"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(message = FALSE, warning = FALSE, results = "hide", fig.show = FALSE) 
+
+# Author: Matthew Thompson
+
+# File Name: [Weekly 3_Assignment4].R
+# Date: 2025-02-07
+
+# Description: Creates a plot that attempt to answer multiple questions in one complex plot
+
+# Purpose: The objective is to answer two questions: 
+#1) How has the seasonally adjusted HPI changed over time between regions of the US? 
+#2) How has the non-seasonally adjusted HPI changed over time across regions of the US?
+
+# Setting up the sourcing file directory
+snippets_dir <- "/Users/matthewthompson/Documents/R Programming/Comprehensive Snippets/Functions"
+
+# Source the R version functions
+source(file.path(snippets_dir, "print_r_version.R"))
+
+# Version:
+print_r_version()
+
+#Project Directory Overview:
+source(file.path(snippets_dir, "project_directory_tree.R"))
+project_directory_tree()
+
+# Change Log:
+#YYYY-MM-DD: Initial version
+
+#===========================
+
+# Packages and loaded (choose to source or manually install and load yourself)
+source(file.path(snippets_dir, "install_data_science_packages.R"))
+
+#manually install (if applicable) and load libraries below:
+#type here for libraries and packages
+
+# Install Addins (optional)
+source(file.path(snippets_dir, "install_addins.R"))
+
+#===============================================================================
+
+########################
+#Loading dataset(s) and other files 
+########################
+
+# Load the dataset using read.table()
+# setyourdata_variablehere <- read.table( #customize read.table() settings below
+# file = dataset_path,
+# header = TRUE,            # Set to FALSE if the file has no header row
+# sep = "\t",               # Change to ',' for CSV, '|' for pipe-delimited, etc.
+# stringsAsFactors = FALSE, # Prevent automatic conversion of character columns to factors
+# na.strings = c("NA", ""), # Specify how missing values are represented
+# quote = "\"",             # Define how quoted strings are handled (e.g., single or double quotes)
+# dec = ".",                # Decimal point (change to ',' for European-style decimals)
+# comment.char = "#",       # Define the character for comment lines (set to '' to disable)
+# check.names = TRUE        # Ensure column names are syntactically valid
+# )
+
+#OR source from other r script for either excel or csv 
+source(file.path(snippets_dir, "load_excel_or_csv.R"))
+
+#name the variable and set the path to where your desired file is (must be excel or csv)
+housing_price <- load_excel_or_csv("Housing Price Index.xlsx - Data.csv")
+
+#===============================================================================
+
+```
+
+## Prompt Questions
+How has the seasonally adjusted HPI changed over time between regions of the US? How has the non-seasonally adjusted HPI changed over time across regions of the US?
+\
+\
+```{r assessing housing price, echo = FALSE, results= FALSE}
+###############
+#Assessing Data
+###############
+
+summary(housing_price)
+head(housing_price)
+
+#Before proceeding, let's verify the terms and understand the data better
+
+#Questions:
+#1) How has the seasonally adjusted HPI changed over time between regions of the US? 
+#2) How has the non-seasonally adjusted HPI changed over time across regions of the US?
+
+#Housing Price Index (HPI) is the measure of the movement of the price 
+#in a single family property in US
+#It can be used to analyze and determine if the economy is good or not. 
+#It is measured using repeated refinancing or transactions (mortgage). 
+
+#seasonally adjusted HPI (SA) means HPI data trends are shown without effects of 
+#seasonal or time like holidays, or other time when purchases
+#would be much higher than other certain times
+#Good for showing the real market trend comparisons
+
+#non-seasonally adjusted HPI (NSA) means HPI data trends are shown
+#without removing seasonal/time effects. Good for showing actual prices
+
+#https://www2.census.gov/geo/pdfs/maps-data/maps/reference/us_regdiv.pdf
+#good map showing each census regions to verify region variables
+
+```
+
+```{r data manipulations, echo = FALSE, results= FALSE}
+###############
+#Data Cleanup
+###############
+
+#First things first, Imma try to mutate columns for month, date, and year as well
+housing_price2 <- housing_price %>%
+mutate(Date = as.POSIXct(Date, format = "%m/%d/%Y")) %>% #had to adjust to match the format 
+mutate(Year = year(Date)) %>%
+mutate(Month = month(Date)) %>%
+mutate(Day = day(Date)) 
+
+#I'll think about how to handle the times later
+#I need to verify NA values
+
+housing_price2_NA <- housing_price2 %>%
+  group_by(Year) %>%
+  filter(is.na(USA.SA.)) #No results so no NA
+
+housing_price2_NSA_NA <- housing_price2 %>%
+  group_by(Year) %>%
+  filter(is.na(USA.NSA.)) #No results either
+
+#Let's check for duplicates if possible 
+housing_price_dup <- housing_price2 %>%
+  group_by(Date) %>%
+  tally() %>%
+  filter(n > 1) #no dupes for each date 
+#seems I was saved lots of *cough* cleaning work *cough* whoohoo
+
+```
+
+```{r data manipulations2, echo = FALSE, results= FALSE}
+###############
+#Data Manipulations
+###############
+
+#For reference:
+#1) How has the seasonally adjusted HPI changed over time between regions of the US? 
+#2) How has the non-seasonally adjusted HPI changed over time across regions of the US?
+
+#there are 20 variables total, 10 for NSA and 10 for SA
+#12 months per year from 1991 - 2024 (October)
+
+#I think the following plots probably won't do well with this many groups:
+#density 
+#scatterplot
+#stacked are hard to read
+
+#I think #the best way to deal with so many variables and the time is
+#to facet to show each region across years showing both SA and NA averaged by months
+#in a time series so line plot for NSA and 
+#I can probably use density to show SA
+
+#####################################
+#Rearrange the columns first 
+
+mean_acrossdivisons <- housing_price2 %>%
+  group_by(Year) %>%
+  summarize(across(matches("\\.SA|\\.NSA"), mean, na.rm = TRUE))
+#Used ChatGPT for guidance on how to mean across all 20 divisons variables
+
+#testing if mean works or not so I randomly select one column and find mean
+filtered_mean <- housing_price2 %>%
+  dplyr::select(Year, Month, New.England.SA.) %>%
+  group_by(Year) %>%
+  summarize(mean(New.England.SA.))
+#perfect, the mean matches so I know mean works across all divisions
+
+#Now, I think it's worth to combine all divisions mean into each 4 major regions 
+#for SA and NSA before I can plot 
+
+major_regionsmean <- mean_acrossdivisons %>%
+  mutate(
+    Northeast_SA = rowMeans(dplyr::select(., matches("New\\.England\\.SA|Middle\\.Atlantic\\.SA")), na.rm = TRUE),
+    Midwest_SA = rowMeans(dplyr::select(., matches("East\\.North\\.Central\\.SA|West\\.North\\.Central\\.SA")), na.rm = TRUE),
+    South_SA = rowMeans(dplyr::select(., matches("South\\.Atlantic\\.SA|East\\.South\\.Central\\.SA|West\\.South\\.Central\\.SA")), na.rm = TRUE),
+    West_SA = rowMeans(dplyr::select(., matches("Mountain\\.SA|Pacific\\.SA")), na.rm = TRUE),
+    USA_SA = rowMeans(dplyr::select(.,matches("USA.SA.")), na.rm = TRUE),
+
+    Northeast_NSA = rowMeans(dplyr::select(., matches("New\\.England\\.NSA|Middle\\.Atlantic\\.NSA")), na.rm = TRUE),
+    Midwest_NSA = rowMeans(dplyr::select(., matches("East\\.North\\.Central\\.NSA|West\\.North\\.Central\\.NSA")), na.rm = TRUE),
+    South_NSA = rowMeans(dplyr::select(., matches("South\\.Atlantic\\.NSA|East\\.South\\.Central\\.NSA|West\\.South\\.Central\\.NSA")), na.rm = TRUE),
+    West_NSA = rowMeans(dplyr::select(., matches("Mountain\\.NSA|Pacific\\.NSA")), na.rm = TRUE), 
+    USA_NSA = rowMeans(dplyr::select(.,matches("USA.NSA.")), na.rm = TRUE)
+  )
+
+#Now, I need an updated  dataset to focus on major regions for SA and NSA 
+#as well as including USA (probably average HPI across all regions)
+
+final_housing_transformations <- major_regionsmean %>%
+  dplyr::select(Year, USA_NSA, West_NSA, Midwest_NSA, South_NSA, Northeast_NSA,
+                USA_SA, West_SA, Midwest_SA, South_SA, Northeast_SA)
+#Now the plot should be less cluttered with divisons combined into their 
+#appropriate major regions while maintaining yearly average for SA and NSA
+
+
+#I think plotting with the updated dataset as a wide format may be tricky 
+#so reshaping into a long format would help to plot HPI values down the column
+#based on year and region as well
+
+plot_data <- major_regionsmean %>%
+  pivot_longer(cols = c(Northeast_SA, Midwest_SA, South_SA, West_SA, 
+                        Northeast_NSA, Midwest_NSA, South_NSA, West_NSA, 
+                        USA_SA, USA_NSA), 
+               names_to = "Type", 
+               values_to = "HPI") %>% 
+#reformated values as column "HPI" and type for each region 
+  
+  mutate(
+    Region = case_when(
+      grepl("Northeast", Type) ~ "Northeast",
+      grepl("Midwest", Type) ~ "Midwest",
+      grepl("South", Type) ~ "South",
+      grepl("West", Type) ~ "West",
+      grepl("USA", Type) ~ "USA" # This will allow US-wide values to exist separately
+    ),
+    Adjusted = ifelse(grepl("_SA", Type), "Seasonally Adjusted", "Non-Adjusted")
+  ) %>%
+  #adds two new columns for further categorizing down the column with Type and HPI
+  #to prepare for the plot
+  #Used ChatGPT for guidance on reshaping to prepare for the plot
+  
+  dplyr::select(Year, Type, Region, HPI, Adjusted)
+#selected to only these columns 
+
+```
+
+```{r plotting, echo = FALSE, results = "show", fig.show= TRUE}
+
+# ggplot() +
+# #for each major region
+#   #plots the seasonally adjusted data only with the area filled
+#   geom_area(data = filter(plot_data, Adjusted == "Seasonally Adjusted"),
+#             aes(x = Year, y = HPI, fill = Adjusted, group = Type),
+#             alpha = 0.4) +
+#   #plots the non-seasonally adjusted data only in lines
+#   geom_line(data = filter(plot_data, Adjusted == "Non-Adjusted"),
+#             aes(x = Year, y = HPI, color = Adjusted, group = Type),
+#             size = 1) +
+# #wasn't sure how to set USA as a reference line across 4 major regions
+# 
+#   #sets the color for fill area and line
+#     scale_color_manual(values = c(
+#     "Non-Adjusted" = "orange"         # line color for NSA
+#   )) +
+#   scale_fill_manual(values = c(
+#     "Seasonally Adjusted" = "turquoise"  #fill color for SA
+#   )) +
+#   #facet across regions
+#   facet_wrap(~Region, scales = "fixed") +
+#   labs(
+#     x = "Year",
+#     y = "Average HPI",
+#     fill = "HPI Type",
+#     color = "HPI Type"
+#   ) +
+#   theme_minimal() +
+#   theme(legend.position = "bottom")
+
+#plot two in case:
+ggplot() +
+  geom_line(data = filter(plot_data, Adjusted == "Seasonally Adjusted"),
+            aes(x = Year, y = HPI, color = Region, group = Region),
+            size = 1, linetype = "dashed") +  
+  geom_line(data = filter(plot_data, Adjusted == "Non-Adjusted"),
+            aes(x = Year, y = HPI, color = Region, group = Region),
+            size = 1, linetype = "solid") + 
+  scale_color_manual(values = c(
+    "Northeast" = "blue",
+    "Midwest" = "red",
+    "South" = "green",
+    "West" = "#AC53F5",
+    "USA" = "black" 
+  )) +
+  # faceted across Adjusted (Seasonally Adjusted vs Non-Adjusted)
+  facet_wrap(~Adjusted, scales = "fixed") +
+  labs(
+    x = "Year",
+    y = "Average HPI",
+    color = "Region" 
+  ) +
+  theme_minimal() +
+  theme(
+    legend.position = "bottom",  # placed legend at the bottom
+    legend.text = element_text(size = 8),  # Smaller legend text
+    legend.title = element_text(size = 9),  # Smaller legend title
+  )
+
+#I tried combining both plot 1 and 2 with patchwork and labels are too 
+#cluttered up so I had to pick between and 
+#I think plot 2 provides more insights than plot 1
+
+```
+\
+\
+**Figure 1**: Seasonally-adjusted (SA) and non-seasonally adjusted (NSA) Housing Price Index (HPI) are averaged across years from 1991 to 2024. The trends between NSA and SA HPI are very similar. However, West region had the most difference between SA and NSA HPI. In 2007-2008, HPI seemed to start declining until 2011-2012 and climbed up. Around 2019-2020, the HPI soured sharply. According to my research, the *US Housing Bubble* happened in around 2008 (Gratton 2024), which could explain the sharp HPI decline. Around 2011-2012, the housing prices started to climb up again as a sign of economic recovery due to various factors such as increased constructions, increased housing prices, etc. (Matthews 2012, Fee and Hartley 2013) *COVID-19* hit in around 2020 might also explain the HPI sharp rise (Duca and Murphy 2021, Florida 2022). 
+Source: https://www.fhfa.gov/data/hpi/datasets?tab=monthly-data
+
+## R Code Script
+
+Note: Colors in the plot are tested to be colorblind-friendly 
+
+```{r everything, echo=TRUE, results= "hide", message= FALSE, eval=FALSE}
+
+#################
+#Assessing data
+#################
+
+summary(housing_price)
+head(housing_price)
+
+#Before proceeding, let's verify the terms and understand the data better
+
+#Questions:
+#1) How has the seasonally adjusted HPI changed over time between regions of the US? 
+#2) How has the non-seasonally adjusted HPI changed over time across regions of the US?
+
+#Housing Price Index (HPI) is the measure of the movement of the price 
+#in a single family property in US
+#It can be used to analyze and determine if the economy is good or not. 
+#It is measured using repeated refinancing or transactions (mortgage). 
+
+#seasonally adjusted HPI (SA) means HPI data trends are shown without effects of 
+#seasonal or time like holidays, or other time when purchases
+#would be much higher than other certain times
+#Good for showing the real market trend comparisons
+
+#non-seasonally adjusted HPI (NSA) means HPI data trends are shown
+#without removing seasonal/time effects. Good for showing actual prices
+
+#https://www2.census.gov/geo/pdfs/maps-data/maps/reference/us_regdiv.pdf
+#good map showing each census regions to verify region variables
+
+###############
+#Data Cleanup
+###############
+
+#First things first, Imma try to mutate columns for month, date, and year as well
+housing_price2 <- housing_price %>%
+mutate(Date = as.POSIXct(Date, format = "%m/%d/%Y")) %>% #adjusted to match the format 
+mutate(Year = year(Date)) %>%
+mutate(Month = month(Date)) %>%
+mutate(Day = day(Date)) 
+
+#I'll think about how to handle the times later
+#I need to verify NA values
+
+housing_price2_NA <- housing_price2 %>%
+  group_by(Year) %>%
+  filter(is.na(USA.SA.)) #No results so no NA
+
+housing_price2_NSA_NA <- housing_price2 %>%
+  group_by(Year) %>%
+  filter(is.na(USA.NSA.)) #No results either
+
+#Let's check for duplicates if possible 
+housing_price_dup <- housing_price2 %>%
+  group_by(Date) %>%
+  tally() %>%
+  filter(n > 1) #no dupes for each date 
+#seems I was saved lots of *cough* cleaning work *cough* whoohoo
+
+###############
+#Data Manipulations
+###############
+
+#For reference:
+#1) How has the seasonally adjusted HPI changed over time between regions of the US? 
+#2) How has the non-seasonally adjusted HPI changed over time across regions of the US?
+
+#there are 20 variables total, 10 for NSA and 10 for SA
+#12 months per year from 1991 - 2024 (October)
+
+#I think the following plots probably won't do well with this many groups:
+#density 
+#scatterplot
+#stacked are hard to read
+
+#I think #the best way to deal with so many variables and the time is
+#to facet to show each region across years showing both SA and NA averaged by months
+#in a time series so line plot for NSA and 
+#I can probably use density to show SA
+
+#####################################
+#Rearrange the columns first 
+
+mean_acrossdivisons <- housing_price2 %>%
+  group_by(Year) %>%
+  summarize(across(matches("\\.SA|\\.NSA"), mean, na.rm = TRUE))
+#Used ChatGPT for guidance on how to mean across all 20 divisons variables
+
+#####################################
+#Adding mean across divisions then regions
+
+#testing if mean works or not so I randomly select one column and find mean
+filtered_mean <- housing_price2 %>%
+  dplyr::select(Year, Month, New.England.SA.) %>%
+  group_by(Year) %>%
+  summarize(mean(New.England.SA.))
+#perfect, the mean matches so I know mean works across all divisions
+
+#Now, I think it's worth to combine all divisions mean into each 4 major regions 
+#for SA and NSA before I can plot 
+major_regionsmean <- mean_acrossdivisons %>%
+  mutate(
+    #SA data
+    Northeast_SA = rowMeans(dplyr::select
+                            (., matches("New\\.England\\.SA|
+                                        Middle\\.Atlantic\\.SA")), 
+                            na.rm = TRUE),
+    Midwest_SA = rowMeans(dplyr::select
+                          (., matches("East\\.North\\.Central\\.SA|
+                                      West\\.North\\.Central\\.SA")), 
+                          na.rm = TRUE),
+    South_SA = rowMeans(dplyr::select
+                        (., matches("South\\.Atlantic\\.SA|
+                                    East\\.South\\.Central\\.SA|
+                                    West\\.South\\.Central\\.SA")), na.rm = TRUE),
+    West_SA = rowMeans(dplyr::select
+                       (., matches("Mountain\\.SA|
+                                   Pacific\\.SA")), 
+                       na.rm = TRUE),
+    USA_SA = rowMeans(dplyr::select
+                      (.,matches("USA.SA.")), na.rm = TRUE),
+
+    #NSA data
+    Northeast_NSA = rowMeans(dplyr::select
+                             (., matches("New\\.England\\.NSA|
+                                         Middle\\.Atlantic\\.NSA")), 
+                             na.rm = TRUE),
+    Midwest_NSA = rowMeans(dplyr::select
+                           (., matches("East\\.North\\.Central\\.NSA|
+                                       West\\.North\\.Central\\.NSA")), 
+                           na.rm = TRUE),
+    South_NSA = rowMeans(dplyr::select
+                         (., matches("South\\.Atlantic\\.NSA|
+                                     East\\.South\\.Central\\.NSA|
+                                     West\\.South\\.Central\\.NSA")), 
+                         na.rm = TRUE),
+    West_NSA = rowMeans(dplyr::select
+                        (., matches("Mountain\\.NSA|
+                                    Pacific\\.NSA")), 
+                        na.rm = TRUE), 
+    USA_NSA = rowMeans(dplyr::select
+                       (.,matches("USA.NSA.")), 
+                       na.rm = TRUE)
+  )
+
+#Now, I need an updated  dataset to focus on major regions for SA and NSA 
+#as well as including USA (probably average HPI across all regions)
+final_housing_transformations <- major_regionsmean %>%
+  dplyr::select(Year, USA_NSA, West_NSA, Midwest_NSA, South_NSA, Northeast_NSA,
+                USA_SA, West_SA, Midwest_SA, South_SA, Northeast_SA)
+#the plot should be less cluttered with divisons combined into their 
+#appropriate major regions while maintaining yearly average for SA and NSA
+
+#I think plotting with the updated dataset as a wide format may be tricky 
+#so reshaping into a long format 
+#Used ChatGPT for guidance on reshaping to prepare for the plot
+plot_data <- major_regionsmean %>%
+  pivot_longer(cols = c(Northeast_SA, Midwest_SA, South_SA, West_SA, 
+                        Northeast_NSA, Midwest_NSA, South_NSA, West_NSA, 
+                        USA_SA, USA_NSA), 
+               names_to = "Type", 
+               values_to = "HPI") %>% 
+  #reformated values as column "HPI" and type for each region 
+
+  mutate(
+    Region = case_when(
+      grepl("Northeast", Type) ~ "Northeast",
+      grepl("Midwest", Type) ~ "Midwest",
+      grepl("South", Type) ~ "South",
+      grepl("West", Type) ~ "West",
+      grepl("USA", Type) ~ "USA" # This will allow US-wide values to exist separately
+    ),
+    Adjusted = ifelse(grepl("_SA", Type), "Seasonally Adjusted", "Non-Adjusted")
+  ) %>%
+  #adds two new columns for further categorizing down the column with Type and HPI
+  #to prepare for the plot
+  
+  dplyr::select(Year, Type, Region, HPI, Adjusted) #selected to only these columns 
+
+#################
+#Plotting
+#################
+
+#Plot 1:
+
+# ggplot() +
+# #for each major region
+#   #plots the seasonally adjusted data only with the area filled
+#   geom_area(data = filter(plot_data, Adjusted == "Seasonally Adjusted"),
+#             aes(x = Year, y = HPI, fill = Adjusted, group = Type),
+#             alpha = 0.4) +
+#   #plots the non-seasonally adjusted data only in lines
+#   geom_line(data = filter(plot_data, Adjusted == "Non-Adjusted"),
+#             aes(x = Year, y = HPI, color = Adjusted, group = Type),
+#             size = 1) +
+# #wasn't sure how to set USA as a reference line across 4 major regions
+# 
+#   #sets the color for fill area and line
+#     scale_color_manual(values = c(
+#     "Non-Adjusted" = "orange"         # line color for NSA
+#   )) +
+#   scale_fill_manual(values = c(
+#     "Seasonally Adjusted" = "turquoise"  #fill color for SA
+#   )) +
+#   #facet across regions
+#   facet_wrap(~Region, scales = "fixed") +
+#   labs(
+#     x = "Year",
+#     y = "Average HPI",
+#     fill = "HPI Type",
+#     color = "HPI Type"
+#   ) +
+#   theme_minimal() +
+#   theme(legend.position = "bottom")
+
+#plot two in case:
+
+ggplot() +
+  geom_line(data = filter(plot_data, Adjusted == "Seasonally Adjusted"),
+            aes(x = Year, y = HPI, color = Region, group = Region),
+            size = 1, linetype = "dashed") +  
+  geom_line(data = filter(plot_data, Adjusted == "Non-Adjusted"),
+            aes(x = Year, y = HPI, color = Region, group = Region),
+            size = 1, linetype = "solid") + 
+  scale_color_manual(values = c(
+    "Northeast" = "blue",
+    "Midwest" = "red",
+    "South" = "green",
+    "West" = "#AC53F5",
+    "USA" = "black" 
+  )) +
+  # faceted across Adjusted (Seasonally Adjusted vs Non-Adjusted)
+  facet_wrap(~Adjusted, scales = "fixed") +
+  labs(
+    x = "Year",
+    y = "Average HPI",
+    color = "Region" 
+  ) +
+  theme_minimal() +
+  theme(
+    legend.position = "bottom",  # placed legend at the bottom
+    legend.text = element_text(size = 8),  # Smaller legend text
+    legend.title = element_text(size = 9),  # Smaller legend title
+  )
+
+#I tried combining both plot 1 and 2 with patchwork and labels are too 
+#cluttered up so I had to pick between and 
+#I think plot 2 provides more insights than plot 1
+
+####################
+#Citations
+####################
+
+"Duca, John, and Anthony Murphy. Why House Prices Surged as the COVID-19 Pandemic 
+Took Hold. 28 Dec. 2021, https://www.dallasfed.org/research/economics/2021/1228.
+
+Fee, Kyle D., and Daniel A. Hartley. “Housing Recovery: How Far Have We Come?” 
+Economic Commentary, no. 2013–11, Oct. 2013. 
+www.clevelandfed.org, https://doi.org/10.26509/frbc-ec-201311.
+
+Florida, Richard. “How the ‘Rise of the Rest’ Became the ‘Rise of the Rents.’” 
+Bloomberg.Com, 8 Sept. 2022. 
+www.bloomberg.com, https://www.bloomberg.com/news/features/2022-09-08/
+why-did-housing-costs-explode-during-the-pandemic.
+
+Gratton, Peter. “The Stock Market Crash of 2008.” Investopedia, 21 Nov. 2024, 
+https://www.investopedia.com/articles/economics/09/subprime-market-2008.asp.
+
+Matthews, Christopher. “The Great Housing Rebound of 2012: 
+How the Fed Helped Sellers Beat the Odds.” Time, 27 Dec. 2012. 
+business.time.com, 
+https://business.time.com/2012/12/27/housing-numbers-recovery-fed/."
+
+```

@@ -1,8 +1,8 @@
-# 📊 R Analytics Projects
+# R Analytics Projects
 
 This section showcases my expertise in R programming and data analytics.
 
-## 🎯 Featured Projects
+## Featured Projects
 
 ### Interactive Sales Dashboard
 - **Description**: Real-time sales analytics dashboard with interactive visualizations
@@ -22,7 +22,7 @@ This section showcases my expertise in R programming and data analytics.
   - Reproducible analysis workflows
   - Detailed documentation
 
-## 🛠️ Technical Skills Demonstrated
+## Technical Skills Demonstrated
 
 - **Data Manipulation**: tidyverse, dplyr, tidyr
 - **Visualization**: ggplot2, plotly, shiny
@@ -30,7 +30,7 @@ This section showcases my expertise in R programming and data analytics.
 - **Reporting**: RMarkdown, Quarto
 - **Package Development**: Custom R packages
 
-## 📈 Impact & Results
+## Impact & Results
 
 - Improved data processing efficiency by 300%
 - Created automated reporting pipelines

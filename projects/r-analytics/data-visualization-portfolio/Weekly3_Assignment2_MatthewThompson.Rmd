@@ -1,0 +1,484 @@
+---
+title: "Weekly 3 - Assignment 2"
+author: "Matthew Thompson"
+date: "`r Sys.Date()`"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE,
+  warning = FALSE,
+  message = FALSE
+)
+
+# Author: Matthew Thompson
+
+# File Name: [Weekly3_Assignment2_MatthewThompson].R
+# Date: 2025-01-29
+
+# Description: Cougar kill targeted plots on answering the question
+
+# Purpose: The objective is to provide three different plots that answers the question: What types of animals do cougars kill, and how regularly do they kill each type?
+
+# Setting up the sourcing file directory
+snippets_dir <- "/Users/matthewthompson/Documents/R Programming/Comprehensive Snippets/Functions"
+
+# Source the R version functions
+source(file.path(snippets_dir, "print_r_version.R"))
+
+# Version:
+print_r_version()
+
+#Project Directory Overview:
+source(file.path(snippets_dir, "project_directory_tree.R"))
+project_directory_tree()
+
+# Change Log:
+#2025-01-29: Initial version
+
+#===========================
+
+# Packages and loaded (choose to source or manually install and load yourself)
+source(file.path(snippets_dir, "install_data_science_packages.R"))
+
+#manually install (if applicable) and load libraries below:
+#type here for libraries and packages
+
+# Install Addins (optional)
+source(file.path(snippets_dir, "install_addins.R"))
+
+#===============================================================================
+
+########################
+#Loading dataset(s) and other files 
+########################
+
+# Load the dataset using read.table()
+#setyourdata_variablehere <- read.table( #customize read.table() settings below
+#file = dataset_path,
+#header = TRUE,            # Set to FALSE if the file has no header row
+#sep = "\t",               # Change to ',' for CSV, '|' for pipe-delimited, etc.
+##na.strings = c("NA", ""), # Specify how missing values are represented
+#quote = "\"",             # Define how quoted strings are handled (e.g., single or double quotes)
+##comment.char = "#",       # Define the character for comment lines (set to '' to disable)
+#check.names = TRUE        # Ensure column names are syntactically valid
+#)
+
+#OR source from other r script for either excel or csv 
+source(file.path(snippets_dir, "load_excel_or_csv.R"))
+
+#name the variable and set the path to where your desired file is (must be excel or csv)
+cougar_killsites <- load_excel_or_csv("Cougar Killsites.csv")
+
+```
+
+## What types of animals do cougars kill, and how regularly do they kill each type? \
+\
+```{r setup_data, echo=FALSE}
+cougar_killsites_noNA <- cougar_killsites %>%
+  unique()
+#since it seems there are not any NA values according to my findings, 
+#I went ahead and used unique() for duplicates just in case
+
+##############################
+#What types of animals do cougars kill, 
+#and how regularly do they kill each type?
+cougar_species <- cougar_killsites_noNA %>%
+  mutate(
+    PreySpeciesSingle = str_trim(str_to_lower(PreySpeciesSingle)),  
+    # trimmed spaces and converted to lowercase
+    PreyWeightClass = str_trim(str_to_lower(PreyWeightClass))       
+    # standardized weight class
+  ) %>%
+  mutate(
+    PreySpeciesSingle = case_when(
+      PreySpeciesSingle == "feral horsse" ~ "feral horse",  
+      # Correct spelling
+      TRUE ~ PreySpeciesSingle  # Keep other values unchanged
+    )) %>%
+    group_by(PreySpeciesSingle, PreyWeightClass) %>% 
+    summarize(PreyCount = n()) 
+#noticed few duplicates that remain after summarizing so 
+#used ChatGPT and learned that str_trim can trim 
+#invisible characters that could cause dupes
+  
+plot1 <- cougar_species
+
+```
+
+```{r first_plot}
+
+################
+#Plot1 - Stacked Bar Graph
+################
+#plot1
+
+plot1.1 <- plot1 %>% 
+  group_by(PreySpeciesSingle, PreyWeightClass) %>%  
+  # Grouping by species and weight class
+  summarise(TotalPreyCount = sum(PreyCount, na.rm = TRUE), 
+            .groups = "drop") %>%
+  arrange(desc(TotalPreyCount))
+
+plot1.1 <- plot1.1 %>%
+  mutate(PreyWeightClass = factor(PreyWeightClass, 
+                                  levels = c("extralarge", 
+                                             "large", 
+                                             "medium", 
+                                             "small", 
+                                             "extrasmall")))
+#rearranged legend from extra large to extra small
+
+ggplot(plot1.1, aes(
+  x = TotalPreyCount,
+  y = factor(PreySpeciesSingle, 
+             levels = rev(c("mule deer", 
+                            setdiff(unique(PreySpeciesSingle), "mule deer")))),  
+  # Reverse levels and move mule deer to the top
+  fill = as.factor(PreyWeightClass)  
+  #will be able to fill bars with weight class 
+)) +
+  geom_bar(stat = "identity", position = "stack") + 
+  scale_fill_viridis_d(name = "Weight Class", option = "plasma") +  
+  #  colorblind-friendly discrete scale
+  labs(
+    x = "Total Count",
+    y = "Species"
+  ) +
+  theme_minimal()  # Clean theme
+
+```
+\
+\
+\
+**Figure 1.** All species predated by cougars (2009-2012 & 2015-2017) were recorded. Furthermore, they were also categorized by their weight class (fill) for potential insights on their prey preferences. Overall, each species' (y-axis) count were tallied total in terms of predation frequency (x-axis). In this case, it seems cougars have a preference for larger preys, notably mule deer and feral horses. Additionally, in terms of weight class, the highest counts were large mule deers, likely adults. On the other hand, scavenged animals were ranked low. Black bears and other predators were also ranked lower.
+
+```{r second_plot}
+###############
+#Plot 2 - Treemap
+###############
+#plot2
+
+plot2 <- plot1.1 %>% 
+  group_by(PreySpeciesSingle) %>%
+  summarise(TotalPreyCount = sum(TotalPreyCount, na.rm = TRUE)) %>%
+  arrange(desc(TotalPreyCount))  # Arrange in descending order
+
+library(treemapify)
+
+custom_colors <- c(
+  "#62506B", "#6B66A7", "#7280D7", "#7399F6", "#6CB1FF",
+  "#00C6D2", "#66E0D8", "#A6E9AE", "#C6F981", "#FFFAA8",
+  "#DBFB6B", "#F7BC9E", "#FF8D9C", "#FF669C", "#FE3B83",
+  "#BA3E77", "#D5484A", "#C33244", "#9C4559", "#732D54", "#572861"
+)
+#worked with adobe contrast test and extracted virdis turbo theme
+#color hex and then adjusted for colorblindness with
+#accessibility tools
+
+ggplot(plot2, aes(
+  area = TotalPreyCount, 
+  fill = PreySpeciesSingle, 
+  label = paste(PreySpeciesSingle, "\n", TotalPreyCount)
+)) +
+  geom_treemap(alpha = 0.8, color = "black") +  # Treemap with borders
+  geom_treemap_text(
+    place = "centre",       
+    grow = TRUE,             
+    colour = "black",        # Ensure visibility
+    min.size = 2            
+  ) +
+  scale_fill_manual(values = custom_colors) +
+  theme_minimal() +
+  labs(fill = "Prey Species")
+
+```
+\
+\
+\
+**Figure 2.** Their total count were tallied altogether regardless of weight class (2009-2012 & 2015-2017) and shown explicitly. The top 5 preys were: mule deer, feral horses, coyotes, small mammals, and beavers. Mule deer and feral horses still hold the top list for the most frequently predated. 
+\
+\
+\
+
+
+```{r third_plot}
+###############
+#Plot 3 - Pie Chart
+###############
+
+plot3 <- plot1.1 %>%
+  group_by(PreySpeciesSingle) %>%  # Grouping by species and weight class
+  filter(TotalPreyCount > 10) %>%
+  summarise(TotalPreyCount = sum(TotalPreyCount, na.rm = TRUE), 
+            .groups = "drop") %>%
+  arrange(desc(TotalPreyCount)) 
+
+plot3 <- plot3 %>%
+  mutate(PreySpeciesSingle = reorder(PreySpeciesSingle, -TotalPreyCount))
+#rearranged for the kills count from highest to lowest
+#better readability
+
+ggplot(plot3, aes(x = "", y = TotalPreyCount, fill = PreySpeciesSingle)) +
+  geom_bar(stat = "identity", width = 0.1, color = "black") +  
+  coord_polar("y", start = 0) +  # Convert to pie chart
+  scale_fill_manual(
+    values = c(
+      "#00024B",  # Deep Navy Blue
+      "#0D087E",  # Dark Blue
+      "#6A3289",  # Purple
+      "#C60BA5",  # Magenta
+      "#C683A5",  # Muted Pink
+      "#DB5C68",  # Coral Red
+      "#EEF921",  # Bright Yellow
+      "#FEBC2A",  # Golden Yellow
+      "#F58849"   # Warm Orange
+    )) +
+  labs(
+    x = NULL,
+    y = NULL,
+    fill = "Species"
+  ) +
+  theme_void() +  # Remove all gridlines and axis text for a clean look
+  theme(
+    legend.position = "right",  # Position legend on the right
+    panel.background = element_rect(fill = "white", color = NA)  # Black background
+  )
+#so many species made pie chart crowded so I filtered out species
+#less than 10 counts out which I dont believe are important
+#I tried scatterplot and it doesn't look great
+#kinda redundant to bar plot so trying pie chart
+```
+\
+\
+\
+**Figure 3.** Species being predated less than 10 times were removed to avoid stuffy information. Thus, it would effectively emphasize the disproportional predation frequency between both mule deers and feral horse, and the rest of other species more clearly regardless of their weight class (2009-2012 & 2015-2017). 
+
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+
+## Full Code Script \
+*Note: all plots are adjusted to be colorblind-friendly*
+\
+
+```{r full_code, echo = TRUE, results='hide', fig.show='hide'}
+
+###############
+#File Description
+###############
+# Author: Matthew Thompson
+
+# File Name: [Weekly3_Assignment2_MatthewThompson].R
+# Date: 2025-01-29
+
+# Description: Cougar kill targeted plots on answering the question
+
+# Purpose: The objective is to provide three different plots 
+#that answers the question: How regularly does cougars kill for each type?
+
+# Change Log:
+#2025-01-29: Initial version
+
+#===========================
+
+cougar_killsites <- load_excel_or_csv("Cougar Killsites.csv")
+#name the variable and set the path to where the desired file is
+
+###############
+#Deciding on Plots
+###############
+#What types of animals do cougars kill, 
+#and how regularly do they kill each type?
+#bar plot, treemap, pie charts
+
+#I have thought of density but I don't think that works well
+#with small counts for some groups 
+#line plots don't make sense
+#scatterplots kinda redundant to bar graph so pie chart
+
+###############
+#Preparing Data for Plots
+###############
+
+cougar_killsites_noNA <- cougar_killsites %>%
+  unique()
+#since it seems there are not any NA values according to my findings, 
+#I went ahead and used unique() for duplicates just in case
+
+cougar_species <- cougar_killsites_noNA %>%
+  mutate(
+    PreySpeciesSingle = str_trim(str_to_lower(PreySpeciesSingle)),  
+    #trimmed spaces (invisible characters) and converted to lowercase
+    #to avoid dupes because of case sensitives
+    PreyWeightClass = str_trim(str_to_lower(PreyWeightClass))       
+    # standardized weight class
+  ) %>%
+  mutate(
+    PreySpeciesSingle = case_when(
+      PreySpeciesSingle == "feral horsse" ~ "feral horse",  
+      # Correct spelling
+      TRUE ~ PreySpeciesSingle  # Keep other values unchanged
+    )) %>%
+    group_by(PreySpeciesSingle, PreyWeightClass) %>% 
+    summarize(PreyCount = n()) 
+#noticed few sneaky duplicates that remain after summarizing 
+#so used ChatGPT and learned str_trim helps 
+#to trim invisible characters that could cause dupes
+  
+plot1 <- cougar_species
+
+###################################################################
+#Making Plots
+
+#############
+#stacked bar graph - plot 1
+#############
+
+plot1.1 <- plot1 %>% 
+  group_by(PreySpeciesSingle, PreyWeightClass) %>%  
+  # Grouping by species and weight class
+  summarise(TotalPreyCount = sum(PreyCount, na.rm = TRUE), .groups = "drop") %>%
+  arrange(desc(TotalPreyCount))
+
+plot1.1 <- plot1.1 %>%
+  mutate(PreyWeightClass = factor(PreyWeightClass, 
+                                  levels = c("extralarge", 
+                                             "large", 
+                                             "medium", 
+                                             "small", 
+                                             "extrasmall")))
+#rearranged legend from extra large to extra small
+#for the legend label
+
+ggplot(plot1.1, aes(
+  x = TotalPreyCount,
+  y = factor(PreySpeciesSingle, 
+             levels = rev(c("mule deer", 
+                            setdiff(unique(PreySpeciesSingle), "mule deer")))),  
+  # Reverse levels and move mule deer to the top
+  fill = as.factor(PreyWeightClass)  
+  #will be able to fill bars with weight class 
+)) +
+  geom_bar(stat = "identity", position = "stack") + 
+  scale_fill_viridis_d(name = "Weight Class", option = "plasma") +  
+  #  colorblind-friendly discrete scale
+  labs(
+    x = "Total Count)",
+    y = "Species"
+  ) +
+  theme_minimal()  # Clean theme
+
+#############
+#treemap - plot 2
+#############
+
+plot2 <- plot1.1 %>% 
+  group_by(PreySpeciesSingle) %>%
+  summarise(TotalPreyCount = sum(TotalPreyCount, na.rm = TRUE)) %>%
+  arrange(desc(TotalPreyCount))  # Arrange in descending order
+
+plot2 <- plot1.1 %>% 
+  group_by(PreySpeciesSingle) %>%
+  summarise(TotalPreyCount = sum(TotalPreyCount, na.rm = TRUE)) %>%
+  arrange(desc(TotalPreyCount))  # Arrange in descending order
+
+library(treemapify)
+
+custom_colors <- c(
+  "#62506B", "#6B66A7", "#7280D7", "#7399F6", "#6CB1FF",
+  "#00C6D2", "#66E0D8", "#A6E9AE", "#C6F981", "#FFFAA8",
+  "#DBFB6B", "#F7BC9E", "#FF8D9C", "#FF669C", "#FE3B83",
+  "#BA3E77", "#D5484A", "#C33244", "#9C4559", "#732D54", "#572861"
+)
+#worked with adobe contrast test and extracted virdis turbo theme
+#color hex and then adjusted for colorblindness with
+#accessibility tools
+
+ggplot(plot2, aes(
+  area = TotalPreyCount, 
+  fill = PreySpeciesSingle, 
+  label = paste(PreySpeciesSingle, "\n", TotalPreyCount)
+)) +
+  geom_treemap(alpha = 0.8, color = "black") +  # Treemap with borders
+  geom_treemap_text(
+    place = "centre",       
+    grow = TRUE,             
+    colour = "black",        # Ensure visibility
+    min.size = 2            
+  ) +
+  scale_fill_manual(values = custom_colors) +
+  theme_minimal() +
+  labs(fill = "Prey Species")
+
+#############
+#pie chart - plot 3
+#############
+
+plot3 <- plot1.1 %>%
+  group_by(PreySpeciesSingle) %>%  # Grouping by species and weight class
+  filter(TotalPreyCount > 10) %>%
+  summarise(TotalPreyCount = sum(TotalPreyCount, na.rm = TRUE), 
+            .groups = "drop") %>%
+  arrange(desc(TotalPreyCount)) 
+
+plot3 <- plot3 %>%
+  mutate(PreySpeciesSingle = reorder(PreySpeciesSingle, -TotalPreyCount))
+#rearranged for the kills count from highest to lowest
+#better readability
+
+ggplot(plot3, aes(x = "", y = TotalPreyCount, fill = PreySpeciesSingle)) +
+  geom_bar(stat = "identity", width = 0.1, color = "black") +  
+  coord_polar("y", start = 0) +  # Convert to pie chart
+  scale_fill_manual(
+    values = c(
+      "#00024B",  # Deep Navy Blue
+      "#0D087E",  # Dark Blue
+      "#6A3289",  # Purple
+      "#C60BA5",  # Magenta
+      "#C683A5",  # Muted Pink
+      "#DB5C68",  # Coral Red
+      "#EEF921",  # Bright Yellow
+      "#FEBC2A",  # Golden Yellow
+      "#F58849"   # Warm Orange
+    )) +
+  labs(
+    x = NULL,
+    y = NULL,
+    fill = "Species"
+  ) +
+  theme_void() +  # Remove all gridlines and axis text for a clean look
+  theme(
+    legend.position = "right",  # Position legend on the right
+    panel.background = element_rect(fill = "white", color = NA)  # Black background
+  )
+#so many species made this pie chart crowded so I filtered out species
+#less than 10 counts out which I dont believe are important
+#I tried scatterplot and it doesn't look great
+#kinda redundant to bar plot so trying pie chart
+
+```
+

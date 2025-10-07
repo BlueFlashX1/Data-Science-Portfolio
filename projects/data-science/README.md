@@ -1,8 +1,8 @@
-# 🔬 Data Science Projects
+# Data Science Projects
 
 End-to-end data science projects showcasing the complete analytical pipeline.
 
-## 🎯 Project Portfolio
+## Project Portfolio
 
 ### Predictive Analytics Pipeline
 - **Objective**: Build predictive models for business forecasting
@@ -16,7 +16,7 @@ End-to-end data science projects showcasing the complete analytical pipeline.
 - **Tools**: R, Python, advanced statistical techniques
 - **Impact**: 40% improvement in marketing ROI
 
-## 🛠️ Technical Implementation
+## Technical Implementation
 
 ### Data Pipeline Architecture
 ```
@@ -29,7 +29,7 @@ Raw Data → Cleaning → Feature Engineering → Modeling → Validation → De
 - **Visualization**: ggplot2, plotly, matplotlib
 - **Deployment**: Shiny, Flask, Docker
 
-## 📊 Methodologies
+## Methodologies
 
 - **Exploratory Data Analysis**: Comprehensive data exploration
 - **Statistical Modeling**: Regression, classification, time series
