@@ -1,0 +1,12 @@
+{
+  "hash": "f8fcec9a439cc4c2a4d4a64c36be9187",
+  "result": {
+    "engine": "jupyter",
+    "markdown": "---\ntitle: \"About\"\nformat: html\neditor: visual\njupyter: python3\n---\n\nThis project was developed by **BioCurio** For [INFO 523 - Data Mining and Discovery](https://datamineaz.org/) at the University of Arizona, taught by Dr. Greg Chism. The team is comprised of the following team members.\n\n-   Matthew Qi Lan Thompson: Currently first year in a Masters for Data Science Online program with a bachelor degree for Biology B.S. and a minor in Data Science.\n\n",
+    "supporting": [
+      "about_files/figure-html"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}

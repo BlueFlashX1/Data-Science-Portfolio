@@ -1,0 +1,795 @@
+---
+title: "Predicting Animal Phyla from Sexually Selected Traits"
+subtitle: "INFO 523 - Summer 2025 - Final Project"
+author: "Matthew Qi Lan Thompson"
+
+#slides setup
+title-slide-attributes:
+  data-background-image: images/tree_scenery.jpg
+  data-background-size: stretch
+  data-background-opacity: "0.7"
+  data-slide-number: none
+
+format:
+  revealjs:
+    theme: ['data/customtheming.scss']   
+    slide-number: true
+    incremental: false
+    transition: slide
+    progress: true
+    auto-animate: true             
+
+editor: visual
+jupyter: python3
+
+execute:
+  echo: false
+  warning: false
+  message: false
+  error: false
+---
+
+```{python}
+import numpy as np              # numbers, arrays, math
+import pandas as pd             # tables, csv loading, data handling
+import os    
+import matplotlib.pyplot as plt   # plotting
+import shap                       # shap values for model explainability
+import seaborn as sns 
+
+from sklearn.tree import DecisionTreeClassifier       # decision tree model
+from sklearn.ensemble import RandomForestClassifier   # random forest model
+from sklearn.linear_model import LogisticRegression   # logistic regression model
+
+from sklearn.model_selection import train_test_split, StratifiedKFold
+from sklearn.utils.class_weight import compute_class_weight
+from sklearn.model_selection import cross_val_score   # cross validation scoring
+from sklearn.metrics import accuracy_score, classification_report, confusion_matrix, f1_score, balanced_accuracy_score
+from sklearn.preprocessing import StandardScaler, LabelEncoder
+```
+
+## Motivation & Questions {data-incremental="false"}
+
+::: panel-tabset
+### Objectives
+
+-   Challenges in classification (Tessler et al., 2022; van der Gulik et al., 2023)\
+-   Machine learning for taxonomy is new, needs evaluation (Alipour et al., 2024)\
+-   Potential: narrow candidate taxa and save time
+
+### Research Questions {data-incremental="false"}
+
+1.  How accurately can a machine learning model classify animal taxa based on the binary presence of sexually selected traits?\
+2.  Do evolutionary origin rates of sexual traits provide stronger predictive power than binary trait presence when classifying animal taxa?
+:::
+
+------------------------------------------------------------------------
+
+## EDA - Family
+
+```{python}
+import pandas as pd
+
+# file paths
+evolution_path = "/Users/matthewthompson/Documents/Academics/DS Masters Academics/Data Mining and Discovery/Assignments/final-project-thompson/data/animals_rateof_evolution.csv"
+family_path    = "/Users/matthewthompson/Documents/Academics/DS Masters Academics/Data Mining and Discovery/Assignments/final-project-thompson/data/family_related_data.csv"
+
+# load data
+evolution_df = pd.read_csv(evolution_path)
+family_df    = pd.read_csv(family_path)
+```
+
+```{python}
+#family dataset below
+df1 = family_df.copy()
+
+# pick likely target + trait columns
+all_traits = ['SS','A','G','O','T','V','C','F','K','M','S']
+traits_present = [c for c in all_traits if c in df1.columns]
+target_col = 'Phylum' if 'Phylum' in df1.columns else None
+id_cols = [c for c in ['Tree_Label'] if c in df1.columns]
+
+# numeric & categorical summaries:
+numeric_df = df1.select_dtypes(include='number')
+cat_df = df1.select_dtypes(include=['object','category'])
+
+```
+
+::: panel-tabset
+### Distribution {data-incremental="false"}
+
+```{python}
+if target_col:
+    counts = df1[target_col].value_counts()
+    plt.figure(figsize=(12,4))
+    plt.bar(counts.index, counts.values)
+    plt.title(f"{target_col} distribution")
+    plt.ylabel("Count")
+    plt.xlabel("Phylum Name")
+    plt.xticks(rotation=90)
+    plt.show()
+```
+
+### Prevalence {data-incremental="false"}
+
+```{python}
+#prevalence of binary traits
+if traits_present:
+    prev = df1[traits_present].mean().sort_values(ascending=False)
+    plt.figure(figsize=(10,4))
+    plt.bar(prev.index, prev.values)
+    plt.title("Trait prevalence (proportion present)")
+    plt.ylabel("Prevalence")
+    plt.xlabel("Traits")
+    plt.xticks(rotation=45, ha='right')
+    plt.show()
+```
+
+### Binary Presence {data-incremental="false"}
+
+```{python}
+binary_cols = [c for c in traits_present if c in df1.columns]
+
+# histograms for binary traits (0/1 only)
+if binary_cols:
+    n = len(binary_cols)
+    ncols = min(5, n)
+    nrows = (n + ncols - 1) // ncols
+    fig, axes = plt.subplots(
+        nrows=nrows, ncols=ncols,
+        figsize=(2.5*ncols, 2*nrows)  # shrink each plot
+    )
+    axes = np.array(axes).reshape(-1) if isinstance(axes, np.ndarray) else [axes]
+
+    for i, col in enumerate(binary_cols):
+        ax = axes[i]
+        ax.hist(df1[col].dropna(), bins=[-0.5, 0.5, 1.5], edgecolor="black")
+        ax.set_title(col, fontsize=9)  # smaller title font
+        ax.set_xticks([0, 1])
+        ax.set_xlabel("Binary", fontsize=8)
+        ax.set_ylabel("Count", fontsize=8)
+
+    for ax in axes[n:]:
+        ax.axis('off')
+
+    plt.tight_layout(pad=1.0)  # tighter spacing
+    plt.show()
+
+```
+:::
+
+------------------------------------------------------------------------
+
+## EDA — Evolution
+
+```{python}
+#making a copy of evolution_df
+df2 = evolution_df.copy()
+
+# target and trait columns
+all_traits = ['A','G','O','T','V','C','F','K','M','S']  # continuous traits
+traits_present = [c for c in all_traits if c in df2.columns]
+target_col = 'Phylum' if 'Phylum' in df2.columns else None
+id_cols = [c for c in ['Tree'] if c in df2.columns]
+
+# numeric & categorical summaries
+numeric_df = df2.select_dtypes(include='number')
+cat_df = df2.select_dtypes(include=['object','category'])
+
+```
+
+::: panel-tabset
+### Skewness {data-incremental="false"}
+
+```{python}
+# Skewness
+if not numeric_df.empty:
+    with np.errstate(all='ignore'):
+        skew_vals = numeric_df.drop(columns=id_cols, errors='ignore').skew(numeric_only=True)
+
+        print("\n=== Skewness ===")
+        for col, val in skew_vals.items():
+            print(f"{col:5s}: {val: .4f}")
+else:
+    print("\nNo numeric columns for skewness.")
+```
+
+```{python}
+#traits to scan (exclude ID/target)
+trait_cols = [c for c in df2.columns if c not in ["Tree", "Phylum"]]
+```
+
+### Distribution {data-incremental="false"}
+
+```{python}
+#phylum distribution
+if target_col:
+    counts = df2[target_col].value_counts()
+    plt.figure(figsize=(10,4))
+    plt.bar(counts.index, counts.values)
+    plt.title(f"{target_col} distribution")
+    plt.ylabel("Count")
+    plt.xticks(rotation=90)
+    plt.show()
+```
+
+### Prevalence {data-incremental="false"}
+
+```{python}
+#presence prevalence derived from rates (>0)
+cont_cols = [c for c in traits_present if c in df2.columns]
+
+if cont_cols:
+    presence = (df2[cont_cols] > 0).mean().sort_values(ascending=False)
+    plt.figure(figsize=(10,4))
+    plt.bar(presence.index, presence.values)
+    plt.title("Presence prevalence from rates (>0)")
+    plt.ylabel("Prevalence (mean)")
+    plt.xlabel("Traits")
+    plt.xticks(rotation=45, ha='right')
+    plt.show()
+```
+:::
+
+------------------------------------------------------------------------
+
+## Modeling Approach
+
+::::::::: panel-tabset
+### Data Preprocessing {data-incremental="false"}
+
+**Target encoding** - Created feature: **Superphylum** (label-encoded, 5 groups)
+
+::::: columns
+::: {.column width="50%"}
+-   Ecdysozoa
+-   Lophotrochozoa
+-   Deuterostomia
+:::
+
+::: {.column width="50%"}
+-   Basal Metazoa & Non-Bilaterians
+-   Basal Bilateria
+:::
+:::::
+
+### Data Preprocessing (Continued)
+
+-   **Family dataset**
+    -   Binary trait presence (0/1) kept
+    -   Class weights applied
+-   **Evolution dataset**
+    -   Trait rates log-transformed (`log1p`)
+
+### Modeling Approaches
+
+::::: columns
+::: {.column width="50%"}
+-   Standardized features (skewness)
+-   Train/test split = 1/3
+-   Stratified by superphyla
+:::
+
+::: {.column width="50%"}
+-   Excluded ID & class columns
+-   Models:
+    -   Logistic Regression
+    -   Random Forest
+    -   Decision Tree
+:::
+:::::
+
+### Evaluation Metrics
+
+-   Accuracy (overall correct)
+-   Balanced Accuracy (avg recall per class)
+-   Macro F1 (avg F1 per class)
+:::::::::
+
+------------------------------------------------------------------------
+
+## Results
+
+::: panel-tabset
+```{python}
+####### Family Preprocessing ##########
+
+# Make a copy for preprocessing steps
+family_preprocessing = family_df.copy()
+
+# Drop ID column (Tree_Label)
+if "Tree_Label" in family_preprocessing.columns:
+    family_preprocessing = family_preprocessing.drop(columns=["Tree_Label"])
+
+#strip leading/trailing spaces in Phylum column
+family_preprocessing["Phylum"] = family_preprocessing["Phylum"].astype(str).str.strip()
+
+#defined superphylum groupings (after some research)
+groups = {
+    "Ecdysozoa": {
+        "Arthropoda", "Nematoda", "Nematomorpha", "Priapulida",
+        "Kinorhyncha", "Kinorhynca", "Tardigrada", "Onychophora"
+    },
+    "Lophotrochozoa": {
+        "Mollusca", "Annelida", "Brachiopoda", "Bryozoa",
+        "Phoronida", "Nemertea", "Rotifera", "Gastrotricha",
+        "Gnathostomulida", "Sipuncula", "Platyhelminthes", "Entoprocta"
+    },
+    "Deuterostomia": {
+        "Chordata", "Echinodermata", "Hemichordata"
+    },
+    "Basal Metazoa & Non-Bilaterians": {
+        "Porifera", "Placozoa", "Cnidaria", "Ctenophora"
+    },
+    "Basal Bilateria": {
+        "Acoela", "Chaetognatha", "Xenoturbellida"
+    }
+}
+
+#mapping dictionary
+phylum_to_group = {}
+for group_name, phyla in groups.items():
+    for p in phyla:
+        phylum_to_group[p] = group_name
+
+#addedSuperphylum column
+family_preprocessing["Superphylum"] = family_preprocessing["Phylum"].map(phylum_to_group)
+
+# Coverage check
+unique_phyla = set(family_preprocessing["Phylum"].unique())
+assigned = [p for p in unique_phyla if p in phylum_to_group]
+unassigned = [p for p in unique_phyla if p not in phylum_to_group]
+
+df_map = pd.DataFrame({
+    "Phylum": sorted(unique_phyla),
+    "Assigned_Group": [phylum_to_group.get(p, "") for p in sorted(unique_phyla)],
+    "Is_Assigned": [p in phylum_to_group for p in sorted(unique_phyla)]
+})
+
+# encode Superphylum target
+sup_le = LabelEncoder()
+family_preprocessing["Superphylum_encoded"] = sup_le.fit_transform(
+    family_preprocessing["Superphylum"].astype(str)
+)
+
+# features = trait flags only (exclude Superphylum columns)
+trait_cols = ["SS","A","G","O","T","V","C","F","K","M","S"]
+X = family_preprocessing[trait_cols].copy()
+y = family_preprocessing["Superphylum_encoded"].copy()
+
+#train/test split
+X_train_fam, X_test_fam, y_train_fam, y_test_fam = train_test_split(
+    X, y, test_size=0.2, random_state=42, stratify=y
+)
+
+#class weights
+classes = np.unique(y_train_fam)
+class_weights = compute_class_weight("balanced", classes=classes, y=y_train_fam)
+cw_fam = {c: w for c, w in zip(classes, class_weights)}
+
+#standardize features below
+scaler_fam = StandardScaler()
+X_train_fam_scaled = scaler_fam.fit_transform(X_train_fam)
+X_test_fam_scaled  = scaler_fam.transform(X_test_fam)
+
+#after preprocessing, making a copy of the preprocessed data -> family_ML for model evaluations
+family_ML = family_preprocessing.copy()
+
+######## Evolution Preprocessing ##########
+
+#making a copy for preprocessing steps
+evolution_preprocessing = evolution_df.copy()
+
+#Drop ID column (Tree_label)
+if "Tree" in evolution_preprocessing.columns:
+    evolution_preprocessing = evolution_preprocessing.drop(columns=["Tree"])
+
+#stripped whitespace from Phylum names
+evolution_preprocessing["Phylum"] = evolution_preprocessing["Phylum"].astype(str).str.strip()
+
+#defined superphylum groupings
+groups = {
+    "Ecdysozoa": {
+        "Arthropoda", "Nematoda", "Nematomorpha", "Priapulida",
+        "Kinorhyncha", "Kinorhynca", "Tardigrada", "Onychophora"
+    },
+    "Lophotrochozoa": {
+        "Mollusca", "Annelida", "Brachiopoda", "Bryozoa",
+        "Phoronida", "Nemertea", "Rotifera", "Gastrotricha",
+        "Gnathostomulida", "Sipuncula", "Platyhelminthes", "Entoprocta"
+    },
+    "Deuterostomia": {
+        "Chordata", "Echinodermata", "Hemichordata"
+    },
+    "Basal Metazoa & Non-Bilaterians": {
+        "Porifera", "Placozoa", "Cnidaria", "Ctenophora"
+    },
+    "Basal Bilateria": {
+        "Acoela", "Chaetognatha", "Xenoturbellida"
+    }
+}
+
+#mapping dictionary
+phylum_to_group = {}
+for group_name, phyla in groups.items():
+    for p in phyla:
+        phylum_to_group[p] = group_name
+
+#added Superphylum column
+evolution_preprocessing["Superphylum"] = evolution_preprocessing["Phylum"].map(phylum_to_group)
+
+#encoding superphylum:
+#encode Superphylum into numeric labels, keep the text column
+encoder = LabelEncoder()
+evolution_preprocessing["Superphylum_encoded"] = encoder.fit_transform(
+    evolution_preprocessing["Superphylum"].astype(str)
+)
+
+#mapping for reference
+superphylum_classes = dict(zip(encoder.classes_, encoder.transform(encoder.classes_)))
+
+# encoding and log + scaling 
+
+#encode Superphylum (target)
+superphylum_le_evo = LabelEncoder()
+evolution_preprocessing["Superphylum_encoded"] = superphylum_le_evo.fit_transform(
+    evolution_preprocessing["Superphylum"].astype(str)
+)
+
+#defined features: 
+#continuous rates only (drop phylum target completely)
+rate_cols = ["A","G","O","T","V","C","F","K","M","S"]
+X_rates = evolution_preprocessing[rate_cols]
+y_evo = evolution_preprocessing["Superphylum_encoded"]
+
+#Log transform the rates
+X_log = np.log1p(X_rates)
+
+#standardized features below
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(X_log)
+
+#final features are just scaled rates
+X_evo_final = X_scaled
+
+#one per class in test (stratify on superphyla now)
+X_train_evo, X_test_evo, y_train_evo, y_test_evo = train_test_split(
+    X_evo_final, y_evo,
+    test_size=1/3,     
+    random_state=42,
+    stratify=y_evo
+)
+
+#mapping for decoding predictions later
+superphylum_id_to_name_evo = {i: n for i, n in enumerate(superphylum_le_evo.classes_)}
+
+#evolution_preprocessing copy into evolution_ML
+evolution_ML = evolution_preprocessing.copy()
+
+```
+
+### Family
+
+```{python}
+# =========================================================
+#Family below
+
+RANDOM_STATE = 42  # keep consistent
+
+# Features & Target 
+trait_cols_fam = ["SS","A","G","O","T","V","C","F","K","M","S"]  # exclude Superphylum_encoded
+X_fam_all = family_ML[trait_cols_fam].copy()
+y_fam_all = family_ML["Superphylum_encoded"].copy()              # target is Superphylum
+
+# Stratified Split
+X_train_fam, X_test_fam, y_train_fam, y_test_fam = train_test_split(
+    X_fam_all, y_fam_all, test_size=0.2, random_state=RANDOM_STATE, stratify=y_fam_all
+)
+
+# Class Weights (from TRAIN)
+classes_fam = np.unique(y_train_fam)
+weights_fam = compute_class_weight("balanced", classes=classes_fam, y=y_train_fam)
+cw_fam = {c: w for c, w in zip(classes_fam, weights_fam)}
+
+# Scale for LR only
+scaler_fam = StandardScaler()
+X_train_fam_scaled = scaler_fam.fit_transform(X_train_fam)
+X_test_fam_scaled  = scaler_fam.transform(X_test_fam)
+
+# Models
+dt_fam = DecisionTreeClassifier(
+    random_state=RANDOM_STATE,
+    class_weight=cw_fam,
+    max_depth=8,
+    min_samples_split=4,
+    min_samples_leaf=2
+)
+
+rf_fam = RandomForestClassifier(
+    random_state=RANDOM_STATE,
+    class_weight="balanced_subsample",
+    n_estimators=300,
+    max_depth=12,
+    min_samples_split=4,
+    min_samples_leaf=2,
+    n_jobs=1   # <-- disable parallelism
+)
+
+lr_fam = LogisticRegression(
+    max_iter=2000,
+    random_state=RANDOM_STATE,
+    class_weight=cw_fam,
+    multi_class="multinomial",
+    C=0.5,
+    solver="lbfgs",
+    n_jobs=1   # <-- disable parallelism
+)
+
+# Train
+dt_fam.fit(X_train_fam, y_train_fam)
+rf_fam.fit(X_train_fam, y_train_fam)
+lr_fam.fit(X_train_fam_scaled, y_train_fam)
+
+# Predictions
+dt_pred_fam = dt_fam.predict(X_test_fam)
+rf_pred_fam = rf_fam.predict(X_test_fam)
+lr_pred_fam = lr_fam.predict(X_test_fam_scaled)
+
+# Evaluation
+print("=== FAMILY (Superphylum) RESULTS ===")
+labels_eval = np.unique(y_test_fam)
+
+for name, pred in [
+    ("Decision Tree", dt_pred_fam),
+    ("Random Forest", rf_pred_fam),
+    ("Logistic Regression", lr_pred_fam),
+]:
+    acc  = accuracy_score(y_test_fam, pred)
+    balc = balanced_accuracy_score(y_test_fam, pred)
+    f1m  = f1_score(y_test_fam, pred, average="macro", labels=labels_eval, zero_division=0)
+    print(f"\n{name}: acc={acc:.3f} | bal_acc={balc:.3f} | macro-F1={f1m:.3f}")
+    print(classification_report(y_test_fam, pred, labels=labels_eval, zero_division=0))
+    print("Confusion matrix:\n", confusion_matrix(y_test_fam, pred, labels=labels_eval))
+
+# CV on random forest
+min_count_fam = pd.Series(y_fam_all).value_counts().min()
+if min_count_fam >= 3:
+    n_splits_fam = int(min(5, min_count_fam))
+    cv_folds_fam = StratifiedKFold(n_splits=n_splits_fam, shuffle=True, random_state=RANDOM_STATE)
+    fam_cv_rf = cross_val_score(
+        rf_fam, X_fam_all, y_fam_all, cv=cv_folds_fam, scoring="f1_macro", n_jobs=1  # <-- disable parallelism
+    )
+    print(f"\n[FAMILY Superphylum] RF {n_splits_fam}-fold CV macro-F1: {fam_cv_rf.mean():.3f} ± {fam_cv_rf.std():.3f}")
+else:
+    print("\n[FAMILY Superphylum] Skipping CV: smallest class < 3 samples.")
+
+```
+
+### Evolution
+
+```{python}
+# =========================================================
+#Evolution below
+
+rate_cols = ["A","G","O","T","V","C","F","K","M","S"]
+
+# build modeling matrix from evolution_ML
+X_rates_all = evolution_ML[rate_cols].copy()
+X_super_all = evolution_ML[["Superphylum_encoded"]].copy()
+y_evo_all = evolution_ML["Superphylum_encoded"].copy()   # <— target is Superphylum now
+
+# log1p rates
+X_log_all = np.log1p(X_rates_all)
+
+# z-score rates
+scaler_evo = StandardScaler()
+X_scaled_all = scaler_evo.fit_transform(X_log_all)
+
+# stack with unscaled Superphylum code
+X_evo_all = X_scaled_all
+
+# stratified split 2:1 (1/3 test)
+X_train_evo, X_test_evo, y_train_evo, y_test_evo = train_test_split(
+    X_evo_all, y_evo_all, test_size=1/3, random_state=RANDOM_STATE, stratify=y_evo_all
+)
+
+# models
+dt_evo = DecisionTreeClassifier(random_state=RANDOM_STATE, class_weight="balanced")
+rf_evo = RandomForestClassifier(random_state=RANDOM_STATE, class_weight="balanced_subsample")
+lr_evo = LogisticRegression(max_iter=1000, random_state=RANDOM_STATE, class_weight="balanced", multi_class="ovr")
+
+# train & predict
+dt_evo.fit(X_train_evo, y_train_evo)
+rf_evo.fit(X_train_evo, y_train_evo)
+lr_evo.fit(X_train_evo, y_train_evo)  # already scaled representation
+
+dt_pred_evo = dt_evo.predict(X_test_evo)
+rf_pred_evo = rf_evo.predict(X_test_evo)
+lr_pred_evo = lr_evo.predict(X_test_evo)
+
+print("\n=== EVOLUTION RESULTS ===")
+for name, pred in [("Decision Tree", dt_pred_evo), ("Random Forest", rf_pred_evo), ("Logistic Regression", lr_pred_evo)]:
+    acc = accuracy_score(y_test_evo, pred)
+    bal = balanced_accuracy_score(y_test_evo, pred)
+    f1m = f1_score(y_test_evo, pred, average="macro")
+    print(f"\n{name}: acc={acc:.3f} | bal_acc={bal:.3f} | macro-F1={f1m:.3f}")
+    print(classification_report(y_test_evo, pred, zero_division=0))
+    print("Confusion matrix:\n", confusion_matrix(y_test_evo, pred))
+
+min_count_evo = pd.Series(y_evo_all).value_counts().min()
+if min_count_evo >= 2:
+    n_splits_evo = int(min(5, min_count_evo))
+    cv_folds_evo = StratifiedKFold(n_splits=n_splits_evo, shuffle=True, random_state=RANDOM_STATE)
+    evo_cv_rf = cross_val_score(
+        RandomForestClassifier(random_state=RANDOM_STATE, class_weight="balanced_subsample"),
+        X_evo_all, y_evo_all, cv=cv_folds_evo, scoring="f1_macro"
+    )
+    print(f"\n[EVOLUTION] RF {n_splits_evo}-fold CV macro-F1: {evo_cv_rf.mean():.3f} ± {evo_cv_rf.std():.3f}")
+else:
+    print("\n[EVOLUTION] Skipping CV: smallest class has < 2 samples, cannot stratify.")
+
+```
+
+### Comparison
+
+```{python}
+# =========================================================
+#side by side comparison
+
+#def _summ(dataset, name, y_true, y_pred):
+def _summ(dataset, name, y_true, y_pred):
+    return {
+        "dataset": dataset,
+        "model": name,
+        "acc": accuracy_score(y_true, y_pred),
+        "bal_acc": balanced_accuracy_score(y_true, y_pred),
+        "macro_F1": f1_score(y_true, y_pred, average="macro"),
+    }
+
+#rows
+rows = []
+rows += [
+    _summ("family", "Decision Tree", y_test_fam, dt_pred_fam),
+    _summ("family", "Random Forest", y_test_fam, rf_pred_fam),
+    _summ("family", "Logistic Regression", y_test_fam, lr_pred_fam),
+]
+rows += [
+    _summ("evolution", "Decision Tree", y_test_evo, dt_pred_evo),
+    _summ("evolution", "Random Forest", y_test_evo, rf_pred_evo),
+    _summ("evolution", "Logistic Regression", y_test_evo, lr_pred_evo),
+]
+
+#long → wide (one row per model, side-by-side metrics)
+comp_long = pd.DataFrame(rows)
+comp_wide = (
+    comp_long
+    .pivot(index="model", columns="dataset", values=["acc", "bal_acc", "macro_F1"])
+    .sort_index()
+)
+
+#printing
+print("\n=== FAMILY vs EVOLUTION — MODEL COMPARISON ===")
+print(comp_wide.round(3))
+
+```
+:::
+
+------------------------------------------------------------------------
+
+## SHAP Interpretation
+
+::: panel-tabset
+### F - Plot
+
+```{python}
+# =========================================================
+# SHAP interpretability
+
+shap.initjs()
+
+# -----------------------
+# FAMILY
+# -----------------------
+explainer_fam = shap.TreeExplainer(rf_fam)
+shap_values_fam = explainer_fam.shap_values(X_test_fam)
+
+Xtf = X_test_fam.values
+fn_fam = list(X_test_fam.columns)
+
+#Convert shap_values into consistent 2D form (N samples × F features)
+#If multi-class, aggregate absolute contributions across all classes
+if isinstance(shap_values_fam, list):
+    sv_fam = np.array(shap_values_fam)   # (C, N, F)
+    sv_fam = np.transpose(sv_fam, (1, 2, 0))  # (N, F, C)
+elif isinstance(shap_values_fam, np.ndarray) and shap_values_fam.ndim == 3:
+    sv_fam = shap_values_fam             # (N, F, C)
+else:
+    sv_fam = np.array(shap_values_fam)   # (N, F)
+
+# Collapse to 2D by summing absolute contributions across classes
+if sv_fam.ndim == 3:
+    sv2d_fam = np.sum(np.abs(sv_fam), axis=2)  # (N, F)
+else:
+    sv2d_fam = sv_fam
+
+#plots shap plot of family
+print("\n[SHAP] Random Forest — FAMILY")
+shap.summary_plot(sv2d_fam, Xtf, feature_names=fn_fam, show=True)
+```
+
+### F - Scores
+
+```{python}
+# quick text summary of the top contributors (mean |SHAP| per feature)
+fam_importance = np.abs(sv2d_fam).mean(axis=0)
+fam_top_idx = np.argsort(fam_importance)[::-1]
+print("\n[SHAP] FAMILY — top features by average absolute contribution")
+for rank in range(min(10, len(fn_fam))):
+    j = fam_top_idx[rank]
+    print(f"{rank+1:>2}. {fn_fam[j]}  —  mean|SHAP|={fam_importance[j]:.4f}")
+```
+
+### E - Plot
+
+```{python}
+# --------------------------
+# EVOLUTION
+# --------------------------
+explainer_evo = shap.TreeExplainer(rf_evo)
+shap_values_evo = explainer_evo.shap_values(X_test_evo)
+
+# full names (used inside the model)
+evo_feature_names = [f"log1p_{c}_z" for c in rate_cols]
+Xte = np.asarray(X_test_evo)
+
+# pretty names for display only
+evo_feature_pretty = rate_cols  # ["A","G","O","T","V","C","F","K","M","S"]
+
+# Convert SHAP values into 2D array
+if isinstance(shap_values_evo, list):
+    sv_evo = np.array(shap_values_evo)           # (C, N, F)
+    sv_evo = np.transpose(sv_evo, (1, 2, 0))     # (N, F, C)
+elif isinstance(shap_values_evo, np.ndarray) and shap_values_evo.ndim == 3:
+    sv_evo = shap_values_evo                     # (N, F, C)
+else:
+    sv_evo = np.array(shap_values_evo)           # (N, F)
+
+# collapse to 2D for global plot
+if sv_evo.ndim == 3:
+    sv2d_evo = np.sum(np.abs(sv_evo), axis=2)    # (N, F)
+else:
+    sv2d_evo = sv_evo
+
+#SHAP summary plot with clean labels
+print("\n[SHAP] Random Forest — EVOLUTION (global)")
+shap.summary_plot(sv2d_evo, Xte, feature_names=evo_feature_pretty, show=True)
+
+```
+
+### E - Scores
+
+```{python}
+# quick text summary with clean labels
+evo_importance = np.abs(sv2d_evo).mean(axis=0)
+evo_top_idx = np.argsort(evo_importance)[::-1]
+print("\n[SHAP] EVOLUTION — top features by average absolute contribution")
+for rank in range(min(10, len(evo_feature_pretty))):
+    j = evo_top_idx[rank]
+    print(f"{rank+1:>2}. {evo_feature_pretty[j]}  —  mean|SHAP|={evo_importance[j]:.4f}")
+      # (N, F)
+```
+:::
+
+------------------------------------------------------------------------
+
+## Conclusion
+
+-   **Conclusion**: evolution has stronger overall predictive power than family (binary)
+-   **Future works or potential applications**:
+    -   Remove SS traits and redo modeling for family
+    -   Improve data quality
+    -   SHAP applications to biological interpretations
+
+------------------------------------------------------------------------
+
+## Thank you for listening!

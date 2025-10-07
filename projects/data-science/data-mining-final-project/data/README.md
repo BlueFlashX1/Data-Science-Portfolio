@@ -1,0 +1,63 @@
+# Data  
+
+- **Family-level dataset**: Contains 1,087 rows. Binary (0/1) presence/absence data for various sexually selected traits at the family level, each linked to a phylum.  
+- **Evolutionary rates dataset**: Contains 84 rows. Continuous values estimating the origin rates of sexually selected traits at the phylum level, based on discrete maximum likelihood analyses.  
+
+---
+
+# Codebook for Family-level Dataset  
+
+## Variable Names and Descriptions  
+
+| Variable    | Description |
+|-------------|-------------|
+| Tree_Label  | Identifier linking families to the phylogenetic tree (string) |
+| Phylum      | Taxonomic phylum name (string) |
+| SS          | Presence of any sexually selected trait (0 = absent, 1 = present) |
+| A           | Auditory trait (0/1) |
+| G           | Gustatory trait (0/1) |
+| O           | Olfactory trait (0/1) |
+| T           | Tactile trait (0/1) |
+| V           | Visual trait (0/1) |
+| C           | Male-male competition trait (0/1) |
+| F           | Female choice trait (0/1) |
+| K           | Female-female competition trait (0/1) |
+| M           | Male choice trait (0/1) |
+| S           | Intersexual conflict trait (0/1) |
+
+## Data Types  
+
+| Column      | Data Type |
+|-------------|-----------|
+| Tree_Label  | object (string) |
+| Phylum      | object (string) |
+| SS, A, G, O, T, V, C, F, K, M, S | int64 (binary: 0 or 1) |
+
+---
+
+# Codebook for Evolutionary Rates Dataset  
+
+## Variable Names and Descriptions  
+
+| Variable | Description |
+|----------|-------------|
+| Tree     | Identifier for phylogenetic tree replicate (integer) |
+| Phylum   | Taxonomic phylum name (string) |
+| A        | Rate of origin for auditory traits (float) |
+| G        | Rate of origin for gustatory traits (float) |
+| O        | Rate of origin for olfactory traits (float) |
+| T        | Rate of origin for tactile traits (float) |
+| V        | Rate of origin for visual traits (float) |
+| C        | Rate of origin for male-male competition traits (float) |
+| F        | Rate of origin for female choice traits (float) |
+| K        | Rate of origin for female-female competition traits (float) |
+| M        | Rate of origin for male choice traits (float) |
+| S        | Rate of origin for intersexual conflict traits (float) |
+
+## Data Types  
+
+| Column  | Data Type |
+|---------|-----------|
+| Tree    | int64 (integer) |
+| Phylum  | object (string) |
+| A, G, O, T, V, C, F, K, M, S | float64 (continuous, ≥ 0, with some zeros) |
