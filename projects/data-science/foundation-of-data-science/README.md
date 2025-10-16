@@ -38,8 +38,8 @@
 ### Machine Learning Pipeline
 
 1. **Data Preprocessing**: Missing value imputation, feature encoding, temporal feature extraction
-2. **Feature Engineering**: Clinical risk scores, medication complexity indices, comorbidity measures
-3. **Model Training**: Ensemble methods with cross-validation
+2. **Feature Engineering**: Patient frequency encoding, clinical risk features, dropped non-predictive columns
+3. **Model Training**: Random Forest classifier with stratified cross-validation (compared 9 algorithms)
 4. **Optimization**: Hyperparameter tuning for ROC AUC maximization
 5. **Evaluation**: Imbalanced classification handling, model calibration
 
