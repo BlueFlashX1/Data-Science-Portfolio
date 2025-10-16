@@ -12,7 +12,7 @@
 
 ---
 
-**Achievements**: 5th place (dev) / 13th place (final) out of 35+ participants in healthcare readmission prediction competition
+**Achievements**: 5th place (dev phase, 40 participants) / 13th place (test phase, 35 participants) in healthcare readmission prediction competition
 
 **Jump to**: [Projects](#featured-projects) • [Skills](#skills--technical-stack) • [External Work](#external-projects) • [Connect](#connect)
 
@@ -66,9 +66,9 @@ Classified animal superphyla (5 groups across 1,087 families) using sexually sel
 
 **ML competition for patient readmission risk** • _INFO 521 Final Project_
 
-**5th place (dev) / 13th place (final)** out of 35+ participants. Developed end-to-end ML pipeline with feature engineering from synthetic EHR data. Applied data preprocessing, model selection, and validation techniques for healthcare prediction.
+**5th place (dev phase, 40 participants) / 13th place (test phase, 35 participants)** - Developed Random Forest classifier with feature engineering from synthetic EHR data. Applied data preprocessing, model selection (comparing 9 algorithms), and stratified cross-validation for healthcare prediction. ROC AUC 0.9011 (dev) / 0.8581 (test).
 
-**Tech**: Python • Scikit-learn • Pandas • Feature Engineering • Model Validation
+**Tech**: Python • Scikit-learn • Pandas • Random Forest • Feature Engineering • Cross-Validation
 
 ---
 
