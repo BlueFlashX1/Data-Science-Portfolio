@@ -36,16 +36,19 @@
 ## Key Insights
 
 ### Data Quality Challenges
+
 - **Missing data**: Significant missing values in medication counts, procedure costs, pain scores, and patient height
 - **Uninformative features**: All symptom columns (chronic pain, hypertension, diabetes, asthma, depression) had identical values (0) - dropped from analysis
 - **Data leakage prevention**: Careful feature engineering to avoid using future information
 
 ### Critical Feature Engineering Decisions
+
 - **Patient frequency encoding**: Transformed patient_id into count of encounters per patient (key predictor - patients with multiple encounters had higher readmission risk)
 - **Dropped features**: zip code (not meaningful without distance calculation), encounter_id (unique identifiers), redundant symptom flags
 - **Imputation strategy**: Mean imputation for numeric features due to large sample size
 
 ### Model Selection Process
+
 - **9 algorithms compared**: LogisticRegression, DecisionTree, RandomForest, ExtraTrees, GradientBoosting, HistGradientBoosting, AdaBoost, Bagging, KNeighbors
 - **Top 3 performers**: HistGradientBoosting (highest ROC AUC), RandomForest (close second, lower variance), GradientBoosting
 - **Final choice**: Random Forest for balance of performance and simplicity
@@ -54,11 +57,11 @@
 
 ### Machine Learning Pipeline
 
-1. **Data Preprocessing**: Missing value imputation, feature encoding, temporal feature extraction
-2. **Feature Engineering**: Patient frequency encoding, clinical risk features, dropped non-predictive columns
+1. **Data Preprocessing**: Missing value imputation (mean for numeric features), feature encoding (OneHotEncoder for categorical)
+2. **Feature Engineering**: Patient frequency encoding (encounter count per patient), dropped non-predictive columns (symptoms, zip, IDs)
 3. **Model Training**: Random Forest classifier with stratified cross-validation (compared 9 algorithms)
-4. **Optimization**: Hyperparameter tuning for ROC AUC maximization
-5. **Evaluation**: Imbalanced classification handling, model calibration
+4. **Optimization**: Hyperparameter tuning (n_estimators=200, max_depth=None, min_samples_split=20, class_weight='balanced')
+5. **Evaluation**: ROC AUC optimization, imbalanced classification handling
 
 ### Key Technical Skills
 
