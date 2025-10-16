@@ -1,39 +1,38 @@
-# Cross-Platform Database Systems
+# Cross-Platform SQL Database Implementation
 
 [![Course Project](https://img.shields.io/badge/Course-Final%20Project-blue?style=for-the-badge)](https://github.com)
 [![INFO 570](https://img.shields.io/badge/INFO%20570-Database%20Management-red?style=for-the-badge)](https://github.com)
 [![University of Arizona](https://img.shields.io/badge/University%20of-Arizona-navy?style=for-the-badge)](https://arizona.edu)
 
-> **Multi-platform database implementation demonstrating SQL proficiency and database design principles** • University of Arizona, INFO 570
+> **Multi-platform SQL implementation demonstrating database design and cross-platform development** • University of Arizona, INFO 570
 
-Implemented normalized database schemas across MySQL, SQL Server, and Microsoft Access for retail (KIMTAY) and healthcare (STAYWELL) applications. Demonstrates comprehensive SQL skills (DDL, DML, complex queries), database design principles (3NF normalization, ER modeling), and cross-platform development expertise.
+Implemented normalized database schemas across MySQL and SQL Server for retail (KIMTAY) and healthcare (STAYWELL) applications. Demonstrates comprehensive SQL skills (DDL, DML, complex queries), database design principles (3NF normalization, ER modeling), and cross-platform SQL development.
 
-**Tech Stack**: MySQL • SQL Server • Microsoft Access • Database Design • Cross-Platform SQL
+**Tech Stack**: MySQL • SQL Server • Cross-Platform SQL • Database Design
 
 ---
 
-## Project Overview
+## SQL Implementations
 
-### SQL Implementations
+| Platform | Database | Script | Lines | Description |
+|----------|----------|--------|-------|-------------|
+| **MySQL** | KIMTAY | [`KIMTAY_SCRIPT_MYSQL.sql`](./sql-scripts/SQL10e_Module3_KIMTAY_SCRIPT_MYSQL.sql) | 122 | Pet store retail management |
+| **MySQL** | STAYWELL | [`STAYWELL_SCRIPT_MYSQL.sql`](./sql-scripts/SQL10e_Module3_STAYWELL_SCRIPT_MYSQL.sql) | 157 | Healthcare property management |
+| **SQL Server** | KIMTAY | [`KIMTAY_SCRIPT_SQLSERVER.sql`](./sql-scripts/SQL10e_Module3_KIMTAY_SCRIPT_SQLSERVER.sql) | 124 | SQL Server T-SQL version |
 
-| Platform | Database | Script | Description |
-|----------|----------|--------|-------------|
-| **MySQL** | KIMTAY | [`KIMTAY_SCRIPT_MYSQL.sql`](./sql-scripts/SQL10e_Module3_KIMTAY_SCRIPT_MYSQL.sql) | Pet store retail management system |
-| **MySQL** | STAYWELL | [`STAYWELL_SCRIPT_MYSQL.sql`](./sql-scripts/SQL10e_Module3_STAYWELL_SCRIPT_MYSQL.sql) | Healthcare services database |
-| **SQL Server** | KIMTAY | [`KIMTAY_SCRIPT_SQLSERVER.sql`](./sql-scripts/SQL10e_Module3_KIMTAY_SCRIPT_SQLSERVER.sql) | SQL Server T-SQL version |
-| **Microsoft Access** | Advanced DB | [`SC_AC19_9a_MatthewThompson_2.accdb`](./SC_AC19_9a_MatthewThompson_2.accdb) | Complex forms, reports, queries |
+**Total: 403 lines of SQL code across 3 implementations**
 
 ### Skills Demonstrated
 
 ![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
 ![SQL Server](https://img.shields.io/badge/SQL_Server-CC2927?style=for-the-badge&logo=microsoft-sql-server&logoColor=white)
-![Microsoft Access](https://img.shields.io/badge/Microsoft_Access-A4373A?style=for-the-badge&logo=microsoft-access&logoColor=white)
 
 **Core Competencies**:
-- **Multi-Platform SQL**: MySQL, SQL Server (T-SQL), Microsoft Access development
+
+- **Multi-Platform SQL**: MySQL and SQL Server (T-SQL) development
 - **Database Design**: Third Normal Form (3NF) normalization, ER modeling
 - **Referential Integrity**: Primary keys, foreign keys, constraint implementation
-- **SQL Proficiency**: DDL (CREATE, ALTER), DML (INSERT, UPDATE, DELETE), complex queries
+- **SQL Proficiency**: DDL (CREATE, ALTER, DROP), DML (INSERT, UPDATE, DELETE), complex queries
 - **Business Domains**: Retail management (KIMTAY), healthcare services (STAYWELL)
 
 ---
