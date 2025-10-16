@@ -1,50 +1,42 @@
-# Database Management Systems
+# Cross-Platform Database Systems
 
 [![Course Project](https://img.shields.io/badge/Course-Final%20Project-blue?style=for-the-badge)](https://github.com)
 [![INFO 570](https://img.shields.io/badge/INFO%20570-Database%20Management-red?style=for-the-badge)](https://github.com)
 [![University of Arizona](https://img.shields.io/badge/University%20of-Arizona-navy?style=for-the-badge)](https://arizona.edu)
 
-[![SQL](https://img.shields.io/badge/SQL-Multi%20Platform-4479A1?style=flat-square&logo=postgresql)](https://postgresql.org)
-[![MySQL](https://img.shields.io/badge/MySQL-Database-4479A1?style=flat-square&logo=mysql)](https://mysql.com)
-[![SQL Server](https://img.shields.io/badge/SQL%20Server-Database-CC2927?style=flat-square&logo=microsoft-sql-server)](https://microsoft.com)
-[![Access](https://img.shields.io/badge/Microsoft%20Access-Database-A4373A?style=flat-square&logo=microsoft-access)](https://microsoft.com)
+> **Multi-platform database implementation demonstrating SQL proficiency and database design principles** • University of Arizona, INFO 570
 
-> **COURSE PROJECT COLLECTION**: Database design and implementation across multiple platforms demonstrating comprehensive database management skills
+Implemented normalized database schemas across MySQL, SQL Server, and Microsoft Access for retail (KIMTAY) and healthcare (STAYWELL) applications. Demonstrates comprehensive SQL skills (DDL, DML, complex queries), database design principles (3NF normalization, ER modeling), and cross-platform development expertise.
 
-**Academic Context**: This is a project collection for INFO 570 (Database Management) showcasing practical database design, implementation, and administration skills across multiple database management systems.
+**Tech Stack**: MySQL • SQL Server • Microsoft Access • Database Design • Cross-Platform SQL
+
+---
 
 ## Project Overview
 
-This collection demonstrates comprehensive database management expertise through hands-on implementation of normalized database schemas, cross-platform SQL development, and professional database administration practices.
+### SQL Implementations
 
-### Key Learning Outcomes
-- **Multi-platform Database Development**: MySQL, SQL Server, Microsoft Access
-- **Database Design Principles**: Normalization, ER modeling, constraint implementation
-- **SQL Proficiency**: DDL, DML, complex queries across different SQL dialects
-- **Database Administration**: Schema management, data integrity, performance considerations
-- **Business Applications**: Real-world database scenarios and implementations
+| Platform | Database | Script | Description |
+|----------|----------|--------|-------------|
+| **MySQL** | KIMTAY | [`KIMTAY_SCRIPT_MYSQL.sql`](./sql-scripts/SQL10e_Module3_KIMTAY_SCRIPT_MYSQL.sql) | Pet store retail management system |
+| **MySQL** | STAYWELL | [`STAYWELL_SCRIPT_MYSQL.sql`](./sql-scripts/SQL10e_Module3_STAYWELL_SCRIPT_MYSQL.sql) | Healthcare services database |
+| **SQL Server** | KIMTAY | [`KIMTAY_SCRIPT_SQLSERVER.sql`](./sql-scripts/SQL10e_Module3_KIMTAY_SCRIPT_SQLSERVER.sql) | SQL Server T-SQL version |
+| **Microsoft Access** | Advanced DB | [`SC_AC19_9a_MatthewThompson_2.accdb`](./SC_AC19_9a_MatthewThompson_2.accdb) | Complex forms, reports, queries |
 
-## Project Components
+### Skills Demonstrated
 
-### SQL Database Implementations
+![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
+![SQL Server](https://img.shields.io/badge/SQL_Server-CC2927?style=for-the-badge&logo=microsoft-sql-server&logoColor=white)
+![Microsoft Access](https://img.shields.io/badge/Microsoft_Access-A4373A?style=for-the-badge&logo=microsoft-access&logoColor=white)
 
-| Database System | Script Files | Size | Description |
-|----------------|--------------|------|-------------|
-| **MySQL** | [`KIMTAY_SCRIPT_MYSQL.sql`](./sql-scripts/SQL10e_Module3_KIMTAY_SCRIPT_MYSQL.sql) | 6.6KB | Complete KIMTAY pet store database with normalized schema |
-| **MySQL** | [`STAYWELL_SCRIPT_MYSQL.sql`](./sql-scripts/SQL10e_Module3_STAYWELL_SCRIPT_MYSQL.sql) | 8.4KB | STAYWELL health services database system |
-| **SQL Server** | [`KIMTAY_SCRIPT_SQLSERVER.sql`](./sql-scripts/SQL10e_Module3_KIMTAY_SCRIPT_SQLSERVER.sql) | 6.7KB | SQL Server optimized version of KIMTAY database |
+**Core Competencies**:
+- **Multi-Platform SQL**: MySQL, SQL Server (T-SQL), Microsoft Access development
+- **Database Design**: Third Normal Form (3NF) normalization, ER modeling
+- **Referential Integrity**: Primary keys, foreign keys, constraint implementation
+- **SQL Proficiency**: DDL (CREATE, ALTER), DML (INSERT, UPDATE, DELETE), complex queries
+- **Business Domains**: Retail management (KIMTAY), healthcare services (STAYWELL)
 
-### Microsoft Access Database Projects
-
-| File | Size | Description |
-|------|------|-------------|
-| [`SC_AC19_9a_MatthewThompson_2.accdb`](./SC_AC19_9a_MatthewThompson_2.accdb) | 1.7MB | Advanced Access database with complex forms, reports, and queries |
-
-### Course Reflection
-
-| File | Size | Description |
-|------|------|-------------|
-| [`INFO 570 Reflection Essay.docx`](./INFO%20570%20Reflection%20Essay.docx) | 25KB | Comprehensive reflection on database management learning outcomes |
+---
 
 ## Database Implementations
 
@@ -68,142 +60,93 @@ INVOICE_LINE (INVOICE_NUM, ITEM_ID, QUANTITY, QUOTED_PRICE)
 - **Real Data**: Populated with realistic business transactions and inventory
 
 ### STAYWELL Health Services Database
+
 **Business Context**: Healthcare service management and patient coordination
 
 **Key Features**:
-- **Healthcare Domain**: Specialized schema for health service operations
-- **Service Management**: Patient registration, service scheduling, provider coordination
-- **Compliance**: Database design considerations for healthcare data management
-- **Scalability**: Normalized design supporting growing healthcare practice needs
 
-## Technical Implementation
+- Healthcare domain schema for service operations
+- Patient registration, service scheduling, provider coordination
+- Database design for healthcare data management
+- Normalized design supporting healthcare practice needs
 
-### Cross-Platform SQL Development
-**MySQL Implementation**:
-- Optimized for MySQL-specific features and syntax
-- Proper data type selection for MySQL environment
-- MySQL-specific constraints and indexing strategies
+---
 
-**SQL Server Implementation**:
-- Adapted for SQL Server T-SQL dialect
-- SQL Server-specific data types and features
-- Optimized for Windows/SQL Server environment
+## Sample SQL Implementations
 
-### Database Design Principles
-- **Third Normal Form (3NF)**: Complete normalization to eliminate redundancy
-- **Entity-Relationship Modeling**: Proper identification and modeling of business entities
-- **Constraint Implementation**: Primary keys, foreign keys, check constraints
-- **Data Integrity**: Comprehensive validation rules and referential integrity
+### KIMTAY Schema Example
 
-## Usage Instructions
-
-### MySQL Database Deployment
-```bash
-# Connect to MySQL server
-mysql -u username -p
-
-# Create and populate KIMTAY database
-source sql-scripts/SQL10e_Module3_KIMTAY_SCRIPT_MYSQL.sql
-
-# Create and populate STAYWELL database  
-source sql-scripts/SQL10e_Module3_STAYWELL_SCRIPT_MYSQL.sql
-```
-
-### SQL Server Database Deployment
-```bash
-# Using SQL Server command line
-sqlcmd -S server_name -d database_name -i sql-scripts/SQL10e_Module3_KIMTAY_SCRIPT_SQLSERVER.sql
-```
-
-### Microsoft Access Database
-```
-# Open with Microsoft Access
-1. Double-click SC_AC19_9a_MatthewThompson_2.accdb
-2. Enable macros if prompted
-3. Navigate through forms and reports to explore functionality
-```
-
-## Sample Queries and Operations
-
-### Business Intelligence Queries
 ```sql
--- Customer sales analysis
-SELECT c.FIRST_NAME, c.LAST_NAME, SUM(il.QUANTITY * il.QUOTED_PRICE) as TOTAL_SALES
+-- Core business entities with referential integrity
+CREATE TABLE SALES_REP (
+  REP_ID INT PRIMARY KEY,
+  FIRST_NAME VARCHAR(50),
+  LAST_NAME VARCHAR(50),
+  COMMISSION DECIMAL(10,2),
+  RATE DECIMAL(5,3)
+);
+
+CREATE TABLE CUSTOMER (
+  CUST_ID INT PRIMARY KEY,
+  FIRST_NAME VARCHAR(50),
+  LAST_NAME VARCHAR(50),
+  BALANCE DECIMAL(10,2),
+  CREDIT_LIMIT DECIMAL(10,2),
+  REP_ID INT,
+  FOREIGN KEY (REP_ID) REFERENCES SALES_REP(REP_ID)
+);
+```
+
+### Business Intelligence Query Example
+
+```sql
+-- Customer sales analysis with multi-table joins
+SELECT 
+  c.FIRST_NAME, 
+  c.LAST_NAME, 
+  SUM(il.QUANTITY * il.QUOTED_PRICE) as TOTAL_SALES
 FROM CUSTOMER c
 JOIN INVOICES i ON c.CUST_ID = i.CUST_ID
 JOIN INVOICE_LINE il ON i.INVOICE_NUM = il.INVOICE_NUM
 GROUP BY c.CUST_ID, c.FIRST_NAME, c.LAST_NAME
 ORDER BY TOTAL_SALES DESC;
+```
 
--- Inventory management
+### Inventory Management Query
+
+```sql
+-- Low inventory alert system
 SELECT ITEM_ID, DESCRIPTION, ON_HAND, CATEGORY
 FROM ITEM 
 WHERE ON_HAND < 15
 ORDER BY ON_HAND ASC;
-
--- Sales representative performance
-SELECT sr.FIRST_NAME, sr.LAST_NAME, COUNT(c.CUST_ID) as CUSTOMER_COUNT, sr.COMMISSION
-FROM SALES_REP sr
-LEFT JOIN CUSTOMER c ON sr.REP_ID = c.REP_ID
-GROUP BY sr.REP_ID, sr.FIRST_NAME, sr.LAST_NAME, sr.COMMISSION
-ORDER BY CUSTOMER_COUNT DESC;
 ```
+
+---
 
 ## Project Structure
 
 ```
 database-management-info570/
-├── README.md                                          # This documentation
-├── INFO 570 Reflection Essay.docx                    # Course reflection and analysis
-├── SC_AC19_9a_MatthewThompson_2.accdb                # Microsoft Access database project
-└── sql-scripts/                                      # SQL database implementations
-    ├── SQL10e_Module3_KIMTAY_SCRIPT_MYSQL.sql       # KIMTAY pet store (MySQL)
-    ├── SQL10e_Module3_KIMTAY_SCRIPT_SQLSERVER.sql    # KIMTAY pet store (SQL Server)
-    └── SQL10e_Module3_STAYWELL_SCRIPT_MYSQL.sql     # STAYWELL health services (MySQL)
+├── README.md                                          # Project documentation
+├── SC_AC19_9a_MatthewThompson_2.accdb                # Microsoft Access database
+└── sql-scripts/                                      # SQL implementations
+    ├── SQL10e_Module3_KIMTAY_SCRIPT_MYSQL.sql       # KIMTAY (MySQL)
+    ├── SQL10e_Module3_KIMTAY_SCRIPT_SQLSERVER.sql    # KIMTAY (SQL Server)
+    └── SQL10e_Module3_STAYWELL_SCRIPT_MYSQL.sql     # STAYWELL (MySQL)
 ```
 
-## Skills Demonstrated
+---
 
-<div align="center">
+## Technologies
 
-### **Technologies & Platforms**
-![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
-![SQL Server](https://img.shields.io/badge/SQL_Server-CC2927?style=for-the-badge&logo=microsoft-sql-server&logoColor=white)
-![Microsoft Access](https://img.shields.io/badge/Microsoft_Access-A4373A?style=for-the-badge&logo=microsoft-access&logoColor=white)
-![Database Design](https://img.shields.io/badge/Database_Design-2E8B57?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEyIDJMMTMuMDkgOC4yNkwyMCA5TDEzLjA5IDE1Ljc0TDEyIDIyTDEwLjkxIDE1Ljc0TDQgOUwxMC45MSA4LjI2TDEyIDJaIiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4K&logoColor=white)
+**Database Platforms**: MySQL 8.0 • SQL Server • Microsoft Access  
+**SQL Skills**: DDL • DML • Complex Joins • Subqueries • Aggregation  
+**Design Principles**: 3NF Normalization • ER Modeling • Referential Integrity  
+**Domains**: Retail Management • Healthcare Services
 
-### **Technical Skills**
-![Cross Platform SQL](https://img.shields.io/badge/Cross_Platform_SQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)
-![Business Intelligence](https://img.shields.io/badge/Business_Intelligence-FF6B35?style=for-the-badge&logo=tableau&logoColor=white)
-![Schema Design](https://img.shields.io/badge/Schema_Design-20B2AA?style=for-the-badge&logo=database&logoColor=white)
-![Data Normalization](https://img.shields.io/badge/Data_Normalization-DC143C?style=for-the-badge&logo=database&logoColor=white)
-
-</div>
-
-### **Core Competencies**
-- **Multi-Platform Development**: MySQL, SQL Server, Microsoft Access expertise
-- **Enterprise Database Design**: Normalized schemas with complete referential integrity
-- **Business Intelligence**: Sales analysis, inventory management, performance tracking
-- **Database Administration**: Schema management, constraint implementation, optimization
-
-## File Recommendations
-
-**For Database Implementation**: Use the [`sql-scripts/`](./sql-scripts/) directory - contains production-ready database schemas that can be immediately deployed.
-
-**For Access Development**: Open [`SC_AC19_9a_MatthewThompson_2.accdb`](./SC_AC19_9a_MatthewThompson_2.accdb) - demonstrates advanced Access features including forms, reports, and complex queries.
-
-**For Learning Reflection**: Review [`INFO 570 Reflection Essay.docx`](./INFO%20570%20Reflection%20Essay.docx) - comprehensive analysis of database management learning outcomes and professional growth.
+---
 
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](../../../LICENSE) file for details.
-
----
-
-<div align="center">
-
-**Database management expertise demonstrated through multi-platform implementations**
-
-*Professional database design and administration across industry-standard platforms*
-
-</div>
