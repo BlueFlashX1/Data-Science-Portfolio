@@ -5,6 +5,7 @@ This section showcases my expertise in R programming and data analytics.
 ## Featured Projects
 
 ### Data Visualization Portfolio
+
 - **Description**: Comprehensive data visualization portfolio demonstrating advanced R programming and ggplot2 mastery through ecological, occupational safety, and economic analysis
 - **Course**: INFO 526 - Data Visualization
 - **Technologies**: R, ggplot2, tidyverse, dplyr, RMarkdown

@@ -145,6 +145,7 @@ data_table <- data_dict(your_dataset, print_table = "Yes")   # Returns formatted
 ### Areas of Growth
 
 **Improvements Made**:
+
 - Moved from stacked to grouped bar charts for better readability
 - Refined categorical grouping to avoid overlapping classifications
 - Improved color palette selection and visual clarity
@@ -156,6 +157,6 @@ data_table <- data_dict(your_dataset, print_table = "Yes")   # Returns formatted
 <div align="center">
 
 **University of Arizona Master's Data Science Portfolio**  
-*Demonstrating R programming and statistical visualization capabilities*
+_Demonstrating R programming and statistical visualization capabilities_
 
 </div>
