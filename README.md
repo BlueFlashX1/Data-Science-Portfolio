@@ -18,6 +18,12 @@
 
 ## Skills & Technical Stack
 
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![R](https://img.shields.io/badge/R-276DC3?style=for-the-badge&logo=r&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
+![Scikit-Learn](https://img.shields.io/badge/scikit--learn-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white)
+![ggplot2](https://img.shields.io/badge/ggplot2-E34F26?style=for-the-badge&logo=r&logoColor=white)
+
 **Languages**: R • Python • SQL/NoSQL • JavaScript • Shell  
 **Data Science**: Tidyverse • ggplot2 • Pandas • NumPy • Scikit-learn • SHAP  
 **Databases**: MySQL • NoSQL • Healthcare Analytics • Statistical Computing  
