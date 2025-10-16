@@ -27,8 +27,8 @@ Compared binary presence/absence data vs. evolutionary origin rates across 1,087
 
 | Finding | Detail |
 |---------|--------|
-| **Data Quality Impact** | Evolutionary rates **dramatically outperformed** binary data (sparse, Arthropoda-dominated) |
-| **Top Predictors (SHAP)** | Visual, Competition, Auditory, and Female choice traits |
+| **Data Quality Impact** | Evolutionary rates provided stronger signal than binary data (sparse, Arthropoda-dominated), though overall performance remained modest (~50% accuracy) |
+| **Key Predictors (SHAP)** | Visual, Competition, Auditory, and Female choice traits (binary models relied almost entirely on SS flag) |
 | **Classification Target** | 5 superphyla: Ecdysozoa, Lophotrochozoa, Deuterostomia, Basal Metazoa, Basal Bilateria |
 | **Evaluation Strategy** | Balanced accuracy & macro F1 (handles class imbalance) |
 
@@ -36,10 +36,17 @@ Compared binary presence/absence data vs. evolutionary origin rates across 1,087
 
 | Model | Data Type | Result |
 |-------|-----------|--------|
-| **Logistic Regression** | **Evolutionary** | **Best Performance** |
-| Random Forest | Evolutionary | Moderate |
+| **Logistic Regression** | **Evolutionary** | **Highest accuracy and macro F1** |
+| Random Forest | Evolutionary | Lower performance |
 | Decision Tree | Evolutionary | Lower but interpretable |
 | All Models | Binary | Poor (insufficient signal) |
+
+### Potential Improvements
+
+Based on findings, future work could:
+- Remove SS trait and remodel family dataset
+- Improve data quality and reduce sparsity
+- Apply SHAP for deeper biological interpretations
 
 ## Technical Implementation
 
