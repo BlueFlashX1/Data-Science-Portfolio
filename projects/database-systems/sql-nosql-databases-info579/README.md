@@ -8,7 +8,7 @@
 
 Database system implementing normalized schemas, complex SQL queries, and temporal analysis on synthetic EHR data. Built 14 analytical reports for clinical quality indicators, readmission tracking, and population health surveillance.
 
-**Key Finding**: 90% 30-day readmission rate • 63% viral sinusitis prevalence • 1,171 patients • 53K+ encounters
+**Key Metrics**: 1,171 patients • 53,346 encounters • 8,376 diagnoses • 67MB Synthea EHR data
 
 **Tech Stack**: MySQL • Complex SQL Joins • Temporal Analysis • Python • Pandas • Healthcare Domain Analytics
 
@@ -58,6 +58,13 @@ This project addresses five core healthcare analytics objectives:
 
 ## Technical Implementation
 
+### Technologies
+
+**Database**: MySQL • 3NF Normalized Schemas • Foreign Key Constraints  
+**SQL**: Complex Joins • CTEs • Window Functions • Temporal Analysis • Subqueries  
+**ETL**: Python • Pandas • Bulk CSV Loading • Staging Tables  
+**Domain**: Healthcare Analytics • Synthea EHR Data • Clinical Quality Metrics
+
 ### Database Architecture
 
 **Normalized Design (3NF)** • 6 healthcare entities with referential integrity constraints  
@@ -90,21 +97,22 @@ Provider Utilization • Inpatient LOS by Provider • Top Patients by Cost • 
 ### Clinical Quality Indicators
 
 **Top 5 Conditions**: Viral sinusitis (63%), acute viral pharyngitis, acute bronchitis, obesity (BMI 30+), prediabetes  
-**30-Day Mortality**: Emergency (3.57/1,000) • Inpatient (2.94/1,000) • Ambulatory/wellness (negligible)  
-**Post-Procedure Follow-up**: 14-day follow-up rates tracked across all procedure types
+**30-Day Mortality Rates**: Emergency (3.57 per 1,000 encounters) • Inpatient (2.94 per 1,000) • Ambulatory/wellness (negligible)  
+**Post-Procedure Follow-up**: 14-day follow-up rates tracked and analyzed across all procedure types
 
 ### Cost & Resource Optimization
 
-**High-Volume Procedures**: Medication reconciliation, renal dialysis, fetal heart auscultation, immunotherapy (1,000+ each)  
-**Provider Workload**: Top provider handled 3,000+ encounters; rapid drop-off indicates uneven allocation  
-**High-Cost Patients**: Identified for targeted financial assistance and care coordination
+**High-Volume Procedures**: Medication reconciliation, renal dialysis, fetal heart auscultation, immunotherapy (1,000+ occurrences each)  
+**Provider Workload Distribution**: Top provider (Gaynell126 Streich926) handled 3,000+ encounters; rapid drop-off indicates uneven allocation  
+**High-Cost Patient Identification**: Targeted analysis for financial assistance and care coordination strategies  
+**Inactive Specialties**: Internal medicine, nurse practitioners, clinical social workers, physician assistants, physical therapy (zero encounters)
 
-### Population Health
+### Population Health Surveillance
 
-**ER Frequent Users**: Patients with ≥3 emergency visits flagged for streamlined care  
-**Coverage Distribution**: 536 low (<$5K) • 309 medium ($5K-$10K) • 326 high (≥$10K)  
-**Data Quality**: 19 patients without diagnoses • 10.13% observation mismatches detected  
-**Dataset Scale**: 53,346 encounters across 1,171 unique patients
+**ER High-Risk Patients**: Patients with ≥10 emergency visits flagged for care coordination  
+**Coverage Distribution**: 536 low coverage (<$5K) • 309 medium ($5K-$10K) • 326 high (≥$10K)  
+**Data Quality Assessment**: 19 patients without recorded diagnoses • 10.13% observation encounters without matching encounter records  
+**Dataset Scale**: 53,346 encounters analyzed across 1,171 unique patients
 
 ---
 
@@ -191,15 +199,6 @@ ORDER BY followup_rate_pct ASC;
 ```
 
 </details>
-
----
-
-## Technologies
-
-**Database**: MySQL • 3NF Normalized Schemas • Foreign Key Constraints  
-**SQL**: Complex Joins • CTEs • Window Functions • Temporal Analysis • Subqueries  
-**ETL**: Python • Pandas • Bulk CSV Loading • Staging Tables  
-**Domain**: Healthcare Analytics • Synthea EHR Data • Clinical Quality Metrics
 
 ---
 
