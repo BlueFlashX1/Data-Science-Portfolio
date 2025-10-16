@@ -18,10 +18,10 @@
 
 ### Final Placement: 5th → 13th Place
 
-| Phase | Ranking | ROC AUC | Participants | Percentile |
-|-------|---------|---------|--------------|------------|
-| **Development** | **5th place** | 0.9011 | 40 | Top 12.5% |
-| **Testing** | **13th place** | 0.8581 | 35 | Top 37% |
+| Phase           | Ranking        | ROC AUC | Participants | Percentile |
+| --------------- | -------------- | ------- | ------------ | ---------- |
+| **Development** | **5th place**  | 0.9011  | 40           | Top 12.5%  |
+| **Testing**     | **13th place** | 0.8581  | 35           | Top 37%    |
 
 **Achievement**: Demonstrated robust model generalization with clinically meaningful predictive accuracy (ROC AUC > 0.85 on both phases)
 
@@ -63,7 +63,7 @@ foundation-of-data-science/
 ├── train_predict.py                   # Model training and prediction pipeline
 ├── data/
 │   ├── train.csv                      # Training dataset
-│   ├── dev(real_one).csv             # Development/validation set  
+│   ├── dev(real_one).csv             # Development/validation set
 │   ├── test.csv                      # Test dataset (features only)
 │   └── submission.csv                # Final predictions
 ├── scoring_program/                   # Competition evaluation scripts

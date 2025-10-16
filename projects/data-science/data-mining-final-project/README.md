@@ -25,25 +25,26 @@ Compared binary presence/absence data vs. evolutionary origin rates across 1,087
 
 ### Best Model: Logistic Regression + Evolutionary Rates
 
-| Finding | Detail |
-|---------|--------|
-| **Data Quality Impact** | Evolutionary rates provided stronger signal than binary data (sparse, Arthropoda-dominated), though overall performance remained modest (~50% accuracy) |
-| **Key Predictors (SHAP)** | Visual, Competition, Auditory, and Female choice traits (binary models relied almost entirely on SS flag) |
-| **Classification Target** | 5 superphyla: Ecdysozoa, Lophotrochozoa, Deuterostomia, Basal Metazoa, Basal Bilateria |
-| **Evaluation Strategy** | Balanced accuracy & macro F1 (handles class imbalance) |
+| Finding                   | Detail                                                                                                                                                  |
+| ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Data Quality Impact**   | Evolutionary rates provided stronger signal than binary data (sparse, Arthropoda-dominated), though overall performance remained modest (~50% accuracy) |
+| **Key Predictors (SHAP)** | Visual, Competition, Auditory, and Female choice traits (binary models relied almost entirely on SS flag)                                               |
+| **Classification Target** | 5 superphyla: Ecdysozoa, Lophotrochozoa, Deuterostomia, Basal Metazoa, Basal Bilateria                                                                  |
+| **Evaluation Strategy**   | Balanced accuracy & macro F1 (handles class imbalance)                                                                                                  |
 
 ### Performance Comparison
 
-| Model | Data Type | Result |
-|-------|-----------|--------|
+| Model                   | Data Type        | Result                            |
+| ----------------------- | ---------------- | --------------------------------- |
 | **Logistic Regression** | **Evolutionary** | **Highest accuracy and macro F1** |
-| Random Forest | Evolutionary | Lower performance |
-| Decision Tree | Evolutionary | Lower but interpretable |
-| All Models | Binary | Poor (insufficient signal) |
+| Random Forest           | Evolutionary     | Lower performance                 |
+| Decision Tree           | Evolutionary     | Lower but interpretable           |
+| All Models              | Binary           | Poor (insufficient signal)        |
 
 ### Potential Improvements
 
 Based on findings, future work could:
+
 - Remove SS trait and remodel family dataset
 - Improve data quality and reduce sparsity
 - Apply SHAP for deeper biological interpretations
@@ -51,11 +52,13 @@ Based on findings, future work could:
 ## Technical Implementation
 
 ### Data Engineering
+
 - **Superphyla grouping**: Reduced sparsity by consolidating 10+ phyla → 5 superphyla
 - **Feature comparison**: Binary (10 traits) vs. continuous evolutionary rates (9 traits)
 - **Sample sizes**: 1,087 families (binary), 84 phylogenetic estimates (rates)
 
 ### Machine Learning Pipeline
+
 1. **Preprocessing**: Missing value handling, feature scaling, label encoding
 2. **Cross-validation**: Stratified K-fold for robust performance estimation
 3. **Model training**: Logistic Regression, Decision Trees, Random Forest
@@ -63,6 +66,7 @@ Based on findings, future work could:
 5. **Evaluation**: Balanced accuracy, macro F1 (critical for imbalanced classes)
 
 ### Key Technical Skills Demonstrated
+
 - **Imbalanced classification**: Balanced metrics, stratified sampling
 - **Model explainability**: SHAP analysis for biological insights
 - **Cross-validation**: Proper generalization assessment
@@ -72,14 +76,14 @@ Based on findings, future work could:
 
 ## Dataset
 
-| File | Size | Records | Description |
-|------|------|---------|-------------|
-| [`family_related_data.csv`](./data/family_related_data.csv) | 50KB | 1,087 families | Binary trait presence/absence |
-| [`animals_rateof_evolution.csv`](./data/animals_rateof_evolution.csv) | 12KB | 84 estimates | Evolutionary origin rates |
+| File                                                                  | Size | Records        | Description                   |
+| --------------------------------------------------------------------- | ---- | -------------- | ----------------------------- |
+| [`family_related_data.csv`](./data/family_related_data.csv)           | 50KB | 1,087 families | Binary trait presence/absence |
+| [`animals_rateof_evolution.csv`](./data/animals_rateof_evolution.csv) | 12KB | 84 estimates   | Evolutionary origin rates     |
 
 **Traits**: Auditory (A), Gustatory (G), Olfactory (O), Tactile (T), Visual (V), Male competition (C), Female competition (K), Intersexual conflict (S), Female choice (F), Male choice (M)
 
-*Full data codebook: [`data/README.md`](./data/README.md)*
+_Full data codebook: [`data/README.md`](./data/README.md)_
 
 ## Quick Start
 

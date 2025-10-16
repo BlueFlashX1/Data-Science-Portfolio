@@ -4,35 +4,21 @@ This section showcases my expertise in R programming and data analytics.
 
 ## Featured Projects
 
-### Interactive Sales Dashboard
-- **Description**: Real-time sales analytics dashboard with interactive visualizations
-- **Technologies**: R, Shiny, plotly, DT, shinydashboard
-- **Features**: 
-  - Real-time data updates
-  - Interactive filtering and selection
-  - Export capabilities
-  - Mobile-responsive design
-
-### Statistical Analysis Portfolio
-- **Description**: Collection of statistical analyses and methodologies
-- **Technologies**: R, tidyverse, ggplot2, statistical modeling
+### Data Visualization Portfolio
+- **Description**: Comprehensive data visualization portfolio demonstrating advanced R programming and ggplot2 mastery through ecological, occupational safety, and economic analysis
+- **Course**: INFO 526 - Data Visualization
+- **Technologies**: R, ggplot2, tidyverse, dplyr, RMarkdown
 - **Features**:
-  - Comprehensive statistical tests
-  - Publication-ready visualizations
-  - Reproducible analysis workflows
-  - Detailed documentation
+  - Advanced visualization techniques (alluvial diagrams, faceted plots, statistical summaries)
+  - Wildlife ecology analysis (cougar predation patterns)
+  - Custom data dictionary function for automated exploration
+  - Publication-ready PDF portfolio (399KB)
+  - Reproducible research with RMarkdown
 
 ## Technical Skills Demonstrated
 
-- **Data Manipulation**: tidyverse, dplyr, tidyr
-- **Visualization**: ggplot2, plotly, shiny
-- **Statistical Analysis**: Advanced statistical modeling
-- **Reporting**: RMarkdown, Quarto
-- **Package Development**: Custom R packages
-
-## Impact & Results
-
-- Improved data processing efficiency by 300%
-- Created automated reporting pipelines
-- Built interactive dashboards used by stakeholders
-- Contributed to open-source R community
+- **Data Manipulation**: tidyverse, dplyr, tidyr, lubridate
+- **Visualization**: ggplot2, plotly, ggalluvial, ggstream, viridis
+- **Statistical Analysis**: Descriptive statistics, temporal analysis
+- **Reporting**: RMarkdown with professional PDF output
+- **Custom Function Development**: Automated data exploration tools
