@@ -8,7 +8,7 @@
 
 ## Featured Project
 
-### � **Healthcare Analytics Database System**
+### Healthcare Analytics Database System
 
 **[INFO 579 - SQL & NoSQL Databases](./sql-nosql-databases-info579/)** | Final Project
 
