@@ -76,9 +76,9 @@ Classified animal superphyla (5 groups across 1,087 families) using sexually sel
 
 **Ecological and economic analysis with advanced R visualization** • _INFO 526 Portfolio_
 
-Analyzed cougar predation patterns revealing seasonal hunting behaviors. Created alluvial diagrams, faceted plots, and statistical visualizations using ggplot2. Demonstrated reproducible research with RMarkdown and publication-quality visualizations.
+Analyzed cougar predation patterns across years (2012-2016), revealing wild ungulates as primary prey and domestic animals as least common. Created alluvial diagrams, faceted plots, and statistical visualizations using ggplot2. Developed custom data dictionary function for automated data exploration. Demonstrated reproducible research with RMarkdown.
 
-**Tech**: R • ggplot2 • RMarkdown • Statistical Analysis • Data Storytelling
+**Tech**: R • ggplot2 • RMarkdown • dplyr • tidyverse • Statistical Analysis
 
 ---
 
