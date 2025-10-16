@@ -14,11 +14,11 @@ Implemented normalized database schemas across MySQL and SQL Server for retail (
 
 ## SQL Implementations
 
-| Platform | Database | Script | Lines | Description |
-|----------|----------|--------|-------|-------------|
-| **MySQL** | KIMTAY | [`KIMTAY_SCRIPT_MYSQL.sql`](./sql-scripts/SQL10e_Module3_KIMTAY_SCRIPT_MYSQL.sql) | 122 | Pet store retail management |
-| **MySQL** | STAYWELL | [`STAYWELL_SCRIPT_MYSQL.sql`](./sql-scripts/SQL10e_Module3_STAYWELL_SCRIPT_MYSQL.sql) | 157 | Healthcare property management |
-| **SQL Server** | KIMTAY | [`KIMTAY_SCRIPT_SQLSERVER.sql`](./sql-scripts/SQL10e_Module3_KIMTAY_SCRIPT_SQLSERVER.sql) | 124 | SQL Server T-SQL version |
+| Platform       | Database | Script                                                                                    | Lines | Description                    |
+| -------------- | -------- | ----------------------------------------------------------------------------------------- | ----- | ------------------------------ |
+| **MySQL**      | KIMTAY   | [`KIMTAY_SCRIPT_MYSQL.sql`](./sql-scripts/SQL10e_Module3_KIMTAY_SCRIPT_MYSQL.sql)         | 122   | Pet store retail management    |
+| **MySQL**      | STAYWELL | [`STAYWELL_SCRIPT_MYSQL.sql`](./sql-scripts/SQL10e_Module3_STAYWELL_SCRIPT_MYSQL.sql)     | 157   | Healthcare property management |
+| **SQL Server** | KIMTAY   | [`KIMTAY_SCRIPT_SQLSERVER.sql`](./sql-scripts/SQL10e_Module3_KIMTAY_SCRIPT_SQLSERVER.sql) | 124   | SQL Server T-SQL version       |
 
 **Total: 403 lines of SQL code across 3 implementations**
 
@@ -40,9 +40,11 @@ Implemented normalized database schemas across MySQL and SQL Server for retail (
 ## Database Implementations
 
 ### KIMTAY Pet Store Database System
+
 **Business Context**: Complete retail management system for pet store operations
 
 **Schema Design**:
+
 ```sql
 -- Core business entities with referential integrity
 SALES_REP (REP_ID, FIRST_NAME, LAST_NAME, COMMISSION, RATE)
@@ -53,6 +55,7 @@ INVOICE_LINE (INVOICE_NUM, ITEM_ID, QUANTITY, QUOTED_PRICE)
 ```
 
 **Key Features**:
+
 - **Normalized Design**: Eliminates data redundancy through proper normalization
 - **Referential Integrity**: Complete foreign key relationships and constraints
 - **Business Logic**: Inventory management, customer tracking, sales processing
@@ -100,9 +103,9 @@ CREATE TABLE CUSTOMER (
 
 ```sql
 -- Customer sales analysis with multi-table joins
-SELECT 
-  c.FIRST_NAME, 
-  c.LAST_NAME, 
+SELECT
+  c.FIRST_NAME,
+  c.LAST_NAME,
   SUM(il.QUANTITY * il.QUOTED_PRICE) as TOTAL_SALES
 FROM CUSTOMER c
 JOIN INVOICES i ON c.CUST_ID = i.CUST_ID
@@ -116,7 +119,7 @@ ORDER BY TOTAL_SALES DESC;
 ```sql
 -- Low inventory alert system
 SELECT ITEM_ID, DESCRIPTION, ON_HAND, CATEGORY
-FROM ITEM 
+FROM ITEM
 WHERE ON_HAND < 15
 ORDER BY ON_HAND ASC;
 ```
