@@ -134,19 +134,98 @@ This project addresses five core healthcare analytics objectives:
 
 ---
 
-## SQL Query Examples
+## SQL Code Samples
 
-The project demonstrates proficiency with advanced SQL concepts:
+### Complex Join with Temporal Analysis (30-Day Readmission Tracking)
 
-- **INNER JOIN**: Three-table join (diagnosis → patient → medical_condition) for disease prevalence
-- **LEFT OUTER JOIN**: Encounter-provider-procedure joins to identify missing provider assignments
-- **Single-row Subquery**: `SELECT MAX(healthcare_expenses)` to find highest-cost patient
-- **Multiple-row Subquery**: High-risk ER patients (`IN` clause) matched with provider specialties
-- **Aggregation**: Multi-column GROUP BY for provider specialty procedure volumes
-- **NOT IN Operator**: Patients without recorded diagnoses
-- **CASE Statements**: Healthcare coverage categorization (high/medium/low tiers)
-- **NOT EXISTS**: Inactive providers with zero encounters by specialty
-- **NOT NULL**: Encounter classes for deceased patients
+```sql
+CREATE TABLE rpt_readmissions_30d AS
+SELECT 
+  e1.patient_id,
+  e1.encounter_id AS first_encounter,
+  e2.encounter_id AS readmit_encounter,
+  e1.encounter_start_date AS prev_start,
+  e2.encounter_start_date AS readmit_start,
+  DATEDIFF(e2.encounter_start_date, e1.encounter_end_date) AS days_since_prior
+FROM encounter e1
+JOIN encounter e2 
+  ON e1.patient_id = e2.patient_id
+  AND e2.encounter_start_date > e1.encounter_end_date
+  AND e2.encounter_start_date <= DATE_ADD(e1.encounter_end_date, INTERVAL 30 DAY)
+ORDER BY e1.patient_id, e1.encounter_start_date;
+```
+
+### CTE with Multiple-Row Subquery (High-Risk ER Patients by Provider)
+
+```sql
+CREATE TABLE rpt_providers_highrisk_er AS
+WITH provider_tot AS (
+  SELECT provider_id, organization_id, COUNT(*) AS total_encounters
+  FROM encounter
+  GROUP BY provider_id, organization_id
+),
+highrisk_patients AS (
+  SELECT e.patient_id
+  FROM encounter e
+  WHERE LOWER(e.encounter_class) = 'emergency'
+  GROUP BY e.patient_id
+  HAVING COUNT(*) >= 10
+)
+SELECT 
+  pr.provider_id,
+  pr.provider_specialty,
+  COUNT(DISTINCT e.patient_id) AS n_highrisk_patients,
+  COUNT(*) AS n_highrisk_encounters,
+  ROUND(100 * COUNT(*) / NULLIF(pt.total_encounters, 0), 2) AS pct_of_provider_encounters
+FROM provider pr
+JOIN encounter e 
+  ON e.provider_id = pr.provider_id
+JOIN provider_tot pt 
+  ON pt.provider_id = pr.provider_id
+WHERE e.patient_id IN (SELECT patient_id FROM highrisk_patients)
+GROUP BY pr.provider_id, pr.provider_specialty, pt.total_encounters;
+```
+
+### CASE Statement with Aggregation (Coverage Tier Analysis)
+
+```sql
+SELECT
+  SUM(CASE WHEN healthcare_coverage >= 10000 THEN 1 ELSE 0 END) AS high_coverage_count,
+  SUM(CASE WHEN healthcare_coverage >= 5000 AND healthcare_coverage < 10000 
+           THEN 1 ELSE 0 END) AS medium_coverage_count,
+  SUM(CASE WHEN healthcare_coverage < 5000 THEN 1 ELSE 0 END) AS low_coverage_count
+FROM patient;
+```
+
+### Window Functions with Aggregation (Post-Procedure Follow-up Rate)
+
+```sql
+CREATE TABLE rpt_followup_14d_by_proc_code AS
+WITH proc_flags AS (
+  SELECT 
+    prc.procedure_code,
+    prc.procedure_description,
+    CASE
+      WHEN EXISTS (
+        SELECT 1
+        FROM observation o
+        WHERE o.patient_id = prc.patient_id
+        AND o.observation_date > prc.procedure_date
+        AND o.observation_date <= DATE_ADD(prc.procedure_date, INTERVAL 14 DAY)
+      ) THEN 1 ELSE 0
+    END AS has_followup_14d
+  FROM procedures prc
+)
+SELECT 
+  procedure_code,
+  procedure_description,
+  COUNT(*) AS n_procedures,
+  SUM(has_followup_14d) AS n_with_followup_14d,
+  ROUND(100 * SUM(has_followup_14d) / NULLIF(COUNT(*), 0), 2) AS pct_with_followup_14d
+FROM proc_flags
+GROUP BY procedure_code, procedure_description
+ORDER BY pct_with_followup_14d ASC;
+```
 
 ---
 
