@@ -4,17 +4,17 @@
 [![Email](https://img.shields.io/badge/Contact-Email-D14836?style=for-the-badge&logo=gmail)](mailto:matthewqilanthompson.work@gmail.com)
 
 > **Master's Student in Data Science** | University of Arizona  
-> _Seeking entry-level Data Scientist or Analyst positions in healthcare, biological sciences, or related fields_
+> _Seeking Data Scientist or Analyst positions in healthcare, biological sciences, or related domains_
 
-**Core Skills**: `R` `Python` `SQL/NoSQL` `Machine Learning` `Healthcare Analytics` `Data Visualization` `Statistical Computing`
+**Core Competencies**: `R` `Python` `SQL/NoSQL` `Machine Learning` `Healthcare Analytics` `Data Visualization` `Statistical Computing`
 
-**Specialization**: Computational methods for biological and healthcare challenges • EHR data processing • Ecological analysis • ML pipelines • System automation
+**Specialization**: Computational methods for biological and healthcare challenges • EHR systems • Predictive modeling • Database design • Ecological analysis
 
 ---
 
-**Achievements**: 5th place (dev phase, 40 participants) / 13th place (test phase, 35 participants) in healthcare readmission prediction competition
+**Competition Achievement**: **5th place** (dev) / **13th place** (test) in healthcare readmission prediction • 40 & 35 participants respectively • ROC AUC 0.90+ (dev phase)
 
-**Jump to**: [Projects](#featured-projects) • [Skills](#skills--technical-stack) • [External Work](#external-projects) • [Connect](#connect)
+**Navigation**: [Projects](#featured-projects) • [Technical Skills](#skills--technical-stack) • [External Work](#external-projects) • [Connect](#connect)
 
 ## Skills & Technical Stack
 
@@ -25,18 +25,20 @@
 ![ggplot2](https://img.shields.io/badge/ggplot2-E34F26?style=for-the-badge&logo=r&logoColor=white)
 
 **Languages**: R • Python • SQL/NoSQL • JavaScript • Shell  
-**Data Science**: Tidyverse • ggplot2 • Pandas • NumPy • Scikit-learn • SHAP  
-**Databases**: MySQL • NoSQL • Healthcare Analytics • Statistical Computing  
-**Tools**: Positron • VS Code • Git/GitHub • Quarto • RMarkdown • Jupyter
+**Data Science**: Tidyverse • ggplot2 • Pandas • NumPy • Scikit-learn • SHAP • Quarto  
+**Databases**: MySQL • Database Design • Healthcare Analytics • Temporal Analysis  
+**Development**: VS Code • Positron • Git/GitHub • RMarkdown • Jupyter • Docker
 
-| **Domain**               | **Applied Skills**                                                                                                            |
-| ------------------------ | ----------------------------------------------------------------------------------------------------------------------------- |
-| **Healthcare Analytics** | EHR data processing (Synthea) • Patient-condition modeling • 30-day readmission analysis • 67MB+ dataset processing           |
-| **Machine Learning**     | End-to-end ML pipelines • Feature engineering • Model explainability (SHAP) • Healthcare prediction • Competitive performance |
-| **Database Systems**     | Normalized schema design • Complex SQL queries • Temporal analysis • Cross-platform deployment (MySQL, SQL Server, Access)    |
-| **Data Visualization**   | ggplot2 • Plotly • Statistical visualizations • Reproducible research • RMarkdown/Quarto publishing                           |
-| **Biological Research**  | Ecological analysis • Wildlife predation patterns • Evolutionary trait classification • Taxonomic modeling                    |
-| **System Automation**    | Voice control (NLP) • Error management • Shell scripting • AppleScript integration • Workflow optimization                    |
+### Domain Expertise
+
+| **Domain**               | **Applied Skills & Demonstrated Capabilities**                                                                                                                         |
+| ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Healthcare Analytics** | EHR data processing (Synthea, 67MB+) • Patient-condition modeling • Readmission prediction (ROC AUC 0.90+) • Clinical quality metrics • Provider utilization analysis |
+| **Machine Learning**     | End-to-end ML pipelines • Feature engineering • Model explainability (SHAP) • Imbalanced classification • Cross-validation • Competition experience (top 15%)          |
+| **Database Systems**     | Normalized schema design (3NF) • Complex multi-table joins (4+ tables) • CTEs & window functions • Temporal analysis • 14 analytical reports                          |
+| **Data Visualization**   | ggplot2 mastery • Advanced plot types (alluvial, faceted) • Custom functions • Reproducible workflows (RMarkdown/Quarto) • Statistical graphics                        |
+| **Biological Research**  | Ecological analysis (wildlife predation) • Evolutionary trait classification • Taxonomic modeling (1,087 families) • Imbalanced data handling                          |
+| **System Automation**    | Voice control (NLP, speech recognition) • Error management systems • Shell scripting (300+ lines) • Workflow optimization                                              |
 
 ## Featured Projects
 
@@ -46,7 +48,12 @@
 
 Built normalized database schemas (3NF) to analyze 1,171 patients and 53,346 encounters from Synthea synthetic EHR data (67MB across 6 entities). Created 14 analytical reports using complex multi-table joins, temporal analysis, CTEs, and window functions. Addressed 5 business objectives: profitability, clinical quality, provider utilization, readmission reduction, and strategic expansion.
 
-**Key Findings**: Viral sinusitis (63% prevalence) • Emergency 30-day mortality (3.57 per 1,000) • Provider workload imbalance (3,000+ encounters for top provider) • High-risk ER patients (≥3 visits)
+**Key Findings**:
+
+- **Clinical Quality**: Viral sinusitis most prevalent (63%), emergency 30-day mortality (3.57/1,000 encounters)
+- **Provider Utilization**: Severe workload imbalance (top provider: 3,000+ encounters vs <2,000 for others), 5 inactive specialties identified
+- **Profitability**: High-cost patients up to $1.1M, 1,000+ occurrences for top procedures (medication reconciliation, renal dialysis)
+- **Readmissions**: Flagged high-risk ER patients (≥3 visits) for intervention
 
 **Tech**: MySQL • Complex SQL Joins • Temporal Analysis • Database Design • Python • CTEs • Window Functions
 
@@ -56,19 +63,32 @@ Built normalized database schemas (3NF) to analyze 1,171 patients and 53,346 enc
 
 **Machine learning for taxonomic prediction using sexually selected traits** • _INFO 523 Final Project_
 
-Classified animal superphyla (5 groups across 1,087 families) using sexually selected traits. Discovered evolutionary rate data dramatically outperformed binary presence/absence data. SHAP analysis identified visual, competition, and auditory traits as strongest predictors. Logistic regression with evolutionary rates achieved best performance.
+Classified animal superphyla (5 groups: Ecdysozoa, Lophotrochozoa, Deuterostomia, Basal Metazoa, Basal Bilateria) across 1,087 families using sexually selected traits. Discovered evolutionary rate data dramatically outperformed binary presence/absence data. SHAP analysis identified visual, competition, auditory, and female choice traits as strongest predictors.
+
+**Key Findings**:
+
+- **Best Model**: Logistic regression with evolutionary rates (highest balanced accuracy & macro F1)
+- **Data Quality Impact**: Evolutionary rates provided stronger signal than sparse binary data
+- **Critical Predictors**: Visual, competition, auditory traits (SHAP analysis)
+- **Evaluation Strategy**: Balanced accuracy & macro F1 for handling class imbalance
 
 **Tech**: Python • Scikit-learn • SHAP • Machine Learning • Quarto • Jupyter
 
 ---
 
-### [Healthcare Readmission Prediction](./projects/data-science/foundation-of-data-science/)
+### [Healthcare Readmission Prediction Competition](./projects/data-science/foundation-of-data-science/)
 
-**ML competition for patient readmission risk** • _INFO 521 Final Project_
+**ML competition for 30-day hospital readmission risk prediction** • _INFO 521 Final Project_
 
-**5th place (dev phase, 40 participants) / 13th place (test phase, 35 participants)** - Developed Random Forest classifier with feature engineering from synthetic EHR data. Applied data preprocessing, model selection (comparing 9 algorithms), and stratified cross-validation for healthcare prediction. ROC AUC 0.9011 (dev) / 0.8581 (test).
+**Competition Results: 5th place (dev) / 13th place (test)** among 40 and 35 participants respectively. Developed Random Forest classifier (n_estimators=200, class_weight='balanced') with patient frequency encoding from 125,958 synthetic EHR encounters. Compared 9 algorithms, applied stratified cross-validation for robust generalization. Achieved ROC AUC 0.9011 (dev) / 0.8581 (test).
 
-**Tech**: Python • Scikit-learn • Pandas • Random Forest • Feature Engineering • Cross-Validation
+**Key Insights**:
+
+- **Critical Feature**: Patient frequency encoding (encounter count per patient) strongest readmission predictor
+- **Data Quality**: Dropped uninformative features (all symptom columns had identical values), handled missing data in medication counts/procedure costs
+- **Model Selection**: Random Forest outperformed HistGradientBoosting for balance of performance and stability
+
+**Tech**: Python • Scikit-learn • Pandas • Random Forest • Feature Engineering • Stratified Cross-Validation
 
 ---
 
@@ -76,9 +96,15 @@ Classified animal superphyla (5 groups across 1,087 families) using sexually sel
 
 **Ecological and economic analysis with advanced R visualization** • _INFO 526 Portfolio_
 
-Analyzed cougar predation patterns across years (2012-2016), revealing wild ungulates as primary prey and domestic animals as least common. Created alluvial diagrams, faceted plots, and statistical visualizations using ggplot2. Developed custom data dictionary function for automated data exploration. Demonstrated reproducible research with RMarkdown.
+Created comprehensive visualizations across three analysis domains using R, ggplot2, and tidyverse. Demonstrated custom data transformation strategies, advanced plot types (alluvial diagrams, faceted layouts), and reproducible research workflow (RMarkdown → PDF). Developed custom `data_dict()` function for automated data exploration.
 
-**Tech**: R • ggplot2 • RMarkdown • dplyr • tidyverse • Statistical Analysis
+**Key Findings**:
+
+- **Cougar Predation (2012-2016)**: Wild ungulates primary prey (mule deer, bighorn sheep, pronghorn), domestic animals least common, 2016 showed zero domestic kills, temporal gaps 2012-2015
+- **Occupational Safety**: Identified top 5 most dangerous occupations with fatality trends, alluvial diagrams mapped common causes per occupation
+- **Housing Price Index**: Midwest/Northeast/South similar trends, West higher volatility, all regions showed 2005 decline → post-2010 recovery
+
+**Tech**: R • ggplot2 • RMarkdown • dplyr • tidyverse • ggalluvial • Custom Functions
 
 ---
 
