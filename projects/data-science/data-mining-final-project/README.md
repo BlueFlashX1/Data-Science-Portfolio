@@ -11,7 +11,7 @@
 
 > **Machine learning classification of animal superphyla using sexually selected traits** • University of Arizona, INFO 523 (Summer 2025)
 
-**[🌐 View Live Website](https://info-523-su25.github.io/final-project-thompson/)** | **[📊 Analysis Notebook](./index.ipynb)**
+**[View Live Website](https://info-523-su25.github.io/final-project-thompson/)** | **[Analysis Notebook](./index.ipynb)**
 
 ---
 
@@ -23,7 +23,7 @@ Compared binary presence/absence data vs. evolutionary origin rates across 1,087
 
 ## Key Findings
 
-### 🏆 Best Model: Logistic Regression + Evolutionary Rates
+### Best Model: Logistic Regression + Evolutionary Rates
 
 | Finding | Detail |
 |---------|--------|
@@ -36,10 +36,10 @@ Compared binary presence/absence data vs. evolutionary origin rates across 1,087
 
 | Model | Data Type | Result |
 |-------|-----------|--------|
-| **Logistic Regression** | **Evolutionary** | ✅ **Best Performance** |
-| Random Forest | Evolutionary | ⚠️ Moderate |
-| Decision Tree | Evolutionary | ⚠️ Lower but interpretable |
-| All Models | Binary | ❌ Poor (insufficient signal) |
+| **Logistic Regression** | **Evolutionary** | **Best Performance** |
+| Random Forest | Evolutionary | Moderate |
+| Decision Tree | Evolutionary | Lower but interpretable |
+| All Models | Binary | Poor (insufficient signal) |
 
 ## Technical Implementation
 
@@ -56,12 +56,12 @@ Compared binary presence/absence data vs. evolutionary origin rates across 1,087
 5. **Evaluation**: Balanced accuracy, macro F1 (critical for imbalanced classes)
 
 ### Key Technical Skills Demonstrated
-- ✅ **Imbalanced classification**: Balanced metrics, stratified sampling
-- ✅ **Model explainability**: SHAP analysis for biological insights
-- ✅ **Cross-validation**: Proper generalization assessment
-- ✅ **Feature engineering**: Domain-driven data transformation (superphyla grouping)
-- ✅ **Comparative analysis**: Binary vs. continuous feature evaluation
-- ✅ **Reproducible research**: Quarto website with full analysis pipeline
+- **Imbalanced classification**: Balanced metrics, stratified sampling
+- **Model explainability**: SHAP analysis for biological insights
+- **Cross-validation**: Proper generalization assessment
+- **Feature engineering**: Domain-driven data transformation (superphyla grouping)
+- **Comparative analysis**: Binary vs. continuous feature evaluation
+- **Reproducible research**: Quarto website with full analysis pipeline
 
 ## Dataset
 
@@ -122,4 +122,4 @@ data-mining-final-project/
 
 ---
 
-**[🌐 View Interactive Analysis](https://info-523-su25.github.io/final-project-thompson/)** | Course final project exploring evolutionary biology through machine learning
+**[View Interactive Analysis](https://info-523-su25.github.io/final-project-thompson/)** | Course final project exploring evolutionary biology through machine learning
