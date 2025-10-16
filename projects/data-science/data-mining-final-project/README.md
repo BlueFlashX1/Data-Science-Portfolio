@@ -28,7 +28,7 @@ Compared binary presence/absence data vs. evolutionary origin rates across 1,087
 | Finding | Detail |
 |---------|--------|
 | **Data Quality Impact** | Evolutionary rates **dramatically outperformed** binary data (sparse, Arthropoda-dominated) |
-| **Top Predictors (SHAP)** | Visual traits > Competition > Auditory > Female choice |
+| **Top Predictors (SHAP)** | Visual, Competition, Auditory, and Female choice traits |
 | **Classification Target** | 5 superphyla: Ecdysozoa, Lophotrochozoa, Deuterostomia, Basal Metazoa, Basal Bilateria |
 | **Evaluation Strategy** | Balanced accuracy & macro F1 (handles class imbalance) |
 
