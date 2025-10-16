@@ -47,8 +47,7 @@
 
 - **Healthcare Data Processing**: Synthetic EHR data with multiple entity relationships
 - **Imbalanced Classification**: Binary prediction with ROC AUC optimization
-- **Feature Engineering**: Domain-specific clinical features
-- **Cross-validation**: Stratified sampling for robust performance estimation
+- **Feature Engineering**: Domain-specific clinical features (patient frequency encoding)
 - **Cross-validation**: Stratified sampling for robust performance estimation
 - **Competition Strategy**: Model optimization across development and test phases
 
