@@ -92,27 +92,60 @@ Provider Utilization • Inpatient LOS by Provider • Top Patients by Cost • 
 
 ---
 
-## Key Findings
+## Key Findings & Recommendations
 
-### Clinical Quality Indicators
+Analysis organized by the five business objectives, with proposed strategies:
 
-**Top 5 Conditions**: Viral sinusitis (63%), acute viral pharyngitis, acute bronchitis, obesity (BMI 30+), prediabetes  
-**30-Day Mortality Rates**: Emergency (3.57 per 1,000 encounters) • Inpatient (2.94 per 1,000) • Ambulatory/wellness (negligible)  
-**Post-Procedure Follow-up**: 14-day follow-up rates tracked and analyzed across all procedure types
+### 1. Increase Profitability
 
-### Cost & Resource Optimization
+**Findings:**  
+• High-Cost Patient Identification: Top patient expenses reached $1,108,789.93  
+• High-Volume Procedures: Medication reconciliation, renal dialysis, fetal heart auscultation, uterine fundal height evaluation, subcutaneous immunotherapy, intramuscular injection (1,000+ occurrences each)  
+• Procedure Cost Analysis: Non-surgical interventions dominate; procedures typically exceed $10,000  
+• Coverage Distribution: 536 low (<$5K) • 309 medium ($5K-$10K) • 326 high (≥$10K)
 
-**High-Volume Procedures**: Medication reconciliation, renal dialysis, fetal heart auscultation, immunotherapy (1,000+ occurrences each)  
-**Provider Workload Distribution**: Top provider (Gaynell126 Streich926) handled 3,000+ encounters; rapid drop-off indicates uneven allocation  
-**High-Cost Patient Identification**: Targeted analysis for financial assistance and care coordination strategies  
-**Inactive Specialties**: Internal medicine, nurse practitioners, clinical social workers, physician assistants, physical therapy (zero encounters)
+**Proposed Strategy:** Implement targeted financial assistance programs for high-cost patients; streamline non-surgical intervention workflows to improve efficiency and reduce costs
 
-### Population Health Surveillance
+### 2. Improve Clinical Quality
 
-**ER High-Risk Patients**: Patients with ≥10 emergency visits flagged for care coordination  
-**Coverage Distribution**: 536 low coverage (<$5K) • 309 medium ($5K-$10K) • 326 high (≥$10K)  
-**Data Quality Assessment**: 19 patients without recorded diagnoses • 10.13% observation encounters without matching encounter records  
-**Dataset Scale**: 53,346 encounters analyzed across 1,171 unique patients
+**Findings:**  
+• Top 5 Conditions: Viral sinusitis (63% prevalence), acute viral pharyngitis, acute bronchitis, obesity (BMI 30+), prediabetes  
+• Condition Patterns: Acute upper-respiratory infections and cardiometabolic risk conditions most common  
+• 30-Day Mortality Rates: Emergency (3.57 per 1,000 encounters) • Inpatient (2.94 per 1,000) • Ambulatory/wellness/outpatient (negligible)  
+• Post-Procedure Follow-up: 14-day follow-up rates tracked for quality of care assessment  
+• Inpatient Length of Stay: Tracked per provider to identify efficiency outliers
+
+**Proposed Strategy:** Develop preventive care programs for upper-respiratory infections and cardiometabolic conditions; improve inpatient efficiency for providers with extended LOS patterns; enhance post-procedure follow-up protocols
+
+### 3. Optimize Provider Utilization
+
+**Findings:**  
+• Provider Workload Imbalance: Top provider (Gaynell126 Streich926) handled 3,000+ encounters; rapid drop-off to <2,000 encounters for other providers  
+• Top 6 High-Volume Providers: Gaynell126 Streich926, Gertrudis163 Schaden604, Vern731 Powlowski563, Jeanmarie510 Beatty507, Maile198 Frami345, Luke971 Rath779 (all general practice)  
+• Top 5 Inactive Specialties: Internal medicine, nurse practitioners, clinical social workers, physician assistants, physical therapy (zero encounters)  
+• Specialty Analysis: Inactive specialties primarily function in ambulatory/outpatient settings
+
+**Proposed Strategy:** Redistribute patient load across general practice providers to balance workloads; evaluate inactive specialties for budget reallocation or targeted activation based on demand
+
+### 4. Reduce Readmissions
+
+**Findings:**  
+• 30-Day Readmission Tracking: Temporal analysis using `DATEDIFF` identifies patients readmitted within 30 days  
+• ER High-Risk Patients: Patients with ≥3 emergency visits flagged for intervention  
+• Post-Procedure Follow-up Quality: 14-day follow-up rates indicate service quality and readmission risk
+
+**Proposed Strategy:** Implement streamlined check-in processes for high-risk ER patients to reduce wait times; enhance post-procedure follow-up care to prevent readmissions; develop proactive outreach for 30-day readmission patterns
+
+### 5. Strategic Expansion
+
+**Findings:**  
+• High-Demand Service Lines: Non-surgical interventions (therapies, evaluations, medications) heavily utilized  
+• Cost-Intensive Services: Procedures typically exceed $10,000, indicating need for efficiency investments  
+• Common Condition Categories: Acute upper-respiratory infections, cardiometabolic risk, chronic conditions, obstetric events  
+• Capacity Assessment: Inactive specialties and zero-procedure areas suggest reallocation opportunities  
+• Dataset Scale: 53,346 encounters analyzed across 1,171 unique patients
+
+**Proposed Strategy:** Invest in equipment and workflow improvements for high-cost non-surgical procedures to improve efficiency and reduce costs; expand services in high-demand areas (respiratory, cardiometabolic, obstetrics); maximize budgeting toward frequent specialties while selectively activating lacking specialties based on strategic need
 
 ---
 
