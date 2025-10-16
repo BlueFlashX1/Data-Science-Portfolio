@@ -44,11 +44,11 @@
 
 **Advanced database design for EHR data analysis** • _INFO 579 Final Project_
 
-Built normalized database schemas to analyze 1,171 patients and 53K+ encounters from Synthea synthetic EHR data (67MB across 6 entities: patients, encounters, conditions, procedures, observations, providers). Implemented complex multi-table joins and temporal analysis for 30-day readmission tracking. Key finding: 90% readmission rate with viral sinusitis affecting 63% of population.
+Built normalized database schemas (3NF) to analyze 1,171 patients and 53,346 encounters from Synthea synthetic EHR data (67MB across 6 entities). Created 14 analytical reports using complex multi-table joins, temporal analysis, CTEs, and window functions. Addressed 5 business objectives: profitability, clinical quality, provider utilization, readmission reduction, and strategic expansion.
 
-**Impact**: 14 analytical reports including clinical quality indicators, ER utilization patterns, and provider performance metrics
+**Key Findings**: Viral sinusitis (63% prevalence) • Emergency 30-day mortality (3.57 per 1,000) • Provider workload imbalance (3,000+ encounters for top provider) • High-risk ER patients (≥3 visits)
 
-**Tech**: MySQL • Complex SQL Joins • Temporal Analysis • Database Design • Python
+**Tech**: MySQL • Complex SQL Joins • Temporal Analysis • Database Design • Python • CTEs • Window Functions
 
 ---
 
