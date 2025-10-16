@@ -1,167 +1,101 @@
-# Matthew Thompson - Data Science & Development Portfolio
+# Matthew Thompson - Data Science Portfolio
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0077B5?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/matthewqilanthompson/)
 [![Email](https://img.shields.io/badge/Contact-Email-D14836?style=for-the-badge&logo=gmail)](mailto:matthewqilanthompson.work@gmail.com)
 
-> **Master's Data Science Student (In Progress)** | University of Arizona  
-> *Seeking growth opportunities through mentorship, internships, or entry-level positions*
-> 
-> **Core Competencies**: `R | Python | Structured Query Language (SQL)/NoSQL | Statistical Computing | Machine Learning | Healthcare Analytics | Database Design | System Automation | Data Visualization | Git/GitHub`
-> 
-> **Focus**: Applying computational methods to solve biological and healthcare challenges through data-driven insights, with demonstrated experience in Electronic Health Records (EHR) data processing, ecological analysis, and system integration projects.
+> **Master's Student in Data Science** | University of Arizona  
+> _Seeking entry-level Data Scientist or Analyst positions in healthcare, biological sciences, or related fields_
 
-## Quick Navigation
-**Jump to:** [Skills & Technical Stack](#skills--technical-stack) | [Key Achievements](#key-achievements) | [Featured Projects](#featured-projects) | [External Projects](#external-projects) | [Connect](#connect-with-me)
+**Core Skills**: `R` `Python` `SQL/NoSQL` `Machine Learning` `Healthcare Analytics` `Data Visualization` `Statistical Computing`
+
+**Specialization**: Computational methods for biological and healthcare challenges • EHR data processing • Ecological analysis • ML pipelines • System automation
+
+---
+
+**Achievements**: 5th place (dev) / 13th place (final) out of 35+ participants in healthcare readmission prediction competition
+
+**Jump to**: [Projects](#featured-projects) • [Skills](#skills--technical-stack) • [External Work](#external-projects) • [Connect](#connect)
 
 ## Skills & Technical Stack
 
-<div align="center">
+**Languages**: R • Python • SQL/NoSQL • JavaScript • Shell  
+**Data Science**: Tidyverse • ggplot2 • Pandas • NumPy • Scikit-learn • SHAP  
+**Databases**: MySQL • NoSQL • Healthcare Analytics • Statistical Computing  
+**Tools**: Positron • VS Code • Git/GitHub • Quarto • RMarkdown • Jupyter
 
-### **Programming Languages**
-![R](https://img.shields.io/badge/R-276DC3?style=for-the-badge&logo=r&logoColor=white)
-![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
-![SQL](https://img.shields.io/badge/SQL-4479A1?style=for-the-badge&logo=postgresql&logoColor=white)
-![Shell](https://img.shields.io/badge/Shell_Script-121011?style=for-the-badge&logo=gnu-bash&logoColor=white)
-
-### **Data Science & Analytics**
-![Tidyverse](https://img.shields.io/badge/Tidyverse-1A162D?style=for-the-badge&logo=r&logoColor=white)
-![ggplot2](https://img.shields.io/badge/ggplot2-E34F26?style=for-the-badge&logo=r&logoColor=white)
-![Pandas](https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white)
-![NumPy](https://img.shields.io/badge/NumPy-013243?style=for-the-badge&logo=numpy&logoColor=white)
-![Scikit-Learn](https://img.shields.io/badge/scikit--learn-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white)
-
-### **Databases & Healthcare Analytics**
-![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
-![NoSQL](https://img.shields.io/badge/NoSQL-4DB33D?style=for-the-badge&logo=mongodb&logoColor=white)
-![Healthcare Analytics](https://img.shields.io/badge/Healthcare%20Analytics-FF6B6B?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEyIDJMMTMuMDkgOC4yNkwyMCA5TDEzLjA5IDE1Ljc0TDEyIDIyTDEwLjkxIDE1Ljc0TDQgOUwxMC45MSA4LjI2TDEyIDJaIiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4K&logoColor=white)
-![Statistical Computing](https://img.shields.io/badge/Statistical%20Computing-276DC3?style=for-the-badge&logo=r&logoColor=white)
-
-### **Development Tools & Automation**
-![Positron](https://img.shields.io/badge/Positron-FF6B35?style=for-the-badge&logo=rstudio&logoColor=white)
-![VS Code](https://img.shields.io/badge/VS_Code-007ACC?style=for-the-badge&logo=visual-studio-code&logoColor=white)
-![Warp](https://img.shields.io/badge/Warp_Terminal-01A4FF?style=for-the-badge&logo=warp&logoColor=white)
-![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
-![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)
-![System Automation](https://img.shields.io/badge/System%20Automation-4A4A4A?style=for-the-badge&logo=apple&logoColor=white)
-
-### **Publishing & Documentation**
-![Quarto](https://img.shields.io/badge/Quarto-75AADB?style=for-the-badge&logo=quarto&logoColor=white)
-![RMarkdown](https://img.shields.io/badge/R_Markdown-FF6B35?style=for-the-badge&logo=r&logoColor=white)
-![Jupyter](https://img.shields.io/badge/Jupyter-F37626?style=for-the-badge&logo=jupyter&logoColor=white)
-
-</div>
-
-### **Academic Experience & Project Applications**
-
-| **Domain** | **Skills Demonstrated** | **Technologies** |
-|------------|--------------------------|------------------|
-| **Healthcare Data Analysis** | EHR data processing, synthetic healthcare analysis (Synthea), patient-condition relationships | `MySQL` `Python` `Healthcare Analytics` |
-| **Biological Research** | Ecological data visualization, wildlife predation analysis, population studies | `R` `ggplot2` `Statistical Computing` |
-| **Database Systems** | Normalized schema design, complex SQL queries, temporal analysis, data validation, performance optimization | `SQL/NoSQL` `Database Design` `Python Integration` |
-| **Machine Learning** | End-to-end ML pipelines, feature engineering, model validation, healthcare prediction | `Python` `Scikit-learn` `Pandas` `Model Validation` |
-| **System Integration** | Voice control automation, error management, AppleScript integration, workflow optimization | `Python` `Shell Scripting` `System Automation` `APIs` |
-| **Data Visualization** | Publication-quality statistical visualizations, reproducible research, data storytelling | `R` `ggplot2` `RMarkdown` `Quarto` |
-
-## Key Achievements
-
-- **Machine Learning Competition**: 5th place (dev) / 13th place (final) out of 35+ participants in healthcare readmission prediction
-- **System Automation**: Voice-controlled automation with speech recognition and natural language processing
+| **Domain**               | **Applied Skills**                                                                                                            |
+| ------------------------ | ----------------------------------------------------------------------------------------------------------------------------- |
+| **Healthcare Analytics** | EHR data processing (Synthea) • Patient-condition modeling • 30-day readmission analysis • 67MB+ dataset processing           |
+| **Machine Learning**     | End-to-end ML pipelines • Feature engineering • Model explainability (SHAP) • Healthcare prediction • Competitive performance |
+| **Database Systems**     | Normalized schema design • Complex SQL queries • Temporal analysis • Cross-platform deployment (MySQL, SQL Server, Access)    |
+| **Data Visualization**   | ggplot2 • Plotly • Statistical visualizations • Reproducible research • RMarkdown/Quarto publishing                           |
+| **Biological Research**  | Ecological analysis • Wildlife predation patterns • Evolutionary trait classification • Taxonomic modeling                    |
+| **System Automation**    | Voice control (NLP) • Error management • Shell scripting • AppleScript integration • Workflow optimization                    |
 
 ## Featured Projects
 
-### [SQL & NoSQL Healthcare Analytics](./projects/database-systems/sql-nosql-databases-info579/)
-**Advanced database querying and schema design skills applied to healthcare domain**  
-*INFO 579 Final Project - SQL & NoSQL Databases*
+### [Healthcare Analytics with SQL & NoSQL](./projects/database-systems/sql-nosql-databases-info579/)
 
-**Key Findings**: Analyzed 1,171 synthetic patients across 53K+ encounters, identifying that 90% of patients experienced 30-day readmissions with viral sinusitis affecting 63% of the population - demonstrating population health surveillance capabilities.
+**Advanced database design and querying on synthetic EHR data** • _INFO 579 Final Project_
 
-**Project Components:**
-- Advanced SQL Querying: Complex joins, subqueries, and analytical queries on healthcare datasets
-- Database Schema Design: Normalized schemas with patient-condition-procedure relationship modeling
-- Data Analysis: Statistical analysis and relationship validation across 6 healthcare entities
-- Large-Scale Processing: 67MB synthetic healthcare datasets (Synthea Electronic Health Records data)
+Analyzed 1,171 patients across 53K+ encounters using normalized schemas and complex SQL queries. Identified 90% 30-day readmission rate with viral sinusitis affecting 63% of population. Processed 67MB Synthea EHR dataset across 6 healthcare entities.
 
-**Technologies Used**: `MySQL | Advanced SQL | Database Design | Data Analysis | Healthcare Analytics`
+**Tech**: MySQL • Advanced SQL • Database Design • Healthcare Analytics • Python
 
-### [Data Visualization Portfolio](./projects/r-analytics/data-visualization-portfolio/)
-**Statistical visualization and R programming coursework**  
-*INFO 526 Portfolio - Data Visualization*
+---
 
-**Key Findings**: Analyzed cougar predation patterns revealing seasonal hunting behaviors and prey preferences, demonstrating advanced ggplot2 techniques and reproducible research methodologies through comprehensive ecological visualizations.
+### [Trait-Based Animal Classification](./projects/data-science/data-mining-final-project/)
 
-**Project Components:**
-- Ecological Data Analysis: Course assignment analyzing cougar predation patterns using R and ggplot2
-- Statistical Visualizations: Created multiple visualization types including alluvial diagrams and faceted plots
-- R Programming Skills: Developed proficiency in advanced ggplot2 techniques and data manipulation
-- Reproducible Research: Used RMarkdown to create documented, reproducible analysis workflows
-- Data Storytelling: Applied visualization principles to communicate insights from ecological and economic datasets
+**Machine learning for taxonomic prediction using sexually selected traits** • _INFO 523 Final Project_
 
-**Technologies Used**: `R | ggplot2 | RMarkdown | Data Visualization | Statistical Analysis`
+Discovered evolutionary rate data outperformed binary data for classification across 1,087 animal families. Used SHAP analysis to identify visual, competition, and auditory traits as strongest predictors. Implemented logistic regression, decision trees, and random forests with model explainability.
+
+**Tech**: Python • Scikit-learn • SHAP • Machine Learning • Quarto
+
+---
 
 ### [Healthcare Readmission Prediction](./projects/data-science/foundation-of-data-science/)
-**Machine learning course project and academic competition**  
-*INFO 521 Final Project - Foundation of Data Science*
 
-**Key Findings**: Achieved 5th place (development) and 13th place (final) out of 35+ participants in healthcare readmission prediction competition, developing feature engineering techniques that improved model performance on synthetic EHR data.
+**ML competition for patient readmission risk** • _INFO 521 Final Project_
 
-**Project Components:**
-- Student Competition: Healthcare readmission prediction using synthetic patient data
-- Performance Achievement: Competitive ranking in class-wide machine learning competition
-- ML Pipeline Development: End-to-end machine learning workflow for healthcare prediction task
-- Feature Engineering: Created clinical features from synthetic EHR data for patient risk assessment
-- Academic Application: Applied course concepts in data preprocessing, model selection, and evaluation
+**5th place (dev) / 13th place (final)** out of 35+ participants. Developed end-to-end ML pipeline with feature engineering from synthetic EHR data. Applied data preprocessing, model selection, and validation techniques for healthcare prediction.
 
-**Technologies Used**: `Python | Scikit-learn | Pandas | Machine Learning | Healthcare Data | Model Validation`
+**Tech**: Python • Scikit-learn • Pandas • Feature Engineering • Model Validation
 
-### [Data Mining Discovery - Trait Taxa Classification](./projects/data-science/data-mining-final-project/)
-**Machine learning analysis of sexually selected traits for animal taxonomic classification**  
-*INFO 523 Final Project - Data Mining & Machine Learning*
+---
 
-**Key Findings**: Discovered that evolutionary rate data significantly outperformed binary data for taxonomic classification, with visual and competition traits identified as strongest predictors through SHAP analysis across 1,087 animal families.
+### [Statistical Data Visualization Portfolio](./projects/r-analytics/data-visualization-portfolio/)
 
-**Project Components:**
-- Evolutionary Biology Research: Investigating sexually selected traits as predictors of taxonomic groups
-- Cross-Platform Analysis: Binary presence/absence data vs evolutionary origin rates comparison
-- Advanced ML Implementation: Logistic regression, decision trees, and random forest with SHAP analysis
-- Model Explainability: Feature importance analysis revealing visual, competition, and auditory traits
-- Academic Research Application: Applied machine learning to biological classification problems
+**Ecological and economic analysis with advanced R visualization** • _INFO 526 Portfolio_
 
-**Technologies Used**: `Python | Scikit-learn | SHAP | Machine Learning | Biological Data | Model Explainability`
+Analyzed cougar predation patterns revealing seasonal hunting behaviors. Created alluvial diagrams, faceted plots, and statistical visualizations using ggplot2. Demonstrated reproducible research with RMarkdown and publication-quality visualizations.
 
-### [Database Management Systems](./projects/database-systems/database-management-info570/)
-**Multi-platform database design and enterprise development**  
-*INFO 570 Final Project - Database Management*
+**Tech**: R • ggplot2 • RMarkdown • Statistical Analysis • Data Storytelling
 
-**Key Findings**: Successfully implemented normalized database schemas across three platforms (MySQL, SQL Server, Access), demonstrating cross-platform SQL compatibility and referential integrity management for both retail and healthcare business applications.
+---
 
-**Project Components:**
-- Cross-Platform Development: MySQL, SQL Server, Microsoft Access implementations
-- Business Applications: KIMTAY pet store and STAYWELL healthcare systems
-- Enterprise Database Design: Normalized schemas with complete referential integrity
-- Advanced SQL Development: Business intelligence queries, performance optimization
-- Database Administration: Schema management, constraints, and multi-platform deployment
+### [Cross-Platform Database Systems](./projects/database-systems/database-management-info570/)
 
-**Technologies Used**: `MySQL | SQL Server | Microsoft Access | Database Design | Business Intelligence`
+**Enterprise database design across multiple platforms** • _INFO 570 Final Project_
+
+Implemented normalized schemas across MySQL, SQL Server, and Microsoft Access for retail (KIMTAY) and healthcare (STAYWELL) applications. Demonstrated cross-platform SQL compatibility, referential integrity, and business intelligence queries.
+
+**Tech**: MySQL • SQL Server • Microsoft Access • Database Design
 
 ## External Projects
 
-### [System Automation Projects](https://github.com/BlueFlashX1/system-automation-projects)
-**Voice-controlled macOS automation and error management system**
+### [System Automation Suite](https://github.com/BlueFlashX1/system-automation-projects)
 
-- **400+ lines of Python code** with speech recognition and system integration  
-- **300+ lines of shell scripting** for automated error documentation  
-- **Production-ready installation** with comprehensive documentation  
-- **Skills**: System Programming, Application Programming Interface (API) Integration, Natural Language Processing (NLP), Development Operations (DevOps) Automation
+Voice-controlled macOS automation (400+ lines Python) with speech recognition and NLP. Automated error management system (300+ lines shell scripting) with structured logging and resolution tracking.
 
-## Connect With Me
+**Tech**: Python • Speech Recognition • Shell Scripting • AppleScript • System APIs
 
-<div align="center">
+---
+
+## Connect
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/matthewqilanthompson/)
 [![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/BlueFlashX1)
 [![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:matthewqilanthompson.work@gmail.com)
 
-**Seeking entry-level Data Scientist or Data Analyst positions** in biological sciences, healthcare, or related fields.
-
-</div>
+**Open to**: Data Scientist or Data Analyst positions in healthcare, biological sciences, and related fields
