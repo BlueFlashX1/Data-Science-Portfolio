@@ -42,11 +42,13 @@
 
 ### [Healthcare Analytics with SQL & NoSQL](./projects/database-systems/sql-nosql-databases-info579/)
 
-**Advanced database design and querying on synthetic EHR data** • _INFO 579 Final Project_
+**Advanced database design for EHR data analysis** • _INFO 579 Final Project_
 
-Analyzed 1,171 patients across 53K+ encounters using normalized schemas and complex SQL queries. Identified 90% 30-day readmission rate with viral sinusitis affecting 63% of population. Processed 67MB Synthea EHR dataset across 6 healthcare entities.
+Built normalized database schemas to analyze 1,171 patients and 53K+ encounters from Synthea synthetic EHR data (67MB across 6 entities: patients, encounters, conditions, procedures, observations, providers). Implemented complex multi-table joins and temporal analysis for 30-day readmission tracking. Key finding: 90% readmission rate with viral sinusitis affecting 63% of population.
 
-**Tech**: MySQL • Advanced SQL • Database Design • Healthcare Analytics • Python
+**Impact**: 14 analytical reports including clinical quality indicators, ER utilization patterns, and provider performance metrics
+
+**Tech**: MySQL • Complex SQL Joins • Temporal Analysis • Database Design • Python
 
 ---
 
