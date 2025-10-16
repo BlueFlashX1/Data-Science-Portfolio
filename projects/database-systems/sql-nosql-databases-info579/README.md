@@ -56,186 +56,150 @@ This project addresses five core healthcare analytics objectives:
 
 ---
 
-## SQL Techniques & Implementation
+## Technical Implementation
 
-### Database Design
+### Database Architecture
 
-- **Normalized Schemas**: Third normal form (3NF) across 6 healthcare entities
-- **Referential Integrity**: Foreign key constraints (`patient→encounter→provider→diagnosis`)
-- **Junction Tables**: Resolved many-to-many relationships (patient-conditions, patient-procedures)
-- **Unique Keys**: Combined `provider_id + organization_id` for entity relationship integrity
-- **Strategic Indexing**: Primary and foreign key indexes for optimized join performance
+**Normalized Design (3NF)** • 6 healthcare entities with referential integrity constraints  
+**Foreign Keys**: `patient→encounter→provider→diagnosis` cascading relationships  
+**Junction Tables**: Many-to-many resolution (patient-conditions, patient-procedures)  
+**Strategic Indexing**: Primary/foreign key optimization for multi-table joins
 
-### Advanced SQL Techniques
+### SQL Techniques Demonstrated
 
-- **Complex Multi-table Joins**: 4+ table joins with LEFT/INNER JOIN variations
-- **Temporal Analysis**: `DATEDIFF` operations for 30-day readmission tracking
-- **Window Functions**: Patient visit sequencing and encounter history analysis
-- **Advanced Aggregation**: `GROUP BY` with `HAVING` clauses for disease prevalence
-- **Subqueries**: Single-row (`MAX`), multiple-row (`IN`), and correlated (`NOT EXISTS`)
-- **CASE Statements**: Dynamic categorization (e.g., coverage tiers: high/medium/low)
-- **Common Table Expressions (CTEs)**: Simplified complex query logic for readability
+| Category              | Techniques                                                                    |
+| --------------------- | ----------------------------------------------------------------------------- |
+| **Joins**             | Multi-table (4+), LEFT/INNER variations, self-joins                           |
+| **Temporal Analysis** | `DATEDIFF`, `DATE_ADD` for 30-day readmission tracking                        |
+| **Advanced Queries**  | CTEs, window functions, correlated subqueries (`NOT EXISTS`)                  |
+| **Aggregation**       | `GROUP BY` + `HAVING`, `CASE` statements for dynamic categorization           |
+| **Subqueries**        | Single-row (`MAX`), multiple-row (`IN`), scalar and derived tables            |
+| **Data Validation**   | `LEFT JOIN` for orphaned records, null handling, foreign key integrity checks |
+| **ETL**               | `LOAD DATA INFILE` bulk import, staging tables, Python-Pandas preprocessing   |
 
-### 14 Analytical Reports Created
+### 14 Analytical Reports
 
-1. **Provider Utilization** - Encounters per provider and specialty
-2. **Inpatient LOS by Provider** - Average length of stay analysis
-3. **Top Patients by Cost** - High-expenditure patient identification
-4. **Procedure Volume & Costs** - Most common procedures and average costs
-5. **14-Day Follow-up Rates** - Post-procedure care quality metrics
-6. **ER Frequent Users** - High-risk patients (≥3 ER visits)
-7. **Diagnosis-Patient-Condition** - Disease prevalence by patient count
-8. **Encounter Activity** - Provider assignment validation
-9. **Providers with High-Risk ER Patients** - Specialty-level risk distribution
-10. **Inactive Providers by Specialty** - Zero-encounter provider tracking
-11. **Coverage Categories** - Patient insurance tier distribution
-12. **Deceased Patient Encounters** - Mortality by encounter class
-13. **Patients without Diagnoses** - Data completeness validation
-14. **30-Day Death Rates** - Mortality rates per 1,000 encounters by class
+Provider Utilization • Inpatient LOS by Provider • Top Patients by Cost • Procedure Volume & Costs • 14-Day Follow-up Rates • ER Frequent Users • Diagnosis-Patient-Condition Mapping • Encounter Activity Tracking • High-Risk ER Patients by Provider • Inactive Providers by Specialty • Coverage Categories • Deceased Patient Encounters • Patients without Diagnoses • 30-Day Mortality Rates
 
-### Data Integration & ETL
-
-- **Bulk Loading**: `LOAD DATA INFILE` for efficient CSV import (67MB total)
-- **Staging Tables**: Intermediate tables for data validation before final insert
-- **Python-Pandas Integration**: Data preprocessing and integrity checks
-- **Null Handling**: 10.13% encounter mismatches identified and preserved for analysis
-- **Data Quality**: Foreign key validation with LEFT JOIN to detect orphaned records
+**[View All SQL Queries](./database-backup/Final_Project_analytics_reports.sql)**
 
 ---
 
-## Key Findings & Insights
+## Key Findings
 
-### Clinical Quality
+### Clinical Quality Indicators
 
-- **Top 5 Conditions**: Viral sinusitis (63% prevalence), acute viral pharyngitis, acute bronchitis, obesity (BMI 30+), prediabetes
-- **Condition Patterns**: Upper-respiratory infections and cardiometabolic risk conditions most common
-- **30-Day Mortality Rates**: Emergency (3.57 per 1,000) and inpatient (2.94 per 1,000) highest; ambulatory/wellness negligible
-- **Follow-up Quality**: 14-day post-procedure follow-up rates tracked across all procedure types
+**Top 5 Conditions**: Viral sinusitis (63%), acute viral pharyngitis, acute bronchitis, obesity (BMI 30+), prediabetes  
+**30-Day Mortality**: Emergency (3.57/1,000) • Inpatient (2.94/1,000) • Ambulatory/wellness (negligible)  
+**Post-Procedure Follow-up**: 14-day follow-up rates tracked across all procedure types
 
-### Cost & Resource Utilization
+### Cost & Resource Optimization
 
-- **High-Volume Procedures**: Medication reconciliation, renal dialysis, fetal heart auscultation, immunotherapy (1,000+ occurrences each)
-- **Procedure Costs**: Non-surgical interventions dominate; most expensive procedures exceed $10,000
-- **Provider Workload Imbalance**: Top provider (Gaynell126 Streich926) handled 3,000+ encounters; rapid drop-off indicates uneven allocation
-- **High-Cost Patients**: Identified for targeted financial assistance and care coordination strategies
+**High-Volume Procedures**: Medication reconciliation, renal dialysis, fetal heart auscultation, immunotherapy (1,000+ each)  
+**Provider Workload**: Top provider handled 3,000+ encounters; rapid drop-off indicates uneven allocation  
+**High-Cost Patients**: Identified for targeted financial assistance and care coordination
 
-### Provider Performance
+### Population Health
 
-- **Inactive Specialties**: Internal medicine, nurse practitioners, clinical social workers, physician assistants, physical therapy (zero encounters)
-- **Specialty Focus**: General practice providers handle majority of encounters
-- **Inpatient LOS**: Tracked per provider to identify efficiency outliers requiring intervention
-
-### Population Health Surveillance
-
-- **ER Frequent Users**: Patients with ≥3 emergency visits flagged for streamlined check-ins
-- **Data Completeness**: 19 patients without recorded diagnoses; 10.13% observation encounters without matching encounter records
-- **Coverage Distribution**: 536 low coverage (<$5K), 309 medium ($5K-$10K), 326 high (≥$10K)
-- **53,346 encounters** analyzed across **1,171 unique patients**
+**ER Frequent Users**: Patients with ≥3 emergency visits flagged for streamlined care  
+**Coverage Distribution**: 536 low (<$5K) • 309 medium ($5K-$10K) • 326 high (≥$10K)  
+**Data Quality**: 19 patients without diagnoses • 10.13% observation mismatches detected  
+**Dataset Scale**: 53,346 encounters across 1,171 unique patients
 
 ---
 
-## SQL Code Samples
+<details>
+<summary><strong>📝 Sample SQL Implementations</strong> (Click to expand)</summary>
 
-### Complex Join with Temporal Analysis (30-Day Readmission Tracking)
+### 30-Day Readmission Tracking (Temporal Analysis)
 
 ```sql
 CREATE TABLE rpt_readmissions_30d AS
-SELECT 
+SELECT
   e1.patient_id,
   e1.encounter_id AS first_encounter,
   e2.encounter_id AS readmit_encounter,
-  e1.encounter_start_date AS prev_start,
-  e2.encounter_start_date AS readmit_start,
   DATEDIFF(e2.encounter_start_date, e1.encounter_end_date) AS days_since_prior
 FROM encounter e1
-JOIN encounter e2 
+JOIN encounter e2
   ON e1.patient_id = e2.patient_id
   AND e2.encounter_start_date > e1.encounter_end_date
-  AND e2.encounter_start_date <= DATE_ADD(e1.encounter_end_date, INTERVAL 30 DAY)
-ORDER BY e1.patient_id, e1.encounter_start_date;
+  AND e2.encounter_start_date <= DATE_ADD(e1.encounter_end_date, INTERVAL 30 DAY);
 ```
 
-### CTE with Multiple-Row Subquery (High-Risk ER Patients by Provider)
+### High-Risk ER Patients by Provider (CTE + Subquery)
 
 ```sql
 CREATE TABLE rpt_providers_highrisk_er AS
 WITH provider_tot AS (
-  SELECT provider_id, organization_id, COUNT(*) AS total_encounters
+  SELECT provider_id, COUNT(*) AS total_encounters
   FROM encounter
-  GROUP BY provider_id, organization_id
+  GROUP BY provider_id
 ),
 highrisk_patients AS (
-  SELECT e.patient_id
-  FROM encounter e
-  WHERE LOWER(e.encounter_class) = 'emergency'
-  GROUP BY e.patient_id
+  SELECT patient_id
+  FROM encounter
+  WHERE LOWER(encounter_class) = 'emergency'
+  GROUP BY patient_id
   HAVING COUNT(*) >= 10
 )
-SELECT 
+SELECT
   pr.provider_id,
   pr.provider_specialty,
   COUNT(DISTINCT e.patient_id) AS n_highrisk_patients,
-  COUNT(*) AS n_highrisk_encounters,
-  ROUND(100 * COUNT(*) / NULLIF(pt.total_encounters, 0), 2) AS pct_of_provider_encounters
+  ROUND(100 * COUNT(*) / NULLIF(pt.total_encounters, 0), 2) AS pct_encounters
 FROM provider pr
-JOIN encounter e 
-  ON e.provider_id = pr.provider_id
-JOIN provider_tot pt 
-  ON pt.provider_id = pr.provider_id
+JOIN encounter e ON e.provider_id = pr.provider_id
+JOIN provider_tot pt ON pt.provider_id = pr.provider_id
 WHERE e.patient_id IN (SELECT patient_id FROM highrisk_patients)
 GROUP BY pr.provider_id, pr.provider_specialty, pt.total_encounters;
 ```
 
-### CASE Statement with Aggregation (Coverage Tier Analysis)
+### Coverage Tier Analysis (CASE Aggregation)
 
 ```sql
 SELECT
-  SUM(CASE WHEN healthcare_coverage >= 10000 THEN 1 ELSE 0 END) AS high_coverage_count,
-  SUM(CASE WHEN healthcare_coverage >= 5000 AND healthcare_coverage < 10000 
-           THEN 1 ELSE 0 END) AS medium_coverage_count,
-  SUM(CASE WHEN healthcare_coverage < 5000 THEN 1 ELSE 0 END) AS low_coverage_count
+  SUM(CASE WHEN healthcare_coverage >= 10000 THEN 1 ELSE 0 END) AS high_coverage,
+  SUM(CASE WHEN healthcare_coverage BETWEEN 5000 AND 9999 THEN 1 ELSE 0 END) AS medium_coverage,
+  SUM(CASE WHEN healthcare_coverage < 5000 THEN 1 ELSE 0 END) AS low_coverage
 FROM patient;
 ```
 
-### Window Functions with Aggregation (Post-Procedure Follow-up Rate)
+### Post-Procedure Follow-up Rate (Window Functions)
 
 ```sql
 CREATE TABLE rpt_followup_14d_by_proc_code AS
 WITH proc_flags AS (
-  SELECT 
-    prc.procedure_code,
-    prc.procedure_description,
-    CASE
-      WHEN EXISTS (
-        SELECT 1
-        FROM observation o
-        WHERE o.patient_id = prc.patient_id
-        AND o.observation_date > prc.procedure_date
-        AND o.observation_date <= DATE_ADD(prc.procedure_date, INTERVAL 14 DAY)
-      ) THEN 1 ELSE 0
-    END AS has_followup_14d
+  SELECT
+    procedure_code,
+    procedure_description,
+    CASE WHEN EXISTS (
+      SELECT 1 FROM observation o
+      WHERE o.patient_id = prc.patient_id
+      AND o.observation_date BETWEEN prc.procedure_date AND DATE_ADD(prc.procedure_date, INTERVAL 14 DAY)
+    ) THEN 1 ELSE 0 END AS has_followup
   FROM procedures prc
 )
-SELECT 
+SELECT
   procedure_code,
-  procedure_description,
-  COUNT(*) AS n_procedures,
-  SUM(has_followup_14d) AS n_with_followup_14d,
-  ROUND(100 * SUM(has_followup_14d) / NULLIF(COUNT(*), 0), 2) AS pct_with_followup_14d
+  COUNT(*) AS total_procedures,
+  SUM(has_followup) AS with_followup,
+  ROUND(100 * SUM(has_followup) / NULLIF(COUNT(*), 0), 2) AS followup_rate_pct
 FROM proc_flags
-GROUP BY procedure_code, procedure_description
-ORDER BY pct_with_followup_14d ASC;
+GROUP BY procedure_code
+ORDER BY followup_rate_pct ASC;
 ```
+
+</details>
 
 ---
 
 ## Technologies
 
-**Database**: MySQL • Normalized Schema Design (3NF) • Complex SQL Joins  
-**SQL Techniques**: Subqueries • CTEs • Window Functions • Temporal Analysis • Aggregation  
-**Integration**: Python • Pandas • Bulk CSV Loading • Data Validation  
-**Domain**: Healthcare Analytics • EHR Data (Synthea) • Clinical Quality Indicators  
-**Data Processing**: ETL Pipelines • Staging Tables • Foreign Key Validation
+**Database**: MySQL • 3NF Normalized Schemas • Foreign Key Constraints  
+**SQL**: Complex Joins • CTEs • Window Functions • Temporal Analysis • Subqueries  
+**ETL**: Python • Pandas • Bulk CSV Loading • Staging Tables  
+**Domain**: Healthcare Analytics • Synthea EHR Data • Clinical Quality Metrics
 
 ---
 
