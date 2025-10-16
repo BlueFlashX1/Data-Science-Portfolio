@@ -14,7 +14,7 @@
 
 **Competition Achievement**: **5th place** (dev) / **13th place** (test) in healthcare readmission prediction • 40 & 35 participants respectively • ROC AUC 0.90+ (dev phase)
 
-**Navigation**: [Projects](#featured-projects) • [Technical Skills](#skills--technical-stack) • [External Work](#external-projects) • [Connect](#connect)
+**Navigation**: [Projects](#featured-projects) • [Technical Skills](#skills--technical-stack) • [Connect](#connect)
 
 ## Skills & Technical Stack
 
@@ -105,16 +105,6 @@ Created comprehensive visualizations across three analysis domains using R, ggpl
 - **Housing Price Index**: Midwest/Northeast/South similar trends, West higher volatility, all regions showed 2005 decline → post-2010 recovery
 
 **Tech**: R • ggplot2 • RMarkdown • dplyr • tidyverse • ggalluvial • Custom Functions
-
----
-
-## External Projects
-
-### [System Automation Suite](https://github.com/BlueFlashX1/system-automation-projects)
-
-Voice-controlled macOS automation (400+ lines Python) with speech recognition and NLP. Automated error management system (300+ lines shell scripting) with structured logging and resolution tracking.
-
-**Tech**: Python • Speech Recognition • Shell Scripting • AppleScript • System APIs
 
 ---
 
