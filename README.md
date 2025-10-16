@@ -82,14 +82,6 @@ Analyzed cougar predation patterns revealing seasonal hunting behaviors. Created
 
 ---
 
-### [Cross-Platform Database Systems](./projects/database-systems/database-management-info570/)
-
-**Enterprise database design across multiple platforms** • _INFO 570 Final Project_
-
-Implemented normalized schemas across MySQL, SQL Server, and Microsoft Access for retail (KIMTAY) and healthcare (STAYWELL) applications. Demonstrated cross-platform SQL compatibility, referential integrity, and business intelligence queries.
-
-**Tech**: MySQL • SQL Server • Microsoft Access • Database Design
-
 ## External Projects
 
 ### [System Automation Suite](https://github.com/BlueFlashX1/system-automation-projects)

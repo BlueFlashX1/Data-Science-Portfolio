@@ -1,91 +1,70 @@
 # Database Systems Projects
 
-[![SQL](https://img.shields.io/badge/SQL-Database%20Design-4479A1?style=for-the-badge&logo=postgresql)](https://postgresql.org)
-[![NoSQL](https://img.shields.io/badge/NoSQL-Document%20Databases-green?style=for-the-badge&logo=mongodb)](https://mongodb.com)
+[![SQL](https://img.shields.io/badge/SQL-Database%20Design-4479A1?style=for-the-badge&logo=mysql)](https://mysql.com)
 [![Python](https://img.shields.io/badge/Python-Database%20Integration-3776AB?style=for-the-badge&logo=python)](https://python.org)
+[![Healthcare](https://img.shields.io/badge/Healthcare-Analytics-red?style=for-the-badge&logo=heart)](https://github.com)
 
-> **Database design, implementation, and analysis projects demonstrating expertise in relational and non-relational database systems**
+> **Advanced database systems and healthcare analytics demonstrating expertise in SQL design, implementation, and large-scale data analysis**
 
-## Portfolio Overview
+## Featured Project
 
-This directory contains database systems projects showcasing proficiency in database design, implementation, optimization, and analysis. The projects demonstrate both theoretical knowledge and practical application of database technologies in real-world scenarios.
+### � **Healthcare Analytics Database System**
 
-## Projects Dashboard
-
-<table>
-<tr>
-<td width="50%">
-
-### 🏢 **Business Database Systems**
-**[INFO 570 - Database Management](./database-management-info570/)**
+**[INFO 579 - SQL & NoSQL Databases](./sql-nosql-databases-info579/)** | Final Project
 
 **Technologies & Tools**
-![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=flat-square&logo=mysql&logoColor=white)
-![SQL Server](https://img.shields.io/badge/SQL_Server-CC2927?style=flat-square&logo=microsoft-sql-server&logoColor=white)
-![Microsoft Access](https://img.shields.io/badge/Access-A4373A?style=flat-square&logo=microsoft-access&logoColor=white)
 
-**Key Features**
-- **Multi-Platform Development**: MySQL, SQL Server, Access
-- **Business Applications**: KIMTAY pet store, STAYWELL healthcare
-- **Enterprise Design**: Normalized schemas, referential integrity
-- **Business Intelligence**: Sales analysis, inventory management
-- **Cross-Platform SQL**: Different SQL dialects and optimizations
-
-**Skills Demonstrated**
-- Database normalization and ER modeling
-- Cross-platform SQL development
-- Business application design
-- Database administration
-
-</td>
-<td width="50%">
-
-### 🏥 **Healthcare Analytics Systems**
-**[INFO 579 - SQL & NoSQL Databases](./sql-nosql-databases-info579/)**
-
-**Technologies & Tools**
-![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=flat-square&logo=mysql&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL_8.0-4479A1?style=flat-square&logo=mysql&logoColor=white)
 ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
-![NoSQL](https://img.shields.io/badge/NoSQL-4DB33D?style=flat-square&logo=mongodb&logoColor=white)
+![Synthea](https://img.shields.io/badge/Synthea-EHR_Data-orange?style=flat-square)
 
-**Key Features**
-- **Healthcare Data Analysis**: Synthea EHR data processing
-- **Python Integration**: Data validation and verification scripts
-- **Large-Scale Processing**: 67MB healthcare datasets
-- **Multi-Entity Analysis**: 6+ healthcare entities and relationships
-- **NoSQL Concepts**: Document-based storage integration
+**Project Scope**
 
-**Skills Demonstrated**
-- Advanced SQL querying techniques
-- Python-SQL integration
-- Healthcare data standards
-- Population health analytics
+- **67MB Synthea EHR Dataset**: 1,171 patients, 53,346 encounters across 6 normalized entities
+- **3NF Database Design**: Optimized schema with referential integrity
+- **14 Analytical Reports**: Complex SQL queries for population health insights
+- **Python Integration**: Automated data validation and verification scripts
 
-</td>
-</tr>
-</table>
+**Key Business Findings**
+
+- **Disease Management**: Viral sinusitis (63%) identified as top condition requiring preventive care
+- **Emergency Services**: 3.57 per 1,000 emergency 30-day mortality rate analysis
+- **Provider Workload**: Severe imbalance detected (3,000+ encounters for top provider)
+- **High-Risk Patients**: ≥3 ER visits threshold for targeted intervention programs
+- **Cost Analysis**: $1.1M in high-cost patient care identified for management strategies
+
+**Technical Highlights**
+
+- Advanced SQL: Multi-table JOINs, CTEs, window functions, temporal analysis
+- Performance optimization through strategic indexing
+- Healthcare data standards (ICD-10, SNOMED CT concepts)
+- Population health analytics at scale
 
 ## Technical Skills Demonstrated
 
 ### Database Design
+
 - **Normalization**: Complete database normalization to eliminate redundancy
 - **Entity-Relationship Modeling**: Complex relationship design and implementation
 - **Constraint Implementation**: Referential integrity and business rule enforcement
 - **Performance Optimization**: Strategic indexing and query optimization
 
 ### SQL Proficiency
+
 - **Complex Queries**: Advanced joins, subqueries, window functions
 - **Data Analysis**: Analytical queries for business intelligence
 - **Schema Management**: DDL operations for database structure
 - **Performance Tuning**: Query optimization and execution plan analysis
 
 ### Integration & Validation
+
 - **Python-SQL Integration**: Database connectivity and data processing
 - **Data Quality Assurance**: Automated integrity checking and validation
 - **ETL Processes**: Extract, transform, and load operations
 - **Cross-platform Compatibility**: Multi-database system experience
 
 ### Healthcare Domain Expertise
+
 - **Medical Data Standards**: Implementation of healthcare coding systems
 - **HIPAA Compliance**: Understanding of healthcare data privacy requirements
 - **Clinical Workflows**: Database design supporting healthcare operations
@@ -94,17 +73,20 @@ This directory contains database systems projects showcasing proficiency in data
 ## Technologies & Tools
 
 ### Database Management Systems
+
 - **Relational**: PostgreSQL, SQL Server, MySQL
 - **NoSQL**: MongoDB, document-based storage concepts
 - **Cloud Platforms**: Database deployment and management
 
 ### Development Environment
+
 - **Database Tools**: SQL Server Management Studio, pgAdmin, DataGrip
 - **Programming**: Python, SQL, database connectivity libraries
 - **Version Control**: Git-based project management
 - **Documentation**: Comprehensive technical documentation
 
 ### Analysis & Visualization
+
 - **Data Analysis**: Statistical analysis of database contents
 - **Reporting**: Automated report generation from database queries
 - **Performance Monitoring**: Database performance analysis and optimization
@@ -116,6 +98,6 @@ This directory contains database systems projects showcasing proficiency in data
 
 **Database systems expertise applied to real-world data challenges**
 
-*Bridging theoretical database concepts with practical implementation*
+_Bridging theoretical database concepts with practical implementation_
 
 </div>
