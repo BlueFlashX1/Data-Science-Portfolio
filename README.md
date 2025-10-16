@@ -56,9 +56,9 @@ Built normalized database schemas (3NF) to analyze 1,171 patients and 53,346 enc
 
 **Machine learning for taxonomic prediction using sexually selected traits** • _INFO 523 Final Project_
 
-Discovered evolutionary rate data outperformed binary data for classification across 1,087 animal families. Used SHAP analysis to identify visual, competition, and auditory traits as strongest predictors. Implemented logistic regression, decision trees, and random forests with model explainability.
+Classified animal superphyla (5 groups across 1,087 families) using sexually selected traits. Discovered evolutionary rate data dramatically outperformed binary presence/absence data. SHAP analysis identified visual, competition, and auditory traits as strongest predictors. Logistic regression with evolutionary rates achieved best performance.
 
-**Tech**: Python • Scikit-learn • SHAP • Machine Learning • Quarto
+**Tech**: Python • Scikit-learn • SHAP • Machine Learning • Quarto • Jupyter
 
 ---
 
