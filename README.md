@@ -31,14 +31,14 @@
 
 ### Domain Expertise
 
-| **Domain**                | **Applied Skills & Demonstrated Capabilities**                                                                                                                        |
-| ------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Healthcare Analytics**  | EHR data processing (Synthea, 67MB+) • Patient-condition modeling • Readmission prediction (ROC AUC 0.90+) • Clinical quality metrics • Provider utilization analysis |
-| **Machine Learning**      | End-to-end ML pipelines • Feature engineering • Model explainability (SHAP) • Imbalanced classification • Cross-validation • Competition experience (top 15%)         |
-| **Database Systems**      | Normalized schema design (3NF) • Complex multi-table joins (4+ tables) • CTEs & window functions • Temporal analysis • 14 analytical reports                          |
-| **Data Visualization**    | ggplot2 mastery • Advanced plot types (alluvial, faceted) • Custom functions • Reproducible workflows (RMarkdown/Quarto) • Statistical graphics                       |
-| **Biological Research**   | Ecological analysis (wildlife predation) • Evolutionary trait classification • Taxonomic modeling (1,087 families) • Imbalanced data handling                         |
-| **Statistical Computing** | R programming (tidyverse, ggplot2) • Python (pandas, NumPy, scikit-learn) • Reproducible research pipelines • Custom function development • Data transformation       |
+| **Domain**                     | **Applied Skills & Demonstrated Capabilities**                                                                                                                                 |
+| ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Healthcare Analytics**       | EHR data processing (Synthea, 67MB+) • Hospital readmission prediction (ROC AUC >0.85) • Clinical quality metrics • Provider utilization analysis • 30-day mortality tracking |
+| **Machine Learning**           | Competition experience (5th/40 participants) • Model explainability (SHAP) • Imbalanced classification • Hyperparameter tuning • Feature engineering • Cross-validation       |
+| **Biological Data Science**    | Taxonomic classification (1,087 families) • Evolutionary trait analysis • Ecological modeling (wildlife predation) • Sparse data handling • Domain-driven feature engineering  |
+| **Database Systems**           | Normalized schema design (3NF) • Complex multi-table joins (4+ tables) • CTEs & window functions • Temporal analysis • 14 analytical reports • 53K+ record processing         |
+| **Statistical Visualization**  | ggplot2 expertise • Advanced plot types (alluvial, faceted) • Custom R functions • Reproducible research (RMarkdown/Quarto) • Multi-domain analysis (ecology/safety/economics) |
+| **Data Engineering**           | ETL pipelines • Data transformation (tidyverse, pandas) • Missing data strategies • Synthetic data generation • Large dataset processing (67MB+ EHR, 28MB safety data)        |
 
 ## Featured Projects
 
