@@ -12,7 +12,7 @@
 
 ---
 
-**Competition Achievement**: **5th place** (dev) / **13th place** (test) in healthcare readmission prediction • 40 & 35 participants respectively • ROC AUC 0.90+ (dev phase)
+**Competition Achievement**: **5th place** (dev) / **13th place** (test) in healthcare readmission prediction • 40 & 35 participants respectively • ROC AUC >0.85 both phases
 
 **Navigation**: [Projects](#featured-projects) • [Technical Skills](#skills--technical-stack) • [Connect](#connect)
 
