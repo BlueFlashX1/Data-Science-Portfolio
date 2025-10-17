@@ -24,10 +24,10 @@
 ![Scikit-Learn](https://img.shields.io/badge/scikit--learn-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white)
 ![ggplot2](https://img.shields.io/badge/ggplot2-E34F26?style=for-the-badge&logo=r&logoColor=white)
 
-**Languages**: R • Python • SQL/NoSQL • JavaScript • Shell  
+**Languages**: R • Python • SQL/NoSQL  
 **Data Science**: Tidyverse • ggplot2 • Pandas • NumPy • Scikit-learn • SHAP • Quarto  
 **Databases**: MySQL • Database Design • Healthcare Analytics • Temporal Analysis  
-**Development**: VS Code • Positron • Git/GitHub • RMarkdown • Jupyter • Docker
+**Development**: VS Code • Git/GitHub • RMarkdown • Jupyter
 
 ### Domain Expertise
 
