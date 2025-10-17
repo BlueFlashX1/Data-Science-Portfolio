@@ -86,14 +86,14 @@ Created comprehensive visualizations analyzing wildlife predation patterns, work
 
 ## Project Files
 
-| File                                                                                           | Size  | Description                                                                 |
-| ---------------------------------------------------------------------------------------------- | ----- | --------------------------------------------------------------------------- |
-| [`MatthewThompson_Final_Portfolio.pdf`](./MatthewThompson_Final_Portfolio.pdf)                 | 399KB | **Complete rendered portfolio** with all visualizations, code, and analysis |
-| [`Final Portfolio Assignment(Finished).Rmd`](<./Final%20Portfolio%20Assignment(Finished).Rmd>) | 43KB  | Reproducible source code (992 lines)                                        |
-| [`Data Dictionary Function.R`](./Data%20Dictionary%20Function.R)                               | 3.7KB | Custom data exploration function                                            |
-| [`Cougar Killsites.xlsx`](./Cougar%20Killsites.xlsx)                                           | 168KB | Wildlife ecology dataset                                                    |
-| [`Dangerous Jobs.csv`](./Dangerous%20Jobs.csv)                                                 | 28MB  | Occupational safety dataset                                                 |
-| [`Housing Price Index.xlsx - Data.csv`](./Housing%20Price%20Index.xlsx%20-%20Data.csv)         | 61KB  | Economic indicators dataset                                                 |
+| File                                                                                             | Size  | Description                                                                 |
+| ------------------------------------------------------------------------------------------------ | ----- | --------------------------------------------------------------------------- |
+| [`MatthewThompson_Final_Portfolio.pdf`](./MatthewThompson_Final_Portfolio.pdf)                   | 399KB | **Complete rendered portfolio** with all visualizations, code, and analysis |
+| [`Final Portfolio Assignment(Finished).Rmd`](<./Final%20Portfolio%20Assignment(Finished).Rmd>)   | 43KB  | Reproducible source code (992 lines)                                        |
+| [`Data Dictionary Function.R`](./Data%20Dictionary%20Function.R)                                 | 3.7KB | Custom data exploration function                                            |
+| [`data/Cougar Killsites.xlsx`](./data/Cougar%20Killsites.xlsx)                                   | 168KB | Wildlife ecology dataset                                                    |
+| [`data/Dangerous Jobs.csv`](./data/Dangerous%20Jobs.csv)                                         | 28MB  | Occupational safety dataset                                                 |
+| [`data/Housing Price Index.xlsx - Data.csv`](./data/Housing%20Price%20Index.xlsx%20-%20Data.csv) | 61KB  | Economic indicators dataset                                                 |
 
 ## Quick Start
 

@@ -42,7 +42,7 @@ Overall, I think I've addressed too many categories, better visual representatio
 ############
 
 # Load the data
-cougars <- read_xlsx("Cougar Killsites.xlsx")
+cougars <- read_xlsx("data/Cougar Killsites.xlsx")
 
 # data cleaning & transformations
 cougars_NA <- cougars %>% 
@@ -161,7 +161,7 @@ Note: there is a gap between 2012 and 2015 where no data was recorded for some r
 ############
 
 #importing and cleaning
-dangerous_job <- read_csv('Dangerous Jobs.csv')
+dangerous_job <- read_csv('data/Dangerous Jobs.csv')
 
 #removed dupes for all columns
 removed_dupes <- dangerous_job %>%
@@ -312,7 +312,7 @@ print(combined_plot)
 # Housing Price Faceted
 ##############
 
-housing_price <- read_csv("Housing Price Index.xlsx - Data.csv")
+housing_price <- read_csv("data/Housing Price Index.xlsx - Data.csv")
 
 #adding date columns
 housing_price2 <- housing_price %>%
@@ -409,7 +409,7 @@ Note: USA HPI was excluded due to the redundancy since it is basically an overal
 # Housing Price Summary Table
 ##############
 
-housing_price <- read_csv("Housing Price Index.xlsx - Data.csv")
+housing_price <- read_csv("data/Housing Price Index.xlsx - Data.csv")
 
 #adding date columns
 housing_price2 <- housing_price %>%
@@ -545,7 +545,7 @@ library(gt)
 ############
 
 # load the data
-cougars <- read_xlsx("Cougar Killsites.xlsx")
+cougars <- read_xlsx("data/Cougar Killsites.xlsx")
 
 # data cleaning & transformations
 cougars_NA <- cougars %>% 
@@ -649,7 +649,7 @@ ggplot(cougarspecies_grouped, aes(x = factor(Year), fill = PreySpeciesGroup)) +
 ############
 
 #importing and cleaning
-dangerous_job <- read_csv('Dangerous Jobs.csv')
+dangerous_job <- read_csv('data/Dangerous Jobs.csv')
 
 #removed dupes for all columns
 removed_dupes <- dangerous_job %>%
@@ -789,7 +789,7 @@ print(combined_plot)
 # Housing Price Faceted
 ##############
 
-housing_price <- read_csv("Housing Price Index.xlsx - Data.csv")
+housing_price <- read_csv("data/Housing Price Index.xlsx - Data.csv")
 
 #adding date columns
 housing_price2 <- housing_price %>%
@@ -875,7 +875,7 @@ ggplot() +
 # Housing Price Summary Table
 ##############
 
-housing_price <- read_csv("Housing Price Index.xlsx - Data.csv")
+housing_price <- read_csv("data/Housing Price Index.xlsx - Data.csv")
 
 #adding date columns
 housing_price2 <- housing_price %>%
