@@ -78,7 +78,7 @@ This project addresses five core healthcare analytics objectives:
 | --------------------- | ----------------------------------------------------------------------------- |
 | **Joins**             | Multi-table (4+), LEFT/INNER variations, self-joins                           |
 | **Temporal Analysis** | `DATEDIFF`, `DATE_ADD` for 30-day readmission tracking                        |
-| **Advanced Queries**  | CTEs, window functions, correlated subqueries (`NOT EXISTS`)                  |
+| **Advanced Queries**  | CTEs (Common Table Expressions), correlated subqueries (`EXISTS`, `NOT EXISTS`) |
 | **Aggregation**       | `GROUP BY` + `HAVING`, `CASE` statements for dynamic categorization           |
 | **Subqueries**        | Single-row (`MAX`), multiple-row (`IN`), scalar and derived tables            |
 | **Data Validation**   | `LEFT JOIN` for orphaned records, null handling, foreign key integrity checks |
