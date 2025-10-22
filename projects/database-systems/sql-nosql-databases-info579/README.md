@@ -10,7 +10,7 @@ Database system implementing normalized schemas, complex SQL queries, and tempor
 
 **Key Metrics**: 1,171 patients • 53,346 encounters • 8,376 diagnoses • 67MB Synthea EHR data
 
-**Tech Stack**: MySQL • Complex SQL Joins • Temporal Analysis • Python • Pandas • Healthcare Domain Analytics
+**Hard Skills**: MySQL • Complex SQL Joins • CTEs • Window Functions • Temporal Analysis • 3NF Normalized Design • Python • Pandas
 
 **[View Full Report](./INFO579_Final%20Project_Report_Thompson.pdf)** (8.1MB PDF)
 

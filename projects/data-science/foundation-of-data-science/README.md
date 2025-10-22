@@ -29,47 +29,36 @@
 
 **Challenge**: Predict 30-day hospital readmissions to improve patient outcomes and reduce healthcare costs
 
+**Models Tested**: Logistic Regression • Decision Tree • Random Forest • Gradient Boosting • HistGradientBoosting • AdaBoost • ExtraTrees • Bagging • KNeighbors  
+**Best Model**: Random Forest (ROC AUC 0.9011 dev / 0.8581 test)  
+**Hard Skills**: Python • Scikit-learn • Pandas • Feature engineering • Stratified cross-validation • Hyperparameter tuning • Imbalanced classification handling
+
 **Dataset**: Synthetic Arizona patient records (Synthea-generated, 125,958 encounters) containing demographics, medical conditions, medications, procedures, and insurance data
 
 **Impact**: Hospital readmissions cost the U.S. healthcare system billions annually - this model supports clinical decision-making for targeted interventions and resource allocation
 
-## Key Insights
+---
+
+## Feature Engineering & Data Quality
+
+### Critical Decisions
+
+- **Patient frequency encoding**: Transformed patient_id into count of encounters per patient (key predictor - patients with multiple encounters had higher readmission risk)
+- **Dropped features**: Zip code (not meaningful without distance calculation), encounter_id (unique identifiers), redundant symptom flags (all values were 0)
+- **Imputation strategy**: Mean imputation for numeric features due to large sample size
 
 ### Data Quality Challenges
 
-- **Missing data**: Significant missing values in medication counts, procedure costs, pain scores, and patient height
-- **Uninformative features**: All symptom columns (chronic pain, hypertension, diabetes, asthma, depression) had identical values (0) - dropped from analysis
-- **Data leakage prevention**: Careful feature engineering to avoid using future information
+- **Missing data**: Significant missing values in medication counts, procedure costs, pain scores, patient height
+- **Uninformative features**: All symptom columns (chronic pain, hypertension, diabetes, asthma, depression) had identical values (0)
 
-### Critical Feature Engineering Decisions
-
-- **Patient frequency encoding**: Transformed patient_id into count of encounters per patient (key predictor - patients with multiple encounters had higher readmission risk)
-- **Dropped features**: zip code (not meaningful without distance calculation), encounter_id (unique identifiers), redundant symptom flags
-- **Imputation strategy**: Mean imputation for numeric features due to large sample size
-
-### Model Selection Process
-
-- **9 algorithms compared**: LogisticRegression, DecisionTree, RandomForest, ExtraTrees, GradientBoosting, HistGradientBoosting, AdaBoost, Bagging, KNeighbors
-- **Top 3 performers**: HistGradientBoosting (highest ROC AUC), RandomForest (close second, lower variance), GradientBoosting
-- **Final choice**: Random Forest for balance of performance and simplicity
-
-## Technical Implementation
-
-### Machine Learning Pipeline
+## Machine Learning Pipeline
 
 1. **Data Preprocessing**: Missing value imputation (mean for numeric features), feature encoding (OneHotEncoder for categorical)
 2. **Feature Engineering**: Patient frequency encoding (encounter count per patient), dropped non-predictive columns (symptoms, zip, IDs)
-3. **Model Training**: Random Forest classifier with stratified cross-validation (compared 9 algorithms)
-4. **Optimization**: Hyperparameter tuning (n_estimators=200, max_depth=None, min_samples_split=20, class_weight='balanced')
-5. **Evaluation**: ROC AUC optimization, imbalanced classification handling
-
-### Key Technical Skills
-
-- **Healthcare Data Processing**: Synthetic EHR data with multiple entity relationships
-- **Imbalanced Classification**: Binary prediction with ROC AUC optimization
-- **Feature Engineering**: Domain-specific clinical features (patient frequency encoding)
-- **Cross-validation**: Stratified sampling for robust performance estimation
-- **Competition Strategy**: Model optimization across development and test phases
+3. **Model Training**: Random Forest classifier with stratified cross-validation (9 algorithms compared)
+4. **Hyperparameter Tuning**: n_estimators=200, max_depth=None, min_samples_split=20, class_weight='balanced'
+5. **Evaluation**: ROC AUC optimization, imbalanced classification handling, cross-validation scoring
 
 ## Project Structure
 
