@@ -33,6 +33,7 @@ Created comprehensive visualizations analyzing wildlife predation patterns, work
 **Analysis**: Grouped prey species into 4 ecological categories (Wild Ungulates, Small Animals, Domestic Animals, Carnivores)
 
 **Key Findings**:
+
 - Wild ungulates (mule deer, bighorn sheep, pronghorn) are primary prey
 - Domestic animals represent least common prey category
 - Temporal patterns show data gaps between 2012-2015
@@ -49,6 +50,7 @@ Created comprehensive visualizations analyzing wildlife predation patterns, work
 **Analysis**: Top 5 most dangerous occupations with temporal trends and cause-effect relationships
 
 **Key Findings**:
+
 - Identified most dangerous occupations with fatality trends over time
 - Alluvial diagram reveals common causes of fatalities for each occupation
 - Line plots show clearer temporal trends than proportional stream graphs
@@ -64,6 +66,7 @@ Created comprehensive visualizations analyzing wildlife predation patterns, work
 **Analysis**: Seasonally-adjusted vs non-adjusted HPI comparisons across Northeast, Midwest, South, West
 
 **Key Findings**:
+
 - Midwest, Northeast, and South show similar HPI trends
 - West region shows higher volatility with seasonally-adjusted HPI occasionally exceeding non-adjusted
 - All regions show HPI increase until ~2005, decline, then recovery after 2010
