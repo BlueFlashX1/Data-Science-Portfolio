@@ -15,74 +15,71 @@
 
 Created comprehensive visualizations analyzing wildlife predation patterns, workplace safety trends, and housing market dynamics using R, ggplot2, and tidyverse. Demonstrates technical proficiency in data transformation, categorical grouping, and multi-plot layouts for comparative analysis.
 
-## Key Findings & Visualizations
+---
 
-### 1. Cougar Predation Ecology (Pie Chart & Grouped Bar Chart)
+## Hard Skills & Visualization Tools
+
+**Languages & Libraries**: R 4.x • RMarkdown • ggplot2 • tidyverse (dplyr, tidyr) • lubridate  
+**Specialized Packages**: ggalluvial (alluvial diagrams) • viridis (color palettes) • patchwork (multi-plot layouts)  
+**Visualization Types**: Pie charts • Grouped bar charts • Line plots • Alluvial diagrams • Faceted area plots • Statistical tables  
+**Technical Skills**: Data transformation • Categorical grouping • Custom color palettes • Temporal analysis • Custom function development
+
+## Visualizations & Findings
+
+### 1. Cougar Predation Ecology
 
 **Dataset**: 168KB cougar killsite data with prey species and temporal information  
+**Visualizations**: Pie chart (prey distribution) • Grouped bar chart (temporal trends)  
 **Analysis**: Grouped prey species into 4 ecological categories (Wild Ungulates, Small Animals, Domestic Animals, Carnivores)
 
-**Findings**:
-
+**Key Findings**:
 - Wild ungulates (mule deer, bighorn sheep, pronghorn) are primary prey
 - Domestic animals represent least common prey category
 - Temporal patterns show data gaps between 2012-2015
 - Year 2016: No domestic animal kills recorded
 
-**Technical Skills**: Custom grouping strategies to avoid overlapping classifications, categorical data transformation with `dplyr`, color palette design for ecological categories
+**Technical Skills**: Custom grouping strategies to avoid overlapping classifications • Categorical data transformation with dplyr • Color palette design for ecological categories
 
-### 2. Occupational Safety Analysis (Line Graph & Alluvial Diagram)
+---
+
+### 2. Occupational Safety Analysis
 
 **Dataset**: 28MB comprehensive workplace fatality data by occupation and cause  
+**Visualizations**: Line graph (temporal trends) • Alluvial diagram (cause-effect relationships)  
 **Analysis**: Top 5 most dangerous occupations with temporal trends and cause-effect relationships
 
-**Findings**:
-
+**Key Findings**:
 - Identified most dangerous occupations with fatality trends over time
 - Alluvial diagram reveals common causes of fatalities for each occupation
 - Line plots show clearer temporal trends than proportional stream graphs
 
-**Technical Skills**: Advanced plot types (alluvial diagrams with `ggalluvial`), temporal trend visualization, cause-effect relationship mapping
+**Technical Skills**: Advanced plot types (alluvial diagrams with ggalluvial) • Temporal trend visualization • Cause-effect relationship mapping
 
-### 3. Housing Price Index Trends (Faceted Area Plot & Statistical Tables)
+---
+
+### 3. Housing Price Index Trends
 
 **Dataset**: 61KB housing market data across 4 U.S. regions  
+**Visualizations**: Faceted area plots (trend comparison) • Statistical summary tables  
 **Analysis**: Seasonally-adjusted vs non-adjusted HPI comparisons across Northeast, Midwest, South, West
 
-**Findings**:
-
+**Key Findings**:
 - Midwest, Northeast, and South show similar HPI trends
 - West region shows higher volatility with seasonally-adjusted HPI occasionally exceeding non-adjusted
 - All regions show HPI increase until ~2005, decline, then recovery after 2010
 - Regional variations in price volatility documented
 
-**Technical Skills**: Faceted visualizations with small multiples, area plots for trend analysis, statistical summary tables, regional comparisons
+**Technical Skills**: Faceted visualizations with small multiples • Area plots for trend analysis • Statistical summary tables • Regional comparisons
+
+---
 
 ## Technical Implementation
 
-### Core Technologies
+### Reproducible Research Workflow
 
-- **R 4.x** with RMarkdown for reproducible research
-- **ggplot2** for statistical graphics and layered visualizations
-- **tidyverse** (dplyr, tidyr) for data transformation and cleaning
-- **Specialized packages**: ggalluvial (flow diagrams), viridis (color palettes), lubridate (temporal data)
-
-### Key Technical Skills Demonstrated
-
-1. **Data Transformation**: Complex categorical grouping, handling missing values, temporal data processing
-2. **Visual Design**: Custom color palettes, grouped bar charts, faceted layouts, alluvial diagrams
-3. **Statistical Communication**: Clear figure captions, methodology explanations, interpretation of trends
-4. **Reproducible Research**: RMarkdown to PDF workflow, complete code documentation
-5. **Custom Function Development**: `data_dict()` function for automated data exploration (variable info, descriptive stats, missing values)
-
-### Visualization Techniques Applied
-
-- Pie charts (species distribution)
-- Grouped bar charts (temporal comparisons without overlap)
-- Line plots (fatality trends over time)
-- Alluvial diagrams (categorical flow analysis)
-- Faceted area plots (regional/seasonal comparisons)
-- Statistical summary tables (descriptive statistics)
+- **RMarkdown to PDF**: Complete code documentation with rendered output
+- **Custom Functions**: `data_dict()` function for automated data exploration (variable info, descriptive stats, missing values)
+- **Data Transformation**: Complex categorical grouping, handling missing values, temporal data processing
 
 ## Project Files
 

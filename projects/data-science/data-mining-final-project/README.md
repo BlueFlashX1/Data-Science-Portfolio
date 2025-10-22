@@ -21,6 +21,22 @@
 
 Compared binary presence/absence data vs. evolutionary origin rates across 1,087 animal families to determine optimal data representation for taxonomic classification.
 
+---
+
+## Models & Technical Implementation
+
+**Models Tested**: Logistic Regression • Random Forest • Decision Tree  
+**Best Model**: Logistic Regression with evolutionary rates  
+**Hard Skills**: Python • Scikit-learn • SHAP (model explainability) • Stratified K-fold cross-validation • Balanced accuracy metrics • Feature scaling
+
+### Data Engineering
+
+- **Superphyla grouping**: Reduced sparsity by consolidating 10+ phyla → 5 superphyla
+- **Feature comparison**: Binary (10 traits) vs. continuous evolutionary rates (9 traits)
+- **Sample sizes**: 1,087 families (binary), 84 phylogenetic estimates (rates)
+
+---
+
 ## Key Findings
 
 ### Best Model: Logistic Regression + Evolutionary Rates
@@ -50,12 +66,6 @@ Based on findings, future work could:
 - Apply SHAP for deeper biological interpretations
 
 ## Technical Implementation
-
-### Data Engineering
-
-- **Superphyla grouping**: Reduced sparsity by consolidating 10+ phyla → 5 superphyla
-- **Feature comparison**: Binary (10 traits) vs. continuous evolutionary rates (9 traits)
-- **Sample sizes**: 1,087 families (binary), 84 phylogenetic estimates (rates)
 
 ### Machine Learning Pipeline
 

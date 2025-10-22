@@ -1,5 +1,18 @@
 # GitHub Copilot Instructions for Portfolio Repository
 
+## ⚠️ CRITICAL: Command Logging Protocol
+
+**When using the `run_in_terminal` tool, you MUST log every command immediately after execution:**
+
+```bash
+source ~/Documents/DEVELOPMENT/error-log/ai-integration/copilot-conversation-logger-v2.zsh && \
+log_copilot_command "your-command-here" $exit_code "output-preview" "copilot_chat"
+```
+
+**Why**: `run_in_terminal` bypasses shell hooks - manual logging is the ONLY way to capture Copilot Chat commands for error learning and history tracking. This is NOT optional.
+
+---
+
 ## Repository Overview
 
 This is a **Master's Data Science portfolio** demonstrating academic projects across R analytics, Python data science, database systems, and system automation. The structure is organized by project type rather than technology, with each major project containing its own dependencies and documentation.
