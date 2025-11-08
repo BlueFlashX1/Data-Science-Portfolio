@@ -74,15 +74,15 @@ This project addresses five core healthcare analytics objectives:
 
 ### SQL Techniques Demonstrated
 
-| Category              | Techniques                                                                    |
-| --------------------- | ----------------------------------------------------------------------------- |
-| **Joins**             | Multi-table (4+), LEFT/INNER variations, self-joins                           |
-| **Temporal Analysis** | `DATEDIFF`, `DATE_ADD` for 30-day readmission tracking                        |
+| Category              | Techniques                                                                      |
+| --------------------- | ------------------------------------------------------------------------------- |
+| **Joins**             | Multi-table (4+), LEFT/INNER variations, self-joins                             |
+| **Temporal Analysis** | `DATEDIFF`, `DATE_ADD` for 30-day readmission tracking                          |
 | **Advanced Queries**  | CTEs (Common Table Expressions), correlated subqueries (`EXISTS`, `NOT EXISTS`) |
-| **Aggregation**       | `GROUP BY` + `HAVING`, `CASE` statements for dynamic categorization           |
-| **Subqueries**        | Single-row (`MAX`), multiple-row (`IN`), scalar and derived tables            |
-| **Data Validation**   | `LEFT JOIN` for orphaned records, null handling, foreign key integrity checks |
-| **ETL**               | `LOAD DATA INFILE` bulk import, staging tables, Python-Pandas preprocessing   |
+| **Aggregation**       | `GROUP BY` + `HAVING`, `CASE` statements for dynamic categorization             |
+| **Subqueries**        | Single-row (`MAX`), multiple-row (`IN`), scalar and derived tables              |
+| **Data Validation**   | `LEFT JOIN` for orphaned records, null handling, foreign key integrity checks   |
+| **ETL**               | `LOAD DATA INFILE` bulk import, staging tables, Python-Pandas preprocessing     |
 
 ### 14 Analytical Reports
 
