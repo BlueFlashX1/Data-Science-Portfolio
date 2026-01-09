@@ -89,10 +89,11 @@ foundation-of-data-science/
 ├── ds.py                               # Core data science utilities (4.8KB)
 ├── train_predict.py                    # Model training pipeline (6.7KB)
 ├── data/
-│   ├── train.csv                       # Training dataset
-│   ├── dev(real_one).csv               # Development/validation set
+│   ├── train.csv                       # Training dataset (587,801 records)
+│   ├── dev(real_one).csv               # Development/validation set (125,958 records)
 │   ├── test.csv                        # Test dataset (features only)
-│   └── submission.csv                  # Final predictions
+│   ├── submission.csv                  # Final predictions
+│   └── README.md                       # Data documentation
 ├── scoring_program/                    # Competition evaluation scripts
 └── scoring_program_dev/                # Development scoring tools
 ```
