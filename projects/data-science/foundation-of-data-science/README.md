@@ -1,14 +1,14 @@
 # Healthcare Readmission Risk Prediction
 
-[![Course Project](https://img.shields.io/badge/Course-Final%20Project-blue?style=for-the-badge)](https://github.com)
-[![INFO 521](https://img.shields.io/badge/INFO%20521-Foundation%20of%20DS-red?style=for-the-badge)](https://github.com)
+[![Course Project](https://img.shields.io/badge/Course-Final%20Project-blue?style=for-the-badge)](https://www.codabench.org/competitions/6813/)
+[![INFO 521](https://img.shields.io/badge/INFO%20521-Foundation%20of%20DS-red?style=for-the-badge)](https://arizona.edu)
 [![University of Arizona](https://img.shields.io/badge/University%20of-Arizona-navy?style=for-the-badge)](https://arizona.edu)
 
-[![Python](https://img.shields.io/badge/Python-3.9+-blue?style=flat-square&logo=python)](https://python.org)
-[![Scikit-learn](https://img.shields.io/badge/Scikit--learn-ML-green?style=flat-square&logo=scikit-learn)](https://scikit-learn.org)
-[![Pandas](https://img.shields.io/badge/Pandas-Data-yellow?style=flat-square&logo=pandas)](https://pandas.pydata.org)
+![Python](https://img.shields.io/badge/Python-3.9+-3776AB?style=flat-square&logo=python&logoColor=white)
+![Scikit-learn](https://img.shields.io/badge/Scikit--learn-F7931E?style=flat-square&logo=scikit-learn&logoColor=white)
+![Pandas](https://img.shields.io/badge/Pandas-150458?style=flat-square&logo=pandas&logoColor=white)
 
-> **Machine learning competition for predicting 30-day hospital readmissions using synthetic EHR data** • University of Arizona, INFO 521 (2024-2025)
+> **Class competition for predicting 30-day hospital readmissions using synthetic EHR data** — University of Arizona, INFO 521
 
 **[Competition Platform](https://www.codabench.org/competitions/6813/#/results-tab)** (CodaBench - login required)
 
@@ -16,49 +16,68 @@
 
 ## Competition Results
 
-### Final Placement: 5th → 13th Place
+**Placed 5th/40** in class competition (development phase)
 
-| Phase           | Ranking        | ROC AUC | Participants | Percentile |
-| --------------- | -------------- | ------- | ------------ | ---------- |
-| **Development** | **5th place**  | 0.9011  | 40           | Top 12.5%  |
-| **Testing**     | **13th place** | 0.8581  | 35           | Top 37%    |
+| Phase           | Ranking    | ROC AUC | Participants |
+| --------------- | ---------- | ------- | ------------ |
+| **Development** | 5th place  | 0.9011  | 40           |
+| **Testing**     | 13th place | 0.8581  | 35           |
 
-**Achievement**: Demonstrated robust model generalization with clinically meaningful predictive accuracy (ROC AUC > 0.85 on both phases)
+---
 
 ## Project Overview
 
 **Challenge**: Predict 30-day hospital readmissions to improve patient outcomes and reduce healthcare costs
 
-**Models Tested**: Logistic Regression • Decision Tree • Random Forest • Gradient Boosting • HistGradientBoosting • AdaBoost • ExtraTrees • Bagging • KNeighbors  
-**Best Model**: Random Forest (ROC AUC 0.9011 dev / 0.8581 test)  
-**Hard Skills**: Python • Scikit-learn • Pandas • Feature engineering • Stratified cross-validation • Hyperparameter tuning • Imbalanced classification handling
+**Best Model**: Random Forest (n_estimators=200, class_weight='balanced')  
+**Dataset**: Synthetic Arizona patient records (Synthea-generated, 125,958 encounters)
 
-**Dataset**: Synthetic Arizona patient records (Synthea-generated, 125,958 encounters) containing demographics, medical conditions, medications, procedures, and insurance data
-
-**Impact**: Hospital readmissions cost the U.S. healthcare system billions annually - this model supports clinical decision-making for targeted interventions and resource allocation
+Hospital readmissions cost the U.S. healthcare system billions annually. This project practiced building a predictive model to support clinical decision-making for targeted interventions.
 
 ---
 
-## Feature Engineering & Data Quality
+## What I Learned
 
-### Critical Decisions
+### Feature Engineering
 
-- **Patient frequency encoding**: Transformed patient_id into count of encounters per patient (key predictor - patients with multiple encounters had higher readmission risk)
-- **Dropped features**: Zip code (not meaningful without distance calculation), encounter_id (unique identifiers), redundant symptom flags (all values were 0)
-- **Imputation strategy**: Mean imputation for numeric features due to large sample size
+| Decision                       | Reasoning                                                               |
+| ------------------------------ | ----------------------------------------------------------------------- |
+| **Patient frequency encoding** | Transformed patient_id into encounter count per patient — key predictor |
+| **Dropped zip code**           | Not meaningful without distance calculation                             |
+| **Dropped symptom columns**    | All values were identical (0) — uninformative                           |
+| **Mean imputation**            | Large sample size made mean imputation appropriate                      |
 
 ### Data Quality Challenges
 
-- **Missing data**: Significant missing values in medication counts, procedure costs, pain scores, patient height
-- **Uninformative features**: All symptom columns (chronic pain, hypertension, diabetes, asthma, depression) had identical values (0)
+- **Missing data**: Significant gaps in medication counts, procedure costs, pain scores, patient height
+- **Uninformative features**: All symptom columns (chronic pain, hypertension, diabetes, asthma, depression) had identical values
 
-## Machine Learning Pipeline
+### Model Comparison
 
-1. **Data Preprocessing**: Missing value imputation (mean for numeric features), feature encoding (OneHotEncoder for categorical)
-2. **Feature Engineering**: Patient frequency encoding (encounter count per patient), dropped non-predictive columns (symptoms, zip, IDs)
-3. **Model Training**: Random Forest classifier with stratified cross-validation (9 algorithms compared)
-4. **Hyperparameter Tuning**: n_estimators=200, max_depth=None, min_samples_split=20, class_weight='balanced'
-5. **Evaluation**: ROC AUC optimization, imbalanced classification handling, cross-validation scoring
+Tested 9 algorithms: Logistic Regression, Decision Tree, Random Forest, Gradient Boosting, HistGradientBoosting, AdaBoost, ExtraTrees, Bagging, KNeighbors
+
+**Random Forest** provided the best balance of performance and stability for this dataset.
+
+---
+
+## Skills Practiced
+
+**Machine Learning Pipeline**
+
+1. Data preprocessing: Missing value imputation, feature encoding
+2. Feature engineering: Patient frequency encoding, dropped non-predictive columns
+3. Model training: Random Forest with stratified cross-validation
+4. Hyperparameter tuning: n_estimators, max_depth, min_samples_split
+5. Evaluation: ROC AUC optimization, imbalanced classification handling
+
+**Concepts Applied**
+
+- Stratified cross-validation for robust evaluation
+- Handling class imbalance with class_weight='balanced'
+- Feature engineering to create meaningful predictors
+- Avoiding data leakage in competition settings
+
+---
 
 ## Project Structure
 
@@ -66,21 +85,27 @@
 foundation-of-data-science/
 ├── README.md                           # Project documentation
 ├── requirements.txt                    # Python dependencies
-├── final_project_process.ipynb         # Main analysis notebook (EDA, preprocessing, modeling)
-├── ds.py                              # Core data science utilities
-├── train_predict.py                   # Model training and prediction pipeline
+├── final_project_process.ipynb         # Main analysis notebook (1,272 lines)
+├── ds.py                               # Core data science utilities (4.8KB)
+├── train_predict.py                    # Model training pipeline (6.7KB)
 ├── data/
-│   ├── train.csv                      # Training dataset
-│   ├── dev(real_one).csv             # Development/validation set
-│   ├── test.csv                      # Test dataset (features only)
-│   └── submission.csv                # Final predictions
-├── scoring_program/                   # Competition evaluation scripts
-└── scoring_program_dev/               # Development scoring tools
+│   ├── train.csv                       # Training dataset
+│   ├── dev(real_one).csv               # Development/validation set
+│   ├── test.csv                        # Test dataset (features only)
+│   └── submission.csv                  # Final predictions
+├── scoring_program/                    # Competition evaluation scripts
+└── scoring_program_dev/                # Development scoring tools
 ```
+
+---
 
 ## Quick Start
 
 ```bash
+# Clone the portfolio repository
+git clone https://github.com/BlueFlashX1/Data-Science-Portfolio.git
+cd Data-Science-Portfolio/projects/data-science/foundation-of-data-science
+
 # Install dependencies
 pip install -r requirements.txt
 
@@ -93,19 +118,17 @@ python train_predict.py
 
 **Requirements**: Python 3.9+, scikit-learn, pandas, numpy, matplotlib, seaborn
 
-## Learning Outcomes
-
-This project demonstrated the complete machine learning workflow from raw data to competition submission:
-
-- **Data exploration**: Identifying missing values, uninformative features, and data quality issues
-- **Feature engineering**: Critical importance of encoding strategies (frequency encoding > aggregation for preserving information)
-- **Model comparison**: Systematic evaluation of multiple algorithms to find optimal balance of performance and interpretability
-- **Avoiding pitfalls**: Preventing data leakage, managing class imbalance, and validating generalization with cross-validation
-- **Competition strategy**: Optimizing for specific metrics (ROC AUC) while maintaining model robustness across evaluation phases
+---
 
 ## Academic Information
 
 **Course**: INFO 521 - Foundation of Data Science  
 **Term**: 2024-2025  
-**Institution**: University of Arizona, School of Information  
+**Institution**: University of Arizona  
 **Competition**: CodaBench Healthcare Equity Explorer
+
+---
+
+<p align="center">
+  <em>University of Arizona — Graduate Student Data Science Portfolio</em>
+</p>
