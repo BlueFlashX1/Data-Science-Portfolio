@@ -61,8 +61,8 @@ Designed normalized database schemas and wrote complex SQL queries to analyze sy
 | **Patients**     | [`patients.csv`](./data/patients.csv)         | 325KB | 1,171    | Demographics, addresses   |
 | **Encounters**   | [`encounters.csv`](./data/encounters.csv)     | 16MB  | 53,346   | Medical visits, billing   |
 | **Conditions**   | [`conditions.csv`](./data/conditions.csv)     | 1MB   | 8,376    | ICD-10 diagnoses          |
-| **Procedures**   | [`procedures.csv`](./data/procedures.csv)     | 5.4MB | ~25,000  | CPT procedure codes       |
-| **Observations** | [`observations.csv`](./data/observations.csv) | 41MB  | ~180,000 | Lab results, vitals       |
+| **Procedures**   | [`procedures.csv`](./data/procedures.csv)     | 5.7MB | 34,981   | CPT procedure codes       |
+| **Observations** | [`observations.csv`](./data/observations.csv) | 43MB  | 299,697  | Lab results, vitals       |
 | **Providers**    | [`providers.csv`](./data/providers.csv)       | 1MB   | 5,855    | Facilities, practitioners |
 
 ---
