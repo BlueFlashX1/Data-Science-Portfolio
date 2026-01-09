@@ -6,17 +6,15 @@
 > **Graduate Student pursuing M.S. in Data Science** | University of Arizona  
 > _Seeking entry-level Data Analyst or Junior Data Scientist positions in healthcare, biological sciences, or AI-driven applications_
 
-**Skills I'm Developing**: `R` `Python` `SQL/NoSQL` `Machine Learning` `Healthcare Analytics` `Data Visualization` `Statistical Computing`
-
 **Interests**: Healthcare data • Biological sciences • Automation • Data-driven problem solving
 
 ---
 
 **Class Competition**: Placed **5th/40** (dev) in healthcare readmission prediction • ROC AUC 0.90
 
-**Navigation**: [Projects](#academic-projects) • [Technical Skills](#skills--technical-stack) • [Connect](#connect)
+**Navigation**: [Projects](#academic-projects) • [Skills](#skills) • [Connect](#connect)
 
-## Skills & Technical Stack
+## Skills
 
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![R](https://img.shields.io/badge/R-276DC3?style=for-the-badge&logo=r&logoColor=white)
@@ -24,21 +22,23 @@
 ![Scikit-Learn](https://img.shields.io/badge/scikit--learn-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white)
 ![ggplot2](https://img.shields.io/badge/ggplot2-E34F26?style=for-the-badge&logo=r&logoColor=white)
 
-**Languages**: R • Python • SQL/NoSQL  
-**Data Science**: Tidyverse • ggplot2 • Pandas • NumPy • Scikit-learn • SHAP • Quarto  
-**Databases**: MySQL • Database Design • Temporal Analysis  
-**Development**: VS Code • Git/GitHub • RMarkdown • Jupyter
+| Category             | Tools & Libraries                                         |
+| -------------------- | --------------------------------------------------------- |
+| **Languages**        | Python • R • SQL                                          |
+| **Machine Learning** | Scikit-learn • Random Forest • Logistic Regression • SHAP |
+| **Data Analysis**    | Pandas • NumPy • tidyverse • dplyr                        |
+| **Visualization**    | ggplot2 • Matplotlib • ggalluvial • viridis               |
+| **Databases**        | MySQL • Database Design (3NF) • CTEs • Window Functions   |
+| **Development**      | Git • Jupyter • RMarkdown • Quarto                        |
 
-### Skills Applied in Coursework
+### What I've Practiced
 
-| Domain                      | What I've Practiced                                                                                               |
-| --------------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| **Healthcare Analytics**    | EHR data processing (Synthea) • Readmission prediction • Clinical quality metrics • Provider utilization analysis |
-| **Machine Learning**        | Class competition (5th/40) • Model explainability (SHAP) • Imbalanced classification • Cross-validation           |
-| **Biological Data Science** | Taxonomic classification • Evolutionary trait analysis • Handling sparse data • Domain-driven feature engineering |
-| **Database Systems**        | Normalized schema design (3NF) • Multi-table joins • CTEs & window functions • Temporal analysis                  |
-| **Data Visualization**      | ggplot2 • Advanced plot types (alluvial, faceted) • Custom R functions • Reproducible research (RMarkdown/Quarto) |
-| **Data Engineering**        | Data transformation (tidyverse, pandas) • Missing data handling • Feature scaling • Preprocessing pipelines       |
+| Domain                   | Skills Applied                                                                |
+| ------------------------ | ----------------------------------------------------------------------------- |
+| **Healthcare Analytics** | EHR data processing • Readmission prediction • Clinical quality metrics       |
+| **Machine Learning**     | Classification • Model comparison • Cross-validation • SHAP explainability    |
+| **Database Systems**     | Schema design (3NF) • Multi-table joins • Temporal analysis                   |
+| **Data Visualization**   | Advanced plots (alluvial, faceted) • Custom functions • Reproducible research |
 
 ## Academic Projects
 
