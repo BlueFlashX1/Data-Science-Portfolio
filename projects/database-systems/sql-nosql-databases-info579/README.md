@@ -36,9 +36,9 @@ Designed normalized database schemas and wrote complex SQL queries to analyze sy
 
 ### Database Design
 
-- **3NF Normalization**: Designed normalized schemas with referential integrity
-- **Foreign Keys**: Cascading relationships across patient→encounter→provider→diagnosis
-- **Strategic Indexing**: Optimized primary/foreign keys for multi-table joins
+- **3NF Normalization**: 8 entity tables with 2 junction tables for many-to-many relationships
+- **Foreign Keys**: 12 FK constraints with cascading relationships (patient→encounter→provider)
+- **Schema Verified**: Record counts confirmed via AUTO_INCREMENT values in MySQL dump
 
 ### Business Insights
 
@@ -56,14 +56,14 @@ Designed normalized database schemas and wrote complex SQL queries to analyze sy
 
 **6 Entities • 67MB Total • Synthea Synthetic EHR Data**
 
-| Entity           | File                                          | Size  | Records  | Description               |
-| ---------------- | --------------------------------------------- | ----- | -------- | ------------------------- |
-| **Patients**     | [`patients.csv`](./data/patients.csv)         | 325KB | 1,171    | Demographics, addresses   |
-| **Encounters**   | [`encounters.csv`](./data/encounters.csv)     | 16MB  | 53,346   | Medical visits, billing   |
-| **Conditions**   | [`conditions.csv`](./data/conditions.csv)     | 1MB   | 8,376    | ICD-10 diagnoses          |
-| **Procedures**   | [`procedures.csv`](./data/procedures.csv)     | 5.7MB | 34,981   | CPT procedure codes       |
-| **Observations** | [`observations.csv`](./data/observations.csv) | 43MB  | 299,697  | Lab results, vitals       |
-| **Providers**    | [`providers.csv`](./data/providers.csv)       | 1MB   | 5,855    | Facilities, practitioners |
+| Entity           | File                                          | Size  | Records | Description               |
+| ---------------- | --------------------------------------------- | ----- | ------- | ------------------------- |
+| **Patients**     | [`patients.csv`](./data/patients.csv)         | 325KB | 1,171   | Demographics, addresses   |
+| **Encounters**   | [`encounters.csv`](./data/encounters.csv)     | 16MB  | 53,346  | Medical visits, billing   |
+| **Conditions**   | [`conditions.csv`](./data/conditions.csv)     | 1MB   | 8,376   | ICD-10 diagnoses          |
+| **Procedures**   | [`procedures.csv`](./data/procedures.csv)     | 5.7MB | 34,981  | CPT procedure codes       |
+| **Observations** | [`observations.csv`](./data/observations.csv) | 43MB  | 299,697 | Lab results, vitals       |
+| **Providers**    | [`providers.csv`](./data/providers.csv)       | 1MB   | 5,855   | Facilities, practitioners |
 
 ---
 
@@ -81,9 +81,8 @@ sql-nosql-databases-info579/
 │   ├── observations.csv
 │   └── providers.csv
 └── database-backup/
-    ├── Final_Project_schema.sql                 # Database structure
-    ├── Final_Project_sample_data.sql            # Sample records
-    └── Final_Project_analytics_reports.sql      # 14 analytical queries
+    ├── Final_Project_schema.sql                 # Database structure (19KB)
+    └── Final_Project_analytics_reports.sql      # 14 report tables with data (3.5MB)
 ```
 
 ---
@@ -122,10 +121,7 @@ sql-nosql-databases-info579/
 # Create database and load schema
 mysql -u root -p < database-backup/Final_Project_schema.sql
 
-# Load sample data
-mysql -u root -p final_project < database-backup/Final_Project_sample_data.sql
-
-# Run analytical reports
+# Load analytical reports (contains report data)
 mysql -u root -p final_project < database-backup/Final_Project_analytics_reports.sql
 ```
 
