@@ -1,0 +1,17 @@
+# R project files
+.Rproj.user/
+.Rhistory
+.RData
+.Ruserdata
+
+# RMarkdown cache
+*_cache/
+*_files/
+
+# Knitr output
+*.md
+!README.md
+
+# OS files
+.DS_Store
+Thumbs.db
