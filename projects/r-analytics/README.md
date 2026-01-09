@@ -4,7 +4,7 @@
 [![ggplot2](https://img.shields.io/badge/ggplot2-Visualization-orange?style=for-the-badge&logo=r)](https://ggplot2.tidyverse.org)
 [![RMarkdown](https://img.shields.io/badge/RMarkdown-Reproducible-FF6B35?style=for-the-badge)](https://rmarkdown.rstudio.com)
 
-> **Statistical visualization and data analysis demonstrating R programming expertise across ecological, safety, and economic domains**
+> **Course portfolio demonstrating R programming and ggplot2 across wildlife, safety, and economic datasets**
 
 ## Featured Project
 
@@ -24,7 +24,7 @@
 - **Custom Function**: Automated data dictionary generator
 - **Reproducible Research**: RMarkdown → PDF publication workflow
 
-**Key Findings**
+**What I Learned**
 
 | Domain                  | Analysis                              | Key Insight                                                                       |
 | ----------------------- | ------------------------------------- | --------------------------------------------------------------------------------- |
@@ -36,12 +36,12 @@
 
 - Categorical grouping strategies to avoid classification overlap
 - Custom `data_dict()` function for automated data exploration
-- Publication-ready PDF output (399KB, 992 lines of R code)
+- Publication-ready PDF output (399KB, 991 lines of R code)
 - Color palette design for ecological data visualization
 
 ---
 
-## Technical Skills Demonstrated
+## Skills Practiced
 
 ### Data Manipulation
 
@@ -84,7 +84,7 @@ r-analytics/
 ├── README.md                          # This file
 └── data-visualization-portfolio/
     ├── MatthewThompson_Final_Portfolio.pdf   # Complete rendered output
-    ├── Final Portfolio Assignment(Finished).Rmd  # Source code (992 lines)
+    ├── Final Portfolio Assignment(Finished).Rmd  # Source code (991 lines)
     ├── Data Dictionary Function.R     # Custom exploration function
     ├── Final Portfolio.Rproj          # RStudio project file
     └── data/
@@ -121,14 +121,11 @@ install.packages(c(
 **Course**: INFO 526 - Data Visualization  
 **Institution**: University of Arizona  
 **Academic Year**: 2024-2025  
-**Program**: Master's in Data Science
+**Program**: Graduate Student — M.S. in Data Science
 
 ---
 
-<div align="center">
-
-**R programming and statistical visualization for data-driven insights**
-
-_Part of the Data Science Portfolio | University of Arizona_
-
-</div>
+<p align="center">
+  <em>R programming and statistical visualization for data-driven insights</em><br>
+  <em>Part of the Data Science Portfolio | University of Arizona</em>
+</p>

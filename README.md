@@ -96,7 +96,7 @@ Practiced machine learning classification on real biological data, comparing bin
 
 ### [Statistical Data Visualization Portfolio](./projects/r-analytics/data-visualization-portfolio/)
 
-**Course portfolio with ecological and economic visualizations** • _INFO 526 Portfolio_
+**Course portfolio with wildlife, safety, and economic visualizations** • _INFO 526 Portfolio_
 
 Created comprehensive visualizations across three domains using R, ggplot2, and tidyverse. Practiced custom data transformations, advanced plot types (alluvial diagrams, faceted layouts), and reproducible workflows.
 
