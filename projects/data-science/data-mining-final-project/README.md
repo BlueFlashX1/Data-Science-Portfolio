@@ -25,19 +25,24 @@ This project compared binary presence/absence data vs. evolutionary origin rates
 
 ## Results Preview
 
-### SHAP Feature Importance (Evolutionary Rates Model)
+### Class Distribution
 
 <p align="center">
-  <img src="./images/Plots/SHAP_evolution.png" alt="SHAP values showing Visual and Competition traits as top predictors" width="700">
+  <img src="./images/Plots/phylum_distribution.png" alt="Distribution of families across phyla" width="600">
 </p>
 
-_Visual (V), Competition (C), and Auditory (A) traits had the strongest predictive power for classifying superphyla._
+_Dataset has 1,087 animal families across 5 superphyla — class imbalance required balanced metrics._
 
-### Trait Distribution Across Phyla
+### SHAP Feature Importance
 
-<p align="center">
-  <img src="./images/Plots/phylum_distribution.png" alt="Distribution of families across phyla" width="700">
-</p>
+Comparing which traits predict taxonomy using two different data representations:
+
+|                Evolutionary Rates (Better)                |                Binary Presence/Absence                 |
+| :-------------------------------------------------------: | :----------------------------------------------------: |
+| <img src="./images/Plots/SHAP_evolution.png" width="350"> | <img src="./images/Plots/SHAP_family.png" width="350"> |
+|    Visual (V), Competition (C), Auditory (A) strongest    |               Sparse data = weak signal                |
+
+_Evolutionary rates provided clearer feature importance than binary presence/absence data._
 
 ---
 
