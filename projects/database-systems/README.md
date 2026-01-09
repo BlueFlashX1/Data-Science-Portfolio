@@ -1,103 +1,82 @@
 # Database Systems Projects
 
-[![SQL](https://img.shields.io/badge/SQL-Database%20Design-4479A1?style=for-the-badge&logo=mysql)](https://mysql.com)
-[![Python](https://img.shields.io/badge/Python-Database%20Integration-3776AB?style=for-the-badge&logo=python)](https://python.org)
-[![Healthcare](https://img.shields.io/badge/Healthcare-Analytics-red?style=for-the-badge&logo=heart)](https://github.com)
+[![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)](https://mysql.com)
+[![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
 
-> **Advanced database systems and healthcare analytics demonstrating expertise in SQL design, implementation, and large-scale data analysis**
+> **Course project on database design and SQL analytics for healthcare data**
 
 ## Featured Project
 
-### Healthcare Analytics Database System
+### [Healthcare Analytics Database System](./sql-nosql-databases-info579/)
 
-**[INFO 579 - SQL & NoSQL Databases](./sql-nosql-databases-info579/)** | Final Project
-
-**Technologies & Tools**
+**INFO 579 - SQL & NoSQL Databases** | Final Project
 
 ![MySQL](https://img.shields.io/badge/MySQL_8.0-4479A1?style=flat-square&logo=mysql&logoColor=white)
 ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
-![Synthea](https://img.shields.io/badge/Synthea-EHR_Data-orange?style=flat-square)
+![Pandas](https://img.shields.io/badge/Pandas-150458?style=flat-square&logo=pandas&logoColor=white)
 
 **Project Scope**
 
-- **67MB Synthea EHR Dataset**: 1,171 patients, 53,346 encounters across 6 normalized entities
-- **3NF Database Design**: Optimized schema with referential integrity
-- **14 Analytical Reports**: Complex SQL queries for population health insights
-- **Python Integration**: Automated data validation and verification scripts
+- **67MB Synthea EHR Dataset**: 1,171 patients, 53,346 encounters across 6 entities
+- **3NF Database Design**: Normalized schema with 12 foreign key constraints
+- **14 Analytical Reports**: SQL queries for clinical quality and population health
+- **Schema Verified**: Record counts confirmed via MySQL AUTO_INCREMENT values
 
-**Key Business Findings**
+**What I Learned**
 
-- **Disease Management**: Viral sinusitis (63%) identified as top condition requiring preventive care
-- **Emergency Services**: 3.57 per 1,000 emergency 30-day mortality rate analysis
-- **Provider Workload**: Severe imbalance detected (3,000+ encounters for top provider)
-- **High-Risk Patients**: ≥3 ER visits threshold for targeted intervention programs
-- **Cost Analysis**: $1.1M in high-cost patient care identified for management strategies
-
-**Technical Highlights**
-
-- Advanced SQL: Multi-table JOINs, CTEs, window functions, temporal analysis
-- Performance optimization through strategic indexing
-- Healthcare data standards (ICD-10, SNOMED CT concepts)
-- Population health analytics at scale
-
-## Technical Skills Demonstrated
-
-### Database Design
-
-- **Normalization**: Complete database normalization to eliminate redundancy
-- **Entity-Relationship Modeling**: Complex relationship design and implementation
-- **Constraint Implementation**: Referential integrity and business rule enforcement
-- **Performance Optimization**: Strategic indexing and query optimization
-
-### SQL Proficiency
-
-- **Complex Queries**: Advanced joins, subqueries, window functions
-- **Data Analysis**: Analytical queries for business intelligence
-- **Schema Management**: DDL operations for database structure
-- **Performance Tuning**: Query optimization and execution plan analysis
-
-### Integration & Validation
-
-- **Python-SQL Integration**: Database connectivity and data processing
-- **Data Quality Assurance**: Automated integrity checking and validation
-- **ETL Processes**: Extract, transform, and load operations
-- **Cross-platform Compatibility**: Multi-database system experience
-
-### Healthcare Domain Expertise
-
-- **Medical Data Standards**: Implementation of healthcare coding systems
-- **HIPAA Compliance**: Understanding of healthcare data privacy requirements
-- **Clinical Workflows**: Database design supporting healthcare operations
-- **Population Health Analytics**: Large-scale healthcare data analysis
-
-## Technologies & Tools
-
-### Database Management Systems
-
-- **Relational**: PostgreSQL, SQL Server, MySQL
-- **NoSQL**: MongoDB, document-based storage concepts
-- **Cloud Platforms**: Database deployment and management
-
-### Development Environment
-
-- **Database Tools**: SQL Server Management Studio, pgAdmin, DataGrip
-- **Programming**: Python, SQL, database connectivity libraries
-- **Version Control**: Git-based project management
-- **Documentation**: Comprehensive technical documentation
-
-### Analysis & Visualization
-
-- **Data Analysis**: Statistical analysis of database contents
-- **Reporting**: Automated report generation from database queries
-- **Performance Monitoring**: Database performance analysis and optimization
-- **Data Visualization**: Integration with visualization tools for insights
+| Objective                | Key Finding                                                 |
+| ------------------------ | ----------------------------------------------------------- |
+| **Clinical Quality**     | Viral sinusitis most prevalent (63% of patients)            |
+| **Provider Utilization** | Severe workload imbalance (top provider: 3,000+ encounters) |
+| **Readmissions**         | Flagged high-risk ER patients (≥3 visits) for intervention  |
+| **30-Day Mortality**     | Emergency: 3.57 per 1,000 encounters                        |
 
 ---
 
-<div align="center">
+## Skills Practiced
 
-**Database systems expertise applied to real-world data challenges**
+### Database Design
 
-_Bridging theoretical database concepts with practical implementation_
+- **Normalization**: Designed 3NF schema to reduce redundancy
+- **Entity Relationships**: 8 tables with 2 junction tables for many-to-many
+- **Referential Integrity**: 12 foreign key constraints with cascading actions
+- **Indexing**: Primary/foreign key optimization for multi-table joins
 
-</div>
+### SQL Techniques
+
+| Category              | What I Practiced                              |
+| --------------------- | --------------------------------------------- |
+| **Joins**             | Multi-table (4+), LEFT/INNER, self-joins      |
+| **Advanced Queries**  | CTEs, correlated subqueries, window functions |
+| **Temporal Analysis** | DATEDIFF, DATE_ADD for 30-day tracking        |
+| **Aggregation**       | GROUP BY + HAVING, CASE for categorization    |
+
+### Data Integration
+
+- **Python-MySQL**: Database connectivity with Pandas for preprocessing
+- **ETL**: LOAD DATA INFILE bulk import from CSV
+- **Data Validation**: Verified counts against AUTO_INCREMENT values
+
+---
+
+## Technologies Used
+
+**Database**: MySQL 8.0  
+**Languages**: SQL, Python  
+**Libraries**: Pandas (ETL preprocessing)  
+**Data Source**: Synthea synthetic EHR data
+
+---
+
+## Academic Information
+
+**Course**: INFO 579 - SQL & NoSQL Databases  
+**Institution**: University of Arizona  
+**Term**: 2024-2025  
+**Program**: Graduate Student — M.S. in Data Science
+
+---
+
+<p align="center">
+  <em>Database design and SQL analytics for healthcare data</em>
+</p>
