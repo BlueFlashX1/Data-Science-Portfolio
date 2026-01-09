@@ -1,15 +1,15 @@
 # Trait-Based Prediction of Animal Taxa
 
-[![Course Project](https://img.shields.io/badge/Course-Final%20Project-blue?style=for-the-badge)](https://github.com)
-[![INFO 523](https://img.shields.io/badge/INFO%20523-Data%20Mining%20%26%20ML-red?style=for-the-badge)](https://github.com)
+[![Course Project](https://img.shields.io/badge/Course-Final%20Project-blue?style=for-the-badge)](https://info-523-su25.github.io/final-project-thompson/)
+[![INFO 523](https://img.shields.io/badge/INFO%20523-Data%20Mining-red?style=for-the-badge)](https://datamineaz.org/)
 [![University of Arizona](https://img.shields.io/badge/University%20of-Arizona-navy?style=for-the-badge)](https://arizona.edu)
 
-[![Python](https://img.shields.io/badge/Python-3.12-blue?style=flat-square&logo=python)](https://python.org)
-[![Scikit-learn](https://img.shields.io/badge/Scikit--learn-1.7.1-green?style=flat-square&logo=scikit-learn)](https://scikit-learn.org)
-[![SHAP](https://img.shields.io/badge/SHAP-0.48.0-red?style=flat-square)](https://shap.readthedocs.io)
-[![Quarto](https://img.shields.io/badge/Quarto-Website-75AADB?style=flat-square&logo=quarto)](https://quarto.org)
+![Python](https://img.shields.io/badge/Python-3.12-3776AB?style=flat-square&logo=python&logoColor=white)
+![Scikit-learn](https://img.shields.io/badge/Scikit--learn-F7931E?style=flat-square&logo=scikit-learn&logoColor=white)
+![SHAP](https://img.shields.io/badge/SHAP-Explainability-FF6B6B?style=flat-square)
+![Quarto](https://img.shields.io/badge/Quarto-Website-75AADB?style=flat-square&logo=quarto&logoColor=white)
 
-> **Machine learning classification of animal superphyla using sexually selected traits** • University of Arizona, INFO 523 (Summer 2025)
+> **Course project exploring whether sexually selected traits can predict animal taxonomy** — University of Arizona, INFO 523
 
 **[View Live Website](https://info-523-su25.github.io/final-project-thompson/)** | **[Analysis Notebook](./index.ipynb)**
 
@@ -19,128 +19,148 @@
 
 **Can sexually selected traits predict higher-level taxonomic groups (superphyla), and which traits matter most?**
 
-Compared binary presence/absence data vs. evolutionary origin rates across 1,087 animal families to determine optimal data representation for taxonomic classification.
+This project compared binary presence/absence data vs. evolutionary origin rates across 1,087 animal families to determine which data representation works best for taxonomic classification.
 
 ---
 
-## Models & Technical Implementation
+## Results Preview
 
-**Models Tested**: Logistic Regression • Random Forest • Decision Tree  
-**Best Model**: Logistic Regression with evolutionary rates  
-**Hard Skills**: Python • Scikit-learn • SHAP (model explainability) • Stratified K-fold cross-validation • Balanced accuracy metrics • Feature scaling
+### SHAP Feature Importance (Evolutionary Rates Model)
 
-### Data Engineering
+<p align="center">
+  <img src="./images/Plots/SHAP_evolution.png" alt="SHAP values showing Visual and Competition traits as top predictors" width="700">
+</p>
 
-- **Superphyla grouping**: Reduced sparsity by consolidating 10+ phyla → 5 superphyla
-- **Feature comparison**: Binary (10 traits) vs. continuous evolutionary rates (9 traits)
-- **Sample sizes**: 1,087 families (binary), 84 phylogenetic estimates (rates)
+_Visual (V), Competition (C), and Auditory (A) traits had the strongest predictive power for classifying superphyla._
+
+### Trait Distribution Across Phyla
+
+<p align="center">
+  <img src="./images/Plots/phylum_distribution.png" alt="Distribution of families across phyla" width="700">
+</p>
 
 ---
 
-## Key Findings
+## What I Learned
 
-### Best Model: Logistic Regression + Evolutionary Rates
+This was a course project where I practiced machine learning classification on real biological data. Here's what I found:
 
-| Finding                   | Detail                                                                                                                                                  |
-| ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Data Quality Impact**   | Evolutionary rates provided stronger signal than binary data (sparse, Arthropoda-dominated), though overall performance remained modest (~50% accuracy) |
-| **Key Predictors (SHAP)** | Visual, Competition, Auditory, and Female choice traits (binary models relied almost entirely on SS flag)                                               |
-| **Classification Target** | 5 superphyla: Ecdysozoa, Lophotrochozoa, Deuterostomia, Basal Metazoa, Basal Bilateria                                                                  |
-| **Evaluation Strategy**   | Balanced accuracy & macro F1 (handles class imbalance)                                                                                                  |
+| Finding                              | Detail                                                                                      |
+| ------------------------------------ | ------------------------------------------------------------------------------------------- |
+| **Evolutionary rates > Binary data** | Continuous origin rates provided a stronger signal than sparse binary presence/absence data |
+| **Modest accuracy (~50%)**           | The classification task was challenging due to data sparsity and class imbalance            |
+| **Key predictors**                   | Visual, Competition, and Auditory traits (identified via SHAP analysis)                     |
+| **Class imbalance matters**          | Used balanced accuracy and macro F1 instead of regular accuracy                             |
 
-### Performance Comparison
+### Models Tested
 
-| Model                   | Data Type        | Result                            |
-| ----------------------- | ---------------- | --------------------------------- |
-| **Logistic Regression** | **Evolutionary** | **Highest accuracy and macro F1** |
-| Random Forest           | Evolutionary     | Lower performance                 |
-| Decision Tree           | Evolutionary     | Lower but interpretable           |
-| All Models              | Binary           | Poor (insufficient signal)        |
+| Model                   | Data Type          | Result                     |
+| ----------------------- | ------------------ | -------------------------- |
+| **Logistic Regression** | Evolutionary rates | Best performance           |
+| Random Forest           | Evolutionary rates | Lower accuracy             |
+| Decision Tree           | Evolutionary rates | Lower but interpretable    |
+| All models              | Binary data        | Poor (insufficient signal) |
 
-### Potential Improvements
+---
 
-Based on findings, future work could:
+## Technical Skills Practiced
 
-- Remove SS trait and remodel family dataset
-- Improve data quality and reduce sparsity
-- Apply SHAP for deeper biological interpretations
+**Machine Learning Pipeline**
 
-## Technical Implementation
+1. Preprocessing: Missing value handling, feature scaling, label encoding
+2. Cross-validation: Stratified K-fold for handling class imbalance
+3. Model training: Logistic Regression, Decision Trees, Random Forest
+4. Explainability: SHAP values for feature importance interpretation
+5. Evaluation: Balanced accuracy and macro F1 (critical for imbalanced classes)
 
-### Machine Learning Pipeline
+**Concepts Applied**
 
-1. **Preprocessing**: Missing value handling, feature scaling, label encoding
-2. **Cross-validation**: Stratified K-fold for robust performance estimation
-3. **Model training**: Logistic Regression, Decision Trees, Random Forest
-4. **Explainability**: SHAP values for feature importance and model interpretation
-5. **Evaluation**: Balanced accuracy, macro F1 (critical for imbalanced classes)
+- Imbalanced classification with balanced metrics
+- Model explainability with SHAP
+- Domain-driven feature engineering (grouping phyla into superphyla)
+- Reproducible research with Quarto
 
-### Key Technical Skills Demonstrated
-
-- **Imbalanced classification**: Balanced metrics, stratified sampling
-- **Model explainability**: SHAP analysis for biological insights
-- **Cross-validation**: Proper generalization assessment
-- **Feature engineering**: Domain-driven data transformation (superphyla grouping)
-- **Comparative analysis**: Binary vs. continuous feature evaluation
-- **Reproducible research**: Quarto website with full analysis pipeline
+---
 
 ## Dataset
 
-| File                                                                  | Size | Records        | Description                   |
-| --------------------------------------------------------------------- | ---- | -------------- | ----------------------------- |
-| [`family_related_data.csv`](./data/family_related_data.csv)           | 50KB | 1,087 families | Binary trait presence/absence |
-| [`animals_rateof_evolution.csv`](./data/animals_rateof_evolution.csv) | 12KB | 84 estimates   | Evolutionary origin rates     |
+| File                                                                  | Records        | Description                   |
+| --------------------------------------------------------------------- | -------------- | ----------------------------- |
+| [`family_related_data.csv`](./data/family_related_data.csv)           | 1,087 families | Binary trait presence/absence |
+| [`animals_rateof_evolution.csv`](./data/animals_rateof_evolution.csv) | 84 estimates   | Evolutionary origin rates     |
 
-**Traits**: Auditory (A), Gustatory (G), Olfactory (O), Tactile (T), Visual (V), Male competition (C), Female competition (K), Intersexual conflict (S), Female choice (F), Male choice (M)
+**Traits analyzed**: Auditory (A), Gustatory (G), Olfactory (O), Tactile (T), Visual (V), Male competition (C), Female competition (K), Intersexual conflict (S), Female choice (F), Male choice (M)
 
-_Full data codebook: [`data/README.md`](./data/README.md)_
+**Classification target**: 5 superphyla — Ecdysozoa, Lophotrochozoa, Deuterostomia, Basal Metazoa, Basal Bilateria
+
+Full codebook: [`data/README.md`](./data/README.md)
+
+---
 
 ## Quick Start
 
 ```bash
-# Clone and install
-git clone <repository-url>
-cd data-mining-final-project
+# Clone the portfolio repository
+git clone https://github.com/BlueFlashX1/portfolio.git
+cd portfolio/projects/data-science/data-mining-final-project
+
+# Install dependencies
 pip install -r requirements.txt
 
-# Launch analysis
+# Open the analysis notebook
 jupyter notebook index.ipynb
 ```
 
-**Requirements**: Python 3.12+, scikit-learn 1.7.1, SHAP 0.48.0, pandas 2.2.2, matplotlib 3.10.1
+**Requirements**: Python 3.12+, scikit-learn, shap, pandas, numpy, matplotlib, seaborn
 
-## Project Resources
-
-- **[Live Website](https://info-523-su25.github.io/final-project-thompson/)** - Full interactive analysis
-- **[Main Analysis](./index.ipynb)** - Jupyter notebook (99 cells, comprehensive)
-- **[Proposal](./proposal.qmd)** - Research questions and methodology
-- **[Presentation](./presentation.qmd)** - Key findings and visualizations
-- **[Data Documentation](./data/README.md)** - Complete codebook
+---
 
 ## Project Structure
 
 ```
 data-mining-final-project/
-├── index.ipynb              # Main analysis (99 cells, 1.2MB)
-├── _quarto.yml              # Website configuration
-├── requirements.txt         # Python dependencies
+├── README.md                 # This file
+├── index.ipynb               # Main analysis notebook (99 cells)
+├── requirements.txt          # Python dependencies
+├── _quarto.yml               # Website configuration
 ├── data/
-│   ├── family_related_data.csv          # Binary traits (1,087 families)
-│   ├── animals_rateof_evolution.csv     # Evolutionary rates (84 estimates)
-│   └── README.md                        # Data codebook
-├── docs/                    # Generated Quarto website
-├── proposal.qmd             # Research proposal (236 lines)
-├── presentation.qmd         # Results presentation (795 lines)
-└── citations.qmd            # Bibliography
+│   ├── family_related_data.csv       # Binary traits (1,087 families)
+│   ├── animals_rateof_evolution.csv  # Evolutionary rates (84 estimates)
+│   └── README.md                     # Data codebook
+├── images/
+│   └── Plots/                # Generated visualizations
+│       ├── SHAP_evolution.png
+│       ├── SHAP_family.png
+│       └── ...
+├── docs/                     # Generated Quarto website (don't edit)
+├── proposal.qmd              # Research proposal
+├── presentation.qmd          # Results presentation
+└── citations.qmd             # Bibliography
 ```
+
+---
+
+## Project Resources
+
+| Resource                                                                | Description                                 |
+| ----------------------------------------------------------------------- | ------------------------------------------- |
+| [Live Website](https://info-523-su25.github.io/final-project-thompson/) | Full interactive analysis and presentation  |
+| [Analysis Notebook](./index.ipynb)                                      | Jupyter notebook with all code (99 cells)   |
+| [Proposal](./proposal.qmd)                                              | Original research questions and methodology |
+| [Presentation](./presentation.qmd)                                      | Key findings and visualizations             |
+| [Data Codebook](./data/README.md)                                       | Complete variable descriptions              |
+
+---
 
 ## Academic Information
 
 **Course**: INFO 523 - Data Mining & Machine Learning  
 **Term**: Summer 2025  
 **Institution**: University of Arizona  
-**Acknowledgment**: Methodology inspired by Mine Çetinkaya-Rundel @ Duke University
+**Acknowledgment**: Project template inspired by Mine Çetinkaya-Rundel @ Duke University
 
 ---
 
-**[View Interactive Analysis](https://info-523-su25.github.io/final-project-thompson/)** | Course final project exploring evolutionary biology through machine learning
+<p align="center">
+  <a href="https://info-523-su25.github.io/final-project-thompson/">View the Full Interactive Analysis</a>
+</p>
