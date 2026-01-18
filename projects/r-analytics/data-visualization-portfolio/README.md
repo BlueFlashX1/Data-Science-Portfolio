@@ -13,7 +13,7 @@
 
 ## Project Overview
 
-This portfolio showcases visualizations I created for INFO 526 using R, ggplot2, and tidyverse. I analyzed wildlife predation patterns, workplace safety trends, and housing market dynamics, implementing data transformation, categorical grouping, and multi-plot layouts.
+I built comprehensive visualizations for INFO 526 using R, ggplot2, and tidyverse. I analyzed wildlife predation patterns, workplace safety trends, and housing market dynamics, implementing data transformation, categorical grouping, and multi-plot layouts.
 
 ---
 
@@ -33,7 +33,7 @@ This portfolio showcases visualizations I created for INFO 526 using R, ggplot2,
 **Dataset**: 168KB cougar killsite data with prey species and temporal information  
 **Visualizations**: Pie chart (prey distribution) • Grouped bar chart (temporal trends)
 
-I grouped prey species into 4 ecological categories (Wild Ungulates, Small Animals, Domestic Animals, Carnivores) to avoid overlapping classifications.
+I developed a grouping strategy for prey species into 4 ecological categories (Wild Ungulates, Small Animals, Domestic Animals, Carnivores) to avoid overlapping classifications.
 
 **Findings**:
 
@@ -51,7 +51,7 @@ I grouped prey species into 4 ecological categories (Wild Ungulates, Small Anima
 **Dataset**: 28MB comprehensive workplace fatality data (146K+ records)  
 **Visualizations**: Line graph (temporal trends) • Alluvial diagram (cause-effect relationships)
 
-I identified why stacked plots can be problematic for quantifying values and switched to line graphs for clearer temporal trends. The alluvial diagram effectively visualizes cause-effect relationships.
+I identified why stacked plots can be problematic for quantifying values and implemented line graphs for clearer temporal trends. I built alluvial diagrams to effectively visualize cause-effect relationships.
 
 **Findings**:
 
@@ -82,9 +82,9 @@ I identified why stacked plots can be problematic for quantifying values and swi
 
 ### Reproducible Research Workflow
 
-- **RMarkdown to PDF**: Complete code documentation with rendered output
-- **Custom Functions**: `data_dict()` function for automated data exploration (variable info, descriptive stats, missing values)
-- **Data Transformation**: Complex categorical grouping, handling missing values, temporal data processing
+- **RMarkdown to PDF**: Created complete code documentation with rendered output
+- **Custom Functions**: Developed `data_dict()` function for automated data exploration (variable info, descriptive stats, missing values)
+- **Data Transformation**: Performed complex categorical grouping, handled missing values, and processed temporal data
 
 ---
 
@@ -143,17 +143,17 @@ data_table <- data_dict(your_dataset, print_table = "Yes")   # Returns formatted
 
 ### What I Applied in This Course
 
-- Fundamental plotting techniques (bar, pie, line, area charts)
-- Advanced visualization methods (alluvial diagrams, faceted plots)
-- Data transformation and categorical grouping strategies
-- Statistical communication through visual narratives
-- RMarkdown workflow for reproducible research
+- Implemented fundamental plotting techniques (bar, pie, line, area charts)
+- Built advanced visualizations (alluvial diagrams, faceted plots)
+- Applied data transformation and categorical grouping strategies
+- Created statistical communication through visual narratives
+- Established RMarkdown workflow for reproducible research
 
 ### Improvements I Made
 
-- Moved from stacked to grouped bar charts for better readability
+- Switched from stacked to grouped bar charts for better readability
 - Refined categorical grouping to avoid overlapping classifications
-- Improved color palette selection and visual clarity
+- Enhanced color palette selection and visual clarity
 
 ---
 

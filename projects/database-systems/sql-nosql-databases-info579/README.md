@@ -16,7 +16,7 @@
 
 ## Project Overview
 
-Designed normalized database schemas and wrote complex SQL queries to analyze synthetic EHR data. Created 14 analytical reports addressing clinical quality, provider utilization, readmissions, and profitability.
+I designed normalized database schemas and wrote complex SQL queries to analyze synthetic EHR data. I built 14 analytical reports addressing clinical quality, provider utilization, readmissions, and profitability.
 
 **Key Metrics**: 1,171 patients • 53,346 encounters • 8,376 diagnoses • 67MB Synthea EHR data
 
@@ -28,17 +28,17 @@ Designed normalized database schemas and wrote complex SQL queries to analyze sy
 
 | Category              | Techniques                                                  |
 | --------------------- | ----------------------------------------------------------- |
-| **Joins**             | Multi-table (4+), LEFT/INNER variations, self-joins         |
-| **Temporal Analysis** | `DATEDIFF`, `DATE_ADD` for 30-day readmission tracking      |
-| **Advanced Queries**  | CTEs (Common Table Expressions), correlated subqueries      |
-| **Aggregation**       | `GROUP BY` + `HAVING`, `CASE` for dynamic categorization    |
-| **ETL**               | `LOAD DATA INFILE` bulk import, Python-Pandas preprocessing |
+| **Joins**             | Implemented multi-table joins (4+), LEFT/INNER variations, self-joins         |
+| **Temporal Analysis** | Used `DATEDIFF`, `DATE_ADD` for 30-day readmission tracking      |
+| **Advanced Queries**  | Built CTEs (Common Table Expressions) and correlated subqueries      |
+| **Aggregation**       | Applied `GROUP BY` + `HAVING`, `CASE` for dynamic categorization    |
+| **ETL**               | Executed `LOAD DATA INFILE` bulk import, Python-Pandas preprocessing |
 
 ### Database Design
 
-- **3NF Normalization**: 8 entity tables with 2 junction tables for many-to-many relationships
-- **Foreign Keys**: 12 FK constraints with cascading relationships (patient→encounter→provider)
-- **Schema Verified**: Record counts confirmed via AUTO_INCREMENT values in MySQL dump
+- **3NF Normalization**: Designed 8 entity tables with 2 junction tables for many-to-many relationships
+- **Foreign Keys**: Implemented 12 FK constraints with cascading relationships (patient→encounter→provider)
+- **Schema Verified**: Verified record counts via AUTO_INCREMENT values in MySQL dump
 
 ### Business Insights
 

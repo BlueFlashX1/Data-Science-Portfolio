@@ -32,7 +32,7 @@
 **Best Model**: Random Forest (n_estimators=200, class_weight='balanced')  
 **Dataset**: Synthetic Arizona patient records (Synthea-generated, 125,958 encounters)
 
-Hospital readmissions cost the U.S. healthcare system billions annually. This project demonstrates building a predictive model to support clinical decision-making for targeted interventions.
+Hospital readmissions cost the U.S. healthcare system billions annually. I built a predictive model to support clinical decision-making for targeted interventions.
 
 ---
 
@@ -64,18 +64,18 @@ Evaluated 9 algorithms: Logistic Regression, Decision Tree, Random Forest, Gradi
 
 **Machine Learning Pipeline**
 
-1. Data preprocessing: Missing value imputation, feature encoding
-2. Feature engineering: Patient frequency encoding, dropped non-predictive columns
-3. Model training: Random Forest with stratified cross-validation
-4. Hyperparameter tuning: n_estimators, max_depth, min_samples_split
-5. Evaluation: ROC AUC optimization, imbalanced classification handling
+1. Data preprocessing: Implemented missing value imputation and feature encoding
+2. Feature engineering: Engineered patient frequency encoding feature, removed non-predictive columns
+3. Model training: Trained Random Forest with stratified cross-validation
+4. Hyperparameter tuning: Optimized n_estimators, max_depth, min_samples_split
+5. Evaluation: Achieved ROC AUC 0.90 through optimization and imbalanced classification handling
 
 **Concepts Applied**
 
-- Stratified cross-validation for robust evaluation
-- Handling class imbalance with class_weight='balanced'
-- Feature engineering to create meaningful predictors
-- Avoiding data leakage in competition settings
+- Implemented stratified cross-validation for robust evaluation
+- Handled class imbalance with class_weight='balanced'
+- Engineered features to create meaningful predictors
+- Prevented data leakage in competition settings
 
 ---
 

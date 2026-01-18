@@ -42,13 +42,13 @@
 
 ## Academic Projects
 
-These projects demonstrate my data science capabilities across healthcare analytics, machine learning, database systems, and statistical visualization.
+These academic projects demonstrate my data science capabilities across healthcare analytics, machine learning, database systems, and statistical visualization. Each project showcases skills I've applied to solve real data problems.
 
 ### [Healthcare Analytics with SQL & NoSQL](./projects/database-systems/sql-nosql-databases-info579/)
 
-**Course project on database design for EHR analysis** • _INFO 579 Final Project_
+**Database design and SQL analytics for EHR analysis** • _INFO 579 Final Project_
 
-Designed normalized database schemas (3NF) to analyze 1,171 patients and 53,346 encounters from Synthea synthetic EHR data. Created 14 analytical reports using complex multi-table joins, temporal analysis, CTEs, and window functions.
+Designed and implemented normalized database schemas (3NF) to analyze 1,171 patients and 53,346 encounters from Synthea synthetic EHR data. Built 14 analytical reports using complex multi-table joins, temporal analysis, CTEs, and window functions.
 
 **What I Applied**:
 
@@ -63,9 +63,9 @@ Designed normalized database schemas (3NF) to analyze 1,171 patients and 53,346 
 
 ### [Trait-Based Animal Classification](./projects/data-science/data-mining-final-project/)
 
-**Course project exploring ML classification with biological data** • _INFO 523 Final Project_
+**ML classification project using biological data** • _INFO 523 Final Project_
 
-Applied machine learning classification to real biological data, comparing binary trait presence/absence vs. evolutionary origin rates across 1,087 animal families. Used SHAP for model explainability and handled class imbalance with balanced metrics.
+Built machine learning classification models using real biological data, comparing binary trait presence/absence vs. evolutionary origin rates across 1,087 animal families. Applied SHAP for model explainability and implemented balanced metrics to handle class imbalance.
 
 **What I Applied**:
 
@@ -96,9 +96,9 @@ Applied machine learning classification to real biological data, comparing binar
 
 ### [Statistical Data Visualization Portfolio](./projects/r-analytics/data-visualization-portfolio/)
 
-**Course portfolio with wildlife, safety, and economic visualizations** • _INFO 526 Portfolio_
+**Statistical visualization portfolio across wildlife, safety, and economic domains** • _INFO 526 Portfolio_
 
-Created comprehensive visualizations across three domains using R, ggplot2, and tidyverse. Developed custom data transformation functions, implemented advanced plot types (alluvial diagrams, faceted layouts), and established reproducible research workflows.
+Built comprehensive visualizations across three domains using R, ggplot2, and tidyverse. Developed custom data transformation functions, implemented advanced plot types (alluvial diagrams, faceted layouts), and established reproducible research workflows.
 
 **What I Applied**:
 
