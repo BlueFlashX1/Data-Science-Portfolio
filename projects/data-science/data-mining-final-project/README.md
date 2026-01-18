@@ -9,7 +9,7 @@
 ![SHAP](https://img.shields.io/badge/SHAP-Explainability-FF6B6B?style=flat-square)
 ![Quarto](https://img.shields.io/badge/Quarto-Website-75AADB?style=flat-square&logo=quarto&logoColor=white)
 
-> **Course project exploring whether sexually selected traits can predict animal taxonomy** — University of Arizona, INFO 523
+> **ML classification project using sexually selected traits to predict animal taxonomy** — University of Arizona, INFO 523
 
 **[View Live Website](https://info-523-su25.github.io/final-project-thompson/)** | **[Analysis Notebook](./index.ipynb)**
 
@@ -19,7 +19,7 @@
 
 **Can sexually selected traits predict higher-level taxonomic groups (superphyla), and which traits matter most?**
 
-This project compared binary presence/absence data vs. evolutionary origin rates across 1,087 animal families to determine which data representation works best for taxonomic classification.
+I compared binary presence/absence data vs. evolutionary origin rates across 1,087 animal families to determine which data representation works best for taxonomic classification.
 
 ---
 
@@ -48,7 +48,7 @@ _Evolutionary rates provided clearer feature importance than binary presence/abs
 
 ## What I Applied
 
-This project demonstrates machine learning classification applied to real biological data. Here's what I accomplished:
+I built machine learning classification models using real biological data. Here's what I accomplished:
 
 | Finding                              | Detail                                                                                      |
 | ------------------------------------ | ------------------------------------------------------------------------------------------- |
@@ -72,18 +72,18 @@ This project demonstrates machine learning classification applied to real biolog
 
 **Machine Learning Pipeline**
 
-1. Preprocessing: Missing value handling, feature scaling, label encoding
-2. Cross-validation: Stratified K-fold for handling class imbalance
-3. Model training: Logistic Regression, Decision Trees, Random Forest
-4. Explainability: SHAP values for feature importance interpretation
-5. Evaluation: Balanced accuracy and macro F1 (critical for imbalanced classes)
+1. Preprocessing: Implemented missing value handling, feature scaling, and label encoding
+2. Cross-validation: Applied stratified K-fold to handle class imbalance
+3. Model training: Trained Logistic Regression, Decision Trees, and Random Forest models
+4. Explainability: Used SHAP values to interpret feature importance and identify key predictors
+5. Evaluation: Implemented balanced accuracy and macro F1 metrics for imbalanced classification
 
 **Concepts Applied**
 
-- Imbalanced classification with balanced metrics
-- Model explainability with SHAP
-- Domain-driven feature engineering (grouping phyla into superphyla)
-- Reproducible research with Quarto
+- Implemented imbalanced classification with balanced metrics
+- Applied model explainability with SHAP
+- Performed domain-driven feature engineering (grouping phyla into superphyla)
+- Created reproducible research with Quarto
 
 ---
 

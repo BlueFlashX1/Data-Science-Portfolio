@@ -49,10 +49,10 @@
 ![tidyr](https://img.shields.io/badge/tidyr-Reshaping-1A162D?style=flat-square)
 ![lubridate](https://img.shields.io/badge/lubridate-Dates-1A162D?style=flat-square)
 
-- Complex data transformations with tidyverse
-- Temporal data processing and analysis
-- Missing value handling strategies
-- Custom function development for reusable analysis
+- Performed complex data transformations with tidyverse
+- Processed and analyzed temporal data
+- Implemented missing value handling strategies
+- Developed custom functions for reusable analysis
 
 ### Visualization
 
@@ -70,10 +70,10 @@
 
 ### Reporting & Reproducibility
 
-- **RMarkdown**: Literate programming combining code and narrative
-- **PDF Generation**: Professional document output
-- **Code Documentation**: Inline comments and function documentation
-- **Version Control**: Git-based project management
+- **RMarkdown**: Created literate programming combining code and narrative
+- **PDF Generation**: Generated professional document output
+- **Code Documentation**: Wrote inline comments and function documentation
+- **Version Control**: Managed project with Git
 
 ---
 

@@ -37,10 +37,10 @@
 
 ### Database Design
 
-- **Normalization**: Designed 3NF schema to reduce redundancy
-- **Entity Relationships**: 8 tables with 2 junction tables for many-to-many
-- **Referential Integrity**: 12 foreign key constraints with cascading actions
-- **Indexing**: Primary/foreign key optimization for multi-table joins
+- **Normalization**: I designed 3NF schema to reduce redundancy
+- **Entity Relationships**: Built 8 tables with 2 junction tables for many-to-many relationships
+- **Referential Integrity**: Implemented 12 foreign key constraints with cascading actions
+- **Indexing**: Optimized primary/foreign keys for multi-table joins
 
 ### SQL Techniques
 
@@ -53,9 +53,9 @@
 
 ### Data Integration
 
-- **Python-MySQL**: Database connectivity with Pandas for preprocessing
-- **ETL**: LOAD DATA INFILE bulk import from CSV
-- **Data Validation**: Verified counts against AUTO_INCREMENT values
+- **Python-MySQL**: Established database connectivity with Pandas for preprocessing
+- **ETL**: Executed LOAD DATA INFILE bulk import from CSV
+- **Data Validation**: Verified record counts against AUTO_INCREMENT values
 
 ---
 
