@@ -13,11 +13,11 @@
 
 ## Project Overview
 
-This portfolio showcases visualizations I created for INFO 526 using R, ggplot2, and tidyverse. I analyzed wildlife predation patterns, workplace safety trends, and housing market dynamics while practicing data transformation, categorical grouping, and multi-plot layouts.
+This portfolio showcases visualizations I created for INFO 526 using R, ggplot2, and tidyverse. I analyzed wildlife predation patterns, workplace safety trends, and housing market dynamics, implementing data transformation, categorical grouping, and multi-plot layouts.
 
 ---
 
-## Skills Practiced
+## Skills Applied
 
 **Languages & Libraries**: R 4.x • RMarkdown • ggplot2 • tidyverse (dplyr, tidyr) • lubridate  
 **Specialized Packages**: ggalluvial (alluvial diagrams) • viridis (color palettes)  
@@ -26,7 +26,7 @@ This portfolio showcases visualizations I created for INFO 526 using R, ggplot2,
 
 ---
 
-## Visualizations & What I Learned
+## Visualizations & What I Applied
 
 ### 1. Cougar Predation Ecology
 
@@ -42,7 +42,7 @@ I grouped prey species into 4 ecological categories (Wild Ungulates, Small Anima
 - Temporal patterns show data gaps between 2012-2015
 - Year 2016: No domestic animal kills recorded
 
-**What I practiced**: Custom grouping strategies • Categorical data transformation with dplyr • Color palette design
+**What I applied**: Custom grouping strategies • Categorical data transformation with dplyr • Color palette design
 
 ---
 
@@ -51,7 +51,7 @@ I grouped prey species into 4 ecological categories (Wild Ungulates, Small Anima
 **Dataset**: 28MB comprehensive workplace fatality data (146K+ records)  
 **Visualizations**: Line graph (temporal trends) • Alluvial diagram (cause-effect relationships)
 
-I learned why stacked plots can be problematic for quantifying values, so I switched to line graphs for clearer temporal trends. The alluvial diagram was challenging but effective for showing cause-effect relationships.
+I identified why stacked plots can be problematic for quantifying values and switched to line graphs for clearer temporal trends. The alluvial diagram effectively visualizes cause-effect relationships.
 
 **Findings**:
 
@@ -59,7 +59,7 @@ I learned why stacked plots can be problematic for quantifying values, so I swit
 - Alluvial diagram reveals common causes of fatalities for each occupation
 - Line plots show clearer temporal trends than proportional stream graphs
 
-**What I practiced**: Advanced plot types (alluvial diagrams with ggalluvial) • Temporal trend visualization
+**What I applied**: Advanced plot types (alluvial diagrams with ggalluvial) • Temporal trend visualization
 
 ---
 
@@ -74,7 +74,7 @@ I learned why stacked plots can be problematic for quantifying values, so I swit
 - West region shows higher volatility
 - All regions show HPI increase until ~2005, decline, then recovery after 2010
 
-**What I practiced**: Faceted visualizations with small multiples • Area plots for trend analysis • Regional comparisons
+**What I applied**: Faceted visualizations with small multiples • Area plots for trend analysis • Regional comparisons
 
 ---
 
@@ -141,7 +141,7 @@ data_table <- data_dict(your_dataset, print_table = "Yes")   # Returns formatted
 **Project Type**: Final Course Portfolio  
 **Academic Year**: 2024-2025
 
-### What I Learned in This Course
+### What I Applied in This Course
 
 - Fundamental plotting techniques (bar, pie, line, area charts)
 - Advanced visualization methods (alluvial diagrams, faceted plots)

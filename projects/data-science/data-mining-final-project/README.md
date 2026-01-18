@@ -46,9 +46,9 @@ _Evolutionary rates provided clearer feature importance than binary presence/abs
 
 ---
 
-## What I Learned
+## What I Applied
 
-This was a course project where I practiced machine learning classification on real biological data. Here's what I found:
+This project demonstrates machine learning classification applied to real biological data. Here's what I accomplished:
 
 | Finding                              | Detail                                                                                      |
 | ------------------------------------ | ------------------------------------------------------------------------------------------- |
@@ -68,7 +68,7 @@ This was a course project where I practiced machine learning classification on r
 
 ---
 
-## Technical Skills Practiced
+## Technical Skills Applied
 
 **Machine Learning Pipeline**
 

@@ -31,18 +31,18 @@
 | **Databases**        | MySQL • Database Design (3NF) • CTEs • Window Functions   |
 | **Development**      | Git • Jupyter • RMarkdown • Quarto                        |
 
-### What I've Practiced
+### Skills I Have
 
-| Domain                   | Skills Applied                                                                |
-| ------------------------ | ----------------------------------------------------------------------------- |
-| **Healthcare Analytics** | EHR data processing • Readmission prediction • Clinical quality metrics       |
-| **Machine Learning**     | Classification • Model comparison • Cross-validation • SHAP explainability    |
-| **Database Systems**     | Schema design (3NF) • Multi-table joins • Temporal analysis                   |
-| **Data Visualization**   | Advanced plots (alluvial, faceted) • Custom functions • Reproducible research |
+| Domain                   | Skills Applied                                                                                                                                  |
+| ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Healthcare Analytics** | EHR data processing for 125,958+ encounters • Readmission prediction models (ROC AUC 0.90) • Clinical quality metrics analysis                  |
+| **Machine Learning**     | Classification algorithms (Random Forest, Logistic Regression) • Model comparison across 9 algorithms • Cross-validation • SHAP explainability  |
+| **Database Systems**     | Schema design (3NF) for 1,171 patients and 53,346 encounters • Multi-table joins (4+ tables) • Temporal analysis with CTEs and window functions |
+| **Data Visualization**   | Advanced plots (alluvial diagrams, faceted layouts) • Custom R functions for automated EDA • Reproducible research workflows with RMarkdown     |
 
 ## Academic Projects
 
-These projects represent my coursework — I'm still building experience but proud of what I've learned.
+These projects demonstrate my data science capabilities across healthcare analytics, machine learning, database systems, and statistical visualization.
 
 ### [Healthcare Analytics with SQL & NoSQL](./projects/database-systems/sql-nosql-databases-info579/)
 
@@ -50,12 +50,12 @@ These projects represent my coursework — I'm still building experience but pro
 
 Designed normalized database schemas (3NF) to analyze 1,171 patients and 53,346 encounters from Synthea synthetic EHR data. Created 14 analytical reports using complex multi-table joins, temporal analysis, CTEs, and window functions.
 
-**What I Learned**:
+**What I Applied**:
 
-- **Clinical Quality**: Viral sinusitis most prevalent (63%), emergency 30-day mortality tracking
-- **Provider Utilization**: Identified workload imbalances and inactive specialties
-- **SQL Techniques**: CTEs, window functions, multi-table joins (4+ tables)
-- **Database Design**: Normalized schemas (3NF) for healthcare data
+- **Clinical Quality Analysis**: Identified viral sinusitis as most prevalent condition (63%) and tracked emergency 30-day mortality rates
+- **Provider Utilization**: Discovered workload imbalances and identified inactive specialties for resource reallocation
+- **SQL Techniques**: Implemented CTEs, window functions, and complex multi-table joins (4+ tables) for temporal analysis
+- **Database Design**: Designed normalized schemas (3NF) supporting 1,171 patients and 53,346 encounters
 
 **Tech**: MySQL • Complex SQL Joins • Temporal Analysis • Database Design • Python
 
@@ -65,14 +65,14 @@ Designed normalized database schemas (3NF) to analyze 1,171 patients and 53,346 
 
 **Course project exploring ML classification with biological data** • _INFO 523 Final Project_
 
-Practiced machine learning classification on real biological data, comparing binary trait presence/absence vs. evolutionary origin rates across 1,087 animal families. Used SHAP for model explainability and learned to handle class imbalance with balanced metrics.
+Applied machine learning classification to real biological data, comparing binary trait presence/absence vs. evolutionary origin rates across 1,087 animal families. Used SHAP for model explainability and handled class imbalance with balanced metrics.
 
-**What I Learned**:
+**What I Applied**:
 
-- **Data representation matters**: Evolutionary rates provided stronger signal than sparse binary data
-- **Model selection**: Logistic Regression outperformed tree-based models for this dataset
-- **Key predictors**: Visual, Competition, and Auditory traits (identified via SHAP analysis)
-- **Imbalanced classification**: Used balanced accuracy & macro F1 instead of regular accuracy
+- **Data representation optimization**: Discovered evolutionary rates provided stronger predictive signal than sparse binary data
+- **Model selection**: Evaluated multiple algorithms and determined Logistic Regression outperformed tree-based models for this dataset
+- **Feature importance analysis**: Identified Visual, Competition, and Auditory traits as strongest predictors using SHAP analysis
+- **Imbalanced classification**: Implemented balanced accuracy and macro F1 metrics to properly evaluate model performance
 
 **Tech**: Python • Scikit-learn • SHAP • Stratified K-fold • Quarto • Jupyter
 
@@ -84,11 +84,11 @@ Practiced machine learning classification on real biological data, comparing bin
 
 **Placed 5th/40** in class competition. Developed Random Forest classifier with patient frequency encoding from 125,958 synthetic EHR encounters. Compared 9 algorithms and applied stratified cross-validation. Achieved ROC AUC 0.90 (dev).
 
-**What I Learned**:
+**What I Applied**:
 
-- **Feature engineering**: Patient frequency encoding was the strongest readmission predictor
-- **Data cleaning**: Dropped uninformative features, handled missing data in medication counts
-- **Model comparison**: Random Forest balanced performance and stability well
+- **Feature engineering**: Engineered patient frequency encoding feature that emerged as the strongest readmission predictor
+- **Data cleaning**: Removed uninformative features and implemented mean imputation for missing medication count data
+- **Model comparison**: Evaluated 9 ML algorithms and selected Random Forest for optimal performance-stability balance
 
 **Tech**: Python • Scikit-learn • Pandas • Random Forest • Feature Engineering • Stratified Cross-Validation
 
@@ -98,13 +98,13 @@ Practiced machine learning classification on real biological data, comparing bin
 
 **Course portfolio with wildlife, safety, and economic visualizations** • _INFO 526 Portfolio_
 
-Created comprehensive visualizations across three domains using R, ggplot2, and tidyverse. Practiced custom data transformations, advanced plot types (alluvial diagrams, faceted layouts), and reproducible workflows.
+Created comprehensive visualizations across three domains using R, ggplot2, and tidyverse. Developed custom data transformation functions, implemented advanced plot types (alluvial diagrams, faceted layouts), and established reproducible research workflows.
 
-**What I Learned**:
+**What I Applied**:
 
-- **Cougar Predation Analysis**: Wild ungulates as primary prey, temporal patterns in predation data
-- **Occupational Safety**: Fatality trends mapped with alluvial diagrams
-- **Economic Trends**: Regional housing price volatility and recovery patterns
+- **Cougar Predation Analysis**: Identified wild ungulates as primary prey and analyzed temporal patterns in predation data
+- **Occupational Safety**: Mapped fatality trends using alluvial diagrams to visualize cause-effect relationships
+- **Economic Trends**: Analyzed regional housing price volatility and recovery patterns across 4 U.S. regions
 
 **Tech**: R • ggplot2 • RMarkdown • dplyr • tidyverse • ggalluvial • Custom Functions
 
