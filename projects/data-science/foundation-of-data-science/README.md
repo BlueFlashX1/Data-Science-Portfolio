@@ -32,11 +32,11 @@
 **Best Model**: Random Forest (n_estimators=200, class_weight='balanced')  
 **Dataset**: Synthetic Arizona patient records (Synthea-generated, 125,958 encounters)
 
-Hospital readmissions cost the U.S. healthcare system billions annually. This project practiced building a predictive model to support clinical decision-making for targeted interventions.
+Hospital readmissions cost the U.S. healthcare system billions annually. This project demonstrates building a predictive model to support clinical decision-making for targeted interventions.
 
 ---
 
-## What I Learned
+## What I Applied
 
 ### Feature Engineering
 
@@ -49,18 +49,18 @@ Hospital readmissions cost the U.S. healthcare system billions annually. This pr
 
 ### Data Quality Challenges
 
-- **Missing data**: Significant gaps in medication counts, procedure costs, pain scores, patient height
-- **Uninformative features**: All symptom columns (chronic pain, hypertension, diabetes, asthma, depression) had identical values
+- **Missing data**: Identified and handled significant gaps in medication counts, procedure costs, pain scores, patient height
+- **Uninformative features**: Removed symptom columns (chronic pain, hypertension, diabetes, asthma, depression) with identical values
 
 ### Model Comparison
 
-Tested 9 algorithms: Logistic Regression, Decision Tree, Random Forest, Gradient Boosting, HistGradientBoosting, AdaBoost, ExtraTrees, Bagging, KNeighbors
+Evaluated 9 algorithms: Logistic Regression, Decision Tree, Random Forest, Gradient Boosting, HistGradientBoosting, AdaBoost, ExtraTrees, Bagging, KNeighbors
 
 **Random Forest** provided the best balance of performance and stability for this dataset.
 
 ---
 
-## Skills Practiced
+## Skills Applied
 
 **Machine Learning Pipeline**
 

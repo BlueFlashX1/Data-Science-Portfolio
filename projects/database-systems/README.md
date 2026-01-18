@@ -22,18 +22,18 @@
 - **14 Analytical Reports**: SQL queries for clinical quality and population health
 - **Schema Verified**: Record counts confirmed via MySQL AUTO_INCREMENT values
 
-**What I Learned**
+**What I Applied**
 
-| Objective                | Key Finding                                                 |
-| ------------------------ | ----------------------------------------------------------- |
-| **Clinical Quality**     | Viral sinusitis most prevalent (63% of patients)            |
-| **Provider Utilization** | Severe workload imbalance (top provider: 3,000+ encounters) |
-| **Readmissions**         | Flagged high-risk ER patients (≥3 visits) for intervention  |
-| **30-Day Mortality**     | Emergency: 3.57 per 1,000 encounters                        |
+| Objective                | Key Finding                                                            |
+| ------------------------ | ---------------------------------------------------------------------- |
+| **Clinical Quality**     | Identified viral sinusitis as most prevalent (63% of patients)         |
+| **Provider Utilization** | Discovered severe workload imbalance (top provider: 3,000+ encounters) |
+| **Readmissions**         | Flagged high-risk ER patients (≥3 visits) for intervention             |
+| **30-Day Mortality**     | Calculated emergency mortality rate: 3.57 per 1,000 encounters         |
 
 ---
 
-## Skills Practiced
+## Skills Applied
 
 ### Database Design
 
@@ -44,7 +44,7 @@
 
 ### SQL Techniques
 
-| Category              | What I Practiced                              |
+| Category              | What I Applied                                |
 | --------------------- | --------------------------------------------- |
 | **Joins**             | Multi-table (4+), LEFT/INNER, self-joins      |
 | **Advanced Queries**  | CTEs, correlated subqueries, window functions |

@@ -22,9 +22,9 @@ Designed normalized database schemas and wrote complex SQL queries to analyze sy
 
 ---
 
-## What I Learned
+## What I Applied
 
-### SQL Techniques Practiced
+### SQL Techniques Implemented
 
 | Category              | Techniques                                                  |
 | --------------------- | ----------------------------------------------------------- |

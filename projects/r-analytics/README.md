@@ -24,13 +24,13 @@
 - **Custom Function**: Automated data dictionary generator
 - **Reproducible Research**: RMarkdown → PDF publication workflow
 
-**What I Learned**
+**What I Applied**
 
-| Domain                  | Analysis                              | Key Insight                                                                       |
-| ----------------------- | ------------------------------------- | --------------------------------------------------------------------------------- |
-| **Wildlife Ecology**    | Cougar predation patterns (2012-2016) | Wild ungulates (mule deer, bighorn) = primary prey; domestic animals least common |
-| **Occupational Safety** | Top 5 dangerous occupations           | Alluvial diagrams reveal cause-effect relationships for fatalities                |
-| **Housing Economics**   | Regional HPI trends                   | West shows highest volatility; all regions declined ~2005, recovered post-2010    |
+| Domain                  | Analysis                              | Key Insight                                                                                   |
+| ----------------------- | ------------------------------------- | --------------------------------------------------------------------------------------------- |
+| **Wildlife Ecology**    | Cougar predation patterns (2012-2016) | Identified wild ungulates (mule deer, bighorn) as primary prey; domestic animals least common |
+| **Occupational Safety** | Top 5 dangerous occupations           | Used alluvial diagrams to reveal cause-effect relationships for fatalities                    |
+| **Housing Economics**   | Regional HPI trends                   | Discovered West shows highest volatility; all regions declined ~2005, recovered post-2010     |
 
 **Technical Highlights**
 
@@ -41,7 +41,7 @@
 
 ---
 
-## Skills Practiced
+## Skills Applied
 
 ### Data Manipulation
 
