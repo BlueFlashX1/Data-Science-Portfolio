@@ -22,14 +22,14 @@
 ![Scikit-Learn](https://img.shields.io/badge/scikit--learn-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white)
 ![ggplot2](https://img.shields.io/badge/ggplot2-E34F26?style=for-the-badge&logo=r&logoColor=white)
 
-| Category             | Tools & Libraries                                         |
-| -------------------- | --------------------------------------------------------- |
-| **Languages**        | Python • R • SQL                                          |
-| **Machine Learning** | Scikit-learn • Random Forest • Logistic Regression • SHAP |
-| **Data Analysis**    | Pandas • NumPy • tidyverse • dplyr                        |
-| **Visualization**    | ggplot2 • Matplotlib • ggalluvial • viridis               |
-| **Databases**        | MySQL • Database Design (3NF) • CTEs • Window Functions   |
-| **Development**      | Git • Jupyter • RMarkdown • Quarto                        |
+| Category             | Tools & Libraries                                                                                                                   |
+| -------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| **Languages**        | Python (ML pipelines, data processing) • R (statistical analysis, visualization) • SQL (database queries, analytics)                |
+| **Machine Learning** | Scikit-learn (model training, evaluation) • Random Forest (classification) • Logistic Regression • SHAP (model explainability)      |
+| **Data Analysis**    | Pandas (data manipulation, ETL) • NumPy (numerical computing) • tidyverse (data transformation) • dplyr (data wrangling)            |
+| **Visualization**    | ggplot2 (statistical plots) • Matplotlib (data visualization) • ggalluvial (flow diagrams) • viridis (color palettes)               |
+| **Databases**        | MySQL (relational databases) • Database Design (3NF normalization) • CTEs (complex queries) • Window Functions (analytical queries) |
+| **Development**      | Git (version control) • Jupyter (interactive analysis) • RMarkdown (reproducible reports) • Quarto (publishing workflows)           |
 
 ### Skills I Have
 
