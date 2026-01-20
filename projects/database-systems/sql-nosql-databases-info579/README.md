@@ -1,6 +1,6 @@
 # Healthcare Analytics with SQL & NoSQL
 
-[![Course Project](https://img.shields.io/badge/Course-Final%20Project-blue?style=for-the-badge)](./INFO579_Final%20Project_Report_Thompson.pdf)
+[![Course Project](https://img.shields.io/badge/Course-Final%20Project-blue?style=for-the-badge)](<./INFO579_Final Project_Report_Thompson.pdf>)
 [![INFO 579](https://img.shields.io/badge/INFO%20579-SQL%20%26%20NoSQL-red?style=for-the-badge)](https://arizona.edu)
 [![University of Arizona](https://img.shields.io/badge/University%20of-Arizona-navy?style=for-the-badge)](https://arizona.edu)
 
@@ -10,7 +10,7 @@
 
 > **Course project on database design and SQL analytics for healthcare data** — University of Arizona, INFO 579
 
-**[View Full Report (PDF)](./INFO579_Final%20Project_Report_Thompson.pdf)** (8.1MB)
+**[View Full Report (PDF)](<./INFO579_Final Project_Report_Thompson.pdf>)** (8.1MB)
 
 ---
 
@@ -26,13 +26,13 @@ I designed normalized database schemas and wrote complex SQL queries to analyze 
 
 ### SQL Techniques Implemented
 
-| Category              | Techniques                                                  |
-| --------------------- | ----------------------------------------------------------- |
-| **Joins**             | Implemented multi-table joins (4+), LEFT/INNER variations, self-joins         |
-| **Temporal Analysis** | Used `DATEDIFF`, `DATE_ADD` for 30-day readmission tracking      |
-| **Advanced Queries**  | Built CTEs (Common Table Expressions) and correlated subqueries      |
-| **Aggregation**       | Applied `GROUP BY` + `HAVING`, `CASE` for dynamic categorization    |
-| **ETL**               | Executed `LOAD DATA INFILE` bulk import, Python-Pandas preprocessing |
+| Category              | Techniques                                                            |
+| --------------------- | --------------------------------------------------------------------- |
+| **Joins**             | Implemented multi-table joins (4+), LEFT/INNER variations, self-joins |
+| **Temporal Analysis** | Used `DATEDIFF`, `DATE_ADD` for 30-day readmission tracking           |
+| **Advanced Queries**  | Built CTEs (Common Table Expressions) and correlated subqueries       |
+| **Aggregation**       | Applied `GROUP BY` + `HAVING`, `CASE` for dynamic categorization      |
+| **ETL**               | Executed `LOAD DATA INFILE` bulk import, Python-Pandas preprocessing  |
 
 ### Database Design
 
@@ -127,7 +127,7 @@ mysql -u root -p final_project < database-backup/Final_Project_analytics_reports
 
 ### View Report
 
-Open [`INFO579_Final Project_Report_Thompson.pdf`](./INFO579_Final%20Project_Report_Thompson.pdf) for complete analysis with visualizations.
+Open [`INFO579_Final Project_Report_Thompson.pdf`](<./INFO579_Final Project_Report_Thompson.pdf>) for complete analysis with visualizations.
 
 ---
 

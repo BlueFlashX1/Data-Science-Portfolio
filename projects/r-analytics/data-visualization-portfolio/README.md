@@ -94,10 +94,10 @@ I identified why stacked plots can be problematic for quantifying values and imp
 | ------------------------------------------------------------------------------------------------ | ----- | --------------------------------------------------- |
 | [`MatthewThompson_Final_Portfolio.pdf`](./MatthewThompson_Final_Portfolio.pdf)                   | 399KB | Complete rendered portfolio with all visualizations |
 | [`Final Portfolio Assignment(Finished).Rmd`](<./Final%20Portfolio%20Assignment(Finished).Rmd>)   | 43KB  | Reproducible source code (991 lines)                |
-| [`Data Dictionary Function.R`](./Data%20Dictionary%20Function.R)                                 | 3.7KB | Custom data exploration function                    |
-| [`data/Cougar Killsites.xlsx`](./data/Cougar%20Killsites.xlsx)                                   | 168KB | Wildlife ecology dataset                            |
-| [`data/Dangerous Jobs.csv`](./data/Dangerous%20Jobs.csv)                                         | 28MB  | Occupational safety dataset (146K+ records)         |
-| [`data/Housing Price Index.xlsx - Data.csv`](./data/Housing%20Price%20Index.xlsx%20-%20Data.csv) | 61KB  | Economic indicators dataset                         |
+| [`Data Dictionary Function.R`](<./Data Dictionary Function.R>)                                 | 3.7KB | Custom data exploration function                    |
+| [`data/Cougar Killsites.xlsx`](<./data/Cougar Killsites.xlsx>)                                   | 168KB | Wildlife ecology dataset                            |
+| [`data/Dangerous Jobs.csv`](<./data/Dangerous Jobs.csv>)                                         | 28MB  | Occupational safety dataset (146K+ records)         |
+| [`data/Housing Price Index.xlsx - Data.csv`](<./data/Housing Price Index.xlsx - Data.csv>) | 61KB  | Economic indicators dataset                         |
 
 ---
 
