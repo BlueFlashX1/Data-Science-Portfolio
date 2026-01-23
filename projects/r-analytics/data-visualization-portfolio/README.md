@@ -101,36 +101,13 @@ I identified why stacked plots can be problematic for quantifying values and imp
 
 ---
 
-## Quick Start
+## Key Findings Across Domains
 
-### Prerequisites
+**Wildlife Ecology**: Wild ungulates (mule deer, bighorn sheep, pronghorn) are the primary prey for cougars, while domestic animals represent the least common prey category. Temporal analysis revealed data collection gaps between 2012-2015.
 
-```r
-# Required R packages
-install.packages(c("ggplot2", "dplyr", "tidyverse", "lubridate",
-                   "reshape2", "readxl", "viridis", "ggstream",
-                   "ggalluvial", "knitr", "rmarkdown"))
-```
+**Occupational Safety**: Identified the most dangerous occupations through comprehensive fatality trend analysis. Alluvial diagrams effectively revealed cause-effect relationships between occupations and fatality types that wouldn't be visible in standard charts.
 
-### Running the Portfolio
-
-1. **View Complete Work**: Open [`MatthewThompson_Final_Portfolio.pdf`](./MatthewThompson_Final_Portfolio.pdf)
-2. **Explore Source Code**: Open [`Final Portfolio Assignment(Finished).Rmd`](<./Final%20Portfolio%20Assignment(Finished).Rmd>) in RStudio
-3. **Regenerate Output**: Run `rmarkdown::render("Final Portfolio Assignment(Finished).Rmd")`
-
-### Data Dictionary Function
-
-Custom function for automated data exploration:
-
-```r
-source("Data Dictionary Function.R")
-
-# Basic usage
-data_summary <- data_dict(your_dataset, print_table = "No")  # Returns data frame
-data_table <- data_dict(your_dataset, print_table = "Yes")   # Returns formatted table
-```
-
-**Features**: Variable types, missing values, descriptive statistics (mean, SD, median, min, max, range)
+**Housing Economics**: All four U.S. regions (Midwest, Northeast, South, West) showed similar HPI trends with increases until ~2005, decline, then recovery after 2010. The West region demonstrated higher volatility compared to other regions.
 
 ---
 
