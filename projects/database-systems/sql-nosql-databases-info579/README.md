@@ -108,26 +108,15 @@ sql-nosql-databases-info579/
 
 ---
 
-## Quick Start
+## Key Findings & Insights
 
-### Prerequisites
+**Clinical Quality**: Viral sinusitis was the most prevalent condition (63% of diagnoses). Emergency department 30-day mortality rate was 3.57 per 1,000 encounters.
 
-- MySQL 8.0+
-- Python 3.9+ with Pandas (for ETL)
+**Provider Utilization**: Identified severe workload imbalances — top provider handled 3,000+ encounters while others averaged under 2,000. Discovered 5 inactive specialties that could be reallocated for better resource distribution.
 
-### Database Setup
+**Cost Analysis**: Top patient costs reached $1.1M. Most common procedures were medication reconciliation and renal dialysis.
 
-```bash
-# Create database and load schema
-mysql -u root -p < database-backup/Final_Project_schema.sql
-
-# Load analytical reports (contains report data)
-mysql -u root -p final_project < database-backup/Final_Project_analytics_reports.sql
-```
-
-### View Report
-
-Open [`INFO579_Final Project_Report_Thompson.pdf`](<./INFO579_Final Project_Report_Thompson.pdf>) for complete analysis with visualizations.
+**Readmission Patterns**: Flagged high-risk ER patients with ≥3 visits within the analysis period for targeted intervention programs.
 
 ---
 

@@ -100,27 +100,6 @@ foundation-of-data-science/
 
 ---
 
-## Quick Start
-
-```bash
-# Clone the portfolio repository
-git clone https://github.com/BlueFlashX1/Data-Science-Portfolio.git
-cd Data-Science-Portfolio/projects/data-science/foundation-of-data-science
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Run exploratory analysis
-jupyter notebook final_project_process.ipynb
-
-# Train model and generate predictions
-python train_predict.py
-```
-
-**Requirements**: Python 3.9+, scikit-learn, pandas, numpy, matplotlib, seaborn
-
----
-
 ## Academic Information
 
 **Course**: INFO 521 - Foundation of Data Science  

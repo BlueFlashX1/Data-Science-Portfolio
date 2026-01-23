@@ -102,21 +102,15 @@ Full codebook: [`data/README.md`](./data/README.md)
 
 ---
 
-## Quick Start
+## Key Findings
 
-```bash
-# Clone the portfolio repository
-git clone https://github.com/BlueFlashX1/portfolio.git
-cd portfolio/projects/data-science/data-mining-final-project
+**Data Representation Matters**: Evolutionary origin rates provided a much stronger predictive signal than binary presence/absence data. This finding demonstrates the importance of domain knowledge in feature engineering.
 
-# Install dependencies
-pip install -r requirements.txt
+**Top Predictors**: SHAP analysis identified Visual (V), Competition (C), and Auditory (A) traits as the strongest predictors of taxonomic classification across 1,087 animal families.
 
-# Open the analysis notebook
-jupyter notebook index.ipynb
-```
+**Model Performance**: Logistic Regression outperformed tree-based models (Random Forest, Decision Tree) for this biological dataset, achieving the best balance of accuracy and interpretability.
 
-**Requirements**: Python 3.12+, scikit-learn, shap, pandas, numpy, matplotlib, seaborn
+**Class Imbalance Challenge**: The dataset's imbalanced distribution across 5 superphyla required balanced accuracy and macro F1 metrics rather than standard accuracy to properly evaluate model performance.
 
 ---
 
