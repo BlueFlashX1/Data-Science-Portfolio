@@ -1,0 +1,24 @@
+{
+  "exclude": [
+    "**/scoring_program/**",
+    "**/scoring_program_dev/**",
+    "scoring_program/**",
+    "scoring_program_dev/**"
+  ],
+  "ignore": [
+    "**/scoring_program/**",
+    "**/scoring_program_dev/**",
+    "scoring_program",
+    "scoring_program_dev"
+  ],
+  "reportMissingImports": "none",
+  "reportMissingTypeStubs": "none",
+  "reportAttributeAccessIssue": "none",
+  "reportOptionalMemberAccess": "none",
+  "reportOptionalCall": "none",
+  "reportGeneralTypeIssues": "none",
+  "reportUnusedImport": "none",
+  "reportUnusedVariable": "none",
+  "reportUnusedFunction": "none",
+  "reportUnusedClass": "none"
+}

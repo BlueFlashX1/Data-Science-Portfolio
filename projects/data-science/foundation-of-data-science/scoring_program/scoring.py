@@ -1,3 +1,6 @@
+# pyright: reportGeneralTypeIssues=false, reportAttributeAccessIssue=false, reportOptionalMemberAccess=false, reportOptionalCall=false
+# type: ignore
+# Instructor-provided file - ignore all type checking errors
 #uses sys path to get python path since I had issues with libraries not being found despite correct python interpreter
 import os
 import sys

@@ -1,3 +1,6 @@
+# pyright: reportGeneralTypeIssues=false, reportAttributeAccessIssue=false, reportOptionalMemberAccess=false, reportOptionalCall=false
+# type: ignore
+# Instructor-provided file - ignore all type checking errors
 import os
 import sys
 sys.path.append(
