@@ -54,7 +54,7 @@ The bigger surprise was DistilBERT-frozen scoring 3.4 points *below* the from-sc
 
 The variants that broke through were the two end-to-end fine-tuned ones. bert_tiny, which is a very small BERT, beat my from-scratch CNN by 8.7 F1 just by letting gradients flow back through the encoder. Going from there up to RoBERTa-base added another 8.8 F1. The bigger jump was the first one (frozen to trainable), not the model-size jump. That surprised me. I had been assuming model scale would be the dominant factor.
 
-The most concrete vindication was that the three classes I never got off zero in the competition (anger, annoyance, disapproval) all started predicting under the fine-tuned variants. Even bert_tiny rescued them. GloVe and DistilBERT-frozen kept them stuck at zero.
+The most concrete vindication was that the three classes I never got off zero in the competition (anger, annoyance, disapproval) all started predicting under the fine-tuned variants. Even bert_tiny rescued them. GloVe and DistilBERT-frozen kept them stuck at zero. So the actual unlock was the encoder being trainable, not pretraining alone.
 
 ### Per-class dev F1
 
@@ -74,10 +74,6 @@ The most concrete vindication was that the three classes I never got off zero in
 | optimism        | 0.897        | 0.857   | 0.846             | 0.897        | 0.933      |
 | sadness         | 0.444        | 0.600   | 0.000             | 0.600        | 0.769      |
 | surprise        | 0.727        | 0.444   | 0.600             | 0.923        | 0.857      |
-
-### My takeaway
-
-Going into this comparison, I'd been telling myself "I just need pretrained embeddings to fix the rare classes." This shows that framing was incomplete. Pretrained vocabulary alone doesn't carry the win. The encoder has to be trainable so the supervision signal can adapt the representations to my specific task. With a frozen encoder, the model can't bridge "fuming exists in the vocab" to "anger is the right label." With a trainable one, even at very small scale, it can.
 
 ---
 
@@ -142,9 +138,7 @@ When test results came back, I scored 0.672. Training F1 over-predicted by 5 poi
 | check.py re-evaluation       | 0.6506 | under-predicted by 2 points   |
 | Actual test F1               | 0.672  | —                            |
 
-This is now my default for any ML project. Never trust the training log as a test predictor. Save the checkpoint, run the production inference path, score that.
-
-The post-grading comparison earlier in this README started from this same workflow. I had honest dev F1 numbers I trusted, so I knew exactly where the from-scratch ceiling actually was and could measure the alternatives against it.
+This is now my default for any ML project: save the checkpoint, run the production inference path on labeled dev, and trust that number over the training logs.
 
 ---
 
