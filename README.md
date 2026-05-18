@@ -137,7 +137,7 @@ Healthcare AI training simulator built by a 6-person team capstone at the UofA A
 
 **My Contributions**:
 
-- **Showcase poster (solo)**: 85 of 87 commits on the team's poster repo. HTML/CSS source with light + dark variants, exported to 4×3 ft print-ready PDFs via a Python pipeline (headless Chrome + img2pdf). The team printed from this PDF and the physical poster matched the on-screen render exactly
+- **Showcase poster (solo)**: Designed and built the team's capstone poster — HTML/CSS source with light + dark variants, exported to 4×3 ft print-ready PDFs via a Python pipeline (headless Chrome + img2pdf). The team printed from this PDF and the physical poster matched the on-screen render exactly. Source files and the build script live in the project folder.
 - **Avatar source footage**: Recorded the 1-minute clip used to build the team's HeyGen avatar; project coordinator wired the API
 
 **Tech**: HTML • CSS • Python (headless Chrome → img2pdf print pipeline) • Information design • Technical communication

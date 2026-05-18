@@ -10,8 +10,9 @@
 
 > Healthcare AI training simulator, built by a 6-person team capstone. My role was the showcase poster + the avatar source footage. University of Arizona, INFO 698, Spring 2026.
 
-**Team codebase:** [UA-AICore/Emergency-Room-Simulator-Repository](https://github.com/UA-AICore/Emergency-Room-Simulator-Repository)  
-**Poster source repo (mine):** [isjustabhi/AI4HC](https://github.com/isjustabhi/AI4HC) — [live page](https://isjustabhi.github.io/AI4HC/)
+**Team codebase:** [UA-AICore/Emergency-Room-Simulator-Repository](https://github.com/UA-AICore/Emergency-Room-Simulator-Repository)
+
+The poster source and build pipeline I authored are in this folder.
 
 ![System workflow diagram from the AI4HC capstone poster](./system_workflow.png)
 
@@ -29,12 +30,12 @@ I wasn't on the engineering side. My job on this team was design and the avatar 
 
 **1. The showcase poster.**
 
-- **85 of 87 commits** on the AI4HC poster repo are mine
-- HTML/CSS source so we could iterate in a browser; exported to a 4×3 ft print-ready PDF via [`scripts/export_poster.py`](./scripts/export_poster.py) — a Python pipeline that renders the HTML in headless Chrome at 4608×3456 px, screenshots it, and embeds the PNG losslessly into a 48×36 in PDF with print-shop metadata
+- Solo-designed and built the team's capstone poster
+- HTML/CSS source so we could iterate in a browser; exported to a 4×3 ft print-ready PDF via [`scripts/export_poster.py`](./scripts/export_poster.py) — a Python pipeline I wrote that renders the HTML in headless Chrome at 4608×3456 px, screenshots it, and embeds the PNG losslessly into a 48×36 in PDF with print-shop metadata
 - The team printed from this PDF for the iShowcase event and the physical poster came out matching the on-screen render exactly
 - Two variants: a light version for the project slide demo, a dark version for the printed banner
 - Summarizes the team's system in one visual: the RAG pipeline, the avatar integration, the quiz engine, the learner flow
-- View: open [`index_v1.html`](./index_v1.html) in a browser, or [`iShowcase_Final.pdf`](./iShowcase_Final.pdf) for the print version
+- View: open [`index_v1.html`](./index_v1.html) in a browser, or [`iShowcase_Final.pdf`](./iShowcase_Final.pdf) for the print version. The source files in this folder are the actual files I authored.
 
 **2. Avatar source footage.**
 
