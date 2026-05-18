@@ -129,6 +129,21 @@ Built comprehensive visualizations across three domains using R, ggplot2, and ti
 
 ---
 
+### [AI4HC Capstone — ER Simulator Showcase Poster](./projects/capstone/ai4hc-info698/)
+
+**Team capstone — ER simulator showcase poster** • _INFO 698 Graduate Capstone_
+
+Healthcare AI training simulator built by a 6-person team capstone at the UofA AI Core: .NET 8 web app with a RAG-backed chat tutor, HeyGen streaming avatar, and a multiple-choice quiz generator. I wasn't on the engineering side; my role was the showcase poster and the avatar source footage.
+
+**My Contributions**:
+
+- **Showcase poster (solo)**: 85 of 87 commits on the team's poster repo. HTML/CSS source with light + dark variants, exported to 4×3 ft print-ready PDFs via a Python pipeline (headless Chrome + img2pdf). The team printed from this PDF and the physical poster matched the on-screen render exactly
+- **Avatar source footage**: Recorded the 1-minute clip used to build the team's HeyGen avatar; project coordinator wired the API
+
+**Tech**: HTML • CSS • Python (headless Chrome → img2pdf print pipeline) • Information design • Technical communication
+
+---
+
 ## Connect
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/matthewqilanthompson/)
