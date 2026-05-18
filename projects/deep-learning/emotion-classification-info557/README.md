@@ -54,7 +54,7 @@ The bigger surprise was DistilBERT-frozen scoring 3.4 points *below* the from-sc
 
 The variants that broke through were the two end-to-end fine-tuned ones. bert_tiny, which is a very small BERT, beat my from-scratch CNN by 8.7 F1 just by letting gradients flow back through the encoder. Going from there up to RoBERTa-base added another 8.8 F1. The bigger jump was the first one (frozen to trainable), not the model-size jump. That surprised me. I had been assuming model scale would be the dominant factor.
 
-The most concrete vindication was that the three classes I never got off zero in the competition (anger, annoyance, disapproval) all started predicting under the fine-tuned variants. Even bert_tiny rescued them. GloVe and DistilBERT-frozen kept them stuck at zero. So the actual unlock was the encoder being trainable, not pretraining alone.
+The most concrete vindication was that the three classes I never got off zero in the competition (anger, annoyance, disapproval) all started predicting under the fine-tuned variants. Even bert_tiny rescued them. GloVe and DistilBERT-frozen kept them stuck at zero. So the actual unlock was finding a model already strong at language understanding and fine-tuning it to the task. Neither ingredient alone bridged the gap.
 
 ### Per-class dev F1
 
