@@ -137,7 +137,8 @@ Healthcare AI training simulator built by a 6-person team capstone at the UofA A
 
 **My Contributions**:
 
-- **Showcase poster**: Took Abhiram's initial HTML draft ([isjustabhi/AI4HC](https://github.com/isjustabhi/AI4HC)) and polished it into the team's final capstone poster — added light + dark theme variants, iterated the layout/CSS, and exported to 4×3 ft print-ready PDFs via a Python pipeline I wrote (headless Chrome + img2pdf). The team printed from this PDF and the physical poster matched the on-screen render exactly. **View live:** [light theme](https://blueflashx1.github.io/Data-Science-Portfolio/projects/capstone/ai4hc-info698/index_v1.html) · [dark theme](https://blueflashx1.github.io/Data-Science-Portfolio/projects/capstone/ai4hc-info698/index_dark.html)
+- **Showcase poster**: Took Abhiram's initial HTML draft ([isjustabhi/AI4HC](https://github.com/isjustabhi/AI4HC)) and polished it into the team's final capstone poster — added light + dark theme variants and iterated the layout/CSS. **View live:** [light theme](https://blueflashx1.github.io/Data-Science-Portfolio/projects/capstone/ai4hc-info698/index_v1.html) · [dark theme](https://blueflashx1.github.io/Data-Science-Portfolio/projects/capstone/ai4hc-info698/index_dark.html)
+- **Print-PDF conversion pipeline**: Wrote a Python script (headless Chrome + img2pdf) that exports the HTML poster to a 4×3 ft print-ready PDF with print-shop metadata. The team printed from this PDF and the physical poster matched the on-screen render exactly.
 - **Avatar source footage**: Recorded the 1-minute clip used to build the team's HeyGen avatar; project coordinator wired the API
 
 **Tech**: HTML • CSS • Python (headless Chrome → img2pdf print pipeline) • Information design • Technical communication
