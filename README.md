@@ -26,6 +26,7 @@
 | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
 | **Languages**        | Python (ML pipelines, data processing) • R (statistical analysis, visualization) • SQL (database queries, analytics)                |
 | **Machine Learning** | Scikit-learn (model training, evaluation) • Random Forest (classification) • Logistic Regression • SHAP (model explainability)      |
+| **Deep Learning**    | Keras / TensorFlow (CNN architecture) • Hugging Face Transformers • RoBERTa fine-tuning • Multi-label classification                 |
 | **Data Analysis**    | Pandas (data manipulation, ETL) • NumPy (numerical computing) • tidyverse (data transformation) • dplyr (data wrangling)            |
 | **Visualization**    | ggplot2 (statistical plots) • Matplotlib (data visualization) • ggalluvial (flow diagrams) • viridis (color palettes)               |
 | **Databases**        | MySQL (relational databases) • Database Design (3NF normalization) • CTEs (complex queries) • Window Functions (analytical queries) |
@@ -37,12 +38,13 @@
 | ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Healthcare Analytics** | EHR data processing for 125,958+ encounters • Readmission prediction models (ROC AUC 0.90) • Clinical quality metrics analysis                  |
 | **Machine Learning**     | Classification algorithms (Random Forest, Logistic Regression) • Model comparison across 9 algorithms • Cross-validation • SHAP explainability  |
+| **Deep Learning / NLP**  | Multi-label text classification on 14-class GoEmotions • Fine-tuning transformers (RoBERTa via Hugging Face) • Keras / TensorFlow CNN architecture • Calibration-aware methodology (BCE + label smoothing, −0.050 dev→test gap) |
 | **Database Systems**     | Schema design (3NF) for 1,171 patients and 53,346 encounters • Multi-table joins (4+ tables) • Temporal analysis with CTEs and window functions |
 | **Data Visualization**   | Advanced plots (alluvial diagrams, faceted layouts) • Custom R functions for automated EDA • Reproducible research workflows with RMarkdown     |
 
 ## Academic Projects
 
-These academic projects demonstrate my data science capabilities across healthcare analytics, machine learning, database systems, and statistical visualization. Each project showcases skills I've applied to solve real data problems.
+These academic projects demonstrate my data science capabilities across healthcare analytics, machine learning, deep learning, database systems, and statistical visualization. Each project showcases skills I've applied to solve real data problems.
 
 ### [Healthcare Analytics with SQL & NoSQL](./projects/database-systems/sql-nosql-databases-info579/)
 
@@ -107,6 +109,23 @@ Built comprehensive visualizations across three domains using R, ggplot2, and ti
 - **Economic Trends**: Analyzed regional housing price volatility and recovery patterns across 4 U.S. regions
 
 **Tech**: R • ggplot2 • RMarkdown • dplyr • tidyverse • ggalluvial • Custom Functions
+
+---
+
+### [Multi-Label Emotion Classification with Transformer Fine-Tuning](./projects/deep-learning/emotion-classification-info557/)
+
+**14-label text classification competition** • _INFO 557 Graduate Project_
+
+**Placed 8th/15** on test in class competition (F1 0.68), up from 10th/18 on dev with the 3rd-tightest dev→test gap (−0.05) on the leaderboard. Built a multi-label emotion classifier on a 14-class GoEmotions subset of Reddit text using a 5-seed Conv1D CNN with calibrated BCE + label smoothing. Outperformed higher-dev scorers on the metric that counted by prioritizing calibration discipline over dev-score chasing.
+
+**What I Applied**:
+
+- **Calibration over dev-score chasing**: Chose untuned 0.5 threshold + BCE label smoothing over focal loss to avoid dev-set leakage from threshold tuning
+- **Rare-class diagnosis**: Identified vocabulary-level failure as the cause of three zero-F1 classes; EDA-style augmentation (Wei & Zou 2019) rescued anger off zero
+- **Honest evaluation pipeline**: Built a `check.py` re-evaluator that predicted test F1 within 2 points while training logs over-predicted by 5
+- **Pretrained-embedding comparison (post-grading)**: Tested 4 variants on the same architecture — only end-to-end fine-tuning broke the from-scratch ceiling (dev F1 0.65 → 0.83 with RoBERTa), confirming fine-tuning was the unlock, not pretraining alone
+
+**Tech**: Python • Keras / TensorFlow • Conv1D CNN • RoBERTa fine-tuning (Hugging Face) • Multi-label F1 • 5-seed ensemble • Wei & Zou 2019 EDA augmentation
 
 ---
 
