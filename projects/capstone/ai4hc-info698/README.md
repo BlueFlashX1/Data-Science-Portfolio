@@ -14,7 +14,7 @@
 
 **Team codebase:** [UA-AICore/Emergency-Room-Simulator-Repository](https://github.com/UA-AICore/Emergency-Room-Simulator-Repository)
 
-The poster (polished from Abhiram Varma Nandimandalam's initial HTML draft) and the print-export pipeline I authored are in this folder.
+The poster (polished from Abhiram Varma Nandimandalam's initial HTML draft at [isjustabhi/AI4HC](https://github.com/isjustabhi/AI4HC)) and the print-export pipeline I authored are in this folder.
 
 ---
 
@@ -30,7 +30,7 @@ I wasn't on the engineering side. My job on this team was design and the avatar 
 
 **1. The showcase poster.**
 
-- Took Abhiram Varma Nandimandalam's initial HTML draft and polished it into the team's final capstone poster (layout, theme variants, CSS iteration)
+- Took Abhiram Varma Nandimandalam's initial HTML draft ([isjustabhi/AI4HC](https://github.com/isjustabhi/AI4HC)) and polished it into the team's final capstone poster (layout, theme variants, CSS iteration)
 - HTML/CSS source so we could iterate in a browser; exported to a 4×3 ft print-ready PDF via [`scripts/export_poster.py`](./scripts/export_poster.py) — a Python pipeline I wrote that renders the HTML in headless Chrome at 4608×3456 px, screenshots it, and embeds the PNG losslessly into a 48×36 in PDF with print-shop metadata
 - The team printed from this PDF for the iShowcase event and the physical poster came out matching the on-screen render exactly
 - Two variants: a light version for the project slide demo, a dark version for the printed banner
