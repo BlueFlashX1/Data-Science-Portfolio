@@ -10,6 +10,8 @@
 
 > Healthcare AI training simulator, built by a 6-person team capstone. My role was the showcase poster + the avatar source footage. University of Arizona, INFO 698, Spring 2026.
 
+**View the live poster:** [light theme](https://blueflashx1.github.io/Data-Science-Portfolio/projects/capstone/ai4hc-info698/index_v1.html) · [dark theme](https://blueflashx1.github.io/Data-Science-Portfolio/projects/capstone/ai4hc-info698/index_dark.html) · [print PDF](./iShowcase_Final.pdf)
+
 **Team codebase:** [UA-AICore/Emergency-Room-Simulator-Repository](https://github.com/UA-AICore/Emergency-Room-Simulator-Repository)
 
 The poster source and build pipeline I authored are in this folder.
@@ -35,7 +37,7 @@ I wasn't on the engineering side. My job on this team was design and the avatar 
 - The team printed from this PDF for the iShowcase event and the physical poster came out matching the on-screen render exactly
 - Two variants: a light version for the project slide demo, a dark version for the printed banner
 - Summarizes the team's system in one visual: the RAG pipeline, the avatar integration, the quiz engine, the learner flow
-- View: open [`index_v1.html`](./index_v1.html) in a browser, or [`iShowcase_Final.pdf`](./iShowcase_Final.pdf) for the print version. The source files in this folder are the actual files I authored.
+- View live: [light theme](https://blueflashx1.github.io/Data-Science-Portfolio/projects/capstone/ai4hc-info698/index_v1.html) · [dark theme](https://blueflashx1.github.io/Data-Science-Portfolio/projects/capstone/ai4hc-info698/index_dark.html). Or [`iShowcase_Final.pdf`](./iShowcase_Final.pdf) for the print version. The source files in this folder are the actual files I authored.
 
 **2. Avatar source footage.**
 
