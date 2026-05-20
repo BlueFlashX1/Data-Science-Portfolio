@@ -88,6 +88,16 @@ I identified why stacked plots can be problematic for quantifying values and imp
 
 ---
 
+## What I Learned
+
+Throughout the semester I noticed that most of my feedback was about category decisions: which categories to group together and which ones weren't necessary. I think it corresponds to my tendency to try to include too much information in one place. So for this portfolio I tried to address that. With the pie chart and the grouped bar chart, I categorized all the animals into 4 appropriate categories without overlaps, and I decided not to include the weight class since reading the grouped bars plus a weight class on top would be a bit overwhelming.
+
+I also started to understand why stacked plots can be problematic when I'm trying to quantify data values accurately. So instead of a stacked bar chart with over 10 categories, I used a grouped bar chart with fewer groups, which was much more readable. For the most dangerous jobs question, I used a line graph instead of a proportional stream graph to show the fatality trend over time more accurately.
+
+A couple of things I struggled with. There was feedback suggesting I move the legend labels into each slice of the pie chart, but despite the research I did, I could only get the labels partially aligned. I also challenged myself to make an alluvial diagram for the causes of fatalities. The text aesthetics were hard to read, and I considered removing the labels for a legend instead, but I think the bigger problem with an alluvial diagram is that people won't know where the flow starts. So I decided to keep the text labels for readability and explain it briefly in the caption.
+
+---
+
 ## Project Files
 
 | File                                                                                             | Size  | Description                                         |
