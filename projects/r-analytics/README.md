@@ -84,7 +84,7 @@ r-analytics/
 ├── README.md                          # This file
 └── data-visualization-portfolio/
     ├── MatthewThompson_Final_Portfolio.pdf   # Complete rendered output
-    ├── Final Portfolio Assignment(Finished).Rmd  # Source code (991 lines)
+    ├── Final-Portfolio-Assignment.Rmd  # Source code (991 lines)
     ├── Data Dictionary Function.R     # Custom exploration function
     ├── Final Portfolio.Rproj          # RStudio project file
     └── data/
@@ -112,7 +112,7 @@ install.packages(c(
 
 1. **Complete Work**: Open [`MatthewThompson_Final_Portfolio.pdf`](./data-visualization-portfolio/MatthewThompson_Final_Portfolio.pdf)
 2. **Source Code**: Open `.Rmd` file in RStudio
-3. **Regenerate**: `rmarkdown::render("Final Portfolio Assignment(Finished).Rmd")`
+3. **Regenerate**: `rmarkdown::render("Final-Portfolio-Assignment.Rmd")`
 
 ---
 

@@ -90,7 +90,7 @@ foundation-of-data-science/
 ├── train_predict.py                    # Model training pipeline (6.7KB)
 ├── data/
 │   ├── train.csv                       # Training dataset (587,801 records)
-│   ├── dev(real_one).csv               # Development/validation set (125,958 records)
+│   ├── dev.csv               # Development/validation set (125,958 records)
 │   ├── test.csv                        # Test dataset (features only)
 │   ├── submission.csv                  # Final predictions
 │   └── README.md                       # Data documentation

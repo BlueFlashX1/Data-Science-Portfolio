@@ -7,7 +7,7 @@
 
 > **Course portfolio demonstrating R programming and ggplot2 across ecological, safety, and economic datasets** — University of Arizona, INFO 526
 
-**[View Complete Portfolio (PDF)](./MatthewThompson_Final_Portfolio.pdf)** | **[Source Code (.Rmd)](<./Final%20Portfolio%20Assignment(Finished).Rmd>)**
+**[View Complete Portfolio (PDF)](./MatthewThompson_Final_Portfolio.pdf)** | **[Source Code (.Rmd)](./Final-Portfolio-Assignment.Rmd)**
 
 ---
 
@@ -93,7 +93,7 @@ I identified why stacked plots can be problematic for quantifying values and imp
 | File                                                                                             | Size  | Description                                         |
 | ------------------------------------------------------------------------------------------------ | ----- | --------------------------------------------------- |
 | [`MatthewThompson_Final_Portfolio.pdf`](./MatthewThompson_Final_Portfolio.pdf)                   | 399KB | Complete rendered portfolio with all visualizations |
-| [`Final Portfolio Assignment(Finished).Rmd`](<./Final%20Portfolio%20Assignment(Finished).Rmd>)   | 43KB  | Reproducible source code (991 lines)                |
+| [`Final-Portfolio-Assignment.Rmd`](./Final-Portfolio-Assignment.Rmd)   | 43KB  | Reproducible source code (991 lines)                |
 | [`Data Dictionary Function.R`](<./Data Dictionary Function.R>)                                 | 3.7KB | Custom data exploration function                    |
 | [`data/Cougar Killsites.xlsx`](<./data/Cougar Killsites.xlsx>)                                   | 168KB | Wildlife ecology dataset                            |
 | [`data/Dangerous Jobs.csv`](<./data/Dangerous Jobs.csv>)                                         | 28MB  | Occupational safety dataset (146K+ records)         |
