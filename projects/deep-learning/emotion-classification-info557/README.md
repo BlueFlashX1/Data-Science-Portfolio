@@ -124,7 +124,7 @@ What I tried:
 | 5x duplication on truly rare examples                 | Got anger off zero (0.154 on test). Annoyance and disapproval stayed at 0.                                            |
 | Throwing more architecture at it                      | Tried it. None of it helped. Confirmed for me that the wall was representation, not architecture.                     |
 
-### Honest evaluation
+### Evaluation
 
 About a week before submission I realized my training-time logged F1 was lying to me. Training was reporting 0.7218, but I had no way to know if that number was actually what I'd see on the leaderboard.
 

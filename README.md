@@ -122,7 +122,7 @@ Built comprehensive visualizations across three domains using R, ggplot2, and ti
 
 - **Calibration over dev-score chasing**: Chose untuned 0.5 threshold + BCE label smoothing over focal loss to avoid dev-set leakage from threshold tuning
 - **Rare-class diagnosis**: Identified vocabulary-level failure as the cause of three zero-F1 classes; EDA-style augmentation rescued anger off zero
-- **Honest evaluation pipeline**: Built a `check.py` re-evaluator that predicted test F1 within 2 points while training logs over-predicted by 5
+- **Evaluation pipeline**: Built a `check.py` re-evaluator that predicted test F1 within 2 points while training logs over-predicted by 5
 - **Pretrained-embedding comparison (post-grading)**: Tested 4 variants on the same architecture; the win was fine-tuning a model already strong at language understanding (dev F1 0.65 → 0.83 with RoBERTa). Pretraining alone or model size alone wasn't enough.
 
 **Tech**: Python • Keras / TensorFlow • Conv1D CNN • Multi-label F1 • 5-seed ensemble • EDA augmentation • RoBERTa fine-tuning (post-grading study)
