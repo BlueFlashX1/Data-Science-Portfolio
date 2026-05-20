@@ -114,6 +114,16 @@ Full codebook: [`data/README.md`](./data/README.md)
 
 ---
 
+## What I Learned
+
+The clearest result was that the two datasets behaved very differently. The binary presence/absence data was sparse and dominated by Arthropoda (~84% of samples), and SHAP showed the model leaned almost entirely on a single feature, the "sexually selected" flag. The evolutionary rate data was more balanced, and its signal spread across visual, competition, auditory, and female-choice traits. So rate-based features predicted taxonomy better than binary presence, though even the better dataset only reached around 50% accuracy — the signal in this kind of trait data is real but limited.
+
+A lot of the project changed from my original proposal. I had planned to predict at the class/family level, but the data was too sparse, so I grouped phyla into five superphyla instead. I log-transformed and standardized the evolutionary rates rather than binarizing them, and I switched the evaluation metrics to balanced accuracy and macro F1 instead of ROC-AUC, since the classes were so uneven. SHAP also started as a secondary check but became central — it was what showed how heavily the binary model leaned on that one SS flag.
+
+If I did this again, I'd remove the SS traits and redo modeling for the family data, since the model relied on SS so heavily that it masked the other traits. The bigger limitation, though, is data quality: both datasets were too sparse and imbalanced to generalize well, and that would need to improve before this approach could go further.
+
+---
+
 ## Project Structure
 
 ```
