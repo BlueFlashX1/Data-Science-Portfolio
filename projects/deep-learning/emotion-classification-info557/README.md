@@ -173,7 +173,7 @@ The other thing is that I now know exactly what fixes the rare-class wall: fine-
 
 ## Tech Stack
 
-Python • Keras / TensorFlow • Conv1D CNN • RoBERTa fine-tuning (Hugging Face) • Multi-label F1 • 5-seed ensemble • Wei & Zou 2019 EDA augmentation
+Python • Keras / TensorFlow • Conv1D CNN • Multi-label F1 • 5-seed ensemble • EDA augmentation • RoBERTa fine-tuning (post-grading study)
 
 ---
 

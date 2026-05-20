@@ -1,6 +1,6 @@
 # Healthcare Analytics with SQL & NoSQL
 
-[![Course Project](https://img.shields.io/badge/Course-Final%20Project-blue?style=for-the-badge)](<./INFO579_Final Project_Report_Thompson.pdf>)
+[![Course Project](https://img.shields.io/badge/Course-Final%20Project-blue?style=for-the-badge)](./INFO579-Final-Project-Report-Thompson.pdf)
 [![INFO 579](https://img.shields.io/badge/INFO%20579-SQL%20%26%20NoSQL-red?style=for-the-badge)](https://arizona.edu)
 [![University of Arizona](https://img.shields.io/badge/University%20of-Arizona-navy?style=for-the-badge)](https://arizona.edu)
 
@@ -10,7 +10,7 @@
 
 > **Course project on database design and SQL analytics for healthcare data** — University of Arizona, INFO 579
 
-**[View Full Report (PDF)](<./INFO579_Final Project_Report_Thompson.pdf>)** (8.1MB)
+**[View Full Report (PDF)](./INFO579-Final-Project-Report-Thompson.pdf)** (8.1MB)
 
 ---
 
@@ -72,7 +72,7 @@ I designed normalized database schemas and wrote complex SQL queries to analyze 
 ```text
 sql-nosql-databases-info579/
 ├── README.md                                    # Project documentation
-├── INFO579_Final Project_Report_Thompson.pdf    # Complete analysis (8.1MB)
+├── INFO579-Final-Project-Report-Thompson.pdf    # Complete analysis (8.1MB)
 ├── data/                                        # 6 healthcare CSVs (67MB total)
 │   ├── patients.csv
 │   ├── encounters.csv
@@ -162,5 +162,5 @@ FROM patient;
 ---
 
 <p align="center">
-  <em>University of Arizona — Graduate Student Data Science Portfolio</em>
+  <em>University of Arizona — Data Science Portfolio</em>
 </p>

@@ -2,7 +2,7 @@
 
 **Status: post-submission, learning-only.** None of this is committed or
 submitted to CodaBench. The official model is `train_dev.py` at the
-project root (already submitted, test F1 = 0.67).
+project root (already submitted, test F1 = 0.672).
 
 ## Purpose
 
@@ -60,17 +60,9 @@ GloVe needs no extra packages — only an internet download on first run.
 `compare.py` is robust to partial completion — it'll skip variants whose
 ensemble dir doesn't exist yet.
 
-## Expected outcome (hypothesis)
+## Outcome
 
-Based on the project's stated ceiling analysis (`decisions.txt`):
-
-- From-scratch (baseline): ~0.65 dev F1 (already measured: 0.6506)
-- GloVe: expected ~0.70-0.72 dev F1 (better OOV coverage, denser semantic prior)
-- DistilBERT: expected ~0.75-0.80 dev F1 (contextual representations,
-  attention over the whole sequence)
-
-The experiment validates the writeup claim that "the remaining gap is a
-representation-quality gap, not a modeling-skill gap."
+The hypothesis going in: better embeddings would lift dev F1 — GloVe to ~0.70-0.72, DistilBERT to ~0.75-0.80. The actual result was more interesting. Static GloVe barely moved it (+0.008 over the from-scratch baseline) and *frozen* DistilBERT scored 3.4 points *below* it — only end-to-end fine-tuning (bert_tiny, RoBERTa) broke through. The bottleneck was a representation-alignment gap a frozen encoder can't close. Full results and analysis: see the [project README](../README.md).
 
 ## Notes
 
@@ -78,5 +70,3 @@ representation-quality gap, not a modeling-skill gap."
   Delete `experiments/bert_cache/` to force re-extraction.
 - All training uses the **same train.csv split**. Test set (`test-in.csv`) is
   not touched here — the test phase is over.
-- `_check_dev_f1.py` was renamed to `check_dev_f1.py` (no underscore) since
-  it's a permanent comparison utility, not a temp script.

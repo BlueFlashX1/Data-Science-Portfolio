@@ -3,7 +3,7 @@
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0077B5?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/matthewqilanthompson/)
 [![Email](https://img.shields.io/badge/Contact-Email-D14836?style=for-the-badge&logo=gmail)](mailto:matthewqilanthompson.work@gmail.com)
 
-> **M.S. in Data Science**, University of Arizona (2026) · B.S. Biology  
+> **M.S. in Data Science**, University of Arizona (completed May 2026) · B.S. Biology  
 > _Seeking entry-level Data Analyst roles — biological, life-sciences, and environmental data_
 
 **Interests**: Biological & life-sciences data • Environmental & ecological analysis • Automation
@@ -32,7 +32,7 @@
 | **Databases**        | MySQL (relational databases) • Database Design (3NF normalization) • CTEs (complex queries) • Window Functions (analytical queries) |
 | **Development**      | Git (version control) • Jupyter (interactive analysis) • RMarkdown (reproducible reports) • Quarto (publishing workflows)           |
 
-### Skills I Have
+### Domain Expertise
 
 | Domain                   | Skills Applied                                                                                                                                  |
 | ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -116,16 +116,16 @@ Built comprehensive visualizations across three domains using R, ggplot2, and ti
 
 **14-label text classification competition** • _INFO 557 Graduate Project_
 
-**Placed 8th/15** on test in class competition (F1 0.68), up from 10th/18 on dev with the 3rd-tightest dev→test gap (−0.05) on the leaderboard. Built a multi-label emotion classifier on a 14-class GoEmotions subset of Reddit text using a 5-seed Conv1D CNN with calibrated BCE + label smoothing.
+**Placed 8th/15** on test in class competition (F1 0.672), up from 10th/18 on dev with the 3rd-tightest dev→test gap (−0.05) on the leaderboard. Built a multi-label emotion classifier on a 14-class GoEmotions subset of Reddit text using a 5-seed Conv1D CNN with calibrated BCE + label smoothing.
 
 **What I Applied**:
 
 - **Calibration over dev-score chasing**: Chose untuned 0.5 threshold + BCE label smoothing over focal loss to avoid dev-set leakage from threshold tuning
-- **Rare-class diagnosis**: Identified vocabulary-level failure as the cause of three zero-F1 classes; EDA-style augmentation (Wei & Zou 2019) rescued anger off zero
+- **Rare-class diagnosis**: Identified vocabulary-level failure as the cause of three zero-F1 classes; EDA-style augmentation rescued anger off zero
 - **Honest evaluation pipeline**: Built a `check.py` re-evaluator that predicted test F1 within 2 points while training logs over-predicted by 5
 - **Pretrained-embedding comparison (post-grading)**: Tested 4 variants on the same architecture; the win was fine-tuning a model already strong at language understanding (dev F1 0.65 → 0.83 with RoBERTa). Pretraining alone or model size alone wasn't enough.
 
-**Tech**: Python • Keras / TensorFlow • Conv1D CNN • RoBERTa fine-tuning (Hugging Face) • Multi-label F1 • 5-seed ensemble • Wei & Zou 2019 EDA augmentation
+**Tech**: Python • Keras / TensorFlow • Conv1D CNN • Multi-label F1 • 5-seed ensemble • EDA augmentation • RoBERTa fine-tuning (post-grading study)
 
 ---
 

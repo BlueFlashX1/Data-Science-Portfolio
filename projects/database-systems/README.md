@@ -17,7 +17,7 @@
 
 **Project Scope**
 
-- **67MB Synthea EHR Dataset**: 1,171 patients, 53,346 encounters across 6 entities
+- **67MB Synthea EHR Dataset**: 1,171 patients, 53,346 encounters across 6 source entities
 - **3NF Database Design**: Normalized schema with 12 foreign key constraints
 - **14 Analytical Reports**: SQL queries for clinical quality and population health
 - **Schema Verified**: Record counts confirmed via MySQL AUTO_INCREMENT values
@@ -37,7 +37,7 @@
 
 ### Database Design
 
-- **Normalization**: I designed 3NF schema to reduce redundancy
+- **Normalization**: Designed a 3NF schema to reduce redundancy
 - **Entity Relationships**: Built 8 tables with 2 junction tables for many-to-many relationships
 - **Referential Integrity**: Implemented 12 foreign key constraints with cascading actions
 - **Indexing**: Optimized primary/foreign keys for multi-table joins
@@ -73,7 +73,7 @@
 **Course**: INFO 579 - SQL & NoSQL Databases  
 **Institution**: University of Arizona  
 **Term**: 2024-2025  
-**Program**: Graduate Student — M.S. in Data Science
+**Program**: M.S. in Data Science
 
 ---
 

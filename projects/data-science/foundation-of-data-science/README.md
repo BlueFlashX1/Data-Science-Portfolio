@@ -112,5 +112,5 @@ foundation-of-data-science/
 ---
 
 <p align="center">
-  <em>University of Arizona — Graduate Student Data Science Portfolio</em>
+  <em>University of Arizona — Data Science Portfolio</em>
 </p>
