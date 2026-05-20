@@ -3,10 +3,10 @@
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0077B5?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/matthewqilanthompson/)
 [![Email](https://img.shields.io/badge/Contact-Email-D14836?style=for-the-badge&logo=gmail)](mailto:matthewqilanthompson.work@gmail.com)
 
-> **Graduate Student pursuing M.S. in Data Science** | University of Arizona  
-> _Seeking entry-level Data Analyst or Junior Data Scientist positions in healthcare, biological sciences, or AI-driven applications_
+> **M.S. in Data Science**, University of Arizona (2026) · B.S. Biology  
+> _Seeking entry-level Data Analyst roles — biological, life-sciences, and environmental data_
 
-**Interests**: Healthcare data • Biological sciences • Automation • Data-driven problem solving
+**Interests**: Biological & life-sciences data • Environmental & ecological analysis • Automation
 
 ---
 
