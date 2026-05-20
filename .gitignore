@@ -39,3 +39,7 @@ Thumbs.db
 # Personal
 secrets.txt
 config.local.*
+
+# Quarto build cache
+_freeze/
+.quarto/
