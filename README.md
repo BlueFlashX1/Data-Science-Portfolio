@@ -10,7 +10,7 @@
 
 ---
 
-**Class Competition**: Placed **5th/40** (dev) in healthcare readmission prediction • ROC AUC 0.90
+**Highlight**: 30-day hospital readmission prediction — Random Forest classifier, ROC AUC 0.90 across 125,958 synthetic EHR encounters
 
 **Navigation**: [Projects](#academic-projects) • [Skills](#skills) • [Connect](#connect)
 
@@ -84,7 +84,7 @@ Built machine learning classification models using real biological data, compari
 
 **Class competition for 30-day hospital readmission prediction** • _INFO 521 Final Project_
 
-**Placed 5th/40** in class competition. Developed Random Forest classifier with patient frequency encoding from 125,958 synthetic EHR encounters. Compared 9 algorithms and applied stratified cross-validation. Achieved ROC AUC 0.90 (dev).
+Developed a Random Forest classifier with patient-frequency encoding on 125,958 synthetic EHR encounters. Compared 9 algorithms with stratified cross-validation and achieved ROC AUC 0.90 on the development set.
 
 **What I Applied**:
 
@@ -151,4 +151,4 @@ Healthcare AI training simulator built by a 6-person team capstone at the UofA A
 [![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/BlueFlashX1)
 [![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:matthewqilanthompson.work@gmail.com)
 
-**Looking for**: Entry-level Data Analyst or Junior Data Scientist positions in healthcare, biology, or AI-driven applications
+**Looking for**: Entry-level Data Analyst roles — biological, life-sciences, and environmental data

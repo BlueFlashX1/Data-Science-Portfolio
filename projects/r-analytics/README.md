@@ -90,7 +90,7 @@ r-analytics/
     └── data/
         ├── Cougar Killsites.xlsx      # Wildlife ecology (168KB)
         ├── Dangerous Jobs.csv         # Occupational safety (28MB)
-        └── Housing Price Index.xlsx   # Economic indicators (61KB)
+        └── Housing Price Index.xlsx - Data.csv  # Economic indicators (61KB)
 ```
 
 ---

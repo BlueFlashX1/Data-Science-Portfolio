@@ -16,12 +16,14 @@
 
 ## Competition Results
 
-**Placed 5th/40** in class competition (development phase)
+**ROC AUC 0.90 model** — 5th/40 in the development phase, 13th/35 on the final held-out test.
 
 | Phase           | Ranking    | ROC AUC | Participants |
 | --------------- | ---------- | ------- | ------------ |
 | **Development** | 5th place  | 0.9011  | 40           |
 | **Testing**     | 13th place | 0.8581  | 35           |
+
+The drop from 5th (development) to 13th (held-out test) reflects a generalization gap — development-phase tuning that didn't fully transfer to unseen data. The lesson I took from it: lean less on the dev leaderboard and more on robust cross-validation for an honest performance estimate.
 
 ---
 
