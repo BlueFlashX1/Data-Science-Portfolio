@@ -8,7 +8,7 @@
 ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
 ![Pandas](https://img.shields.io/badge/Pandas-150458?style=flat-square&logo=pandas&logoColor=white)
 
-> **Course project on database design and SQL analytics for healthcare data** — University of Arizona, INFO 579
+> **Course project on database design and SQL analytics for healthcare data.** University of Arizona, INFO 579
 
 **[View Full Report (PDF)](./INFO579-Final-Project-Report-Thompson.pdf)** (8.1MB)
 
@@ -112,11 +112,21 @@ sql-nosql-databases-info579/
 
 **Clinical Quality**: Viral sinusitis was the most prevalent condition (63% of diagnoses). Emergency department 30-day mortality rate was 3.57 per 1,000 encounters.
 
-**Provider Utilization**: Identified severe workload imbalances — top provider handled 3,000+ encounters while others averaged under 2,000. Discovered 5 inactive specialties that could be reallocated for better resource distribution.
+**Provider Utilization**: Identified severe workload imbalances: top provider handled 3,000+ encounters while others averaged under 2,000. Discovered 5 inactive specialties that could be reallocated for better resource distribution.
 
 **Cost Analysis**: Top patient costs reached $1.1M. Most common procedures were medication reconciliation and renal dialysis.
 
 **Readmission Patterns**: Flagged high-risk ER patients with ≥3 visits within the analysis period for targeted intervention programs.
+
+---
+
+## What I Learned
+
+For loading the data, I started by inserting rows one at a time. Then I found I could import the CSV files directly with LOAD DATA INFILE, which let me bulk insert every row at once. It went well after a few tweaks. The provider data also had some duplicate organization_id values, so I made a unique key on the paired provider_id and organization_id. That way I could still use both of them as foreign keys.
+
+For the observation data, I loaded it into a staging table first, then used INSERT and SELECT to move it into the real observation table while doing a LEFT JOIN on encounter_id. Any mismatched encounter_id would come in as NULL instead of breaking the load. I did a bit of investigation, and around 10.13% of the encounter_id values in the observation CSV were not found in the encounter table. I decided to keep these as NULL for future insights later if interested.
+
+One result I went back and corrected was the death rate by encounter class. At first it showed the top three as ambulatory, wellness, and outpatient. But those are typically scheduled visits, so a raw count there didn't really make sense as a measure of risk. I re-checked it using death within 30 days of a visit, as a rate per 1,000 encounters. That showed emergency and inpatient at the top instead, which made more sense.
 
 ---
 
@@ -162,5 +172,5 @@ FROM patient;
 ---
 
 <p align="center">
-  <em>University of Arizona — Data Science Portfolio</em>
+  <em>University of Arizona, Data Science Portfolio</em>
 </p>

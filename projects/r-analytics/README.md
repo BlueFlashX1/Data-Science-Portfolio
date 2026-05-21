@@ -121,7 +121,7 @@ install.packages(c(
 **Course**: INFO 526 - Data Visualization  
 **Institution**: University of Arizona  
 **Academic Year**: 2024-2025  
-**Program**: Graduate Student — M.S. in Data Science
+**Program**: M.S. in Data Science
 
 ---
 

@@ -109,7 +109,7 @@ Other deliberate choices I made:
 | Decision                       | Why                                                                                                                                                  |
 | ------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Output bias from class priors  | `b_i = log(prior_i / (1 - prior_i))`. Starts the sigmoid at the empirical baseline so gradients don't waste their first epochs correcting the offset (Goodfellow §8.4). |
-| 5-seed ensemble, not 10        | Single-seed variance was about 10 F1 points. 5 seeds stabilized around 0.72. 10 was worse — too many borderline predictions averaged below 0.5.       |
+| 5-seed ensemble, not 10        | Single-seed variance was about 10 F1 points. 5 seeds stabilized around 0.72. 10 was worse, too many borderline predictions averaged below 0.5.       |
 | Conv1D, kernel 3               | Short Reddit text, emotion cues mostly in bigrams and trigrams. Kernel 3 was the dev sweep winner over kernel 5 and 7.                                |
 
 ### The rare-class problem
@@ -136,7 +136,7 @@ When test results came back, I scored 0.672. Training F1 over-predicted by 5 poi
 | ---------------------------- | ------ | ---------------------------- |
 | Training-time logged F1      | 0.7218 | over-predicted by 5 points    |
 | check.py re-evaluation       | 0.6506 | under-predicted by 2 points   |
-| Actual test F1               | 0.672  | —                            |
+| Actual test F1               | 0.672  | n/a                          |
 
 This is now my default for any ML project: save the checkpoint, run the production inference path on labeled dev, and trust that number over the training logs.
 
@@ -179,6 +179,6 @@ Python • Keras / TensorFlow • Conv1D CNN • Multi-label F1 • 5-seed ensem
 
 ## References
 
-- Goodfellow, I., Bengio, Y., & Courville, A. (2016). *Deep Learning*. MIT Press. (Ch 7.4–7.5 noise/augmentation, §7.11 ensembling, §8.4 initialization, Ch 9 CNNs, Ch 10 sequences.)
+- Goodfellow, I., Bengio, Y., & Courville, A. (2016). *Deep Learning*. MIT Press. (Ch 7.4-7.5 noise/augmentation, §7.11 ensembling, §8.4 initialization, Ch 9 CNNs, Ch 10 sequences.)
 - Wei, J. & Zou, K. (2019). EDA: Easy Data Augmentation Techniques for Boosting Performance on Text Classification Tasks. EMNLP-IJCNLP 2019. [arXiv:1901.11196](https://arxiv.org/abs/1901.11196).
 - Demszky, D., et al. (2020). GoEmotions: A Dataset of Fine-Grained Emotions. ACL 2020. [arXiv:2005.00547](https://arxiv.org/abs/2005.00547).

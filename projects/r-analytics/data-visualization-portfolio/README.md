@@ -5,7 +5,7 @@
 [![R](https://img.shields.io/badge/R-4.x-276DC3?style=for-the-badge&logo=r)](https://r-project.org)
 [![RMarkdown](https://img.shields.io/badge/RMarkdown-Portfolio-FF6B35?style=for-the-badge&logo=r)](https://rmarkdown.rstudio.com)
 
-> **Course portfolio demonstrating R programming and ggplot2 across ecological, safety, and economic datasets** — University of Arizona, INFO 526
+> **Course portfolio demonstrating R programming and ggplot2 across ecological, safety, and economic datasets.** University of Arizona, INFO 526
 
 **[View Complete Portfolio (PDF)](./MatthewThompson_Final_Portfolio.pdf)** | **[Source Code (.Rmd)](./Final-Portfolio-Assignment.Rmd)**
 
@@ -145,5 +145,5 @@ A couple of things I struggled with. There was feedback suggesting I move the le
 ---
 
 <p align="center">
-  <em>University of Arizona — Graduate Student Data Science Portfolio</em>
+  <em>University of Arizona, Data Science Portfolio</em>
 </p>

@@ -1,4 +1,4 @@
-# AI4HC Capstone — ER Simulator Showcase Poster
+# AI4HC Capstone: ER Simulator Showcase Poster
 
 [![Course Project](https://img.shields.io/badge/Course-Capstone-blue?style=for-the-badge)](https://arizona.edu)
 [![INFO 698](https://img.shields.io/badge/INFO%20698-Graduate%20Capstone-red?style=for-the-badge)](https://arizona.edu)
@@ -8,7 +8,7 @@
 ![CSS](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white)
 ![Information Design](https://img.shields.io/badge/Information-Design-purple?style=flat-square)
 
-> Healthcare AI training simulator, built by a 6-person team capstone. My role was the showcase poster + the avatar source footage. University of Arizona, INFO 698, Spring 2026.
+> Healthcare AI training simulator, built by a 6-person team capstone. My role was the showcase poster and the avatar source footage. University of Arizona, INFO 698, Spring 2026.
 
 **View the live poster:** [light theme](https://blueflashx1.github.io/Data-Science-Portfolio/projects/capstone/ai4hc-info698/index_v1.html) · [dark theme](https://blueflashx1.github.io/Data-Science-Portfolio/projects/capstone/ai4hc-info698/index_dark.html) · [print PDF](./iShowcase_Final.pdf)
 
@@ -31,7 +31,7 @@ I wasn't on the engineering side. My job on this team was design and the avatar 
 **1. The showcase poster.**
 
 - Took Abhiram Varma Nandimandalam's initial HTML draft ([isjustabhi/AI4HC](https://github.com/isjustabhi/AI4HC)) and polished it into the team's final capstone poster (layout, theme variants, CSS iteration)
-- HTML/CSS source so we could iterate in a browser; exported to a 4×3 ft print-ready PDF via [`scripts/export_poster.py`](./scripts/export_poster.py) — a Python pipeline I wrote that renders the HTML in headless Chrome at 4608×3456 px, screenshots it, and embeds the PNG losslessly into a 48×36 in PDF with print-shop metadata
+- HTML/CSS source so we could iterate in a browser; exported to a 4×3 ft print-ready PDF via [`scripts/export_poster.py`](./scripts/export_poster.py), a Python pipeline I wrote that renders the HTML in headless Chrome at 4608×3456 px, screenshots it, and embeds the PNG losslessly into a 48×36 in PDF with print-shop metadata
 - The team printed from this PDF for the iShowcase event and the physical poster came out matching the on-screen render exactly
 - Two variants: a light version for the project slide demo, a dark version for the printed banner
 - Summarizes the team's system in one visual: the RAG pipeline, the avatar integration, the quiz engine, the learner flow
@@ -43,7 +43,7 @@ I wasn't on the engineering side. My job on this team was design and the avatar 
 - Handed the footage to the project coordinator, who handled the HeyGen API wiring
 - I didn't write that integration code; my contribution was being the source
 
-That's it. The codebase, the RAG service, the API integration, the quiz engine — all teammate work.
+That's it. The codebase, the RAG service, the API integration, and the quiz engine were all teammate work.
 
 ---
 

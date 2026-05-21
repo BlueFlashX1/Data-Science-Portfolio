@@ -9,7 +9,7 @@
 ![SHAP](https://img.shields.io/badge/SHAP-Explainability-FF6B6B?style=flat-square)
 ![Quarto](https://img.shields.io/badge/Quarto-Website-75AADB?style=flat-square&logo=quarto&logoColor=white)
 
-> **ML classification project using sexually selected traits to predict animal taxonomy** — University of Arizona, INFO 523
+> **ML classification project using sexually selected traits to predict animal taxonomy.** University of Arizona, INFO 523
 
 **[View Live Website](https://info-523-su25.github.io/final-project-thompson/)** | **[Analysis Notebook](./index.ipynb)**
 
@@ -31,7 +31,7 @@ I compared binary presence/absence data vs. evolutionary origin rates across 1,0
   <img src="./images/Plots/phylum_distribution.png" alt="Distribution of families across phyla" width="600">
 </p>
 
-_Dataset has 1,087 animal families across 5 superphyla — class imbalance required balanced metrics._
+_Dataset has 1,087 animal families across 5 superphyla. Class imbalance required balanced metrics._
 
 ### SHAP Feature Importance
 
@@ -96,7 +96,7 @@ I built machine learning classification models using real biological data. Here'
 
 **Traits analyzed**: Auditory (A), Gustatory (G), Olfactory (O), Tactile (T), Visual (V), Male competition (C), Female competition (K), Intersexual conflict (S), Female choice (F), Male choice (M)
 
-**Classification target**: 5 superphyla — Ecdysozoa, Lophotrochozoa, Deuterostomia, Basal Metazoa, Basal Bilateria
+**Classification target**: 5 superphyla (Ecdysozoa, Lophotrochozoa, Deuterostomia, Basal Metazoa, Basal Bilateria)
 
 Full codebook: [`data/README.md`](./data/README.md)
 
@@ -116,9 +116,9 @@ Full codebook: [`data/README.md`](./data/README.md)
 
 ## What I Learned
 
-The clearest result was that the two datasets behaved very differently. The binary presence/absence data was sparse and dominated by Arthropoda (~84% of samples), and SHAP showed the model leaned almost entirely on a single feature, the "sexually selected" flag. The evolutionary rate data was more balanced, and its signal spread across visual, competition, auditory, and female-choice traits. So rate-based features predicted taxonomy better than binary presence, though even the better dataset only reached around 50% accuracy — the signal in this kind of trait data is real but limited.
+The clearest result was that the two datasets behaved very differently. The binary presence/absence data was sparse and dominated by Arthropoda (~84% of samples), and SHAP showed the model leaned almost entirely on a single feature, the "sexually selected" flag. The evolutionary rate data was more balanced, and its signal spread across visual, competition, auditory, and female choice traits. So rate-based features predicted taxonomy better than binary presence, though even the better dataset only reached around 50% accuracy. The signal in this kind of trait data is real but limited.
 
-A lot of the project changed from my original proposal. I had planned to predict at the class/family level, but the data was too sparse, so I grouped phyla into five superphyla instead. I log-transformed and standardized the evolutionary rates rather than binarizing them, and I switched the evaluation metrics to balanced accuracy and macro F1 instead of ROC-AUC, since the classes were so uneven. SHAP also started as a secondary check but became central — it was what showed how heavily the binary model leaned on that one SS flag.
+A lot of the project changed from my original proposal. I had planned to predict at the class/family level, but the data was too sparse, so I grouped phyla into five superphyla instead. I log-transformed and standardized the evolutionary rates rather than binarizing them, and I switched the evaluation metrics to balanced accuracy and macro F1 instead of ROC-AUC, since the classes were so uneven. SHAP also started as a secondary check but became central. It was what showed how heavily the binary model leaned on that one SS flag.
 
 If I did this again, I'd remove the SS traits and redo modeling for the family data, since the model relied on SS so heavily that it masked the other traits. The bigger limitation, though, is data quality: both datasets were too sparse and imbalanced to generalize well, and that would need to improve before this approach could go further.
 

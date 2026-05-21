@@ -4,13 +4,13 @@
 [![Email](https://img.shields.io/badge/Contact-Email-D14836?style=for-the-badge&logo=gmail)](mailto:matthewqilanthompson.work@gmail.com)
 
 > **M.S. in Data Science**, University of Arizona (completed May 2026) · B.S. Biology  
-> _Seeking entry-level Data Analyst roles — biological, life-sciences, and environmental data_
+> _Seeking entry-level Data Analyst roles in biological, life-sciences, and environmental data_
 
 **Interests**: Biological & life-sciences data • Environmental & ecological analysis • Automation
 
 ---
 
-**Highlight**: 30-day hospital readmission prediction — Random Forest classifier, ROC AUC 0.90 across 125,958 synthetic EHR encounters
+**Highlight**: 30-day hospital readmission prediction: Random Forest classifier, ROC AUC 0.90 across 125,958 synthetic EHR encounters
 
 **Navigation**: [Projects](#academic-projects) • [Skills](#skills) • [Connect](#connect)
 
@@ -38,7 +38,7 @@
 | ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Healthcare Analytics** | EHR data processing for 125,958+ encounters • Readmission prediction models (ROC AUC 0.90) • Clinical quality metrics analysis                  |
 | **Machine Learning**     | Classification algorithms (Random Forest, Logistic Regression) • Model comparison across 9 algorithms • Cross-validation • SHAP explainability  |
-| **Deep Learning / NLP**  | Multi-label text classification on 14-class GoEmotions • Fine-tuning transformers (RoBERTa via Hugging Face) • Keras / TensorFlow CNN architecture • Calibration-aware methodology (BCE + label smoothing, −0.050 dev→test gap) |
+| **Deep Learning / NLP**  | Multi-label text classification on 14-class GoEmotions • Fine-tuning transformers (RoBERTa via Hugging Face) • Keras / TensorFlow CNN architecture • Calibration-aware methodology (BCE + label smoothing, -0.050 dev->test gap) |
 | **Database Systems**     | Schema design (3NF) for 1,171 patients and 53,346 encounters • Multi-table joins (4+ tables) • Temporal analysis with CTEs and window functions |
 | **Data Visualization**   | Advanced plots (alluvial diagrams, faceted layouts) • Custom R functions for automated EDA • Reproducible research workflows with RMarkdown     |
 
@@ -116,7 +116,7 @@ Built comprehensive visualizations across three domains using R, ggplot2, and ti
 
 **14-label text classification competition** • _INFO 557 Graduate Project_
 
-**Placed 8th/15** on test in class competition (F1 0.672), up from 10th/18 on dev with the 3rd-tightest dev→test gap (−0.05) on the leaderboard. Built a multi-label emotion classifier on a 14-class GoEmotions subset of Reddit text using a 5-seed Conv1D CNN with calibrated BCE + label smoothing.
+**Placed 8th/15** on test in class competition (F1 0.672), up from 10th/18 on dev with the 3rd-tightest dev->test gap (-0.05) on the leaderboard. Built a multi-label emotion classifier on a 14-class GoEmotions subset of Reddit text using a 5-seed Conv1D CNN with calibrated BCE + label smoothing.
 
 **What I Applied**:
 
@@ -129,15 +129,15 @@ Built comprehensive visualizations across three domains using R, ggplot2, and ti
 
 ---
 
-### [AI4HC Capstone — ER Simulator Showcase Poster](./projects/capstone/ai4hc-info698/)
+### [AI4HC Capstone: ER Simulator Showcase Poster](./projects/capstone/ai4hc-info698/)
 
-**Team capstone — ER simulator showcase poster** • _INFO 698 Graduate Capstone_
+**Team capstone: ER simulator showcase poster** • _INFO 698 Graduate Capstone_
 
 Healthcare AI training simulator built by a 6-person team capstone at the UofA AI Core: .NET 8 web app with a RAG-backed chat tutor, HeyGen streaming avatar, and a multiple-choice quiz generator. I wasn't on the engineering side; my role was the showcase poster and the avatar source footage.
 
 **My Contributions**:
 
-- **Showcase poster**: Took Abhiram's initial HTML draft ([isjustabhi/AI4HC](https://github.com/isjustabhi/AI4HC)) and polished it into the team's final capstone poster — added light + dark theme variants and iterated the layout/CSS. **View live:** [light theme](https://blueflashx1.github.io/Data-Science-Portfolio/projects/capstone/ai4hc-info698/index_v1.html) · [dark theme](https://blueflashx1.github.io/Data-Science-Portfolio/projects/capstone/ai4hc-info698/index_dark.html)
+- **Showcase poster**: Took Abhiram's initial HTML draft ([isjustabhi/AI4HC](https://github.com/isjustabhi/AI4HC)) and polished it into the team's final capstone poster. I added light + dark theme variants and iterated the layout/CSS. **View live:** [light theme](https://blueflashx1.github.io/Data-Science-Portfolio/projects/capstone/ai4hc-info698/index_v1.html) · [dark theme](https://blueflashx1.github.io/Data-Science-Portfolio/projects/capstone/ai4hc-info698/index_dark.html)
 - **Print-PDF conversion pipeline**: Wrote a Python script (headless Chrome + img2pdf) that exports the HTML poster to a 4×3 ft print-ready PDF with print-shop metadata. The team printed from this PDF and the physical poster matched the on-screen render exactly.
 - **Avatar source footage**: Recorded the 1-minute clip used to build the team's HeyGen avatar; project coordinator wired the API
 
@@ -151,4 +151,4 @@ Healthcare AI training simulator built by a 6-person team capstone at the UofA A
 [![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/BlueFlashX1)
 [![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:matthewqilanthompson.work@gmail.com)
 
-**Looking for**: Entry-level Data Analyst roles — biological, life-sciences, and environmental data
+**Looking for**: Entry-level Data Analyst roles in biological, life-sciences, and environmental data

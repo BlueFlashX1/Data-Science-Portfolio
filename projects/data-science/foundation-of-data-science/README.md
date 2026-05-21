@@ -8,7 +8,7 @@
 ![Scikit-learn](https://img.shields.io/badge/Scikit--learn-F7931E?style=flat-square&logo=scikit-learn&logoColor=white)
 ![Pandas](https://img.shields.io/badge/Pandas-150458?style=flat-square&logo=pandas&logoColor=white)
 
-> **Class competition for predicting 30-day hospital readmissions using synthetic EHR data** — University of Arizona, INFO 521
+> **Class competition for predicting 30-day hospital readmissions using synthetic EHR data.** University of Arizona, INFO 521
 
 **[Competition Platform](https://www.codabench.org/competitions/6813/#/results-tab)** (CodaBench - login required)
 
@@ -16,14 +16,14 @@
 
 ## Competition Results
 
-**ROC AUC 0.90 model** — 5th/40 in the development phase, 13th/35 on the final held-out test.
+**ROC AUC 0.90 model**, 5th/40 in the development phase and 13th/35 on the final held-out test.
 
 | Phase           | Ranking    | ROC AUC | Participants |
 | --------------- | ---------- | ------- | ------------ |
 | **Development** | 5th place  | 0.9011  | 40           |
 | **Testing**     | 13th place | 0.8581  | 35           |
 
-My cross-validated AUC (~0.86) predicted the final test AUC (0.858) almost exactly — the model held up on unseen data. The development-phase leaderboard score (0.90) was the optimistic one; the rank moved from 5th to 13th as the field's scores settled on the held-out test.
+My cross-validated AUC (~0.86) predicted the final test AUC (0.858) almost exactly. The model held up on unseen data. The development-phase leaderboard score (0.90) was the optimistic one; the rank moved from 5th to 13th as the field's scores settled on the held-out test.
 
 ---
 
@@ -44,9 +44,9 @@ Hospital readmissions cost the U.S. healthcare system billions annually. I built
 
 | Decision                       | Reasoning                                                               |
 | ------------------------------ | ----------------------------------------------------------------------- |
-| **Patient frequency encoding** | Transformed patient_id into encounter count per patient — key predictor |
+| **Patient frequency encoding** | Transformed patient_id into encounter count per patient (key predictor) |
 | **Dropped zip code**           | Not meaningful without distance calculation                             |
-| **Dropped symptom columns**    | All values were identical (0) — uninformative                           |
+| **Dropped symptom columns**    | All values were identical (0), so uninformative                           |
 | **Mean imputation**            | Large sample size made mean imputation appropriate                      |
 
 ### Data Quality Challenges
@@ -85,9 +85,9 @@ Evaluated 9 algorithms: Logistic Regression, Decision Tree, Random Forest, Gradi
 
 The biggest lesson from this project was how much the way data is cleaned and represented affects model performance.
 
-My first idea was to group on `patient_id` to tally each patient's readmissions. It scored around 0.69 — I'd focused too much on *who* the patient was rather than the other factors behind a readmission. I redid it, encoding `patient_id` as a frequency count instead of grouping on it, and dropped the columns that weren't informative. That version performed much better.
+My first idea was to group on `patient_id` to tally each patient's readmissions. It scored around 0.69. I'd focused too much on *who* the patient was rather than the other factors behind a readmission. I redid it, encoding `patient_id` as a frequency count instead of grouping on it, and dropped the columns that weren't informative. That version performed much better.
 
-While checking the model for overfitting, an earlier version returned a perfect 1.0 score with no train/test gap. A perfect score is a warning sign, not a result — it meant data had leaked into the features. I traced it to an aggregation that tallied `readmitted_within_30_days` only where the value was 1, removed that code, and re-validated to a legitimate cross-validation score with a small (~0.04) gap.
+While checking the model for overfitting, an earlier version returned a perfect 1.0 score with no train/test gap. A perfect score is a warning sign, not a result. It meant data had leaked into the features. I traced it to an aggregation that tallied `readmitted_within_30_days` only where the value was 1, removed that code, and re-validated to a legitimate cross-validation score with a small (~0.04) gap.
 
 ---
 
@@ -122,5 +122,5 @@ foundation-of-data-science/
 ---
 
 <p align="center">
-  <em>University of Arizona — Data Science Portfolio</em>
+  <em>University of Arizona, Data Science Portfolio</em>
 </p>
