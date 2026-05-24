@@ -9,9 +9,7 @@
 
 **Highlight**: 30-day hospital readmission prediction with a Random Forest classifier, ROC-AUC of 0.90 (a classifier accuracy score where 1.0 is perfect) across 125,958 synthetic electronic health record (EHR) encounters
 
-**Navigation**: [Projects](#academic-projects) • [Skills](#skills) • [Connect](#connect)
-
-## Skills
+**Navigation**: [Projects](#featured-projects) • [Skills](#skills) • [Connect](#connect)
 
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![R](https://img.shields.io/badge/R-276DC3?style=for-the-badge&logo=r&logoColor=white)
@@ -19,71 +17,9 @@
 ![Scikit-Learn](https://img.shields.io/badge/scikit--learn-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white)
 ![ggplot2](https://img.shields.io/badge/ggplot2-E34F26?style=for-the-badge&logo=r&logoColor=white)
 
-| Category             | Tools & Libraries                                                                                                                   |
-| -------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| **Languages**        | Python (machine-learning pipelines, data processing) • R (statistical analysis, visualization) • SQL / Structured Query Language (database queries, analytics) |
-| **Machine Learning** | Scikit-learn (model training, evaluation) • Random Forest (classification) • Logistic Regression • SHAP / SHapley Additive exPlanations (model explainability) |
-| **Deep Learning**    | Keras / TensorFlow (convolutional neural network / CNN architecture) • Hugging Face Transformers • RoBERTa fine-tuning • Multi-label classification |
-| **Data Analysis**    | Pandas (data manipulation, Extract-Transform-Load / ETL) • NumPy (numerical computing) • tidyverse (data transformation) • dplyr (data wrangling) |
-| **Visualization**    | ggplot2 (statistical plots) • Matplotlib (data visualization) • ggalluvial (flow diagrams) • viridis (color palettes) |
-| **Databases**        | MySQL (relational databases) • Database design (Third Normal Form / 3NF) • Common Table Expressions (CTEs) • Window functions (analytical queries) |
-| **Development**      | Git (version control) • Jupyter (interactive analysis) • RMarkdown (reproducible reports) • Quarto (publishing workflows) |
+## Featured Projects
 
-### Domain Expertise
-
-| Domain                   | Skills Applied                                                                                                                                  |
-| ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Healthcare Analytics** | Electronic health record (EHR) data processing for 125,958+ encounters • Readmission prediction models (ROC-AUC 0.90) • Clinical quality metrics analysis |
-| **Machine Learning**     | Classification algorithms (Random Forest, Logistic Regression) • Model comparison across 9 algorithms • Cross-validation • SHAP explainability  |
-| **Deep Learning / NLP**  | Multi-label text classification on 14-class GoEmotions • Fine-tuning transformers (RoBERTa via Hugging Face) • Keras / TensorFlow CNN architecture • Calibration-aware methodology (binary cross-entropy / BCE + label smoothing, -0.050 dev-to-test gap) |
-| **Database Systems**     | Schema design (3NF) for 1,171 patients and 53,346 encounters • Multi-table joins (4+ tables) • Temporal analysis with CTEs and window functions |
-| **Data Visualization**   | Advanced plots (alluvial diagrams, faceted layouts) • Custom R functions for automated exploratory data analysis (EDA) • Reproducible research workflows with RMarkdown |
-
-## Academic Projects
-
-These academic projects demonstrate my data science capabilities across healthcare analytics, machine learning, deep learning, database systems, and statistical visualization. Each project showcases skills I've applied to solve real data problems.
-
-### [Healthcare Analytics with SQL & NoSQL](./projects/database-systems/sql-nosql-databases-info579/)
-
-**Database design and SQL analytics for electronic health record (EHR) data** • _INFO 579 Final Project_
-
-Designed and implemented Third Normal Form (3NF) database schemas to analyze 1,171 patients and 53,346 encounters from Synthea (an open-source synthetic patient data generator). Built 14 analytical SQL reports using multi-table joins, temporal analysis, Common Table Expressions (CTEs), and window functions.
-
-**Why 3NF over a denormalized star schema**: Synthea's EHR data is transactional (frequent encounter inserts, patient updates) where update anomalies matter more than read latency. 8 entity tables + 2 junction tables for many-to-many relationships kept the data consistent while still supporting analytical queries via CTEs and window functions.
-
-**What I Applied**:
-
-- **Clinical Quality Analysis**: Identified viral sinusitis as the most prevalent condition (63%) and tracked emergency 30-day mortality rates
-- **Provider Utilization**: Discovered workload imbalances and identified inactive specialties for resource reallocation
-- **SQL Techniques**: Implemented CTEs, window functions, and multi-table joins (4+ tables) for temporal analysis
-- **Database Design**: Designed normalized schemas (3NF) supporting 1,171 patients and 53,346 encounters
-
-**Result/Outcome**: A working analytical database that translated raw EHR records into 14 actionable reports, the kind of output a clinical-quality team would use to decide staffing, condition prioritization, and resource reallocation.
-
-**Tech**: MySQL • Complex SQL Joins • Temporal Analysis • Database Design • Python
-
----
-
-### [Trait-Based Animal Classification](./projects/data-science/data-mining-final-project/)
-
-**Machine-learning classification of evolutionary traits across 1,087 animal families** • _INFO 523 Final Project_
-
-Built classification models comparing binary trait presence/absence vs. evolutionary origin rates across 1,087 animal families. Applied SHAP (SHapley Additive exPlanations) for model explainability and used balanced metrics to handle class imbalance across 5 superphyla.
-
-**Why Logistic Regression over Random Forest and Decision Trees**: The evolutionary-rate features were continuous and approximately linear with respect to taxonomic class, which Logistic Regression's linear decision boundary fits well. With ~1,087 families and class imbalance across 5 superphyla, Logistic Regression's calibrated probabilities and interpretable per-trait coefficients gave stronger signal than tree-based models, which over-fit on sparse rare-class samples. Random Forest still served a diagnostic role: SHAP showed the binary model collapsing onto a single feature, which is exactly the failure mode tree ensembles exhibit on sparse, imbalanced data.
-
-**What I Applied**:
-
-- **Data representation optimization**: Evolutionary rates provided stronger predictive signal than sparse binary data
-- **Model comparison**: Evaluated Logistic Regression, Decision Trees, and Random Forest on both representations
-- **Feature importance analysis**: Identified Visual, Competition, and Auditory traits as the strongest predictors via SHAP
-- **Imbalanced classification**: Used balanced accuracy and macro F1-score (a balanced precision/recall metric where 1.0 is perfect) instead of standard accuracy
-
-**Result/Outcome**: ~50% accuracy on 5-class taxonomy showed that sexually-selected traits carry real but limited predictive signal for taxonomic classification. The deeper finding: data representation (continuous evolutionary rates vs. sparse binary presence) mattered more than model choice. The method generalizes to any trait dataset where evolutionary rates are available.
-
-**Tech**: Python • Scikit-learn • SHAP • Stratified K-fold cross-validation • Quarto • Jupyter
-
----
+Projects span healthcare analytics, machine learning, deep learning, database systems, and statistical visualization. Each shows skills applied to a real data problem, with documented model-selection rationale and outcome interpretation.
 
 ### [Healthcare Readmission Prediction Competition](./projects/data-science/foundation-of-data-science/)
 
@@ -105,23 +41,24 @@ Developed a Random Forest classifier with patient-frequency encoding on 125,958 
 
 ---
 
-### [Statistical Data Visualization Portfolio](./projects/r-analytics/data-visualization-portfolio/)
+### [Healthcare Analytics with SQL & NoSQL](./projects/database-systems/sql-nosql-databases-info579/)
 
-**Statistical visualization portfolio across wildlife, safety, and economic domains** • _INFO 526 Portfolio_
+**Database design and SQL analytics for electronic health record (EHR) data** • _INFO 579 Final Project_
 
-Built comprehensive visualizations across three domains using R, ggplot2, and the tidyverse. Developed custom data-transformation functions, implemented advanced plot types (alluvial diagrams, faceted layouts), and established reproducible research workflows.
+Designed and implemented Third Normal Form (3NF) database schemas to analyze 1,171 patients and 53,346 encounters from Synthea (an open-source synthetic patient data generator). Built 14 analytical SQL reports using multi-table joins, temporal analysis, Common Table Expressions (CTEs), and window functions.
 
-**Why these chart types**: Chose alluvial diagrams for occupational safety to show cause-to-effect flow (which stacked bar charts can't represent), line graphs for temporal trends in dangerous-job fatality rates (rejecting stacked area plots because they make quantifying exact values difficult), and grouped bar charts over stacked bars when more than ~10 categories made stacks unreadable. Chart selection was driven by the question being asked rather than chart popularity.
+**Why 3NF over a denormalized star schema**: Synthea's EHR data is transactional (frequent encounter inserts, patient updates) where update anomalies matter more than read latency. 8 entity tables + 2 junction tables for many-to-many relationships kept the data consistent while still supporting analytical queries via CTEs and window functions.
 
 **What I Applied**:
 
-- **Cougar Predation Analysis**: Identified wild ungulates as primary prey and analyzed temporal patterns in predation data
-- **Occupational Safety**: Mapped fatality trends using alluvial diagrams to visualize cause-to-effect relationships
-- **Economic Trends**: Analyzed regional housing-price volatility and recovery patterns across 4 U.S. regions
+- **Clinical Quality Analysis**: Identified viral sinusitis as the most prevalent condition (63%) and tracked emergency 30-day mortality rates
+- **Provider Utilization**: Discovered workload imbalances and identified inactive specialties for resource reallocation
+- **SQL Techniques**: Implemented CTEs, window functions, and multi-table joins (4+ tables) for temporal analysis
+- **Database Design**: Designed normalized schemas (3NF) supporting 1,171 patients and 53,346 encounters
 
-**Result/Outcome**: Three reproducible visualization analyses across distinct domains. The cause-to-effect insight in the occupational safety alluvial diagram would not have been visible in a standard bar or pie chart, and the chart-selection narrative demonstrates that the choice of visualization is itself an analytical decision.
+**Result/Outcome**: A working analytical database that translated raw EHR records into 14 actionable reports, the kind of output a clinical-quality team would use to decide staffing, condition prioritization, and resource reallocation.
 
-**Tech**: R • ggplot2 • RMarkdown • dplyr • tidyverse • ggalluvial • Custom Functions
+**Tech**: MySQL • Complex SQL Joins • Temporal Analysis • Database Design • Python
 
 ---
 
@@ -146,6 +83,47 @@ Built comprehensive visualizations across three domains using R, ggplot2, and th
 
 ---
 
+### [Trait-Based Animal Classification](./projects/data-science/data-mining-final-project/)
+
+**Machine-learning classification of evolutionary traits across 1,087 animal families** • _INFO 523 Final Project_
+
+Built classification models comparing binary trait presence/absence vs. evolutionary origin rates across 1,087 animal families. Applied SHAP (SHapley Additive exPlanations) for model explainability and used balanced metrics to handle class imbalance across 5 superphyla.
+
+**Why Logistic Regression over Random Forest and Decision Trees**: The evolutionary-rate features were continuous and approximately linear with respect to taxonomic class, which Logistic Regression's linear decision boundary fits well. With ~1,087 families and class imbalance across 5 superphyla, Logistic Regression's calibrated probabilities and interpretable per-trait coefficients gave stronger signal than tree-based models, which over-fit on sparse rare-class samples. Random Forest still served a diagnostic role: SHAP showed the binary model collapsing onto a single feature, which is exactly the failure mode tree ensembles exhibit on sparse, imbalanced data.
+
+**What I Applied**:
+
+- **Data representation optimization**: Evolutionary rates provided stronger predictive signal than sparse binary data
+- **Model comparison**: Evaluated Logistic Regression, Decision Trees, and Random Forest on both representations
+- **Feature importance analysis**: Identified Visual, Competition, and Auditory traits as the strongest predictors via SHAP
+- **Imbalanced classification**: Used balanced accuracy and macro F1-score (a balanced precision/recall metric where 1.0 is perfect) instead of standard accuracy
+
+**Result/Outcome**: ~50% accuracy on 5-class taxonomy showed that sexually-selected traits carry real but limited predictive signal for taxonomic classification. The deeper finding: data representation (continuous evolutionary rates vs. sparse binary presence) mattered more than model choice. The method generalizes to any trait dataset where evolutionary rates are available.
+
+**Tech**: Python • Scikit-learn • SHAP • Stratified K-fold cross-validation • Quarto • Jupyter
+
+---
+
+### [Statistical Data Visualization Portfolio](./projects/r-analytics/data-visualization-portfolio/)
+
+**Statistical visualization portfolio across wildlife, safety, and economic domains** • _INFO 526 Portfolio_
+
+Built comprehensive visualizations across three domains using R, ggplot2, and the tidyverse. Developed custom data-transformation functions, implemented advanced plot types (alluvial diagrams, faceted layouts), and established reproducible research workflows.
+
+**Why these chart types**: Chose alluvial diagrams for occupational safety to show cause-to-effect flow (which stacked bar charts can't represent), line graphs for temporal trends in dangerous-job fatality rates (rejecting stacked area plots because they make quantifying exact values difficult), and grouped bar charts over stacked bars when more than ~10 categories made stacks unreadable. Chart selection was driven by the question being asked rather than chart popularity.
+
+**What I Applied**:
+
+- **Cougar Predation Analysis**: Identified wild ungulates as primary prey and analyzed temporal patterns in predation data
+- **Occupational Safety**: Mapped fatality trends using alluvial diagrams to visualize cause-to-effect relationships
+- **Economic Trends**: Analyzed regional housing-price volatility and recovery patterns across 4 U.S. regions
+
+**Result/Outcome**: Three reproducible visualization analyses across distinct domains. The cause-to-effect insight in the occupational safety alluvial diagram would not have been visible in a standard bar or pie chart, and the chart-selection narrative demonstrates that the choice of visualization is itself an analytical decision.
+
+**Tech**: R • ggplot2 • RMarkdown • dplyr • tidyverse • ggalluvial • Custom Functions
+
+---
+
 ### [AI for Healthcare Capstone: Emergency Room Simulator Showcase Poster](./projects/capstone/ai4hc-info698/)
 
 **Team capstone: poster and print pipeline for an emergency room training simulator** • _INFO 698 Graduate Capstone_
@@ -161,6 +139,30 @@ Healthcare AI training simulator built by a 6-person team capstone at the Univer
 **Result/Outcome**: The poster was physically printed and presented at the University of Arizona iShowcase event. The print pipeline ensured the on-screen render and the 4×3 ft physical poster matched exactly, a deliverable the team could trust without a proofing iteration.
 
 **Tech**: HTML • CSS • Python (headless Chrome to img2pdf print pipeline) • Information design • Technical communication
+
+---
+
+## Skills
+
+| Category             | Tools & Libraries                                                                                                                   |
+| -------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| **Languages**        | Python (machine-learning pipelines, data processing) • R (statistical analysis, visualization) • SQL / Structured Query Language (database queries, analytics) |
+| **Machine Learning** | Scikit-learn (model training, evaluation) • Random Forest (classification) • Logistic Regression • SHAP / SHapley Additive exPlanations (model explainability) |
+| **Deep Learning**    | Keras / TensorFlow (convolutional neural network / CNN architecture) • Hugging Face Transformers • RoBERTa fine-tuning • Multi-label classification |
+| **Data Analysis**    | Pandas (data manipulation, Extract-Transform-Load / ETL) • NumPy (numerical computing) • tidyverse (data transformation) • dplyr (data wrangling) |
+| **Visualization**    | ggplot2 (statistical plots) • Matplotlib (data visualization) • ggalluvial (flow diagrams) • viridis (color palettes) |
+| **Databases**        | MySQL (relational databases) • Database design (Third Normal Form / 3NF) • Common Table Expressions (CTEs) • Window functions (analytical queries) |
+| **Development**      | Git (version control) • Jupyter (interactive analysis) • RMarkdown (reproducible reports) • Quarto (publishing workflows) |
+
+### Domain Expertise
+
+| Domain                   | Skills Applied                                                                                                                                  |
+| ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Healthcare Analytics** | Electronic health record (EHR) data processing for 125,958+ encounters • Readmission prediction models (ROC-AUC 0.90) • Clinical quality metrics analysis |
+| **Machine Learning**     | Classification algorithms (Random Forest, Logistic Regression) • Model comparison across 9 algorithms • Cross-validation • SHAP explainability  |
+| **Deep Learning / NLP**  | Multi-label text classification on 14-class GoEmotions • Fine-tuning transformers (RoBERTa via Hugging Face) • Keras / TensorFlow CNN architecture • Calibration-aware methodology (binary cross-entropy / BCE + label smoothing, -0.050 dev-to-test gap) |
+| **Database Systems**     | Schema design (3NF) for 1,171 patients and 53,346 encounters • Multi-table joins (4+ tables) • Temporal analysis with CTEs and window functions |
+| **Data Visualization**   | Advanced plots (alluvial diagrams, faceted layouts) • Custom R functions for automated exploratory data analysis (EDA) • Reproducible research workflows with RMarkdown |
 
 ---
 
