@@ -3,10 +3,7 @@
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0077B5?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/matthewqilanthompson/)
 [![Email](https://img.shields.io/badge/Contact-Email-D14836?style=for-the-badge&logo=gmail)](mailto:matthewqilanthompson.work@gmail.com)
 
-> **M.S. in Data Science**, University of Arizona (completed May 2026) · B.S. Biology  
-> _Open to data roles where rigor and adaptability matter: analyst, science, business intelligence (BI), or research-adjacent positions across industries_
-
-**Domain interests**: Biological & life-sciences data • Environmental & ecological analysis • Healthcare analytics • Automation (though equally at home learning a new domain from scratch)
+> **M.S. Data Science** · University of Arizona (May 2026) · B.S. Biology · [See full bio](https://github.com/matthewqilanthompson)
 
 ---
 
