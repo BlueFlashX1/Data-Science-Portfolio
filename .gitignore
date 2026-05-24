@@ -43,3 +43,4 @@ config.local.*
 # Quarto build cache
 _freeze/
 .quarto/
+memory/
