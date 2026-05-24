@@ -177,6 +177,38 @@ Python • Keras / TensorFlow • Conv1D CNN • Multi-label F1 • 5-seed ensem
 
 ---
 
+## Project Structure
+
+```text
+emotion-classification-info557/
+├── README.md                           # Project documentation
+├── requirements.txt                    # Python dependencies
+├── decisions.txt                       # Model-decision documentation
+├── eda.ipynb                           # Exploratory data analysis notebook
+├── prediction_eda.ipynb                # Prediction EDA notebook
+├── nn.py                               # Conv1D ensemble model architecture
+├── train_dev.py                        # Training pipeline (submitted model)
+├── predict_test.py                     # Test-set inference script
+├── data/                               # Train/dev/test splits (GoEmotions subset)
+│   ├── train.csv
+│   ├── dev.csv
+│   └── test-in.csv
+├── experiments/                        # Post-grading 4-variant pretrained-embedding study
+│   ├── README.md
+│   ├── compare.py
+│   ├── check_dev_f1.py
+│   ├── check_dev_f1_roberta.py
+│   ├── train_glove.py
+│   ├── train_bert.py
+│   ├── train_bert_finetune.py
+│   ├── train_dev_v2.py
+│   └── train_roberta_finetune.py
+└── prediction_result/
+    └── submission.csv                  # Final competition submission (8th/15 on test)
+```
+
+---
+
 ## References
 
 - Goodfellow, I., Bengio, Y., & Courville, A. (2016). *Deep Learning*. MIT Press. (Ch 7.4-7.5 noise/augmentation, §7.11 ensembling, §8.4 initialization, Ch 9 CNNs, Ch 10 sequences.)

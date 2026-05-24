@@ -47,18 +47,21 @@ That's it. The codebase, the RAG service, the API integration, and the quiz engi
 
 ---
 
-## Files in This Folder
+## Project Structure
 
-| File | What it is |
-| --- | --- |
-| [`index_v1.html`](./index_v1.html) | The poster source (unified version). Open in a browser to render it as the team displayed it. |
-| [`index_dark.html`](./index_dark.html) | Earlier dark-theme variant of the poster source. |
-| [`iShowcase_Final.pdf`](./iShowcase_Final.pdf) | The final printed showcase poster (3.2 MB). |
-| [`AI4HC_poster_dark.pdf`](./AI4HC_poster_dark.pdf) | Dark-theme variant of the print PDF (3.6 MB). |
-| [`scripts/export_poster.py`](./scripts/export_poster.py) | Python pipeline that renders the HTML to a 48×36 in print-ready PDF via headless Chrome + img2pdf. |
-| [`system_workflow.png`](./system_workflow.png) | System architecture diagram embedded in the poster. |
-| [`qr-final-codira.png`](./qr-final-codira.png) | QR code from the poster (links out to the live demo). |
-| [`UA_logo.svg`](./UA_logo.svg) | UA branding asset used in the poster header (referenced by both HTML variants). |
+```text
+ai4hc-info698/
+├── README.md                           # Project documentation
+├── index_v1.html                       # Poster source, unified version (open in a browser to render it as displayed)
+├── index_dark.html                     # Earlier dark-theme variant of the poster source
+├── iShowcase_Final.pdf                 # Final printed showcase poster (3.2MB)
+├── AI4HC_poster_dark.pdf               # Dark-theme variant of the print PDF (3.6MB)
+├── system_workflow.png                 # System architecture diagram embedded in the poster
+├── qr-final-codira.png                 # QR code from the poster (links to the live demo)
+├── UA_logo.svg                         # UA branding asset (referenced by both HTML variants)
+└── scripts/
+    └── export_poster.py                # Headless Chrome + img2pdf pipeline rendering HTML to 48×36 in print-ready PDF
+```
 
 ---
 
