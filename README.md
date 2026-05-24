@@ -79,21 +79,18 @@ Classification across 5 superphyla comparing binary trait presence/absence vs. c
 | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
 | **Languages**        | Python (machine-learning pipelines, data processing) • R (statistical analysis, visualization) • SQL / Structured Query Language (database queries, analytics) |
 | **Machine Learning** | Scikit-learn (model training, evaluation) • Random Forest (classification) • Logistic Regression • SHAP / SHapley Additive exPlanations (model explainability) |
-| **Deep Learning**    | Keras / TensorFlow (convolutional neural network / CNN architecture) • Hugging Face Transformers • RoBERTa fine-tuning • Multi-label classification |
+| **Deep Learning**    | Keras / TensorFlow (neural network architecture) • Hugging Face Transformers • RoBERTa fine-tuning • Convolutional neural networks (CNNs) • Multi-label classification |
 | **Data Analysis**    | Pandas (data manipulation, Extract-Transform-Load / ETL) • NumPy (numerical computing) • tidyverse (data transformation) • dplyr (data wrangling) |
 | **Visualization**    | ggplot2 (statistical plots) • Matplotlib (data visualization) • ggalluvial (flow diagrams) • viridis (color palettes) |
 | **Databases**        | MySQL (relational databases) • Database design (Third Normal Form / 3NF) • Common Table Expressions (CTEs) • Window functions (analytical queries) |
 | **Development**      | Git (version control) • Jupyter (interactive analysis) • RMarkdown (reproducible reports) • Quarto (publishing workflows) |
 
-### Domain Expertise
+### Domain Experience
 
-| Domain                   | Skills Applied                                                                                                                                  |
-| ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Healthcare Analytics** | Electronic health record (EHR) data processing for 125,958+ encounters • Readmission prediction models (ROC-AUC 0.90) • Clinical quality metrics analysis |
-| **Machine Learning**     | Classification algorithms (Random Forest, Logistic Regression) • Model comparison across 9 algorithms • Cross-validation • SHAP explainability  |
-| **Deep Learning / NLP**  | Multi-label text classification on 14-class GoEmotions • Fine-tuning transformers (RoBERTa via Hugging Face) • Keras / TensorFlow CNN architecture • Calibration-aware methodology (binary cross-entropy / BCE + label smoothing, -0.050 dev-to-test gap) |
-| **Database Systems**     | Schema design (3NF) for 1,171 patients and 53,346 encounters • Multi-table joins (4+ tables) • Temporal analysis with CTEs and window functions |
-| **Data Visualization**   | Advanced plots (alluvial diagrams, faceted layouts) • Custom R functions for automated exploratory data analysis (EDA) • Reproducible research workflows with RMarkdown |
+| Domain | Where applied |
+|---|---|
+| **Healthcare Analytics** | Readmission prediction (125,958 synthetic electronic health record encounters, ROC-AUC 0.90) and Third Normal Form (3NF) database design (1,171 patients, 53,346 encounters, 14 analytical SQL reports) |
+| **Biological / Life-sciences Data** | Trait-based classification across 1,087 animal families (Master's project) and quantitative research at Oklahoma State University (NSF ON-RaMP, grasshopper coloration and behavior) and Maryland Sea Grant (NSF REU, marine microbial abundance) |
 
 ---
 
