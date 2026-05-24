@@ -8,7 +8,7 @@ both micro F1 and per-class F1.
 This is the analog of `check_dev_f1.py` but for the PyTorch RoBERTa runs.
 
 Run from project root:
-    cd /path/to/graduate-project-BlueFlashX1-1
+    cd /path/to/graduate-project-matthewqilanthompson-1
     source venv/bin/activate
     python experiments/check_dev_f1_roberta.py
 """

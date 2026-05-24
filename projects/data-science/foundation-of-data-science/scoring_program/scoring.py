@@ -5,7 +5,7 @@
 import os
 import sys
 sys.path.append(
-    os.path.abspath('/Users/matthewthompson/Documents/Academics/DS Masters Academics/Foundation of Data Science/Final Project/final-project-BlueFlashX1/venv/lib/python3.13/site-packages/')
+    os.path.abspath('/Users/matthewthompson/Documents/Academics/DS Masters Academics/Foundation of Data Science/Final Project/final-project-matthewqilanthompson/venv/lib/python3.13/site-packages/')
 )
 
 import pandas as pd
