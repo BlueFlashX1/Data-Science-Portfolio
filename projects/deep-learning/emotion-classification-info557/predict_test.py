@@ -21,7 +21,7 @@ models = [
 ]
 
 # predict on test set and write submission
-test = pd.read_csv('test-in.csv', keep_default_na=False)
+test = pd.read_csv('data/test-in.csv', keep_default_na=False)
 preds = (ensemble_predict(models, vectorizer(test['text']).numpy()) >= 0.5).astype(int)
 test['labels'] = [' '.join(emotions[i] for i, v in enumerate(r) if v) for r in preds]
 

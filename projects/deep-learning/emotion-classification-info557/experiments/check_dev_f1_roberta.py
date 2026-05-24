@@ -63,7 +63,7 @@ def main():
     os.chdir(project_root)
 
     # Load dev labels (multi-hot encoded, same as train_roberta_finetune does)
-    dev = pd.read_csv('dev.csv', keep_default_na=False)
+    dev = pd.read_csv('data/dev.csv', keep_default_na=False)
     y_true = np.zeros((len(dev), len(emotions)), dtype=np.float32)
     for i, lbl_str in enumerate(dev['labels']):
         for lbl in lbl_str.split():

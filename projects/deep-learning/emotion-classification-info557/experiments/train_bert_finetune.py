@@ -57,8 +57,8 @@ def prepare_text_data():
     import pandas as pd
     import tensorflow as tf
 
-    train_csv = pd.read_csv('train.csv', keep_default_na=False)
-    dev_csv = pd.read_csv('dev.csv', keep_default_na=False)
+    train_csv = pd.read_csv('data/train.csv', keep_default_na=False)
+    dev_csv = pd.read_csv('data/dev.csv', keep_default_na=False)
     train_csv['labels'] = train_csv['labels'].apply(lambda x: x.split())
     dev_csv['labels'] = dev_csv['labels'].apply(lambda x: x.split())
 

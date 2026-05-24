@@ -1,15 +1,15 @@
 {
   "exclude": [
-    "**/scoring_program/**",
-    "**/scoring_program_dev/**",
-    "scoring_program/**",
-    "scoring_program_dev/**"
+    "**/scripts/scoring/**",
+    "**/scripts/scoring_dev/**",
+    "scripts/scoring/**",
+    "scripts/scoring_dev/**"
   ],
   "ignore": [
-    "**/scoring_program/**",
-    "**/scoring_program_dev/**",
-    "scoring_program",
-    "scoring_program_dev"
+    "**/scripts/scoring/**",
+    "**/scripts/scoring_dev/**",
+    "scripts/scoring",
+    "scripts/scoring_dev"
   ],
   "reportMissingImports": "none",
   "reportMissingTypeStubs": "none",

@@ -124,8 +124,8 @@ if __name__ == '__main__':
     # We need raw text strings (not the integer-vectorized X used by
     # train_dev.py), so we rebuild the texts list directly here.
     import pandas as pd
-    train_csv = pd.read_csv('train.csv', keep_default_na=False)
-    dev_csv = pd.read_csv('dev.csv', keep_default_na=False)
+    train_csv = pd.read_csv('data/train.csv', keep_default_na=False)
+    dev_csv = pd.read_csv('data/dev.csv', keep_default_na=False)
     train_csv['labels'] = train_csv['labels'].apply(lambda x: x.split())
     dev_csv['labels'] = dev_csv['labels'].apply(lambda x: x.split())
 

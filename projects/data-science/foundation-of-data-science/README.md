@@ -106,8 +106,9 @@ foundation-of-data-science/
 │   ├── test.csv                        # Test dataset (features only)
 │   ├── submission.csv                  # Final predictions
 │   └── README.md                       # Data documentation
-├── scoring_program/                    # Competition evaluation scripts
-└── scoring_program_dev/                # Development scoring tools
+└── scripts/
+    ├── scoring/                        # Competition evaluation scripts
+    └── scoring_dev/                    # Development scoring tools
 ```
 
 ---

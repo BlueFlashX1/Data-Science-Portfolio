@@ -69,8 +69,8 @@ def stage2_model(vocabulary: List[str], n_outputs: int) -> Tuple[keras.Model, Di
     return model, {'batch_size': 128, 'epochs': 30, 'callbacks': [keras.callbacks.EarlyStopping(monitor='val_loss', patience=3, restore_best_weights=True)]}
 
 def load_data():
-    train_csv = pd.read_csv('train.csv', keep_default_na=False)
-    dev_csv = pd.read_csv('dev.csv', keep_default_na=False)
+    train_csv = pd.read_csv('data/train.csv', keep_default_na=False)
+    dev_csv = pd.read_csv('data/dev.csv', keep_default_na=False)
     dev_csv_raw = dev_csv.copy()
 
     vectorizer = keras.layers.TextVectorization(max_tokens=10000,

@@ -10,7 +10,7 @@ models = [keras.models.load_model(f'saved_models/model_seed_{s}.keras',
                                    custom_objects={'f1_score': f1_score})
           for s in [42, 43, 44, 45, 46]]
 
-dev = pd.read_csv('dev.csv', keep_default_na=False)
+dev = pd.read_csv('data/dev.csv', keep_default_na=False)
 
 # multi-hot encode gold labels (empty label string => all-zero row, which is valid)
 y_true = np.zeros((len(dev), len(emotions)), dtype=np.float32)

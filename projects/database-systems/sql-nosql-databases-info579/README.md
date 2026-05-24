@@ -1,6 +1,6 @@
 # Healthcare Analytics with SQL & NoSQL
 
-[![Course Project](https://img.shields.io/badge/Course-Final%20Project-blue?style=for-the-badge)](./INFO579-Final-Project-Report-Thompson.pdf)
+[![Course Project](https://img.shields.io/badge/Course-Final%20Project-blue?style=for-the-badge)](./reports/INFO579-Final-Project-Report-Thompson.pdf)
 [![INFO 579](https://img.shields.io/badge/INFO%20579-SQL%20%26%20NoSQL-red?style=for-the-badge)](https://arizona.edu)
 [![University of Arizona](https://img.shields.io/badge/University%20of-Arizona-navy?style=for-the-badge)](https://arizona.edu)
 
@@ -10,7 +10,7 @@
 
 > **Course project on database design and SQL analytics for healthcare data.** University of Arizona, INFO 579
 
-**[View Full Report (PDF)](./INFO579-Final-Project-Report-Thompson.pdf)** (8.1MB)
+**[View Full Report (PDF)](./reports/INFO579-Final-Project-Report-Thompson.pdf)** (8.1MB)
 
 ---
 
@@ -71,18 +71,21 @@ I designed normalized database schemas and wrote complex SQL queries to analyze 
 
 ```text
 sql-nosql-databases-info579/
-├── README.md                                    # Project documentation
-├── INFO579-Final-Project-Report-Thompson.pdf    # Complete analysis (8.1MB)
-├── data/                                        # 6 healthcare CSVs (67MB total)
+├── README.md                                      # Project documentation
+├── relationship_verify.py                         # Pandas data-integrity check (pre-schema exploration)
+├── data/                                          # 6 healthcare CSVs (67MB total)
 │   ├── patients.csv
 │   ├── encounters.csv
 │   ├── conditions.csv
 │   ├── procedures.csv
 │   ├── observations.csv
 │   └── providers.csv
-└── database-backup/
-    ├── Final_Project_schema.sql                 # Database structure (19KB)
-    └── Final_Project_analytics_reports.sql      # 14 report tables with data (3.5MB)
+├── sql/
+│   ├── Final_Project_schema.sql                   # Database structure (19KB)
+│   └── Final_Project_analytics_reports.sql        # 14 report tables with data (3.5MB)
+└── reports/
+    ├── INFO579-Final-Project-Report-Thompson.pdf  # Complete analysis (8.1MB)
+    └── methodology_section.pdf                    # Methodology excerpt
 ```
 
 ---
@@ -104,7 +107,7 @@ sql-nosql-databases-info579/
 13. Patients without Diagnoses
 14. 30-Day Mortality Rates
 
-**[View All SQL Queries](./database-backup/Final_Project_analytics_reports.sql)**
+**[View All SQL Queries](./sql/Final_Project_analytics_reports.sql)**
 
 ---
 

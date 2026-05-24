@@ -206,9 +206,9 @@ def convolutional_neural_network(vocabulary: List[str], n_outputs: int, output_b
 #     return model, {'batch_size': 128, 'epochs': 10, 'callbacks': [keras.callbacks.EarlyStopping(monitor='val_loss', patience=3, restore_best_weights=True)]}
 
 def load_data():    
-    train_csv = pd.read_csv('train.csv', keep_default_na=False)
+    train_csv = pd.read_csv('data/train.csv', keep_default_na=False)
     # keep_default_na=False to prevent empty strings from being converted to NaN
-    dev_csv = pd.read_csv('dev.csv', keep_default_na=False)
+    dev_csv = pd.read_csv('data/dev.csv', keep_default_na=False)
     dev_csv_raw = dev_csv.copy()
     
     #split labels first since the swap runs on text before vectorization

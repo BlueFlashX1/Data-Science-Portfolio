@@ -65,8 +65,8 @@ SAVE_DIR = Path(__file__).parent / 'saved_models_roberta_finetune'
 # ----------------------------------------------------------------------------
 def prepare_text_data():
     import pandas as pd
-    train_csv = pd.read_csv('train.csv', keep_default_na=False)
-    dev_csv = pd.read_csv('dev.csv', keep_default_na=False)
+    train_csv = pd.read_csv('data/train.csv', keep_default_na=False)
+    dev_csv = pd.read_csv('data/dev.csv', keep_default_na=False)
     train_csv['labels'] = train_csv['labels'].apply(lambda x: x.split())
     dev_csv['labels'] = dev_csv['labels'].apply(lambda x: x.split())
 
@@ -353,7 +353,7 @@ def main():
     # Recompute final F1 on dev (re-derive y_dev to avoid relying on training-
     # mode locals being defined when --aggregate is used standalone).
     import pandas as pd
-    dev_csv = pd.read_csv('dev.csv', keep_default_na=False)
+    dev_csv = pd.read_csv('data/dev.csv', keep_default_na=False)
     label_lists = dev_csv['labels'].apply(lambda x: x.split()).tolist()
     idx = {emo: i for i, emo in enumerate(emotions)}
     y_dev = np.zeros((len(label_lists), len(emotions)), dtype=np.float32)

@@ -96,7 +96,7 @@ def evaluate_roberta_finetune(dev_texts, y_dev):
 if __name__ == '__main__':
     os.chdir(PROJECT_ROOT)
 
-    dev = pd.read_csv('dev.csv', keep_default_na=False)
+    dev = pd.read_csv('data/dev.csv', keep_default_na=False)
     string_lookup = keras.layers.StringLookup(
         vocabulary=emotions, output_mode='multi_hot', num_oov_indices=0)
     y_dev = string_lookup(
