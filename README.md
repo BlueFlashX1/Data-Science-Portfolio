@@ -19,126 +19,57 @@
 
 ## Featured Projects
 
-Projects span healthcare analytics, machine learning, deep learning, database systems, and statistical visualization. Each shows skills applied to a real data problem, with documented model-selection rationale and outcome interpretation.
+Each project below documents a deliberate model-selection decision and the real-world outcome it produced. Full methodology, code, and reproducibility details live in each project's own README.
 
 ### [Healthcare Readmission Prediction Competition](./projects/data-science/foundation-of-data-science/)
 
-**Class competition: 30-day hospital readmission prediction** • _INFO 521 Final Project_
+**30-day hospital readmission prediction** · _INFO 521 Final Project_
 
-Developed a Random Forest classifier with patient-frequency encoding on 125,958 synthetic electronic health record (EHR) encounters. Compared 9 algorithms with stratified cross-validation and achieved an ROC-AUC of 0.90 (a classifier accuracy score where 1.0 is perfect) on the development set.
+Random Forest classifier with patient-frequency encoding on 125,958 synthetic electronic health record (EHR) encounters; ROC-AUC of 0.90 (a classifier accuracy score where 1.0 is perfect) after comparing 9 algorithms with stratified cross-validation.
 
-**Why Random Forest over the other 8 algorithms**: EHR data is tabular with mixed numeric and categorical features, has missing medication counts, and shows class imbalance, all of which Random Forest handles natively without heavy preprocessing. RF also provides feature-importance rankings (which surfaced the patient-frequency encoding as the strongest predictor) and works as a robust default with minimal tuning. Gradient Boosting could have edged it out with extensive tuning, but Random Forest's stability across cross-validation folds was the deciding factor in a competition setting where overfitting to dev meant penalty on test.
+**Why Random Forest**: EHR data is tabular with mixed numeric and categorical features, has missing medication counts, and shows class imbalance, all of which Random Forest handles natively. RF also surfaces feature importance (which exposed patient-frequency as the strongest predictor) and proved more stable across cross-validation folds than Gradient Boosting in a competition setting.
 
-**What I Applied**:
+**Outcome**: An ROC-AUC of 0.90 means the model correctly ranks a high-risk patient above a low-risk one 9 times out of 10. A hospital using this for triage could identify the highest-risk encounters early to target preventable 30-day readmissions.
 
-- **Feature engineering**: Engineered a patient-frequency encoding feature that emerged as the strongest readmission predictor
-- **Data cleaning**: Removed uninformative features and used mean imputation for missing medication-count data
-- **Model comparison**: Evaluated 9 machine-learning algorithms (Logistic Regression, Decision Tree, Random Forest, Gradient Boosting, HistGradientBoosting, AdaBoost, ExtraTrees, Bagging, K-Nearest Neighbors) with stratified cross-validation
-
-**Result/Outcome**: An ROC-AUC of 0.90 means the model correctly ranks a high-risk patient above a low-risk one 9 times out of 10. A hospital using this for triage could identify the highest-risk encounters early, supporting targeted intervention to reduce preventable 30-day readmissions.
-
-**Tech**: Python • Scikit-learn • Pandas • Random Forest • Feature Engineering • Stratified Cross-Validation
-
----
-
-### [Healthcare Analytics with SQL & NoSQL](./projects/database-systems/sql-nosql-databases-info579/)
-
-**Database design and SQL analytics for electronic health record (EHR) data** • _INFO 579 Final Project_
-
-Designed and implemented Third Normal Form (3NF) database schemas to analyze 1,171 patients and 53,346 encounters from Synthea (an open-source synthetic patient data generator). Built 14 analytical SQL reports using multi-table joins, temporal analysis, Common Table Expressions (CTEs), and window functions.
-
-**Why 3NF over a denormalized star schema**: Synthea's EHR data is transactional (frequent encounter inserts, patient updates) where update anomalies matter more than read latency. 8 entity tables + 2 junction tables for many-to-many relationships kept the data consistent while still supporting analytical queries via CTEs and window functions.
-
-**What I Applied**:
-
-- **Clinical Quality Analysis**: Identified viral sinusitis as the most prevalent condition (63%) and tracked emergency 30-day mortality rates
-- **Provider Utilization**: Discovered workload imbalances and identified inactive specialties for resource reallocation
-- **SQL Techniques**: Implemented CTEs, window functions, and multi-table joins (4+ tables) for temporal analysis
-- **Database Design**: Designed normalized schemas (3NF) supporting 1,171 patients and 53,346 encounters
-
-**Result/Outcome**: A working analytical database that translated raw EHR records into 14 actionable reports, the kind of output a clinical-quality team would use to decide staffing, condition prioritization, and resource reallocation.
-
-**Tech**: MySQL • Complex SQL Joins • Temporal Analysis • Database Design • Python
+**Tech**: Python • Scikit-learn • Pandas • Random Forest • Stratified Cross-Validation · [Read the project →](./projects/data-science/foundation-of-data-science/)
 
 ---
 
 ### [Multi-Label Emotion Classification with Transformer Fine-Tuning](./projects/deep-learning/emotion-classification-info557/)
 
-**14-label text classification competition** • _INFO 557 Graduate Project_
+**14-label text classification competition** · _INFO 557 Graduate Project_
 
-**Placed 8th/15** on the test set (F1-score 0.672, a balanced precision/recall metric where 1.0 is perfect), up from 10th/18 on dev with the 3rd-tightest dev-to-test generalization gap (-0.05) on the leaderboard. Built a multi-label emotion classifier on a 14-class GoEmotions subset of Reddit text using a 5-seed 1D convolutional neural network (Conv1D / CNN) with calibrated binary cross-entropy (BCE) loss and label smoothing.
+Placed 8th/15 on the test set (F1-score 0.672, a balanced precision/recall metric where 1.0 is perfect) with the 3rd-tightest dev-to-test generalization gap (-0.05) on the leaderboard. Built a 5-seed 1D convolutional neural network (Conv1D / CNN) on a 14-class GoEmotions subset of Reddit text with calibrated binary cross-entropy (BCE) loss and label smoothing.
 
-**Why Conv1D with kernel 3, then a fine-tuned transformer in the follow-up study**: Reddit emotion text is short and the cues live in bigrams and trigrams (e.g., "fuming about", "irked when"), which Conv1D with kernel size 3 captures cleanly (kernel 3 won the dev sweep over kernels 5 and 7). For the post-grading study, I tested 4 pretrained-embedding variants on the same architecture: the win was fine-tuning a model already strong at language understanding (dev F1 0.65 to 0.83 with RoBERTa). Pretraining alone or model size alone wasn't the lever, letting gradients flow back through the encoder was.
+**Why Conv1D, then RoBERTa fine-tuning in the post-grading study**: Reddit emotion cues live in bigrams and trigrams, which Conv1D with kernel size 3 captures cleanly (kernel 3 won the dev sweep over 5 and 7). The follow-up 4-variant study showed end-to-end fine-tuning of RoBERTa (not pretraining or model size alone) was the lever that pushed dev F1 from 0.65 to 0.83.
 
-**What I Applied**:
+**Outcome**: The submitted model finished 8th/15 with the 3rd-tightest dev-to-test gap, validating calibration-aware training over dev-score chasing. The post-grading study identified RoBERTa fine-tuning as a path to ~0.83 dev F1 (a hypothetical top-3 placement), confirming the rare-class problem was a representation issue, not an architecture one.
 
-- **Calibration over dev-score chasing**: Chose an untuned 0.5 threshold + BCE label smoothing over focal loss to avoid dev-set leakage from threshold tuning
-- **Rare-class diagnosis**: Identified vocabulary-level failure (1-3 occurrences) as the cause of three zero-F1 classes; Easy Data Augmentation (EDA) rescued the "anger" class off zero
-- **Evaluation pipeline**: Built a `check.py` re-evaluator that predicted test F1 within 2 points while training logs over-predicted by 5
-- **Post-grading study**: Tested 4 variants on the same architecture and showed that end-to-end fine-tuning, not pretraining or scale alone, was the bottleneck-breaker
-
-**Result/Outcome**: The submitted model finished 8th of 15 with the 3rd-tightest dev-to-test generalization gap, validating that calibration-aware training generalizes better than chasing dev-set metrics. The post-grading study identified RoBERTa fine-tuning as the path to ~0.83 dev F1 (a hypothetical top-3 placement), confirming the rare-class problem was a representation issue, not an architecture one.
-
-**Tech**: Python • Keras / TensorFlow • Conv1D CNN • Multi-label F1 • 5-seed ensemble • EDA augmentation • RoBERTa fine-tuning (post-grading study)
+**Tech**: Python • Keras / TensorFlow • Conv1D CNN • 5-seed ensemble • EDA augmentation • RoBERTa fine-tuning (post-grading study) · [Read the project →](./projects/deep-learning/emotion-classification-info557/)
 
 ---
 
 ### [Trait-Based Animal Classification](./projects/data-science/data-mining-final-project/)
 
-**Machine-learning classification of evolutionary traits across 1,087 animal families** • _INFO 523 Final Project_
+**Machine-learning classification of evolutionary traits across 1,087 animal families** · _INFO 523 Final Project_
 
-Built classification models comparing binary trait presence/absence vs. evolutionary origin rates across 1,087 animal families. Applied SHAP (SHapley Additive exPlanations) for model explainability and used balanced metrics to handle class imbalance across 5 superphyla.
+Classification across 5 superphyla comparing binary trait presence/absence vs. continuous evolutionary origin rates. Applied SHAP (SHapley Additive exPlanations) for feature importance and balanced metrics to handle class imbalance.
 
-**Why Logistic Regression over Random Forest and Decision Trees**: The evolutionary-rate features were continuous and approximately linear with respect to taxonomic class, which Logistic Regression's linear decision boundary fits well. With ~1,087 families and class imbalance across 5 superphyla, Logistic Regression's calibrated probabilities and interpretable per-trait coefficients gave stronger signal than tree-based models, which over-fit on sparse rare-class samples. Random Forest still served a diagnostic role: SHAP showed the binary model collapsing onto a single feature, which is exactly the failure mode tree ensembles exhibit on sparse, imbalanced data.
+**Why Logistic Regression over Random Forest and Decision Trees**: Evolutionary-rate features were continuous and approximately linear with respect to taxonomic class, which Logistic Regression's decision boundary fits well. With ~1,087 families and class imbalance across 5 superphyla, Logistic Regression's calibrated probabilities and interpretable per-trait coefficients gave stronger signal than tree-based models, which over-fit on sparse rare-class samples.
 
-**What I Applied**:
+**Outcome**: ~50% accuracy on 5-class taxonomy showed that sexually-selected traits carry real but limited predictive signal for taxonomic classification. The deeper finding: data representation (continuous evolutionary rates vs. sparse binary presence) mattered more than model choice. The method generalizes to any trait dataset where evolutionary rates are available.
 
-- **Data representation optimization**: Evolutionary rates provided stronger predictive signal than sparse binary data
-- **Model comparison**: Evaluated Logistic Regression, Decision Trees, and Random Forest on both representations
-- **Feature importance analysis**: Identified Visual, Competition, and Auditory traits as the strongest predictors via SHAP
-- **Imbalanced classification**: Used balanced accuracy and macro F1-score (a balanced precision/recall metric where 1.0 is perfect) instead of standard accuracy
-
-**Result/Outcome**: ~50% accuracy on 5-class taxonomy showed that sexually-selected traits carry real but limited predictive signal for taxonomic classification. The deeper finding: data representation (continuous evolutionary rates vs. sparse binary presence) mattered more than model choice. The method generalizes to any trait dataset where evolutionary rates are available.
-
-**Tech**: Python • Scikit-learn • SHAP • Stratified K-fold cross-validation • Quarto • Jupyter
+**Tech**: Python • Scikit-learn • SHAP • Stratified K-fold cross-validation · [Read the project →](./projects/data-science/data-mining-final-project/)
 
 ---
 
-### [Statistical Data Visualization Portfolio](./projects/r-analytics/data-visualization-portfolio/)
+## Other Projects
 
-**Statistical visualization portfolio across wildlife, safety, and economic domains** • _INFO 526 Portfolio_
-
-Built comprehensive visualizations across three domains using R, ggplot2, and the tidyverse. Developed custom data-transformation functions, implemented advanced plot types (alluvial diagrams, faceted layouts), and established reproducible research workflows.
-
-**Why these chart types**: Chose alluvial diagrams for occupational safety to show cause-to-effect flow (which stacked bar charts can't represent), line graphs for temporal trends in dangerous-job fatality rates (rejecting stacked area plots because they make quantifying exact values difficult), and grouped bar charts over stacked bars when more than ~10 categories made stacks unreadable. Chart selection was driven by the question being asked rather than chart popularity.
-
-**What I Applied**:
-
-- **Cougar Predation Analysis**: Identified wild ungulates as primary prey and analyzed temporal patterns in predation data
-- **Occupational Safety**: Mapped fatality trends using alluvial diagrams to visualize cause-to-effect relationships
-- **Economic Trends**: Analyzed regional housing-price volatility and recovery patterns across 4 U.S. regions
-
-**Result/Outcome**: Three reproducible visualization analyses across distinct domains. The cause-to-effect insight in the occupational safety alluvial diagram would not have been visible in a standard bar or pie chart, and the chart-selection narrative demonstrates that the choice of visualization is itself an analytical decision.
-
-**Tech**: R • ggplot2 • RMarkdown • dplyr • tidyverse • ggalluvial • Custom Functions
-
----
-
-### [AI for Healthcare Capstone: Emergency Room Simulator Showcase Poster](./projects/capstone/ai4hc-info698/)
-
-**Team capstone: poster and print pipeline for an emergency room training simulator** • _INFO 698 Graduate Capstone_
-
-Healthcare AI training simulator built by a 6-person team capstone at the University of Arizona AI Core, AI for Healthcare program (AI4HC): a .NET 8 web app with a Retrieval-Augmented Generation (RAG) chat tutor, HeyGen streaming avatar, and multiple-choice quiz generator. My role was the showcase poster and the avatar source footage; team engineers built the app.
-
-**My Contributions**:
-
-- **Showcase poster**: Took Abhiram's initial HTML draft ([isjustabhi/AI4HC](https://github.com/isjustabhi/AI4HC)) and polished it into the team's final capstone poster, adding light + dark theme variants and iterating the layout / CSS. **View live:** [light theme](https://matthewqilanthompson.github.io/Data-Science-Portfolio/projects/capstone/ai4hc-info698/index_v1.html) · [dark theme](https://matthewqilanthompson.github.io/Data-Science-Portfolio/projects/capstone/ai4hc-info698/index_dark.html)
-- **Print-PDF conversion pipeline**: Wrote a Python script (headless Chrome + img2pdf) that exports the HTML poster to a 4×3 ft print-ready PDF with print-shop metadata. The team printed from this PDF and the physical poster matched the on-screen render exactly.
-- **Avatar source footage**: Recorded the 1-minute clip used to build the team's HeyGen avatar; the project coordinator wired the application programming interface (API)
-
-**Result/Outcome**: The poster was physically printed and presented at the University of Arizona iShowcase event. The print pipeline ensured the on-screen render and the 4×3 ft physical poster matched exactly, a deliverable the team could trust without a proofing iteration.
-
-**Tech**: HTML • CSS • Python (headless Chrome to img2pdf print pipeline) • Information design • Technical communication
+| Project | What it shows | Tech |
+|---|---|---|
+| [**Healthcare Analytics with SQL & NoSQL**](./projects/database-systems/sql-nosql-databases-info579/) | Third Normal Form (3NF) schema design and 14 analytical SQL reports across 1,171 patients and 53,346 encounters from Synthea synthetic EHR data, covering clinical quality, provider utilization, and readmissions | MySQL · Python · CTEs · window functions |
+| [**Statistical Data Visualization Portfolio**](./projects/r-analytics/data-visualization-portfolio/) | Wildlife predation, occupational safety, and housing economics analyses with chart-selection rationale (alluvial diagrams, line graphs, grouped bars) | R · ggplot2 · ggalluvial · RMarkdown |
+| [**AI for Healthcare Capstone Poster**](./projects/capstone/ai4hc-info698/) | Light/dark theme HTML poster and Python print-export pipeline for a 6-person team capstone at the University of Arizona AI Core | HTML · CSS · Python |
 
 ---
 
