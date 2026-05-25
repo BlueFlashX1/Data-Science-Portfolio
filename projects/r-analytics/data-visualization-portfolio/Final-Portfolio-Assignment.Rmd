@@ -11,11 +11,10 @@ knitr::opts_chunk$set(echo = TRUE, warning=FALSE, message=FALSE, results='hide',
 library(ggplot2)
 library(dplyr)
 library(tidyverse)
-library(lubridate) 
+library(lubridate)
 library(reshape2)
 library(readxl)
 library(viridis)
-library(ggstream)
 library(ggalluvial)
 
 ```
@@ -532,16 +531,15 @@ knitr::include_graphics("Final_MinMaxHPI_Output.pdf") #to pull it back in
 library(ggplot2)
 library(dplyr)
 library(tidyverse)
-library(lubridate) 
+library(lubridate)
 library(reshape2)
 library(readxl)
 library(viridis)
-library(ggstream)
 library(ggalluvial)
 library(gt)
 
 ############
-# Basic Plots of Cougars - Pie and Histogram 
+# Basic Plots of Cougars - Pie and Histogram
 ############
 
 # load the data

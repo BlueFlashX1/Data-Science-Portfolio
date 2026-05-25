@@ -5,12 +5,13 @@ required_packages <- c(
   "tidyverse",   # ggplot2, dplyr, tidyr, lubridate, readr
   "readxl",      # .xlsx reader (cougar data)
   "ggalluvial",  # alluvial diagrams
-  "ggstream",    # stream plots
   "viridis",     # color palettes
   "patchwork",   # multi-plot composition
   "gt",          # publication-quality tables
   "reshape2",    # legacy wide/long reshape
-  "rmarkdown"    # render the Rmd to PDF
+  "rmarkdown",   # render the Rmd to PDF
+  "tinytex",     # bundled LaTeX distribution for PDF rendering
+  "webshot2"     # used by gt::gtsave() to export the HPI table as a PDF (needs Chrome)
 )
 
 missing <- required_packages[!sapply(required_packages, requireNamespace, quietly = TRUE)]
@@ -21,5 +22,12 @@ if (length(missing) > 0) {
   cat("All required packages already installed.\n")
 }
 
-# PDF rendering also requires LaTeX. If you do not have a system TeX install:
-#   install.packages("tinytex"); tinytex::install_tinytex()
+# Ensure LaTeX is available for PDF rendering.
+# tinytex::install_tinytex() downloads ~150MB and installs a minimal TeX
+# distribution into ~/Library/TinyTeX (or platform equivalent). Idempotent.
+if (!tinytex::is_tinytex() && !nzchar(Sys.which("pdflatex"))) {
+  cat("No system LaTeX detected. Installing TinyTeX (~150MB, one-time)...\n")
+  tinytex::install_tinytex()
+} else {
+  cat("LaTeX detected. PDF rendering ready.\n")
+}
