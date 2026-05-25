@@ -246,7 +246,7 @@ emotion-classification-info557/
 │   ├── train_dev_v2.py
 │   └── train_roberta_finetune.py
 └── prediction_result/
-    └── submission.csv                  # Final competition submission (8th/15 on test)
+    └── submission.csv                  # Ensemble predictions on the dev set (kept as a reproducibility reference; the actual test-set submission was uploaded to CodaBench)
 ```
 
 ---
