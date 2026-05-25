@@ -10,7 +10,7 @@
 
 > Healthcare AI training simulator, built by a 6-person team capstone. My role was the showcase poster and the avatar source footage. University of Arizona, INFO 698, Spring 2026.
 
-**View the live poster:** [light theme](https://blueflashx1.github.io/Data-Science-Portfolio/projects/capstone/ai4hc-info698/index_v1.html) · [dark theme](https://blueflashx1.github.io/Data-Science-Portfolio/projects/capstone/ai4hc-info698/index_dark.html) · [print PDF](./iShowcase_Final.pdf)
+**View the live poster:** [light theme](https://matthewqilanthompson.github.io/Data-Science-Portfolio/projects/capstone/ai4hc-info698/index_v1.html) · [dark theme](https://matthewqilanthompson.github.io/Data-Science-Portfolio/projects/capstone/ai4hc-info698/index_dark.html) · [print PDF](./iShowcase_Final.pdf)
 
 **Team codebase:** [UA-AICore/Emergency-Room-Simulator-Repository](https://github.com/UA-AICore/Emergency-Room-Simulator-Repository)
 
@@ -35,7 +35,7 @@ I wasn't on the engineering side. My job on this team was design and the avatar 
 - The team printed from this PDF for the iShowcase event and the physical poster came out matching the on-screen render exactly
 - Two variants: a light version for the project slide demo, a dark version for the printed banner
 - Summarizes the team's system in one visual: the RAG pipeline, the avatar integration, the quiz engine, the learner flow
-- View live: [light theme](https://blueflashx1.github.io/Data-Science-Portfolio/projects/capstone/ai4hc-info698/index_v1.html) · [dark theme](https://blueflashx1.github.io/Data-Science-Portfolio/projects/capstone/ai4hc-info698/index_dark.html). Or [`iShowcase_Final.pdf`](./iShowcase_Final.pdf) for the print version.
+- View live: [light theme](https://matthewqilanthompson.github.io/Data-Science-Portfolio/projects/capstone/ai4hc-info698/index_v1.html) · [dark theme](https://matthewqilanthompson.github.io/Data-Science-Portfolio/projects/capstone/ai4hc-info698/index_dark.html). Or [`iShowcase_Final.pdf`](./iShowcase_Final.pdf) for the print version.
 
 **2. Avatar source footage.**
 
@@ -71,6 +71,51 @@ To be explicit: the .NET web app, the RAG service backed by the medical knowledg
 
 ---
 
+## How to View
+
+| Format | Link |
+|---|---|
+| Live poster, light theme | [matthewqilanthompson.github.io/.../index_v1.html](https://matthewqilanthompson.github.io/Data-Science-Portfolio/projects/capstone/ai4hc-info698/index_v1.html) |
+| Live poster, dark theme | [matthewqilanthompson.github.io/.../index_dark.html](https://matthewqilanthompson.github.io/Data-Science-Portfolio/projects/capstone/ai4hc-info698/index_dark.html) |
+| Print-ready PDF (48×36 in) | [`iShowcase_Final.pdf`](./iShowcase_Final.pdf) (3.3MB) |
+| Dark-theme print PDF | [`AI4HC_poster_dark.pdf`](./AI4HC_poster_dark.pdf) (3.6MB) |
+| Poster HTML source | [`index_v1.html`](./index_v1.html), [`index_dark.html`](./index_dark.html) |
+
+## How to Rebuild the Print PDF
+
+The PDF is regenerated from `index_v1.html` by [`scripts/export_poster.py`](./scripts/export_poster.py). Requires Python 3.9+, Chrome (or Chromium), and `img2pdf`.
+
+```bash
+pip3 install img2pdf
+python3 scripts/export_poster.py                                 # default → AI4HC_poster_4x3ft_landscape.pdf
+python3 scripts/export_poster.py --out AI4HC_slide_poster.pdf    # custom output
+python3 scripts/export_poster.py --keep-png                      # keep the intermediate 4608×3456 px PNG
+```
+
+The script renders the HTML in headless Chrome at 4608×3456 px, screenshots it, then embeds the PNG losslessly into a 48×36 in PDF with print-shop metadata. Total runtime ~10 seconds.
+
+---
+
 ## Tech Stack
 
-HTML • CSS • Python (headless Chrome → img2pdf print pipeline) • Information design • Technical communication
+| Category | Tools |
+|---|---|
+| **Poster source** | HTML5, CSS3 (custom layout, theme variants) |
+| **Print pipeline** | Python 3, headless Chrome / Chromium, `img2pdf` |
+| **Page geometry** | 48×36 in landscape at 96 DPI (4608×3456 px) |
+| **Non-code contributions** | Information design, technical communication, avatar source footage |
+
+---
+
+## Academic Information
+
+**Course**: INFO 698, AI for Healthcare Capstone
+**Team**: UofA AI Core (6 members)
+**Term**: Spring 2026
+**Institution**: University of Arizona
+
+---
+
+<p align="center">
+  <em>University of Arizona, Data Science Portfolio</em>
+</p>
