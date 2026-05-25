@@ -24,7 +24,7 @@ I designed normalized database schemas and wrote complex SQL queries to analyze 
 
 The 8 base tables and their foreign-key relationships:
 
-![ER diagram of base tables](./images/er_diagram.png)
+![ER diagram of base tables](./images/schema_er_diagram.png)
 
 `diagnosis` and `treatment` are junction tables for the many-to-many relationships (patient ⇄ medical_condition, patient ⇄ procedures).
 
@@ -88,7 +88,7 @@ sql-nosql-databases-info579/
 │   ├── load_csvs.py                                   # Synthea CSV → MySQL loader (8 tables, FK-ordered)
 │   └── generate_images.py                             # Regenerates ER diagram + 4 analytical charts
 ├── images/                                            # PNGs embedded in this README
-│   ├── er_diagram.png
+│   ├── schema_er_diagram.png
 │   ├── top_conditions.png
 │   ├── top_procedures.png
 │   ├── top_providers.png
@@ -161,9 +161,9 @@ Password handling: reads from `$MYSQL_PASSWORD` env var, or prompts interactivel
 
 Each `.sql` file starts with a comment header explaining what the query does.
 
-### Expected row counts
+### Row counts
 
-After the loader runs, the 8 base tables should contain these counts (446,783 rows total):
+The 8 base tables hold 446,783 rows:
 
 | Table | Rows |
 |---|---:|

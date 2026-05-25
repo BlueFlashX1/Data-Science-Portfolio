@@ -3,7 +3,7 @@
 generate_images.py — Visualization generator for the INFO 579 portfolio project.
 
 Produces:
-  images/er_diagram.png              - 8 base tables + FK relationships
+  images/schema_er_diagram.png              - 8 base tables + FK relationships
   images/top_conditions.png          - Top 10 conditions by patient count
   images/top_procedures.png          - Top 10 procedures by volume
   images/top_providers.png           - Top 10 providers by encounter count
@@ -632,7 +632,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--regen-er",
         action="store_true",
-        help="Force-regenerate the ER diagram via graphviz, overwriting the hand-curated images/er_diagram.png",
+        help="Force-regenerate the ER diagram via graphviz, overwriting the hand-curated images/schema_er_diagram.png",
     )
     parser.add_argument(
         "--output-dir",
@@ -662,11 +662,11 @@ def main() -> None:
     print(f"Output directory: {images_dir}\n")
 
     # --- ER Diagram (no DB needed) ---
-    # The ER diagram in images/er_diagram.png is a hand-curated screenshot
+    # The ER diagram in images/schema_er_diagram.png is a hand-curated screenshot
     # from a database modeling tool (cleaner than what graphviz produces
     # for this many tables). Only regenerate via graphviz when explicitly
     # asked with --regen-er, or if the file is missing.
-    er_path = images_dir / "er_diagram.png"
+    er_path = images_dir / "schema_er_diagram.png"
     if args.regen_er or not er_path.exists():
         print("Generating ER diagram (graphviz)...")
         try:
@@ -675,7 +675,7 @@ def main() -> None:
         except Exception as exc:
             print(f"  ERROR generating ER diagram: {exc}")
     else:
-        print("Skipping ER diagram (using existing hand-curated images/er_diagram.png; pass --regen-er to overwrite).")
+        print("Skipping ER diagram (using existing hand-curated images/schema_er_diagram.png; pass --regen-er to overwrite).")
 
     if args.er_only:
         print("\nDone (--er-only mode; charts skipped).")
