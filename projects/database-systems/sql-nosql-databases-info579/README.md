@@ -28,6 +28,8 @@ The 8 base tables and their foreign-key relationships:
 
 `diagnosis` and `treatment` are junction tables for the many-to-many relationships (patient ⇄ medical_condition, patient ⇄ procedures).
 
+> Note: the diagram labels **`Condition`** and **`Procedure`** correspond to the SQL tables **`medical_condition`** and **`procedures`** (plural). The visual labels were shortened for readability; the actual schema uses the longer/plural names.
+
 ---
 
 ## What I Applied
