@@ -48,42 +48,33 @@ _Evolutionary rates provided clearer feature importance than binary presence/abs
 
 ## What I Applied
 
-I built machine learning classification models using real biological data. Here's what I accomplished:
+| Category | Techniques |
+|---|---|
+| **Preprocessing** | Missing value handling, log-transform + standardization of evolutionary rates, label encoding |
+| **Cross-validation** | Stratified K-fold to preserve class proportions across folds |
+| **Models** | Logistic Regression, Decision Tree, Random Forest |
+| **Explainability** | SHAP values for feature importance ranking |
+| **Evaluation** | Balanced accuracy, macro F1 (instead of accuracy / ROC-AUC, given the class imbalance) |
+| **Feature engineering** | Domain-driven grouping of phyla into 5 superphyla |
+| **Reproducibility** | Quarto website (Jupyter notebook + .qmd source → HTML site) |
 
-| Finding                              | Detail                                                                                      |
-| ------------------------------------ | ------------------------------------------------------------------------------------------- |
+### Findings
+
+| Finding | Detail |
+|---|---|
 | **Evolutionary rates > Binary data** | Continuous origin rates provided a stronger signal than sparse binary presence/absence data |
-| **Modest accuracy (~50%)**           | The classification task was challenging due to data sparsity and class imbalance            |
-| **Key predictors**                   | Visual, Competition, and Auditory traits (identified via SHAP analysis)                     |
-| **Class imbalance matters**          | Used balanced accuracy and macro F1 instead of regular accuracy                             |
+| **Modest accuracy (~50%)** | Classification task was challenging due to data sparsity and class imbalance |
+| **Key predictors** | Visual, Competition, and Auditory traits (identified via SHAP analysis) |
+| **Class imbalance matters** | Balanced accuracy and macro F1 instead of regular accuracy |
 
 ### Models Tested
 
-| Model                   | Data Type          | Result                     |
-| ----------------------- | ------------------ | -------------------------- |
-| **Logistic Regression** | Evolutionary rates | Best performance           |
-| Random Forest           | Evolutionary rates | Lower accuracy             |
-| Decision Tree           | Evolutionary rates | Lower but interpretable    |
-| All models              | Binary data        | Poor (insufficient signal) |
-
----
-
-## Technical Skills Applied
-
-**Machine Learning Pipeline**
-
-1. Preprocessing: Implemented missing value handling, feature scaling, and label encoding
-2. Cross-validation: Applied stratified K-fold to handle class imbalance
-3. Model training: Trained Logistic Regression, Decision Trees, and Random Forest models
-4. Explainability: Used SHAP values to interpret feature importance and identify key predictors
-5. Evaluation: Implemented balanced accuracy and macro F1 metrics for imbalanced classification
-
-**Concepts Applied**
-
-- Implemented imbalanced classification with balanced metrics
-- Applied model explainability with SHAP
-- Performed domain-driven feature engineering (grouping phyla into superphyla)
-- Created reproducible research with Quarto
+| Model | Data Type | Result |
+|---|---|---|
+| **Logistic Regression** | Evolutionary rates | Best performance |
+| Random Forest | Evolutionary rates | Lower accuracy |
+| Decision Tree | Evolutionary rates | Lower but interpretable |
+| All models | Binary data | Poor (insufficient signal) |
 
 ---
 
@@ -102,19 +93,7 @@ Full codebook: [`data/README.md`](./data/README.md)
 
 ---
 
-## Key Findings
-
-**Data Representation Matters**: Evolutionary origin rates provided a much stronger predictive signal than binary presence/absence data. This finding demonstrates the importance of domain knowledge in feature engineering.
-
-**Top Predictors**: SHAP analysis identified Visual (V), Competition (C), and Auditory (A) traits as the strongest predictors of taxonomic classification across 1,087 animal families.
-
-**Model Performance**: Logistic Regression outperformed tree-based models (Random Forest, Decision Tree) for this biological dataset, achieving the best balance of accuracy and interpretability.
-
-**Class Imbalance Challenge**: The dataset's imbalanced distribution across 5 superphyla required balanced accuracy and macro F1 metrics rather than standard accuracy to properly evaluate model performance.
-
----
-
-## What I Learned
+## Challenges Solved
 
 The clearest result was that the two datasets behaved very differently. The binary presence/absence data was sparse and dominated by Arthropoda (~84% of samples), and SHAP showed the model leaned almost entirely on a single feature, the "sexually selected" flag. The evolutionary rate data was more balanced, and its signal spread across visual, competition, auditory, and female choice traits. So rate-based features predicted taxonomy better than binary presence, though even the better dataset only reached around 50% accuracy. The signal in this kind of trait data is real but limited.
 
@@ -126,26 +105,45 @@ If I did this again, I'd remove the SS traits and redo modeling for the family d
 
 ## Project Structure
 
-```
+```text
 data-mining-final-project/
-├── README.md                 # This file
-├── index.ipynb               # Main analysis notebook (99 cells)
-├── requirements.txt          # Python dependencies
-├── _quarto.yml               # Website configuration
+├── README.md                          # This file
+├── index.ipynb                        # Main analysis notebook (99 cells, 1.2MB)
+├── _quarto.yml                        # Quarto website configuration
+├── requirements.txt                   # Python dependencies (jupyter, scikit-learn, shap, etc.)
+├── proposal.qmd                       # Research proposal
+├── presentation.qmd                   # Results presentation
+├── data.qmd                           # Dataset description page
+├── about.qmd                          # About page
+├── citations.qmd                      # Bibliography
 ├── data/
-│   ├── family_related_data.csv       # Binary traits (1,087 families)
-│   ├── animals_rateof_evolution.csv  # Evolutionary rates (84 estimates)
-│   └── README.md                     # Data codebook
+│   ├── family_related_data.csv        # Binary traits (1,087 families, 50KB)
+│   ├── animals_rateof_evolution.csv   # Evolutionary rates (84 estimates, 12KB)
+│   └── README.md                      # Data codebook
 ├── images/
-│   └── Plots/                # Generated visualizations
-│       ├── SHAP_evolution.png
-│       ├── SHAP_family.png
-│       └── ...
-├── docs/                     # Generated Quarto website (don't edit)
-├── proposal.qmd              # Research proposal
-├── presentation.qmd          # Results presentation
-└── citations.qmd             # Bibliography
+│   ├── Plots/                         # SHAP and EDA plots
+│   └── tree_scenery.jpg               # Header image for the site
+└── docs/                              # Generated Quarto website (regenerated by `quarto render`)
 ```
+
+---
+
+## How to Reproduce
+
+Requires Python 3.10+ and [Quarto 1.5+](https://quarto.org/docs/get-started/).
+
+```bash
+# 1. Install Python deps
+pip install -r requirements.txt
+
+# 2. Render the full website (notebook + .qmd pages → docs/)
+quarto render
+
+# Or render just the main analysis notebook
+quarto render index.ipynb
+```
+
+`quarto render` produces the static site in [`docs/`](./docs/) (the same site published at [info-523-su25.github.io/final-project-thompson/](https://info-523-su25.github.io/final-project-thompson/)). Full render takes ~30 seconds; single-notebook render is ~3 seconds.
 
 ---
 
