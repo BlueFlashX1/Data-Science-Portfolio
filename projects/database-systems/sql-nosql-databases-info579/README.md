@@ -252,39 +252,6 @@ One result I went back and corrected was the death rate by encounter class. At f
 
 ---
 
-<details>
-<summary><strong>Sample SQL Implementations</strong> (Click to expand)</summary>
-
-### 30-Day Readmission Tracking
-
-```sql
-CREATE TABLE rpt_readmissions_30d AS
-SELECT
-  e1.patient_id,
-  e1.encounter_id AS first_encounter,
-  e2.encounter_id AS readmit_encounter,
-  DATEDIFF(e2.encounter_start_date, e1.encounter_end_date) AS days_since_prior
-FROM encounter e1
-JOIN encounter e2
-  ON e1.patient_id = e2.patient_id
-  AND e2.encounter_start_date > e1.encounter_end_date
-  AND e2.encounter_start_date <= DATE_ADD(e1.encounter_end_date, INTERVAL 30 DAY);
-```
-
-### Coverage Tier Analysis
-
-```sql
-SELECT
-  SUM(CASE WHEN healthcare_coverage >= 10000 THEN 1 ELSE 0 END) AS high_coverage,
-  SUM(CASE WHEN healthcare_coverage BETWEEN 5000 AND 9999 THEN 1 ELSE 0 END) AS medium_coverage,
-  SUM(CASE WHEN healthcare_coverage < 5000 THEN 1 ELSE 0 END) AS low_coverage
-FROM patient;
-```
-
-</details>
-
----
-
 ## Academic Information
 
 **Course**: INFO 579 - SQL & NoSQL Databases  
