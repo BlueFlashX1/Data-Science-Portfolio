@@ -36,9 +36,9 @@ Final portfolio for INFO 526 (Data Visualization). Three datasets across differe
 
 | Dataset | File | Size | Content |
 |---|---|---:|---|
-| Cougar Killsites | `data/Cougar Killsites.xlsx` | 168KB | wildlife predation events, prey species + dates |
-| Dangerous Jobs | `data/Dangerous Jobs.csv` | 28MB | 146K+ occupational fatality records, 2003-2023 |
-| Housing Price Index | `data/Housing Price Index.xlsx - Data.csv` | 61KB | FHFA HPI, 4 U.S. regions, quarterly time series |
+| Cougar Killsites | [`data/Cougar Killsites.xlsx`](./data/Cougar%20Killsites.xlsx) | 168KB | wildlife predation events, prey species + dates |
+| Dangerous Jobs | [`data/Dangerous Jobs.csv`](./data/Dangerous%20Jobs.csv) | 28MB | 146K+ occupational fatality records, 2003-2023 |
+| Housing Price Index | [`data/Housing Price Index.xlsx - Data.csv`](./data/Housing%20Price%20Index.xlsx%20-%20Data.csv) | 61KB | FHFA HPI, 4 U.S. regions, quarterly time series |
 
 ---
 
@@ -89,11 +89,11 @@ source("setup.R")
 rmarkdown::render("Final-Portfolio-Assignment.Rmd", output_format = "pdf_document")
 ```
 
-`setup.R` installs the 9 required packages and bootstraps TinyTeX (a minimal LaTeX distribution, ~150MB) if no system TeX is detected. PDF render takes ~30 seconds after setup.
+[`setup.R`](./setup.R) installs the 9 required packages and bootstraps TinyTeX (a minimal LaTeX distribution, ~150MB) if no system TeX is detected. PDF render takes ~30 seconds after setup.
 
 ### Regenerate the README figures
 
-The 4 PNGs in `images/` are produced by `scripts/export_readme_figures.R`, which reads the same data files the Rmd uses and rebuilds each plot with thumbnail-readable styling (larger fonts, visible legends, on-chart titles). The Rmd itself is unchanged.
+The 4 PNGs in `images/` are produced by [`scripts/export_readme_figures.R`](./scripts/export_readme_figures.R), which reads the same data files the Rmd uses and rebuilds each plot with thumbnail-readable styling (larger fonts, visible legends, on-chart titles). The Rmd itself is unchanged.
 
 ```r
 Rscript scripts/export_readme_figures.R
