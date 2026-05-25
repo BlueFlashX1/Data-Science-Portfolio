@@ -1,13 +1,4 @@
-#uses sys path to get python path since I had issues with libraries not being found despite correct python interpreter
-import os
-import sys
-sys.path.append(
-    os.path.abspath('/Users/matthewthompson/Documents/Academics/DS Masters Academics/Foundation of Data Science/Final Project/final-project-matthewqilanthompson/venv/lib/python3.13/site-packages/')
-)
-
-#===========================
-
-#list of imports 
+#list of imports
 import argparse
 import pandas as pd
 import numpy as np

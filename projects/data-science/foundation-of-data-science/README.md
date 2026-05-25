@@ -29,12 +29,9 @@ My cross-validated AUC (~0.86) predicted the final test AUC (0.858) almost exact
 
 ## Project Overview
 
-**Challenge**: Predict 30-day hospital readmissions to improve patient outcomes and reduce healthcare costs
+Final project for INFO 521 (Foundation of Data Science): a CodaBench class competition to predict 30-day hospital readmissions on a Synthea-generated EHR dataset. Submitted model: Random Forest (n_estimators=200, class_weight='balanced').
 
-**Best Model**: Random Forest (n_estimators=200, class_weight='balanced')  
-**Dataset**: Synthetic Arizona patient records (Synthea-generated, 125,958 encounters)
-
-Hospital readmissions cost the U.S. healthcare system billions annually. I built a predictive model to support clinical decision-making for targeted interventions.
+**Key Metrics**: 587,801 train rows • 125,958 dev rows • 9 algorithms compared • Final test ROC AUC 0.858 (13th/35)
 
 ---
 
@@ -62,26 +59,7 @@ Evaluated 9 algorithms: Logistic Regression, Decision Tree, Random Forest, Gradi
 
 ---
 
-## Skills Applied
-
-**Machine Learning Pipeline**
-
-1. Data preprocessing: Implemented missing value imputation and feature encoding
-2. Feature engineering: Engineered patient frequency encoding feature, removed non-predictive columns
-3. Model training: Trained Random Forest with stratified cross-validation
-4. Hyperparameter tuning: Optimized n_estimators, max_depth, min_samples_split
-5. Evaluation: Achieved ROC AUC 0.90 through optimization and imbalanced classification handling
-
-**Concepts Applied**
-
-- Implemented stratified cross-validation for robust evaluation
-- Handled class imbalance with class_weight='balanced'
-- Engineered features to create meaningful predictors
-- Prevented data leakage in competition settings
-
----
-
-## What I Learned
+## Challenges Solved
 
 The biggest lesson from this project was how much the way data is cleaned and represented affects model performance.
 
@@ -91,25 +69,68 @@ While checking the model for overfitting, an earlier version returned a perfect 
 
 ---
 
+## Dataset
+
+Synthetic Arizona patient encounter records (Synthea-generated EHR) provided for the INFO 521 class competition. Full data documentation in [`data/README.md`](./data/README.md).
+
+| File | Size | Records | Contents |
+|---|---|---|---|
+| [`data/train.csv`](./data/train.csv) | 88MB | 587,801 | Training set with features + target |
+| [`data/dev.csv`](./data/dev.csv) | 19MB | 125,958 | Development/validation set with target |
+| [`data/dev(renamed).csv`](./data/dev\(renamed\).csv) | 19MB | 125,958 | Second dev split snapshot |
+| [`data/test.csv`](./data/test.csv) | 19MB | features only | Held-out test set |
+| [`data/submission.csv`](./data/submission.csv) | 7MB | predictions | Final submission scored on the leaderboard |
+
+Target variable: `readmitted_within_30_days` (binary).
+
+---
+
 ## Project Structure
 
 ```text
 foundation-of-data-science/
 ├── README.md                           # Project documentation
-├── requirements.txt                    # Python dependencies
+├── requirements.txt                    # Python dependencies (pandas, scikit-learn, joblib, numpy, datasets)
 ├── final_project_process.ipynb         # Main analysis notebook (1,272 lines)
+├── final_project_process.md            # Markdown export of the notebook (browser-friendly)
 ├── ds.py                               # Core data science utilities (4.8KB)
-├── train_predict.py                    # Model training pipeline (6.7KB)
+├── train_predict.py                    # Model training + prediction CLI (6.7KB)
 ├── data/
 │   ├── train.csv                       # Training dataset (587,801 records)
-│   ├── dev.csv               # Development/validation set (125,958 records)
+│   ├── dev.csv                         # Development/validation set (125,958 records)
+│   ├── dev(renamed).csv                # Second dev split snapshot
 │   ├── test.csv                        # Test dataset (features only)
 │   ├── submission.csv                  # Final predictions
 │   └── README.md                       # Data documentation
 └── scripts/
-    ├── scoring/                        # Competition evaluation scripts
+    ├── scoring/                        # Competition evaluation scripts (CodaBench scoring)
     └── scoring_dev/                    # Development scoring tools
 ```
+
+---
+
+## How to Reproduce
+
+Requires Python 3.9+.
+
+```bash
+# 1. Install deps
+pip install -r requirements.txt
+
+# 2. Train on train.csv, evaluate on dev.csv, save the trained model
+python train_predict.py train \
+  --train_path data/train.csv \
+  --dev_path data/dev.csv \
+  --model_path model.joblib
+
+# 3. Predict on the held-out test set
+python train_predict.py predict \
+  --model_path model.joblib \
+  --input_path data/test.csv \
+  --output_path data/submission.csv
+```
+
+Full step-by-step EDA, feature engineering, and model selection is in [`final_project_process.ipynb`](./final_project_process.ipynb). A browser-readable markdown export is at [`final_project_process.md`](./final_project_process.md).
 
 ---
 
