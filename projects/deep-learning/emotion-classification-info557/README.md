@@ -173,7 +173,49 @@ The other thing is that I now know exactly what fixes the rare-class wall: fine-
 
 ## Tech Stack
 
-Python • Keras / TensorFlow • Conv1D CNN • Multi-label F1 • 5-seed ensemble • EDA augmentation • RoBERTa fine-tuning (post-grading study)
+| Category | Tools |
+|---|---|
+| **Core training** | Python 3.10+, Keras 3, TensorFlow |
+| **Model** | Conv1D CNN, 128-d random-init embeddings, 5-seed ensemble |
+| **Loss / threshold** | Binary cross-entropy with 0.05 label smoothing, fixed 0.5 threshold |
+| **Augmentation** | In-class word swap (Wei & Zou 2019 EDA), 5x duplication on rare-class examples |
+| **Evaluation** | Multi-label micro F1 with a `check.py`-style honest inference pipeline |
+| **Post-grading study** | PyTorch + `transformers` for GloVe / DistilBERT-frozen / bert_tiny / RoBERTa fine-tuning |
+
+---
+
+## How to Reproduce
+
+Requires Python 3.10+. The competition pipeline (Keras-only) is in the project root; the post-grading study (which uses PyTorch + Transformers) is in [`experiments/`](./experiments/).
+
+### Competition submission (Keras)
+
+```bash
+# 1. Install core deps
+pip install -r requirements.txt
+
+# 2. Train the 5-seed ensemble
+#    Reads data/train.csv + data/dev.csv, writes saved_models/model_seed_{42..46}.keras + vocab.json
+python train_dev.py
+
+# 3. Predict on test-in.csv
+#    Reads saved_models/ + data/test-in.csv, writes submission.zip
+python predict_test.py
+```
+
+Training takes a while (5 seeds × 30 epochs on ~2K training rows). The committed [`prediction_result/submission.csv`](./prediction_result/submission.csv) is the final ensemble output that scored 0.672 micro F1 (8th/15) on the held-out test.
+
+### Post-grading pretrained-embedding study
+
+Each variant in [`experiments/`](./experiments/) is a standalone script that retrains the same Conv1D head with a different embedding source. Requires the extra deps:
+
+```bash
+pip install torch transformers
+python experiments/train_glove.py             # GloVe 100d, trainable
+python experiments/train_bert_finetune.py     # bert_tiny, full fine-tune
+python experiments/train_roberta_finetune.py  # RoBERTa-base, full fine-tune
+python experiments/compare.py                 # Side-by-side dev F1 across all variants
+```
 
 ---
 
@@ -186,9 +228,9 @@ emotion-classification-info557/
 ├── decisions.txt                       # Model-decision documentation
 ├── eda.ipynb                           # Exploratory data analysis notebook
 ├── prediction_eda.ipynb                # Prediction EDA notebook
-├── nn.py                               # Conv1D ensemble model architecture
-├── train_dev.py                        # Training pipeline (submitted model)
-├── predict_test.py                     # Test-set inference script
+├── nn.py                               # Course-provided skeleton (the filled-in version lives in train_dev.py)
+├── train_dev.py                        # Training pipeline: 5-seed Conv1D ensemble (submitted model)
+├── predict_test.py                     # Test-set inference script (loads saved_models/, writes submission.zip)
 ├── data/                               # Train/dev/test splits (GoEmotions subset)
 │   ├── train.csv
 │   ├── dev.csv
@@ -214,3 +256,17 @@ emotion-classification-info557/
 - Goodfellow, I., Bengio, Y., & Courville, A. (2016). *Deep Learning*. MIT Press. (Ch 7.4-7.5 noise/augmentation, §7.11 ensembling, §8.4 initialization, Ch 9 CNNs, Ch 10 sequences.)
 - Wei, J. & Zou, K. (2019). EDA: Easy Data Augmentation Techniques for Boosting Performance on Text Classification Tasks. EMNLP-IJCNLP 2019. [arXiv:1901.11196](https://arxiv.org/abs/1901.11196).
 - Demszky, D., et al. (2020). GoEmotions: A Dataset of Fine-Grained Emotions. ACL 2020. [arXiv:2005.00547](https://arxiv.org/abs/2005.00547).
+
+---
+
+## Academic Information
+
+**Course**: INFO 557, Neural Networks
+**Term**: 2024-2025
+**Institution**: University of Arizona
+
+---
+
+<p align="center">
+  <em>University of Arizona, Data Science Portfolio</em>
+</p>
