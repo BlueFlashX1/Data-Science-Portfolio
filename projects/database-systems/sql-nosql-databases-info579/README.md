@@ -157,12 +157,6 @@ The loader handles column name mapping between Synthea CSVs and the schema, conv
 
 Password handling: reads from `$MYSQL_PASSWORD` env var, or prompts interactively if not set.
 
-# 5. (Optional) Run the SQL skill demonstrations
-for f in sql/sql_skill_demos/*.sql; do
-  mysql -u root -p Final_Project < "$f"
-done
-```
-
 Each `.sql` file starts with a comment header explaining what the query does.
 
 ### Expected row counts

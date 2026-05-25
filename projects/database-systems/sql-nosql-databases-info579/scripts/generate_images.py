@@ -72,9 +72,11 @@ def generate_er_diagram(output_path: Path) -> None:
         bgcolor="white",
         fontname="Helvetica",
         fontsize="11",
-        nodesep="0.5",
-        ranksep="1.2",
-        splines="ortho",
+        nodesep="1.0",
+        ranksep="2.5",
+        splines="ortho",  # orthogonal edges, with compass-direction ports
+                          # below to keep them outside table boundaries
+        concentrate="true",  # merge parallel edges going to the same target
         # Point to the Homebrew-installed dot binary
         # (graphviz library respects PATH; we also set it explicitly below)
     )
@@ -190,38 +192,43 @@ def generate_er_diagram(output_path: Path) -> None:
     # ------------------------------------------------------------------
     # FK edges: (child_table:child_port, parent_table:parent_port, label)
     # ------------------------------------------------------------------
+    # Compass-direction ports (`:e` exit east, `:w` enter west) force
+    # graphviz to route edges from table boundaries rather than through
+    # the middle of tables, avoiding the overlap issue.
     edges: list[tuple[str, str, str]] = [
         # encounter → patient
-        ("encounter:patient_id",               "patient:patient_id",         ""),
+        ("encounter:patient_id:e",             "patient:patient_id:w",         ""),
         # encounter → provider (composite)
-        ("encounter:provider_id",              "provider:provider_id",       "(provider_id, org_id)"),
+        ("encounter:provider_id:e",            "provider:provider_id:w",       "(provider_id, org_id)"),
         # medical_condition → patient
-        ("medical_condition:patient_id",       "patient:patient_id",         ""),
+        ("medical_condition:patient_id:e",     "patient:patient_id:w",         ""),
         # medical_condition → encounter
-        ("medical_condition:encounter_id",     "encounter:encounter_id",     ""),
+        ("medical_condition:encounter_id:e",   "encounter:encounter_id:w",     ""),
         # diagnosis → patient
-        ("diagnosis:patient_id",               "patient:patient_id",         ""),
+        ("diagnosis:patient_id:e",             "patient:patient_id:w",         ""),
         # diagnosis → medical_condition
-        ("diagnosis:condition_id",             "medical_condition:condition_id", ""),
+        ("diagnosis:condition_id:e",           "medical_condition:condition_id:w", ""),
         # procedures → patient
-        ("procedures:patient_id",              "patient:patient_id",         ""),
+        ("procedures:patient_id:e",            "patient:patient_id:w",         ""),
         # procedures → encounter
-        ("procedures:encounter_id",            "encounter:encounter_id",     ""),
+        ("procedures:encounter_id:e",          "encounter:encounter_id:w",     ""),
         # treatment → patient
-        ("treatment:patient_id",               "patient:patient_id",         ""),
+        ("treatment:patient_id:e",             "patient:patient_id:w",         ""),
         # treatment → procedures
-        ("treatment:procedure_id",             "procedures:procedure_id",    ""),
+        ("treatment:procedure_id:e",           "procedures:procedure_id:w",    ""),
         # observation → patient
-        ("observation:patient_id",             "patient:patient_id",         ""),
+        ("observation:patient_id:e",           "patient:patient_id:w",         ""),
         # observation → encounter
-        ("observation:encounter_id",           "encounter:encounter_id",     ""),
+        ("observation:encounter_id:e",         "encounter:encounter_id:w",     ""),
     ]
 
     for child_port, parent_port, label in edges:
+        # Use xlabel (external label) instead of label — ortho splines
+        # don't render mid-line labels properly. xlabel floats freely.
         dot.edge(
             child_port,
             parent_port,
-            label=label,
+            xlabel=label,
             arrowhead="normal",
             arrowtail="none",
             color="#2C5F8A",
