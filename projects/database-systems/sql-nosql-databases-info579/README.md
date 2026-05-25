@@ -82,7 +82,9 @@ The 8 base tables and their foreign-key relationships:
 ```text
 sql-nosql-databases-info579/
 ├── README.md                                          # Project documentation
-├── requirements.txt                                   # Python dependencies (pandas, mysql-connector-python)
+├── docker-compose.yml                                 # MySQL 8 container (port 33060, auto-applies schema)
+├── setup.sh                                           # One-command reproduction: docker + loader + reports
+├── requirements.txt                                   # Python dependencies (pandas, mysql-connector-python, matplotlib)
 ├── relationship_verify.py                             # Pandas data-integrity check (pre-schema exploration)
 ├── scripts/
 │   ├── load_csvs.py                                   # Synthea CSV → MySQL loader (8 tables, FK-ordered)
@@ -129,22 +131,36 @@ sql-nosql-databases-info579/
 
 ## How to Reproduce
 
-Requires MySQL 8+ and Python 3.9+. Takes about 20 seconds end-to-end.
+### Recommended — one-command setup with Docker
+
+Prerequisites: **Docker Desktop** and **Python 3.9+**. No MySQL installation needed.
 
 ```bash
-# Install Python deps
+./setup.sh
+```
+
+That's the whole thing. Takes about 30 seconds total (10s for Docker to start MySQL + 20s for the loader). After it finishes you have a populated `Final_Project` database listening on `127.0.0.1:33060` (non-standard port to avoid colliding with any existing local MySQL).
+
+Connect to inspect it:
+```bash
+docker compose exec mysql mysql -u root -pportfolio_demo_pw Final_Project
+```
+
+Stop the container (data persists): `docker compose down`
+Full reset (deletes volume): `docker compose down -v`
+
+### Manual setup (if you don't want Docker)
+
+Requires MySQL 8+ already installed and running, with a known root password. Python 3.9+.
+
+```bash
 pip install -r requirements.txt
 
-# Create the database
 mysql -u root -p -e "CREATE DATABASE Final_Project;"
-
-# Create the tables
 mysql -u root -p Final_Project < sql/00_schema.sql
 
-# Load the CSVs
 python scripts/load_csvs.py --user root --database Final_Project
 
-# Run the analytical reports
 for f in sql/analytical_reports/*.sql; do
   mysql -u root -p Final_Project < "$f"
 done
@@ -155,9 +171,11 @@ for f in sql/sql_skill_demos/*.sql; do
 done
 ```
 
-The loader handles column name mapping between Synthea CSVs and the schema, converts ISO-8601 datetimes (`2010-01-23T17:45:28Z`) to MySQL's `DATETIME` format, replaces empty CSV cells with `NULL`, and loads tables in foreign-key order. It's idempotent (TRUNCATEs each table before reloading), and the analytical queries are too (`DROP TABLE IF EXISTS` before `CREATE TABLE AS`).
+### What the loader handles
 
-Password handling: reads from `$MYSQL_PASSWORD` env var, or prompts interactively if not set.
+Column name mapping between Synthea CSVs and the schema, ISO-8601 datetime conversion (`2010-01-23T17:45:28Z` → `2010-01-23 17:45:28`), NULL handling for empty cells, foreign-key load ordering, batch inserts (1000 rows per call), and idempotent re-runs (TRUNCATEs each table first). The analytical queries are idempotent too (`DROP TABLE IF EXISTS` before `CREATE TABLE AS`).
+
+Password: reads from `$MYSQL_PASSWORD` env var, or prompts if not set.
 
 Each `.sql` file starts with a comment header explaining what the query does.
 

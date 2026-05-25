@@ -1,0 +1,34 @@
+# docker-compose.yml — Spins up MySQL 8 with the Final_Project database
+# auto-created and the schema auto-applied on first start.
+#
+# Port 33060 (not the default 3306) so this doesn't collide with any
+# existing local MySQL on a recruiter's machine.
+#
+# Usage:
+#   docker compose up -d         # start
+#   docker compose down          # stop (keep data)
+#   docker compose down -v       # stop + delete the volume (full reset)
+
+services:
+  mysql:
+    image: mysql:8.4
+    container_name: info579_mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: portfolio_demo_pw
+      MYSQL_DATABASE: Final_Project
+    ports:
+      - "33060:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      # 00_schema.sql is auto-applied by the MySQL Docker image on first start
+      - ./sql/00_schema.sql:/docker-entrypoint-initdb.d/00_schema.sql:ro
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "-u", "root", "-pportfolio_demo_pw"]
+      interval: 3s
+      timeout: 5s
+      retries: 30
+      start_period: 30s
+
+volumes:
+  mysql_data:
