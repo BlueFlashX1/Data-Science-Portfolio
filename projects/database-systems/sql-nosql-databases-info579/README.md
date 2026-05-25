@@ -255,18 +255,6 @@ Of 1,171 patients: 326 are high-coverage (≥$10K), 309 medium ($5K–$10K), 536
 
 ---
 
-## Key Findings & Insights
-
-**Clinical Quality**: Viral sinusitis was the most prevalent condition (63% of diagnoses). Emergency department 30-day mortality rate was 3.57 per 1,000 encounters.
-
-**Provider Utilization**: Identified severe workload imbalances: top provider handled 3,000+ encounters while others averaged under 2,000. Discovered 5 inactive specialties that could be reallocated for better resource distribution.
-
-**Cost Analysis**: Top patient costs reached $1.1M. Most common procedures were medication reconciliation and renal dialysis.
-
-**Readmission Patterns**: Flagged high-risk ER patients with ≥3 visits within the analysis period for targeted intervention programs.
-
----
-
 ## Challenges Solved
 
 ### Bulk loading vs row-by-row inserts
