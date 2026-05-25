@@ -203,6 +203,14 @@ python train_dev.py
 python predict_test.py
 ```
 
+If `pip install -r requirements.txt` pulls a TensorFlow version that crashes on import with `mutex lock failed: Invalid argument` (a known bug in `tensorflow==2.21.0` on Apple Silicon as of May 2026), use the pinned lock file instead:
+
+```bash
+pip install -r requirements-lock.txt
+```
+
+The lock file pins `tensorflow==2.16.2` and `keras==3.4.1`, which both import cleanly on macOS arm64 and reproduce the training pipeline end-to-end (verified ~90 second training, 5-second prediction, 94.8% exact-label agreement with the committed dev submission).
+
 Training takes a while (5 seeds × 30 epochs on ~2K training rows). The committed [`prediction_result/submission.csv`](./prediction_result/submission.csv) is the final ensemble output that scored 0.672 micro F1 (8th/15) on the held-out test.
 
 ### Post-grading pretrained-embedding study
@@ -224,7 +232,8 @@ python experiments/compare.py                 # Side-by-side dev F1 across all v
 ```text
 emotion-classification-info557/
 ├── README.md                           # Project documentation
-├── requirements.txt                    # Python dependencies
+├── requirements.txt                    # Python dependencies (default; may pull a broken TF on Apple Silicon)
+├── requirements-lock.txt               # Pinned versions verified to work on macOS arm64
 ├── decisions.txt                       # Model-decision documentation
 ├── eda.ipynb                           # Exploratory data analysis notebook
 ├── prediction_eda.ipynb                # Prediction EDA notebook

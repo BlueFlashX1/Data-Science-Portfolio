@@ -1,0 +1,22 @@
+# Pinned versions verified to reproduce the project end-to-end on macOS Tahoe
+# / Apple Silicon (M-series) with Python 3.11. Use this file if `requirements.txt`
+# pulls a TensorFlow version that crashes on import with `mutex lock failed:
+# Invalid argument` (a known bug in tensorflow==2.21.0 on arm64).
+#
+# Install with:
+#   pip install -r requirements-lock.txt
+#
+# Then train and predict as in the README's How to Reproduce section.
+
+# Core deep-learning stack — the only ones that strictly need pinning.
+# TF 2.16.2 imports cleanly on Apple Silicon; 2.21.0 does not (as of 2026-05).
+# numpy<2 is required by TF 2.16.x; newer numpy breaks the binary ABI.
+numpy<2,>=1.26
+tensorflow==2.16.2
+keras==3.4.1
+
+# Data + notebook stack — version-flexible, just need recent.
+pandas>=2.0
+matplotlib>=3.7
+jupyter>=1.0
+ipykernel>=6.0
