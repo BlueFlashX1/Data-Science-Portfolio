@@ -847,7 +847,7 @@ Best hyperparameters I believe for RandomForest giving good ROC AUC score withou
 - class_weight='balanced'
 - random_state=42
 
-With the dev.csv, my ROC AUC score was around ~0.83 compared to the score of ~0.9011 from codabench website: https://www.codabench.org/competitions/6813/?secret_key=#/results-tab
+With the dev.csv, my ROC AUC score was around ~0.83 compared to the score of ~0.9011 from codabench website: https://www.codabench.org/competitions/6813/#/results-tab
 
 With test.csv, my ROC AUC was around ~0.85 which would suggest my model was holding up quite well despite test.csv being an unseen data.
 

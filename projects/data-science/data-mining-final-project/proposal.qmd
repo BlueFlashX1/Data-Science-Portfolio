@@ -55,10 +55,9 @@ import statsmodels.api as sm
 ```{python}
 #| label: load-dataset
 #| message: false
-folder_path = "/Users/matthewthompson/Documents/Academics/DS Masters Academics/Data Mining and Discovery/Assignments/final-project-thompson/data"
+folder_path = "data"
 
 #list of dataset paths
-folder_path = "/Users/matthewthompson/Documents/Academics/DS Masters Academics/Data Mining and Discovery/Assignments/final-project-thompson/data"
 evolution_path = os.path.join(folder_path, "animals_rateof_evolution.csv")
 family_path = os.path.join(folder_path, "family_related_data.csv")
 

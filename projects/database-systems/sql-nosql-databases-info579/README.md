@@ -1,3 +1,5 @@
+[← Back to Database Systems Projects](../README.md)
+
 # Healthcare Analytics with SQL
 
 [![Course Project](https://img.shields.io/badge/Course-Final%20Project-blue?style=for-the-badge)](./reports/INFO579-Final-Project-Report-Thompson.pdf)
@@ -34,21 +36,21 @@ The 8 base tables and their foreign-key relationships:
 
 ## What I Applied
 
-### SQL Techniques Implemented
+### SQL Techniques
 
 | Category              | Techniques                                                            |
 | --------------------- | --------------------------------------------------------------------- |
-| **Joins**             | Implemented multi-table joins (4+), LEFT/INNER variations, self-joins |
-| **Temporal Analysis** | Used `DATEDIFF`, `DATE_ADD` for 30-day readmission tracking           |
-| **Advanced Queries**  | Built CTEs (Common Table Expressions) and correlated subqueries       |
-| **Aggregation**       | Applied `GROUP BY` + `HAVING`, `CASE` for dynamic categorization      |
-| **ETL**               | Executed `LOAD DATA INFILE` bulk import, Python-Pandas preprocessing  |
+| **Joins**             | Multi-table joins (4+), LEFT/INNER variations, self-joins             |
+| **Temporal Analysis** | `DATEDIFF`, `DATE_ADD` for 30-day readmission tracking                |
+| **Advanced Queries**  | CTEs (Common Table Expressions), correlated subqueries                |
+| **Aggregation**       | `GROUP BY` + `HAVING`, `CASE` for categorization                      |
+| **ETL**               | `LOAD DATA INFILE` bulk import, Python-Pandas preprocessing           |
 
 ### Database Design
 
-- **3NF Normalization**: Designed 8 entity tables with 2 junction tables for many-to-many relationships
-- **Foreign Keys**: Implemented 12 FK constraints with cascading relationships (patient→encounter→provider)
-- **Schema Verified**: Verified record counts via AUTO_INCREMENT values in MySQL dump
+- **3NF Normalization**: 8 entity tables with 2 junction tables for many-to-many relationships
+- **Foreign Keys**: 12 FK constraints with cascading relationships (patient→encounter→provider)
+- **Schema Verified**: Record counts verified via AUTO_INCREMENT values in MySQL dump
 
 ### Business Insights
 
@@ -215,7 +217,7 @@ Viral upper-respiratory infections lead, followed by cardiometabolic findings (B
 
 ![Top 10 procedures](./images/top_procedures.png)
 
-Medication Reconciliation dominates at 5,632 occurrences. The top procedures are non-surgical interventions: medication management, renal dialysis, obstetric monitoring, immunotherapy, intramuscular injection.
+Medication Reconciliation leads at 5,632 occurrences. The top procedures are non-surgical interventions: medication management, renal dialysis, obstetric monitoring, immunotherapy, intramuscular injection.
 
 ### Top providers by encounter count
 

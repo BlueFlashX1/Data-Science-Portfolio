@@ -1,3 +1,5 @@
+[← Back to Capstone Projects](../README.md)
+
 # AI4HC Capstone: ER Simulator Showcase Poster
 
 [![Course Project](https://img.shields.io/badge/Course-Capstone-blue?style=for-the-badge)](https://arizona.edu)
@@ -77,7 +79,7 @@ To be explicit: the .NET web app, the RAG service backed by the medical knowledg
 |---|---|
 | Live poster, light theme | [matthewqilanthompson.github.io/.../index_v1.html](https://matthewqilanthompson.github.io/Data-Science-Portfolio/projects/capstone/ai4hc-info698/index_v1.html) |
 | Live poster, dark theme | [matthewqilanthompson.github.io/.../index_dark.html](https://matthewqilanthompson.github.io/Data-Science-Portfolio/projects/capstone/ai4hc-info698/index_dark.html) |
-| Print-ready PDF (48×36 in) | [`iShowcase_Final.pdf`](./iShowcase_Final.pdf) (3.3MB) |
+| Print-ready PDF (48×36 in) | [`iShowcase_Final.pdf`](./iShowcase_Final.pdf) (3.2MB) |
 | Dark-theme print PDF | [`AI4HC_poster_dark.pdf`](./AI4HC_poster_dark.pdf) (3.6MB) |
 | Poster HTML source | [`index_v1.html`](./index_v1.html), [`index_dark.html`](./index_dark.html) |
 

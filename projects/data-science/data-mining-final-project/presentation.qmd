@@ -71,8 +71,8 @@ from sklearn.preprocessing import StandardScaler, LabelEncoder
 import pandas as pd
 
 # file paths
-evolution_path = "/Users/matthewthompson/Documents/Academics/DS Masters Academics/Data Mining and Discovery/Assignments/final-project-thompson/data/animals_rateof_evolution.csv"
-family_path    = "/Users/matthewthompson/Documents/Academics/DS Masters Academics/Data Mining and Discovery/Assignments/final-project-thompson/data/family_related_data.csv"
+evolution_path = "data/animals_rateof_evolution.csv"
+family_path    = "data/family_related_data.csv"
 
 # load data
 evolution_df = pd.read_csv(evolution_path)

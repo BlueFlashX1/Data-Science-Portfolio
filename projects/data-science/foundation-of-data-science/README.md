@@ -1,3 +1,5 @@
+[← Back to Data Science Projects](../README.md)
+
 # Healthcare Readmission Risk Prediction
 
 [![Course Project](https://img.shields.io/badge/Course-Final%20Project-blue?style=for-the-badge)](https://www.codabench.org/competitions/6813/)
@@ -16,7 +18,7 @@
 
 ## Competition Results
 
-**ROC AUC 0.90 model**, 5th/40 in the development phase and 13th/35 on the final held-out test.
+**ROC AUC 0.901 model**, 5th/40 in the development phase and 13th/35 on the final held-out test.
 
 | Phase           | Ranking    | ROC AUC | Participants |
 | --------------- | ---------- | ------- | ------------ |

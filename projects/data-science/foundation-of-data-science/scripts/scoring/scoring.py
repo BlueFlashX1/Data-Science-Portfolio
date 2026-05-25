@@ -1,12 +1,7 @@
 # pyright: reportGeneralTypeIssues=false, reportAttributeAccessIssue=false, reportOptionalMemberAccess=false, reportOptionalCall=false
 # type: ignore
 # Instructor-provided file - ignore all type checking errors
-#uses sys path to get python path since I had issues with libraries not being found despite correct python interpreter
-import os
 import sys
-sys.path.append(
-    os.path.abspath('/Users/matthewthompson/Documents/Academics/DS Masters Academics/Foundation of Data Science/Final Project/final-project-matthewqilanthompson/venv/lib/python3.13/site-packages/')
-)
 
 import pandas as pd
 from sklearn.metrics import roc_auc_score
