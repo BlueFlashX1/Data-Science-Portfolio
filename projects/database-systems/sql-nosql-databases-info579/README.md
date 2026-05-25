@@ -215,13 +215,13 @@ Viral upper-respiratory infections lead, followed by cardiometabolic findings (B
 
 ![Top 10 procedures](./images/top_procedures.png)
 
-Medication Reconciliation dominates at 5,632 occurrences. The top procedures are non-surgical interventions — medication management, renal dialysis, obstetric monitoring, immunotherapy, intramuscular injection.
+Medication Reconciliation dominates at 5,632 occurrences. The top procedures are non-surgical interventions: medication management, renal dialysis, obstetric monitoring, immunotherapy, intramuscular injection.
 
 ### Top providers by encounter count
 
 ![Top 10 providers](./images/top_providers.png)
 
-One General Practice provider (Gaynell126 Streich926) handles 3,217 encounters — over 60% more than the second-busiest. All top 10 are General Practice, suggesting workload imbalance toward GPs vs. specialists.
+One General Practice provider (Gaynell126 Streich926) handles 3,217 encounters, over 60% more than the second-busiest. All top 10 are General Practice, suggesting workload imbalance toward GPs vs. specialists.
 
 ### Patient coverage distribution
 
@@ -247,11 +247,11 @@ Of 1,171 patients: 326 are high-coverage (≥$10K), 309 medium ($5K–$10K), 536
 14. 30-Day Mortality Rates
 
 **Queries by section:**
-- [Section 7 — 6 Analytical Reports](./sql/analytical_reports/)
-- [Section 8 — 9 SQL Skill Demonstrations](./sql/sql_skill_demos/)
+- [Section 7: 6 Analytical Reports](./sql/analytical_reports/)
+- [Section 8: 9 SQL Skill Demonstrations](./sql/sql_skill_demos/)
 - [Schema definition (8 base + 14 rpt tables + 12 FKs)](./sql/00_schema.sql)
 
-> **A note on documented coverage:** The schema declares 14 `rpt_` tables; the final report PDF documents the SQL queries for **9 of them** (sections 7.1–7.6 + four `CREATE TABLE` statements in section 8). The remaining 5 (`rpt_condition_prevalence`, `rpt_inner_encounter_provider`, `rpt_proc_readmit_30d`, `rpt_provider_readmit_30d`, `rpt_readmissions_30d`) appear in the schema but their queries were not included in the final report — they're declared for completeness but not reproducible from this repo alone. The numbered list above counts both: 9 documented + 5 schema-only.
+> **A note on documented coverage:** The schema declares 14 `rpt_` tables; the final report PDF documents the SQL queries for **9 of them** (sections 7.1–7.6 + four `CREATE TABLE` statements in section 8). The remaining 5 (`rpt_condition_prevalence`, `rpt_inner_encounter_provider`, `rpt_proc_readmit_30d`, `rpt_provider_readmit_30d`, `rpt_readmissions_30d`) appear in the schema but their queries were not included in the final report; they're declared for completeness but not reproducible from this repo alone. The numbered list above counts both: 9 documented + 5 schema-only.
 
 ---
 
