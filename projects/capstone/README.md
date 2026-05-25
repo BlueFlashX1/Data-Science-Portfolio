@@ -10,7 +10,7 @@
 
 ---
 
-## [AI4HC: ER Simulator Showcase Poster](./ai4hc-info698/)
+## [AI4HC Capstone: ER Simulator Showcase Poster](./ai4hc-info698/)
 
 **INFO 698 - Graduate Capstone** | Spring 2026
 

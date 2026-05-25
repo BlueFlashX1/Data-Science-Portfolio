@@ -49,15 +49,15 @@ Placed 8th/15 on the test set (F1-score 0.672, a balanced precision/recall metri
 
 ---
 
-### [Trait-Based Animal Classification](./projects/data-science/data-mining-final-project/)
+### [Trait-Based Prediction of Animal Taxa](./projects/data-science/data-mining-final-project/)
 
 **Machine-learning classification of evolutionary traits across 1,087 animal families** · _INFO 523 Final Project_
 
-Classification across 5 superphyla comparing binary trait presence/absence vs. continuous evolutionary origin rates. Applied SHAP (SHapley Additive exPlanations) for feature importance and balanced metrics to handle class imbalance.
+Classification across 5 superphyla comparing binary trait presence/absence vs. continuous evolutionary origin rates. Used SHAP (SHapley Additive exPlanations) for feature importance and balanced metrics to handle class imbalance.
 
 **Why Logistic Regression over Random Forest and Decision Trees**: Evolutionary-rate features were continuous and approximately linear with respect to taxonomic class, which Logistic Regression's decision boundary fits well. With ~1,087 families and class imbalance across 5 superphyla, Logistic Regression's calibrated probabilities and interpretable per-trait coefficients gave stronger signal than tree-based models, which over-fit on sparse rare-class samples.
 
-**Outcome**: ~50% accuracy on 5-class taxonomy showed that sexually-selected traits carry real but limited predictive signal for taxonomic classification. The deeper finding: data representation (continuous evolutionary rates vs. sparse binary presence) mattered more than model choice. The method generalizes to any trait dataset where evolutionary rates are available.
+**Outcome**: ~50% balanced accuracy on 5-class taxonomy showed that sexually-selected traits carry real but limited predictive signal for taxonomic classification. The deeper finding: data representation (continuous evolutionary rates vs. sparse binary presence) mattered more than model choice. The method generalizes to any trait dataset where evolutionary rates are available.
 
 **Tech**: Python • Scikit-learn • SHAP • Stratified K-fold cross-validation · [Read the project →](./projects/data-science/data-mining-final-project/)
 
