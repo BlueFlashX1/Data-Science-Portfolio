@@ -20,6 +20,14 @@ I designed normalized database schemas and wrote complex SQL queries to analyze 
 
 **Key Metrics**: 1,171 patients • 53,346 encounters • 8,376 diagnoses • 67MB Synthea EHR data
 
+### Database Schema
+
+The 8 base tables and their foreign-key relationships:
+
+![ER diagram of base tables](./images/er_diagram.png)
+
+`diagnosis` and `treatment` are junction tables for the many-to-many relationships (patient ⇄ medical_condition, patient ⇄ procedures).
+
 ---
 
 ## What I Applied
@@ -75,7 +83,14 @@ sql-nosql-databases-info579/
 ├── requirements.txt                                   # Python dependencies (pandas, mysql-connector-python)
 ├── relationship_verify.py                             # Pandas data-integrity check (pre-schema exploration)
 ├── scripts/
-│   └── load_csvs.py                                   # Synthea CSV → MySQL loader (8 tables, FK-ordered)
+│   ├── load_csvs.py                                   # Synthea CSV → MySQL loader (8 tables, FK-ordered)
+│   └── generate_images.py                             # Regenerates ER diagram + 4 analytical charts
+├── images/                                            # PNGs embedded in this README
+│   ├── er_diagram.png
+│   ├── top_conditions.png
+│   ├── top_procedures.png
+│   ├── top_providers.png
+│   └── coverage_distribution.png
 ├── data/                                              # 6 healthcare CSVs (67MB total)
 │   ├── patients.csv
 │   ├── encounters.csv
@@ -166,6 +181,34 @@ After the loader runs, the 8 base tables should contain these counts (446,783 ro
 | treatment | 34,981 |
 
 ---
+
+## Sample analytical findings
+
+These charts come from running the queries against the populated database. Regenerate them anytime with `python scripts/generate_images.py --user matthewqthompson --database Final_Project`.
+
+### Top conditions by patient count
+
+![Top 10 conditions](./images/top_conditions.png)
+
+Viral upper-respiratory infections lead, followed by cardiometabolic findings (BMI 30+, prediabetes, hypertension). Pregnancy-related conditions appear in the bottom half.
+
+### Top procedures by volume
+
+![Top 10 procedures](./images/top_procedures.png)
+
+Medication Reconciliation dominates at 5,632 occurrences. The top procedures are non-surgical interventions — medication management, renal dialysis, obstetric monitoring, immunotherapy, intramuscular injection.
+
+### Top providers by encounter count
+
+![Top 10 providers](./images/top_providers.png)
+
+One General Practice provider (Gaynell126 Streich926) handles 3,217 encounters — over 60% more than the second-busiest. All top 10 are General Practice, suggesting workload imbalance toward GPs vs. specialists.
+
+### Patient coverage distribution
+
+![Coverage distribution](./images/coverage_distribution.png)
+
+Of 1,171 patients: 326 are high-coverage (≥$10K), 309 medium ($5K–$10K), 536 low (<$5K). Roughly 46% of patients have low healthcare coverage.
 
 ## 14 Analytical Reports
 
