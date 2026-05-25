@@ -1,0 +1,1 @@
+- [Project context](project_context.md) — INFO579 healthcare DB portfolio: schema, Synthea CSVs, load_csvs.py loader, FK load order

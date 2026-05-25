@@ -72,7 +72,10 @@ I designed normalized database schemas and wrote complex SQL queries to analyze 
 ```text
 sql-nosql-databases-info579/
 ├── README.md                                          # Project documentation
+├── requirements.txt                                   # Python dependencies (pandas, mysql-connector-python)
 ├── relationship_verify.py                             # Pandas data-integrity check (pre-schema exploration)
+├── scripts/
+│   └── load_csvs.py                                   # Synthea CSV → MySQL loader (8 tables, FK-ordered)
 ├── data/                                              # 6 healthcare CSVs (67MB total)
 │   ├── patients.csv
 │   ├── encounters.csv
@@ -112,14 +115,20 @@ sql-nosql-databases-info579/
 You can rebuild this database from scratch on any MySQL 8+ instance:
 
 ```bash
+# 0. Install Python dependencies (for the CSV loader)
+pip install -r requirements.txt
+
 # 1. Create the database
 mysql -u root -p -e "CREATE DATABASE Final_Project;"
 
 # 2. Create all tables (8 base entities + 14 report tables + 12 foreign keys)
 mysql -u root -p Final_Project < sql/00_schema.sql
 
-# 3. Load the Synthea base data (patient, encounter, provider, etc.)
-#    Either via LOAD DATA INFILE or a small Python loader using pandas.to_sql.
+# 3. Load the 6 Synthea CSVs into the base tables (patient, provider, encounter,
+#    medical_condition, procedures, observation) plus the diagnosis & treatment
+#    junction tables. Handles column mapping, NULL conversion, FK ordering.
+python scripts/load_csvs.py --user root --database Final_Project
+#    (Reads password from $MYSQL_PASSWORD env var or prompts interactively.)
 
 # 4. Materialize the analytical report tables
 for f in sql/analytical_reports/*.sql; do
@@ -157,6 +166,8 @@ Each `.sql` file is independently readable — each starts with a comment header
 - [Section 7 — 6 Analytical Reports](./sql/analytical_reports/)
 - [Section 8 — 9 SQL Skill Demonstrations](./sql/sql_skill_demos/)
 - [Schema definition (8 base + 14 rpt tables + 12 FKs)](./sql/00_schema.sql)
+
+> **A note on documented coverage:** The schema declares 14 `rpt_` tables; the final report PDF documents the SQL queries for **9 of them** (sections 7.1–7.6 + four `CREATE TABLE` statements in section 8). The remaining 5 (`rpt_condition_prevalence`, `rpt_inner_encounter_provider`, `rpt_proc_readmit_30d`, `rpt_provider_readmit_30d`, `rpt_readmissions_30d`) appear in the schema but their queries were not included in the final report — they're declared for completeness but not reproducible from this repo alone. The numbered list above counts both: 9 documented + 5 schema-only.
 
 ---
 
