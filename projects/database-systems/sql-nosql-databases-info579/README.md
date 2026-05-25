@@ -1,4 +1,4 @@
-# Healthcare Analytics with SQL & NoSQL
+# Healthcare Analytics with SQL
 
 [![Course Project](https://img.shields.io/badge/Course-Final%20Project-blue?style=for-the-badge)](./reports/INFO579-Final-Project-Report-Thompson.pdf)
 [![INFO 579](https://img.shields.io/badge/INFO%20579-SQL%20%26%20NoSQL-red?style=for-the-badge)](https://arizona.edu)
@@ -16,7 +16,7 @@
 
 ## Project Overview
 
-I designed normalized database schemas and wrote complex SQL queries to analyze synthetic EHR data. I built 14 analytical reports addressing clinical quality, provider utilization, readmissions, and profitability.
+Final project for INFO 579 (SQL & NoSQL Databases). The course covered both relational and document stores; this project focused on the SQL/relational track. I designed normalized database schemas and wrote complex SQL queries to analyze synthetic EHR data, building 14 analytical reports addressing clinical quality, provider utilization, readmissions, and profitability.
 
 **Key Metrics**: 1,171 patients • 53,346 encounters • 8,376 diagnoses • 67MB Synthea EHR data
 
@@ -82,7 +82,7 @@ The 8 base tables and their foreign-key relationships:
 ```text
 sql-nosql-databases-info579/
 ├── README.md                                          # Project documentation
-├── docker-compose.yml                                 # MySQL 8 container (port 33060, auto-applies schema)
+├── docker-compose.yml                                 # MySQL 8 container (port 13306, auto-applies schema)
 ├── setup.sh                                           # One-command reproduction: docker + loader + reports
 ├── requirements.txt                                   # Python dependencies (pandas, mysql-connector-python, matplotlib)
 ├── relationship_verify.py                             # Pandas data-integrity check (pre-schema exploration)
@@ -131,27 +131,32 @@ sql-nosql-databases-info579/
 
 ## How to Reproduce
 
-### Recommended — one-command setup with Docker
+### With Docker
 
-Prerequisites: **Docker Desktop** and **Python 3.9+**. No MySQL installation needed.
+Prerequisites: Docker Desktop or OrbStack, Python 3.9+.
 
 ```bash
 ./setup.sh
 ```
 
-That's the whole thing. Takes about 30 seconds total (10s for Docker to start MySQL + 20s for the loader). After it finishes you have a populated `Final_Project` database listening on `127.0.0.1:33060` (non-standard port to avoid colliding with any existing local MySQL).
+Runtime ~30s. Populates `Final_Project` on `127.0.0.1:13306`.
 
-Connect to inspect it:
+Port 13306 was chosen over 3306 to avoid collision with a local MySQL install. Port 33060 was avoided because OrbStack auto-wraps it as MySQL X Protocol, which breaks standard clients.
+
 ```bash
+# connect
 docker compose exec mysql mysql -u root -pportfolio_demo_pw Final_Project
+
+# stop (data persists)
+docker compose down
+
+# reset (deletes volume)
+docker compose down -v
 ```
 
-Stop the container (data persists): `docker compose down`
-Full reset (deletes volume): `docker compose down -v`
+### Without Docker
 
-### Manual setup (if you don't want Docker)
-
-Requires MySQL 8+ already installed and running, with a known root password. Python 3.9+.
+Requires MySQL 8+ running locally and Python 3.9+.
 
 ```bash
 pip install -r requirements.txt
@@ -165,19 +170,19 @@ for f in sql/analytical_reports/*.sql; do
   mysql -u root -p Final_Project < "$f"
 done
 
-# Optional: run the SQL skill demos
+# optional skill demos
 for f in sql/sql_skill_demos/*.sql; do
   mysql -u root -p Final_Project < "$f"
 done
 ```
 
-### What the loader handles
+### Loader behavior
 
-Column name mapping between Synthea CSVs and the schema, ISO-8601 datetime conversion (`2010-01-23T17:45:28Z` → `2010-01-23 17:45:28`), NULL handling for empty cells, foreign-key load ordering, batch inserts (1000 rows per call), and idempotent re-runs (TRUNCATEs each table first). The analytical queries are idempotent too (`DROP TABLE IF EXISTS` before `CREATE TABLE AS`).
+Column-name mapping between Synthea CSVs and the schema, ISO-8601 datetime conversion (`2010-01-23T17:45:28Z` → `2010-01-23 17:45:28`), NULL handling for empty cells, foreign-key load ordering, batch inserts (1000 rows per call), idempotent re-runs (TRUNCATEs each table first). Analytical queries are idempotent (`DROP TABLE IF EXISTS` before `CREATE TABLE AS`).
 
-Password: reads from `$MYSQL_PASSWORD` env var, or prompts if not set.
+Password: `$MYSQL_PASSWORD` env var, or interactive prompt if unset.
 
-Each `.sql` file starts with a comment header explaining what the query does.
+Each `.sql` file begins with a header comment describing the query.
 
 ### Row counts
 
@@ -198,7 +203,7 @@ The 8 base tables hold 446,783 rows:
 
 ## Sample analytical findings
 
-These charts come from running the queries against the populated database. Regenerate them anytime with `python scripts/generate_charts.py --user matthewqthompson --database Final_Project`.
+These charts come from running the queries against the populated database. Regenerate them anytime with `MYSQL_PASSWORD=portfolio_demo_pw python scripts/generate_charts.py --host 127.0.0.1 --port 13306 --user root --database Final_Project`.
 
 ### Top conditions by patient count
 
@@ -262,11 +267,17 @@ Of 1,171 patients: 326 are high-coverage (≥$10K), 309 medium ($5K–$10K), 536
 
 ---
 
-## What I Learned
+## Challenges Solved
+
+### Bulk loading vs row-by-row inserts
 
 For loading the data, I started by inserting rows one at a time. Then I found I could import the CSV files directly with LOAD DATA INFILE, which let me bulk insert every row at once. It went well after a few tweaks. The provider data also had some duplicate organization_id values, so I made a unique key on the paired provider_id and organization_id. That way I could still use both of them as foreign keys.
 
+### Dirty foreign-key data (10.13% orphan rows)
+
 For the observation data, I loaded it into a staging table first, then used INSERT and SELECT to move it into the real observation table while doing a LEFT JOIN on encounter_id. Any mismatched encounter_id would come in as NULL instead of breaking the load. I did a bit of investigation, and around 10.13% of the encounter_id values in the observation CSV were not found in the encounter table. I decided to keep these as NULL for future insights later if interested.
+
+### Misleading mortality metric
 
 One result I went back and corrected was the death rate by encounter class. At first it showed the top three as ambulatory, wellness, and outpatient. But those are typically scheduled visits, so a raw count there didn't really make sense as a measure of risk. I re-checked it using death within 30 days of a visit, as a rate per 1,000 encounters. That showed emergency and inpatient at the top instead, which made more sense.
 
