@@ -44,3 +44,4 @@ config.local.*
 _freeze/
 .quarto/
 memory/
+.claude/
