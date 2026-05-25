@@ -86,7 +86,7 @@ sql-nosql-databases-info579/
 ├── relationship_verify.py                             # Pandas data-integrity check (pre-schema exploration)
 ├── scripts/
 │   ├── load_csvs.py                                   # Synthea CSV → MySQL loader (8 tables, FK-ordered)
-│   └── generate_images.py                             # Regenerates ER diagram + 4 analytical charts
+│   └── generate_charts.py                             # Regenerates the 4 analytical chart PNGs from DB data
 ├── images/                                            # PNGs embedded in this README
 │   ├── schema_er_diagram.png
 │   ├── top_conditions.png
@@ -180,7 +180,7 @@ The 8 base tables hold 446,783 rows:
 
 ## Sample analytical findings
 
-These charts come from running the queries against the populated database. Regenerate them anytime with `python scripts/generate_images.py --user matthewqthompson --database Final_Project`.
+These charts come from running the queries against the populated database. Regenerate them anytime with `python scripts/generate_charts.py --user matthewqthompson --database Final_Project`.
 
 ### Top conditions by patient count
 
