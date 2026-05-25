@@ -1,8 +1,11 @@
 # docker-compose.yml — Spins up MySQL 8 with the Final_Project database
 # auto-created and the schema auto-applied on first start.
 #
-# Port 33060 (not the default 3306) so this doesn't collide with any
-# existing local MySQL on a recruiter's machine.
+# Port 13306 (not the default 3306) so this doesn't collide with any
+# existing local MySQL on a recruiter's machine. We deliberately avoid
+# 33060 (the canonical MySQL X Protocol port) because some Docker
+# runtimes — notably OrbStack — auto-wrap connections to 33060 in X
+# Protocol, which breaks standard mysql-connector-python clients.
 #
 # Usage:
 #   docker compose up -d         # start
@@ -18,7 +21,7 @@ services:
       MYSQL_ROOT_PASSWORD: portfolio_demo_pw
       MYSQL_DATABASE: Final_Project
     ports:
-      - "33060:3306"
+      - "13306:3306"
     volumes:
       - mysql_data:/var/lib/mysql
       # 00_schema.sql is auto-applied by the MySQL Docker image on first start

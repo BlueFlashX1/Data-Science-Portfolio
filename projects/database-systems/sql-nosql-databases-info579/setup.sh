@@ -3,7 +3,7 @@
 # using Docker. No MySQL installation needed on the host machine.
 #
 # What this does:
-#   1. Starts MySQL 8 in a Docker container (port 33060)
+#   1. Starts MySQL 8 in a Docker container (port 13306)
 #   2. Waits for MySQL to be ready
 #   3. Installs Python dependencies
 #   4. Loads the 6 Synthea CSVs into the 8 base tables (~20 sec)
@@ -12,7 +12,7 @@
 # Prerequisites: Docker Desktop + Python 3.9+ (with pip).
 #
 # After this completes you can:
-#   - Connect with any MySQL client at 127.0.0.1:33060 (user: root, pw: portfolio_demo_pw)
+#   - Connect with any MySQL client at 127.0.0.1:13306 (user: root, pw: portfolio_demo_pw)
 #   - Stop with `docker compose down` (keeps data)
 #   - Reset with `docker compose down -v` (deletes volume)
 
@@ -23,7 +23,7 @@ cd "$(dirname "$0")"
 
 DB=Final_Project
 HOST=127.0.0.1
-PORT=33060
+PORT=13306
 USER=root
 PW=portfolio_demo_pw
 

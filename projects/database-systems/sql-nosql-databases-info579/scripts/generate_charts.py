@@ -18,11 +18,11 @@ Prerequisites
 
 Usage
 -----
-    python scripts/generate_charts.py --user matthewqthompson --database Final_Project
+    python scripts/generate_charts.py --host 127.0.0.1 --port 13306 --user root --database Final_Project
 
     # Password from environment variable:
-    export MYSQL_PASSWORD="TempPass2026!"
-    python scripts/generate_charts.py --user matthewqthompson --database Final_Project
+    export MYSQL_PASSWORD="portfolio_demo_pw"
+    python scripts/generate_charts.py --host 127.0.0.1 --port 13306 --user root --database Final_Project
 """
 
 import argparse
@@ -381,7 +381,7 @@ def parse_args() -> argparse.Namespace:
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog=textwrap.dedent("""
             Examples:
-              python scripts/generate_charts.py --user matthewqthompson --database Final_Project
+              python scripts/generate_charts.py --host 127.0.0.1 --port 13306 --user root --database Final_Project
               MYSQL_PASSWORD=secret python scripts/generate_charts.py --user root
         """),
     )
