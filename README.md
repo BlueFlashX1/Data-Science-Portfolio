@@ -7,7 +7,7 @@
 
 ---
 
-**Highlight**: 30-day hospital readmission prediction with a Random Forest classifier, ROC-AUC of 0.90 (a classifier accuracy score where 1.0 is perfect) across 125,958 synthetic electronic health record (EHR) encounters
+**Highlight**: 30-day hospital readmission prediction with a Random Forest classifier on a class competition. ROC AUC 0.901 on the dev-phase leaderboard (5th of 40) and 0.858 on the final held-out test (13th of 35), across 587,801 training and 125,958 dev rows of synthetic electronic health record (EHR) data. ROC AUC is a classifier ranking score where 1.0 is perfect.
 
 **Navigation**: [Projects](#featured-projects) • [Skills](#skills) • [Connect](#connect)
 
@@ -25,11 +25,11 @@ Each project below documents a deliberate model-selection decision and the real-
 
 **30-day hospital readmission prediction** · _INFO 521 Final Project_
 
-Random Forest classifier with patient-frequency encoding on 125,958 synthetic electronic health record (EHR) encounters; ROC-AUC of 0.90 (a classifier accuracy score where 1.0 is perfect) after comparing 9 algorithms with stratified cross-validation.
+Random Forest classifier with patient-frequency encoding on synthetic electronic health record (EHR) data: 587,801 training encounters and 125,958 dev encounters. Scored ROC AUC 0.901 on the dev-phase leaderboard (5th of 40) and 0.858 on the final held-out test (13th of 35) after comparing 9 algorithms with stratified cross-validation.
 
 **Why Random Forest**: EHR data is tabular with mixed numeric and categorical features, has missing medication counts, and shows class imbalance, all of which Random Forest handles natively. RF also surfaces feature importance (which exposed patient-frequency as the strongest predictor) and proved more stable across cross-validation folds than Gradient Boosting in a competition setting.
 
-**Outcome**: An ROC-AUC of 0.90 means the model correctly ranks a high-risk patient above a low-risk one 9 times out of 10. A hospital using this for triage could identify the highest-risk encounters early to target preventable 30-day readmissions.
+**Outcome**: ROC AUC 0.858 on the held-out test means the model correctly ranks a high-risk patient above a low-risk one about 86% of the time. The 5-point drop from the dev leaderboard (0.901) to the test (0.858) was honest generalization: cross-validated AUC (~0.86) predicted the test result almost exactly, so the model held up on unseen data while higher-dev-scoring competitors dropped further.
 
 **Tech**: Python • Scikit-learn • Pandas • Random Forest • Stratified Cross-Validation · [Read the project →](./projects/data-science/foundation-of-data-science/)
 
@@ -67,9 +67,9 @@ Classification across 5 superphyla comparing binary trait presence/absence vs. c
 
 | Project | What it shows | Tech |
 |---|---|---|
-| [**Healthcare Analytics with SQL & NoSQL**](./projects/database-systems/sql-nosql-databases-info579/) | Third Normal Form (3NF) schema design and 14 analytical SQL reports across 1,171 patients and 53,346 encounters from Synthea synthetic EHR data, covering clinical quality, provider utilization, and readmissions | MySQL · Python · CTEs · window functions |
-| [**Statistical Data Visualization Portfolio**](./projects/r-analytics/data-visualization-portfolio/) | Wildlife predation, occupational safety, and housing economics analyses with chart-selection rationale (alluvial diagrams, line graphs, grouped bars) | R · ggplot2 · ggalluvial · RMarkdown |
-| [**AI for Healthcare Capstone Poster**](./projects/capstone/ai4hc-info698/) | Light/dark theme HTML poster and Python print-export pipeline for a 6-person team capstone at the University of Arizona AI Core | HTML · CSS · Python |
+| [**Healthcare Analytics with SQL**](./projects/database-systems/sql-nosql-databases-info579/) | Third Normal Form (3NF) schema design and 14 analytical SQL reports across 1,171 patients and 53,346 encounters from Synthea synthetic EHR data, covering clinical quality, provider utilization, and readmissions. End-to-end reproducible via Docker. | MySQL · Python · CTEs · window functions |
+| [**Data Visualization Portfolio**](./projects/r-analytics/data-visualization-portfolio/) | Wildlife predation, occupational safety, and housing economics analyses with chart-selection rationale (alluvial diagrams, line graphs, grouped bars) | R · ggplot2 · ggalluvial · RMarkdown |
+| [**AI4HC Capstone: ER Simulator Showcase Poster**](./projects/capstone/ai4hc-info698/) | Light/dark theme HTML poster and Python print-export pipeline (headless Chrome → 48×36 in PDF) for a 6-person team capstone at the University of Arizona AI Core | HTML · CSS · Python |
 
 ---
 
@@ -89,7 +89,7 @@ Classification across 5 superphyla comparing binary trait presence/absence vs. c
 
 | Domain | Where applied |
 |---|---|
-| **Healthcare Analytics** | Readmission prediction (125,958 synthetic electronic health record encounters, ROC-AUC 0.90) and Third Normal Form (3NF) database design (1,171 patients, 53,346 encounters, 14 analytical SQL reports) |
+| **Healthcare Analytics** | Readmission prediction (synthetic electronic health record data, ROC AUC 0.858 on held-out test, 0.901 on dev) and Third Normal Form (3NF) database design (1,171 patients, 53,346 encounters, 14 analytical SQL reports) |
 | **Biological / Life-sciences Data** | Trait-based classification across 1,087 animal families (Master's project) and quantitative research at Oklahoma State University (NSF ON-RaMP, grasshopper coloration and behavior) and Maryland Sea Grant (NSF REU, marine microbial abundance) |
 
 ---
