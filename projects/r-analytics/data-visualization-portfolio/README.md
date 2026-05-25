@@ -5,96 +5,40 @@
 [![R](https://img.shields.io/badge/R-4.x-276DC3?style=for-the-badge&logo=r)](https://r-project.org)
 [![RMarkdown](https://img.shields.io/badge/RMarkdown-Portfolio-FF6B35?style=for-the-badge&logo=r)](https://rmarkdown.rstudio.com)
 
-> **Course portfolio demonstrating R programming and ggplot2 across ecological, safety, and economic datasets.** University of Arizona, INFO 526
+> Course portfolio for INFO 526: R + ggplot2 across wildlife predation, occupational safety, and housing market data. University of Arizona.
 
-**[View Complete Portfolio (PDF)](./reports/MatthewThompson_Final_Portfolio.pdf)** | **[Source Code (.Rmd)](./Final-Portfolio-Assignment.Rmd)**
+**[View Complete Portfolio (PDF)](./reports/MatthewThompson_Final_Portfolio.pdf)** | **[Source (.Rmd)](./Final-Portfolio-Assignment.Rmd)**
 
 ---
 
 ## Project Overview
 
-I built comprehensive visualizations for INFO 526 using R, ggplot2, and tidyverse. I analyzed wildlife predation patterns, workplace safety trends, and housing market dynamics, implementing data transformation, categorical grouping, and multi-plot layouts.
+Final portfolio for INFO 526 (Data Visualization). Three datasets across different domains: cougar predation ecology (wildlife), occupational fatality records (safety), and the FHFA Housing Price Index (economic). The work emphasizes category-decision rationale and visual readability over chart variety.
+
+**Key Metrics**: 3 domains • 9 visualizations • 28MB largest dataset • 146K+ fatality records
 
 ---
 
-## Skills Applied
+## What I Applied
 
-**Languages & Libraries**: R 4.x • RMarkdown • ggplot2 • tidyverse (dplyr, tidyr) • lubridate  
-**Specialized Packages**: ggalluvial (alluvial diagrams) • viridis (color palettes)  
-**Visualization Types**: Pie charts • Grouped bar charts • Line plots • Alluvial diagrams • Faceted area plots  
-**Techniques**: Data transformation • Categorical grouping • Custom color palettes • Temporal analysis
+| Category | Techniques |
+|---|---|
+| **Plot types** | Pie, grouped bar, line, faceted area, alluvial (ggalluvial) |
+| **Data wrangling** | dplyr categorical grouping, tidyr reshaping, lubridate dates |
+| **Reproducibility** | RMarkdown source-to-PDF pipeline |
+| **Custom tooling** | `data_dict()` helper for variable summaries (authored during exploration, not sourced by the final Rmd) |
 
----
-
-## Visualizations & What I Applied
-
-### 1. Cougar Predation Ecology
-
-**Dataset**: 168KB cougar killsite data with prey species and temporal information  
-**Visualizations**: Pie chart (prey distribution) • Grouped bar chart (temporal trends)
-
-I developed a grouping strategy for prey species into 4 ecological categories (Wild Ungulates, Small Animals, Domestic Animals, Carnivores) to avoid overlapping classifications.
-
-**Findings**:
-
-- Wild ungulates (mule deer, bighorn sheep, pronghorn) are primary prey
-- Domestic animals represent least common prey category
-- Temporal patterns show data gaps between 2012-2015
-- Year 2016: No domestic animal kills recorded
-
-**What I applied**: Custom grouping strategies • Categorical data transformation with dplyr • Color palette design
+**Tech stack**: R 4.x • RMarkdown • tidyverse (ggplot2, dplyr, lubridate, tidyr) • ggalluvial • ggstream • viridis • patchwork • gt • readxl • reshape2
 
 ---
 
-### 2. Occupational Safety Analysis
+## Dataset Summary
 
-**Dataset**: 28MB comprehensive workplace fatality data (146K+ records)  
-**Visualizations**: Line graph (temporal trends) • Alluvial diagram (cause-effect relationships)
-
-I identified why stacked plots can be problematic for quantifying values and implemented line graphs for clearer temporal trends. I built alluvial diagrams to effectively visualize cause-effect relationships.
-
-**Findings**:
-
-- Identified most dangerous occupations with fatality trends over time
-- Alluvial diagram reveals common causes of fatalities for each occupation
-- Line plots show clearer temporal trends than proportional stream graphs
-
-**What I applied**: Advanced plot types (alluvial diagrams with ggalluvial) • Temporal trend visualization
-
----
-
-### 3. Housing Price Index Trends
-
-**Dataset**: 61KB housing market data across 4 U.S. regions  
-**Visualizations**: Faceted area plots (trend comparison) • Statistical summary tables
-
-**Findings**:
-
-- Midwest, Northeast, and South show similar HPI trends
-- West region shows higher volatility
-- All regions show HPI increase until ~2005, decline, then recovery after 2010
-
-**What I applied**: Faceted visualizations with small multiples • Area plots for trend analysis • Regional comparisons
-
----
-
-## Technical Implementation
-
-### Reproducible Research Workflow
-
-- **RMarkdown to PDF**: Created complete code documentation with rendered output
-- **Custom Functions**: Developed `data_dict()` function for automated data exploration (variable info, descriptive stats, missing values)
-- **Data Transformation**: Performed complex categorical grouping, handled missing values, and processed temporal data
-
----
-
-## What I Learned
-
-Throughout the semester I noticed that most of my feedback was about category decisions: which categories to group together and which ones weren't necessary. I think it corresponds to my tendency to try to include too much information in one place. So for this portfolio I tried to address that. With the pie chart and the grouped bar chart, I categorized all the animals into 4 appropriate categories without overlaps, and I decided not to include the weight class since reading the grouped bars plus a weight class on top would be a bit overwhelming.
-
-I also started to understand why stacked plots can be problematic when I'm trying to quantify data values accurately. So instead of a stacked bar chart with over 10 categories, I used a grouped bar chart with fewer groups, which was much more readable. For the most dangerous jobs question, I used a line graph instead of a proportional stream graph to show the fatality trend over time more accurately.
-
-A couple of things I struggled with. There was feedback suggesting I move the legend labels into each slice of the pie chart, but despite the research I did, I could only get the labels partially aligned. I also challenged myself to make an alluvial diagram for the causes of fatalities. The text aesthetics were hard to read, and I considered removing the labels for a legend instead, but I think the bigger problem with an alluvial diagram is that people won't know where the flow starts. So I decided to keep the text labels for readability and explain it briefly in the caption.
+| Dataset | File | Size | Content |
+|---|---|---:|---|
+| Cougar Killsites | `data/Cougar Killsites.xlsx` | 168KB | wildlife predation events, prey species + dates |
+| Dangerous Jobs | `data/Dangerous Jobs.csv` | 28MB | 146K+ occupational fatality records, 2003-2023 |
+| Housing Price Index | `data/Housing Price Index.xlsx - Data.csv` | 61KB | FHFA HPI, 4 U.S. regions, quarterly time series |
 
 ---
 
@@ -103,51 +47,106 @@ A couple of things I struggled with. There was feedback suggesting I move the le
 ```text
 data-visualization-portfolio/
 ├── README.md                                       # Project documentation
-├── Final-Portfolio-Assignment.Rmd                  # Reproducible source code (991 lines, 43KB)
-├── Final_MinMaxHPI_Output.pdf                      # Build artifact (regenerated by the Rmd on knit)
+├── Final-Portfolio-Assignment.Rmd                  # Reproducible source (43KB, 991 lines)
+├── setup.R                                         # Installs the 9 required R packages
+├── Data Dictionary Function.R                      # Standalone EDA helper (not sourced by the Rmd)
 ├── Final Portfolio.Rproj                           # RStudio project file
-├── Data Dictionary Function.R                      # Custom data exploration function (3.7KB)
-├── data/                                           # Three domain datasets
-│   ├── Cougar Killsites.xlsx                       # Wildlife ecology (168KB)
-│   ├── Dangerous Jobs.csv                          # Occupational safety, 146K+ records (28MB)
-│   └── Housing Price Index.xlsx - Data.csv         # Economic indicators (61KB)
+├── Final_MinMaxHPI_Output.pdf                      # Build artifact regenerated by the Rmd
+├── data/
+│   ├── Cougar Killsites.xlsx                       # 168KB wildlife ecology
+│   ├── Dangerous Jobs.csv                          # 28MB occupational safety (146K+ records)
+│   └── Housing Price Index.xlsx - Data.csv         # 61KB economic indicators
 └── reports/
-    ├── MatthewThompson_Final_Portfolio.pdf         # Complete rendered portfolio with all visualizations (399KB)
+    ├── MatthewThompson_Final_Portfolio.pdf         # Final rendered portfolio (399KB)
     └── Final-Portfolio-Assignment.pdf              # Assignment PDF version
 ```
 
 ---
 
-## Key Findings Across Domains
+## How to Reproduce
 
-**Wildlife Ecology**: Wild ungulates (mule deer, bighorn sheep, pronghorn) are the primary prey for cougars, while domestic animals represent the least common prey category. Temporal analysis revealed data collection gaps between 2012-2015.
+### View only
 
-**Occupational Safety**: Identified the most dangerous occupations through comprehensive fatality trend analysis. Alluvial diagrams effectively revealed cause-effect relationships between occupations and fatality types that wouldn't be visible in standard charts.
+Open [`reports/MatthewThompson_Final_Portfolio.pdf`](./reports/MatthewThompson_Final_Portfolio.pdf) (399KB, all 9 figures).
 
-**Housing Economics**: All four U.S. regions (Midwest, Northeast, South, West) showed similar HPI trends with increases until ~2005, decline, then recovery after 2010. The West region demonstrated higher volatility compared to other regions.
+### Knit from source
+
+Requires R 4.x. RStudio recommended but not required.
+
+```r
+# 1. Install packages (one-time)
+source("setup.R")
+
+# 2. From RStudio: open Final Portfolio.Rproj, then knit Final-Portfolio-Assignment.Rmd
+# Or from the R console:
+rmarkdown::render("Final-Portfolio-Assignment.Rmd", output_format = "pdf_document")
+```
+
+PDF render takes ~30 seconds. PDF rendering needs LaTeX; if you do not have a system TeX install, run `install.packages("tinytex"); tinytex::install_tinytex()` once before knitting.
+
+---
+
+## Visualizations
+
+### 1. Cougar Predation Ecology
+
+**Plots**: Pie chart (prey distribution) and grouped bar chart (temporal trends).
+
+I grouped 30+ prey species into 4 ecological categories (Wild Ungulates, Small Animals, Domestic Animals, Carnivores) to avoid overlapping classifications.
+
+Findings:
+- Wild ungulates (mule deer, bighorn sheep, pronghorn) are primary prey
+- Domestic animals are the least common prey category
+- Data gaps between 2012-2015
+- Zero domestic animal kills recorded in 2016
+
+### 2. Occupational Safety Analysis
+
+**Plots**: Line graph (temporal trends) and alluvial diagram (cause-occupation flows).
+
+I started with a proportional stream plot but switched to a line graph because stream plots hide absolute counts behind percentage shifts. The alluvial diagram (ggalluvial) shows how fatality causes map to the 5 most-dangerous occupations.
+
+Findings:
+- Transportation and mining are the most dangerous occupations
+- Truck-related jobs (general freight, transportation & warehousing) trended up until a sharp 2023 drop
+- Transportation incidents are the most common cause of fatality across the top 5 dangerous jobs; explosions and fires are the least common
+
+### 3. Housing Price Index Trends
+
+**Plots**: Faceted area plots (regional comparison) and a `gt` summary table.
+
+Findings:
+- Midwest, Northeast, South show similar HPI trajectories
+- West region has higher volatility
+- All regions: increase to ~2005, decline through 2008-2010, recovery after 2010
+
+---
+
+## Challenges Solved
+
+### Category decisions over chart variety
+
+Most of my course feedback was about category choices: which to group, which to drop. My tendency is to include too much in one view. For this portfolio I grouped 30+ prey species into 4 ecological categories without overlap, and dropped weight class from the grouped bar chart because reading the bars plus a weight-class overlay would be too dense.
+
+### Stacked plots vs absolute comparison
+
+I had started with a stacked bar chart over 10+ categories. Readers cannot accurately compare stacked values, so I switched to a grouped bar chart with fewer categories. For the most-dangerous-jobs question I used a line graph rather than a proportional stream graph, because the stream plot hides actual fatality counts behind percentage shifts.
+
+### Alluvial diagram label readability
+
+I built an alluvial diagram for cause-of-fatality flows. Text aesthetics were hard to read at default sizes. I considered replacing labels with a legend, but legends do not communicate where the flow starts. I kept the inline text labels and explained the diagram briefly in the caption.
+
+### Pie chart label alignment (open issue)
+
+Course feedback suggested moving legend labels into each pie slice. After researching, I could only get them partially aligned. Noted as a fix for a future revision.
 
 ---
 
 ## Academic Information
 
-**Course**: INFO 526 - Data Visualization  
-**Institution**: University of Arizona  
-**Project Type**: Final Course Portfolio  
-**Academic Year**: 2024-2025
-
-### What I Applied in This Course
-
-- Implemented fundamental plotting techniques (bar, pie, line, area charts)
-- Built advanced visualizations (alluvial diagrams, faceted plots)
-- Applied data transformation and categorical grouping strategies
-- Created statistical communication through visual narratives
-- Established RMarkdown workflow for reproducible research
-
-### Improvements I Made
-
-- Switched from stacked to grouped bar charts for better readability
-- Refined categorical grouping to avoid overlapping classifications
-- Enhanced color palette selection and visual clarity
+**Course**: INFO 526, Data Visualization
+**Term**: 2024-2025
+**Institution**: University of Arizona
 
 ---
 
