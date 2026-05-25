@@ -15,7 +15,7 @@
 
 Final portfolio for INFO 526 (Data Visualization). Three datasets across different domains: cougar predation ecology (wildlife), occupational fatality records (safety), and the FHFA Housing Price Index (economic). The work emphasizes category-decision rationale and visual readability over chart variety.
 
-**Key Metrics**: 3 domains • 9 visualizations • 28MB largest dataset • 146K+ fatality records
+**Key Metrics**: 3 domains • 6 visualizations across 4 numbered figures • 28MB largest dataset • 146K+ fatality records
 
 ---
 
@@ -67,7 +67,7 @@ data-visualization-portfolio/
 
 ### View only
 
-Open [`reports/MatthewThompson_Final_Portfolio.pdf`](./reports/MatthewThompson_Final_Portfolio.pdf) (399KB, all 9 figures).
+Open [`reports/MatthewThompson_Final_Portfolio.pdf`](./reports/MatthewThompson_Final_Portfolio.pdf) (399KB, all 4 figures).
 
 ### Knit from source
 
