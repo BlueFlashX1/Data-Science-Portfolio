@@ -25,6 +25,10 @@
 | **Development** | 5th place  | 0.9011  | 40           |
 | **Testing**     | 13th place | 0.8581  | 35           |
 
+![CodaBench test-phase leaderboard, competition 6813](./images/leaderboard-readmission-test.png)
+
+_CodaBench test-phase leaderboard for competition 6813. Username `matthewqthomp` at rank 13 with ROC AUC 0.8581. Top 12 visible; full leaderboard had 35 participants._
+
 My cross-validated AUC (~0.86) predicted the final test AUC (0.858) almost exactly. The model held up on unseen data. The development-phase leaderboard score (0.90) was the optimistic one; the rank moved from 5th to 13th as the field's scores settled on the held-out test.
 
 ---
