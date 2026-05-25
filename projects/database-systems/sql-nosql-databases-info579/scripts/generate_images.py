@@ -630,6 +630,11 @@ def parse_args() -> argparse.Namespace:
         help="Generate only the ER diagram, skip all charts (no DB connection needed)",
     )
     parser.add_argument(
+        "--regen-er",
+        action="store_true",
+        help="Force-regenerate the ER diagram via graphviz, overwriting the hand-curated images/er_diagram.png",
+    )
+    parser.add_argument(
         "--output-dir",
         default=None,
         help=(
@@ -657,12 +662,20 @@ def main() -> None:
     print(f"Output directory: {images_dir}\n")
 
     # --- ER Diagram (no DB needed) ---
-    print("Generating ER diagram...")
-    try:
-        generate_er_diagram(images_dir / "er_diagram.png")
-        print("  Done. ✓")
-    except Exception as exc:
-        print(f"  ERROR generating ER diagram: {exc}")
+    # The ER diagram in images/er_diagram.png is a hand-curated screenshot
+    # from a database modeling tool (cleaner than what graphviz produces
+    # for this many tables). Only regenerate via graphviz when explicitly
+    # asked with --regen-er, or if the file is missing.
+    er_path = images_dir / "er_diagram.png"
+    if args.regen_er or not er_path.exists():
+        print("Generating ER diagram (graphviz)...")
+        try:
+            generate_er_diagram(er_path)
+            print("  Done. ✓")
+        except Exception as exc:
+            print(f"  ERROR generating ER diagram: {exc}")
+    else:
+        print("Skipping ER diagram (using existing hand-curated images/er_diagram.png; pass --regen-er to overwrite).")
 
     if args.er_only:
         print("\nDone (--er-only mode; charts skipped).")
