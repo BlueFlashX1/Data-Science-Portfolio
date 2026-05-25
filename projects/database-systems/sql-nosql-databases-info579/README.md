@@ -112,42 +112,35 @@ sql-nosql-databases-info579/
 
 ## How to Reproduce
 
-Full pipeline tested end-to-end on macOS + MySQL 9.4.0 — completes in ~20 seconds on an M-series Mac. Verified to produce **8 populated base tables (412K rows total)** and **all 9 documented `rpt_` tables** materialized from the analytical queries.
-
-### Prerequisites
-- MySQL 8+ (any flavor: official `.app`, brew, Docker)
-- Python 3.9+
-
-### Steps
+Requires MySQL 8+ and Python 3.9+. Takes about 20 seconds end-to-end.
 
 ```bash
-# 0. Install Python deps (for the CSV loader)
+# Install Python deps
 pip install -r requirements.txt
 
-# 1. Create the database (replace 'root' with your user; password prompts at each step)
+# Create the database
 mysql -u root -p -e "CREATE DATABASE Final_Project;"
 
-# 2. Apply schema — creates 8 base tables + 14 rpt_ tables + 12 foreign keys
+# Create the tables
 mysql -u root -p Final_Project < sql/00_schema.sql
 
-# 3. Load the 6 Synthea CSVs into the base tables.
-#    The loader handles: column mapping (CSV column names != schema column names),
-#    NULL conversion (empty CSV cells -> SQL NULL), ISO-8601 datetime conversion
-#    ('2010-01-23T17:45:28Z' -> '2010-01-23 17:45:28' for MySQL DATETIME),
-#    FK ordering (patient/provider before encounter, etc.), batch inserts,
-#    and idempotent re-runs (TRUNCATEs each table before reload).
-#    Reads password from $MYSQL_PASSWORD env var or prompts interactively.
+# Load the CSVs
 python scripts/load_csvs.py --user root --database Final_Project
 
-# 4. Run the 6 analytical reports — each is idempotent (DROP IF EXISTS + CREATE TABLE AS)
+# Run the analytical reports
 for f in sql/analytical_reports/*.sql; do
   mysql -u root -p Final_Project < "$f"
 done
 
-# 5. (Optional) Run the 9 SQL skill demonstrations
+# Optional: run the SQL skill demos
 for f in sql/sql_skill_demos/*.sql; do
   mysql -u root -p Final_Project < "$f"
 done
+```
+
+The loader handles column name mapping between Synthea CSVs and the schema, converts ISO-8601 datetimes (`2010-01-23T17:45:28Z`) to MySQL's `DATETIME` format, replaces empty CSV cells with `NULL`, and loads tables in foreign-key order. It's idempotent (TRUNCATEs each table before reloading), and the analytical queries are too (`DROP TABLE IF EXISTS` before `CREATE TABLE AS`).
+
+Password handling: reads from `$MYSQL_PASSWORD` env var, or prompts interactively if not set.
 
 # 5. (Optional) Run the SQL skill demonstrations
 for f in sql/sql_skill_demos/*.sql; do
@@ -155,13 +148,13 @@ for f in sql/sql_skill_demos/*.sql; do
 done
 ```
 
-Each `.sql` file is independently readable — each starts with a comment header explaining what the query does.
+Each `.sql` file starts with a comment header explaining what the query does.
 
-### Expected row counts after a successful load
+### Expected row counts
 
-A correct reproduction produces exactly these row counts. Use this as a verification checkpoint:
+After the loader runs, the 8 base tables should contain these counts (446,783 rows total):
 
-| Table | Expected rows |
+| Table | Rows |
 |---|---:|
 | patient | 1,171 |
 | provider | 5,855 |
@@ -171,19 +164,6 @@ A correct reproduction produces exactly these row counts. Use this as a verifica
 | observation | 299,697 |
 | diagnosis | 8,376 |
 | treatment | 34,981 |
-| **Total base-table rows** | **446,783** |
-
-Run this after step 3 to verify:
-```sql
-SELECT 'patient' AS tbl, COUNT(*) AS row_count FROM patient
-UNION ALL SELECT 'provider', COUNT(*) FROM provider
-UNION ALL SELECT 'encounter', COUNT(*) FROM encounter
-UNION ALL SELECT 'medical_condition', COUNT(*) FROM medical_condition
-UNION ALL SELECT 'procedures', COUNT(*) FROM procedures
-UNION ALL SELECT 'observation', COUNT(*) FROM observation
-UNION ALL SELECT 'diagnosis', COUNT(*) FROM diagnosis
-UNION ALL SELECT 'treatment', COUNT(*) FROM treatment;
-```
 
 ---
 
