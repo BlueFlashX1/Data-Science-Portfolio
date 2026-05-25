@@ -4,6 +4,8 @@
 -- Source: Matthew Thompson's final report PDF (page 19)
 -- ============================================================
 
+DROP TABLE IF EXISTS rpt_er_frequenters;
+
 CREATE TABLE rpt_er_frequenters AS
 SELECT p.patient_id,
        p.first_name,

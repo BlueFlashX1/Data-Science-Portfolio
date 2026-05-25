@@ -4,6 +4,8 @@
 -- Source: Matthew Thompson's final report PDF (pages 18–19)
 -- ============================================================
 
+DROP TABLE IF EXISTS rpt_followup_14d_by_proc_code;
+
 CREATE TABLE rpt_followup_14d_by_proc_code AS
 WITH proc_flags AS (
   SELECT prc.procedure_id,

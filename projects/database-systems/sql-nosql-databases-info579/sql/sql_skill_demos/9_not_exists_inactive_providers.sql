@@ -8,6 +8,8 @@
 --   Write a query using the NOT EXISTS operator. Show the results and sort the results by
 --   key field(s). Interpret the output.
 
+DROP TABLE IF EXISTS rpt_inactive_providers_by_specialty;
+
 CREATE TABLE rpt_inactive_providers_by_specialty AS
 SELECT
   pr.provider_specialty,

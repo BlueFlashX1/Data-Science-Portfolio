@@ -9,6 +9,8 @@
 --   You must use the INNER JOIN to connect with all three tables.
 --   The database that you created must be included in your SQL queries.
 
+DROP TABLE IF EXISTS Final_Project.rpt_diagnosis_patient_condition;
+
 CREATE TABLE Final_Project.rpt_diagnosis_patient_condition AS
 SELECT
   d.patient_id,

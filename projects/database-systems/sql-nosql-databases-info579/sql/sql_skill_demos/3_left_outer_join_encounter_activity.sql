@@ -9,6 +9,8 @@
 --   JOIN. Show the results and sort the results by key field(s). Interpret the results
 --   compared to what an INNER JOIN does.
 
+DROP TABLE IF EXISTS rpt_encounter_activity;
+
 CREATE TABLE rpt_encounter_activity AS
 SELECT
   e.encounter_id,

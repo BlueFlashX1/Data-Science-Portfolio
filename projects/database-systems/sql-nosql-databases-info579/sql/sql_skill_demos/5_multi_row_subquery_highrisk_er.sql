@@ -8,6 +8,8 @@
 --   Write a multiple-row subquery. Show the results and sort the results by key field(s).
 --   Interpret the output.
 
+DROP TABLE IF EXISTS rpt_providers_highrisk_er;
+
 CREATE TABLE rpt_providers_highrisk_er AS
 WITH provider_tot AS (
   SELECT provider_id, organization_id, COUNT(*) AS total_encounters

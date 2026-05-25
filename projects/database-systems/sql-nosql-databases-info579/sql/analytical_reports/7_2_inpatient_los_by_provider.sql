@@ -4,6 +4,8 @@
 -- Source: Matthew Thompson's final report PDF (page 16)
 -- ============================================================
 
+DROP TABLE IF EXISTS rpt_inpatient_los_provider;
+
 CREATE TABLE rpt_inpatient_los_provider AS
 SELECT pr.provider_id,
        pr.organization_id,

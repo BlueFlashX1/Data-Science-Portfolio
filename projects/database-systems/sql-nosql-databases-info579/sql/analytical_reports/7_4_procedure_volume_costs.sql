@@ -4,6 +4,8 @@
 -- Source: Matthew Thompson's final report PDF (page 17)
 -- ============================================================
 
+DROP TABLE IF EXISTS rpt_procedure_costs;
+
 CREATE TABLE rpt_procedure_costs AS
 SELECT prc.procedure_code,
        prc.procedure_description,

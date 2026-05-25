@@ -189,31 +189,56 @@ DERIVED_SQL: dict[str, str] = {
 # Helpers
 # ---------------------------------------------------------------------------
 
-def nan_to_none(value: object) -> object:
-    """Convert pandas NaN / float('nan') to Python None for MySQL NULL."""
+import re
+
+# ISO 8601 datetime: '2010-01-23T17:45:28Z' or '2010-01-23T17:45:28' or
+# '2010-01-23T17:45:28.123Z'. Synthea uses 'T' separator and optional Z suffix.
+# MySQL DATETIME wants 'YYYY-MM-DD HH:MM:SS' (space, no Z).
+_ISO_DATETIME_RE = re.compile(
+    r"^(\d{4}-\d{2}-\d{2})T(\d{2}:\d{2}:\d{2})(?:\.\d+)?Z?$"
+)
+
+
+def clean_value(value: object) -> object:
+    """Normalize a CSV-derived value for MySQL insertion.
+
+    - NaN / pd.NA / float('nan') -> None (MySQL NULL)
+    - ISO 8601 datetime ('YYYY-MM-DDTHH:MM:SSZ') -> 'YYYY-MM-DD HH:MM:SS'
+    - Everything else passes through unchanged
+    """
     if value is None:
         return None
+    # NaN check for floats
     try:
         import math
         if isinstance(value, float) and math.isnan(value):
             return None
     except (TypeError, ValueError):
         pass
-    # pandas NA check (works on pd.NA and np.nan alike).
-    # pd.isna returns a scalar bool for scalar input, but Pyright sees the
-    # broader return type — narrow with isinstance(..., bool).
+    # pandas NA check (works on pd.NA and np.nan alike). pd.isna returns a
+    # scalar bool for scalar input, but Pyright sees the broader return type
+    # — narrow with isinstance(..., bool).
     try:
         is_na = pd.isna(value)
         if isinstance(is_na, bool) and is_na:
             return None
     except (TypeError, ValueError):
         pass
+    # ISO 8601 datetime -> MySQL datetime format
+    if isinstance(value, str):
+        m = _ISO_DATETIME_RE.match(value)
+        if m:
+            return f"{m.group(1)} {m.group(2)}"
     return value
 
 
+# Back-compat alias: older code paths reference `nan_to_none` by name.
+nan_to_none = clean_value
+
+
 def clean_row(row: dict) -> tuple:
-    """Return a tuple of values with NaN replaced by None."""
-    return tuple(nan_to_none(v) for v in row.values())
+    """Return a tuple of values with NaN -> None and ISO datetimes -> MySQL format."""
+    return tuple(clean_value(v) for v in row.values())
 
 
 def build_insert_sql(table: str, columns: list[str]) -> str:

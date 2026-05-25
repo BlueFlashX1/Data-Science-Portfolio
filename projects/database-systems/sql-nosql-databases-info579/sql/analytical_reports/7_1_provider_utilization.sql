@@ -4,6 +4,8 @@
 -- Source: Matthew Thompson's final report PDF (page 16)
 -- ============================================================
 
+DROP TABLE IF EXISTS rpt_provider_utilization;
+
 CREATE TABLE rpt_provider_utilization AS
 SELECT pr.provider_id,
        pr.organization_id,
