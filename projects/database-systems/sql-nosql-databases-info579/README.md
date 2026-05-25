@@ -71,9 +71,9 @@ I designed normalized database schemas and wrote complex SQL queries to analyze 
 
 ```text
 sql-nosql-databases-info579/
-├── README.md                                      # Project documentation
-├── relationship_verify.py                         # Pandas data-integrity check (pre-schema exploration)
-├── data/                                          # 6 healthcare CSVs (67MB total)
+├── README.md                                          # Project documentation
+├── relationship_verify.py                             # Pandas data-integrity check (pre-schema exploration)
+├── data/                                              # 6 healthcare CSVs (67MB total)
 │   ├── patients.csv
 │   ├── encounters.csv
 │   ├── conditions.csv
@@ -81,12 +81,58 @@ sql-nosql-databases-info579/
 │   ├── observations.csv
 │   └── providers.csv
 ├── sql/
-│   ├── Final_Project_schema.sql                   # Database structure (19KB)
-│   └── Final_Project_analytics_reports.sql        # 14 report tables with data (3.5MB)
+│   ├── 00_schema.sql                                  # 3NF schema: 8 base tables + 14 rpt_ tables + FK constraints
+│   ├── analytical_reports/                            # Section 7: 6 analytical reports
+│   │   ├── 7_1_provider_utilization.sql
+│   │   ├── 7_2_inpatient_los_by_provider.sql
+│   │   ├── 7_3_top_patients_by_cost.sql
+│   │   ├── 7_4_procedure_volume_costs.sql
+│   │   ├── 7_5_post_procedure_followup_14d.sql       # uses CTE + correlated EXISTS
+│   │   └── 7_6_er_frequenters.sql
+│   ├── sql_skill_demos/                               # Section 8: 9 required SQL skill demonstrations
+│   │   ├── 2_inner_join_diagnosis_patient_condition.sql
+│   │   ├── 3_left_outer_join_encounter_activity.sql
+│   │   ├── 4_single_row_subquery.sql
+│   │   ├── 5_multi_row_subquery_highrisk_er.sql      # uses CTE
+│   │   ├── 6_aggregation.sql
+│   │   ├── 7_not_in_subquery.sql
+│   │   ├── 8_case_statement.sql
+│   │   ├── 9_not_exists_inactive_providers.sql
+│   │   └── 10_not_null_subquery.sql
+│   └── archived_partial_dump_3of14.sql                # Historical mysqldump (3 of 14 rpt_ tables); kept for reference
 └── reports/
-    ├── INFO579-Final-Project-Report-Thompson.pdf  # Complete analysis (8.1MB)
-    └── methodology_section.pdf                    # Methodology excerpt
+    ├── INFO579-Final-Project-Report-Thompson.pdf      # Complete analysis (8.1MB)
+    └── methodology_section.pdf                        # Methodology excerpt
 ```
+
+---
+
+## How to Reproduce
+
+You can rebuild this database from scratch on any MySQL 8+ instance:
+
+```bash
+# 1. Create the database
+mysql -u root -p -e "CREATE DATABASE Final_Project;"
+
+# 2. Create all tables (8 base entities + 14 report tables + 12 foreign keys)
+mysql -u root -p Final_Project < sql/00_schema.sql
+
+# 3. Load the Synthea base data (patient, encounter, provider, etc.)
+#    Either via LOAD DATA INFILE or a small Python loader using pandas.to_sql.
+
+# 4. Materialize the analytical report tables
+for f in sql/analytical_reports/*.sql; do
+  mysql -u root -p Final_Project < "$f"
+done
+
+# 5. (Optional) Run the SQL skill demonstrations
+for f in sql/sql_skill_demos/*.sql; do
+  mysql -u root -p Final_Project < "$f"
+done
+```
+
+Each `.sql` file is independently readable — each starts with a comment header explaining what the query does.
 
 ---
 
@@ -107,7 +153,10 @@ sql-nosql-databases-info579/
 13. Patients without Diagnoses
 14. 30-Day Mortality Rates
 
-**[View All SQL Queries](./sql/Final_Project_analytics_reports.sql)**
+**Queries by section:**
+- [Section 7 — 6 Analytical Reports](./sql/analytical_reports/)
+- [Section 8 — 9 SQL Skill Demonstrations](./sql/sql_skill_demos/)
+- [Schema definition (8 base + 14 rpt tables + 12 FKs)](./sql/00_schema.sql)
 
 ---
 
