@@ -2,7 +2,7 @@
 
 # Healthcare Readmission Risk Prediction
 
-![Course Project](https://img.shields.io/badge/Course-Final%20Project-blue?style=for-the-badge)
+[![Course Project](https://img.shields.io/badge/Course-Final%20Project-blue?style=for-the-badge)](https://www.codabench.org/competitions/6813/)
 ![INFO 521](https://img.shields.io/badge/INFO%20521-Foundation%20of%20DS-red?style=for-the-badge)
 [![University of Arizona](https://img.shields.io/badge/University%20of-Arizona-navy?style=for-the-badge)](https://arizona.edu)
 
@@ -12,7 +12,7 @@
 
 > **Class competition for predicting 30-day hospital readmissions using synthetic EHR data.** University of Arizona, INFO 521
 
-The CodaBench class competition (https://www.codabench.org/competitions/6813/) is no longer publicly accessible (it was a class-private leaderboard that was retired after the course closed). Final standings and scoring are documented below and in the notebook.
+**Leaderboard**: [CodaBench Competition 6813](https://www.codabench.org/competitions/6813/) (login-gated; CodaBench requires an account to view any competition page). Final rankings and scoring are documented in the Competition Results section below.
 
 ---
 

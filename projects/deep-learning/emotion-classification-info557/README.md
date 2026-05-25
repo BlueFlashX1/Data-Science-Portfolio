@@ -2,7 +2,7 @@
 
 # Multi-Label Emotion Classification with Transformer Fine-Tuning
 
-![Course Project](https://img.shields.io/badge/Course-Graduate%20Project-blue?style=for-the-badge)
+[![Course Project](https://img.shields.io/badge/Course-Graduate%20Project-blue?style=for-the-badge)](https://www.codabench.org/competitions/13676/)
 ![INFO 557](https://img.shields.io/badge/INFO%20557-Neural%20Networks-red?style=for-the-badge)
 [![University of Arizona](https://img.shields.io/badge/University%20of-Arizona-navy?style=for-the-badge)](https://arizona.edu)
 
@@ -13,7 +13,7 @@
 
 > Multi-label emotion classification on Reddit text (14-class GoEmotions subset). University of Arizona, INFO 557.
 
-The CodaBench class competition (https://www.codabench.org/competitions/13676/) is no longer publicly accessible (it was a class-private leaderboard that was retired after the course closed). Final standings and per-class results are documented below.
+**Leaderboard**: [CodaBench Competition 13676](https://www.codabench.org/competitions/13676/) (login-gated; CodaBench requires an account to view any competition page). Final ranking and per-class results are documented in the Competition Results + Per-Class Test Results sections below.
 
 ---
 
