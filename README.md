@@ -80,7 +80,7 @@ Classification across 5 superphyla comparing binary trait presence/absence vs. c
 | **Languages**        | Python (machine-learning pipelines, data processing) • R (statistical analysis, visualization) • SQL / Structured Query Language (database queries, analytics) |
 | **Machine Learning** | Scikit-learn (model training, evaluation) • Random Forest (classification) • Logistic Regression • SHAP / SHapley Additive exPlanations (model explainability) |
 | **Deep Learning**    | Keras / TensorFlow (neural network architecture) • Hugging Face Transformers • RoBERTa fine-tuning • Convolutional neural networks (CNNs) • Multi-label classification |
-| **Data Analysis**    | Pandas (data manipulation, Extract-Transform-Load / ETL) • NumPy (numerical computing) • tidyverse (data transformation) • dplyr (data wrangling) |
+| **Data Analysis**    | Pandas (data manipulation, data wrangling and preparation) • NumPy (numerical computing) • tidyverse (data transformation) • dplyr (data wrangling) |
 | **Visualization**    | ggplot2 (statistical plots) • Matplotlib (data visualization) • ggalluvial (flow diagrams) • viridis (color palettes) |
 | **Databases**        | MySQL (relational databases) • Database design (Third Normal Form / 3NF) • Common Table Expressions (CTEs) • Window functions (analytical queries) |
 | **Development**      | Git (version control) • Jupyter (interactive analysis) • RMarkdown (reproducible reports) • Quarto (publishing workflows) |
