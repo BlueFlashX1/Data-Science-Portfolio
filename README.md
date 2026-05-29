@@ -67,7 +67,7 @@ Classification across 5 superphyla comparing binary trait presence/absence vs. c
 
 | Project | What it shows | Tech |
 |---|---|---|
-| [**Healthcare Analytics with SQL**](./projects/database-systems/sql-nosql-databases-info579/) | Third Normal Form (3NF) schema design and 14 analytical SQL reports across 1,171 patients and 53,346 encounters from Synthea synthetic EHR data, covering clinical quality, provider utilization, and readmissions. End-to-end reproducible via Docker. | MySQL · Python · CTEs · window functions |
+| [**Healthcare Analytics with SQL**](./projects/database-systems/sql-nosql-databases-info579/) | Third Normal Form (3NF) schema design and 14 analytical SQL reports across 1,171 patients and 53,346 encounters from Synthea synthetic EHR data, covering clinical quality, provider utilization, and readmissions. End-to-end reproducible via Docker. | MySQL · Python · CTEs · correlated subqueries |
 | [**Data Visualization Portfolio**](./projects/r-analytics/data-visualization-portfolio/) | Wildlife predation, occupational safety, and housing economics analyses with chart-selection rationale (alluvial diagrams, line graphs, grouped bars) | R · ggplot2 · ggalluvial · RMarkdown |
 | [**AI4HC Capstone: ER Simulator Showcase Poster**](./projects/capstone/ai4hc-info698/) | Light/dark theme HTML poster and Python print-export pipeline (headless Chrome → 48×36 in PDF) for a 6-person team capstone at the University of Arizona AI Core | HTML · CSS · Python |
 
@@ -82,7 +82,7 @@ Classification across 5 superphyla comparing binary trait presence/absence vs. c
 | **Deep Learning**    | Keras / TensorFlow (neural network architecture) • Hugging Face Transformers • RoBERTa fine-tuning • Convolutional neural networks (CNNs) • Multi-label classification |
 | **Data Analysis**    | Pandas (data manipulation, data wrangling and preparation) • NumPy (numerical computing) • tidyverse (data transformation) • dplyr (data wrangling) |
 | **Visualization**    | ggplot2 (statistical plots) • Matplotlib (data visualization) • ggalluvial (flow diagrams) • viridis (color palettes) |
-| **Databases**        | MySQL (relational databases) • Database design (Third Normal Form / 3NF) • Common Table Expressions (CTEs) • Window functions (analytical queries) |
+| **Databases**        | MySQL (relational databases) • Database design (Third Normal Form / 3NF) • Common Table Expressions (CTEs) • Correlated subqueries (analytical queries) |
 | **Development**      | Git (version control) • Jupyter (interactive analysis) • RMarkdown (reproducible reports) • Quarto (publishing workflows) |
 
 ### Domain Experience
