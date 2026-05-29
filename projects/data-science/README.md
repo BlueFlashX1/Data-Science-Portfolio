@@ -12,7 +12,7 @@
 
 ## [Healthcare Readmission Risk Prediction](./foundation-of-data-science/)
 
-**INFO 521 - Foundation of Data Science** | Final Project
+**INFO 511 - Foundation of Data Science** | Final Project
 
 ![Python](https://img.shields.io/badge/Python-3.9+-3776AB?style=flat-square&logo=python&logoColor=white)
 ![Scikit-learn](https://img.shields.io/badge/Scikit--learn-F7931E?style=flat-square&logo=scikit-learn&logoColor=white)

@@ -1,6 +1,6 @@
 # Data: Healthcare Readmission
 
-Synthetic Arizona patient encounter records (Synthea-generated EHR data) used in the INFO 521 class competition to predict 30-day hospital readmission.
+Synthetic Arizona patient encounter records (Synthea-generated EHR data) used in the INFO 511 class competition to predict 30-day hospital readmission.
 
 ## Files
 

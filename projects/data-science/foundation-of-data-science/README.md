@@ -3,14 +3,14 @@
 # Healthcare Readmission Risk Prediction
 
 [![Course Project](https://img.shields.io/badge/Course-Final%20Project-blue?style=for-the-badge)](https://www.codabench.org/competitions/6813/)
-![INFO 521](https://img.shields.io/badge/INFO%20521-Foundation%20of%20DS-red?style=for-the-badge)
+![INFO 511](https://img.shields.io/badge/INFO%20511-Foundation%20of%20DS-red?style=for-the-badge)
 [![University of Arizona](https://img.shields.io/badge/University%20of-Arizona-navy?style=for-the-badge)](https://arizona.edu)
 
 ![Python](https://img.shields.io/badge/Python-3.9+-3776AB?style=flat-square&logo=python&logoColor=white)
 ![Scikit-learn](https://img.shields.io/badge/Scikit--learn-F7931E?style=flat-square&logo=scikit-learn&logoColor=white)
 ![Pandas](https://img.shields.io/badge/Pandas-150458?style=flat-square&logo=pandas&logoColor=white)
 
-> **Class competition for predicting 30-day hospital readmissions using synthetic EHR data.** University of Arizona, INFO 521
+> **Class competition for predicting 30-day hospital readmissions using synthetic EHR data.** University of Arizona, INFO 511
 
 **Leaderboard**: [CodaBench Competition 6813](https://www.codabench.org/competitions/6813/) (login-gated; CodaBench requires an account to view any competition page). Final rankings and scoring are documented in the Competition Results section below.
 
@@ -35,7 +35,7 @@ My cross-validated AUC (~0.86) predicted the final test AUC (0.858) almost exact
 
 ## Project Overview
 
-Final project for INFO 521 (Foundation of Data Science): a CodaBench class competition to predict 30-day hospital readmissions on a Synthea-generated EHR dataset. Submitted model: Random Forest (n_estimators=200, class_weight='balanced').
+Final project for INFO 511 (Foundation of Data Science): a CodaBench class competition to predict 30-day hospital readmissions on a Synthea-generated EHR dataset. Submitted model: Random Forest (n_estimators=200, class_weight='balanced').
 
 **Key Metrics**: 587,801 train rows • 125,958 dev rows • 9 algorithms compared • Final test ROC AUC 0.858 (13th/35)
 
@@ -77,7 +77,7 @@ While checking the model for overfitting, an earlier version returned a perfect 
 
 ## Dataset
 
-Synthetic Arizona patient encounter records (Synthea-generated EHR) provided for the INFO 521 class competition. Full data documentation in [`data/README.md`](./data/README.md).
+Synthetic Arizona patient encounter records (Synthea-generated EHR) provided for the INFO 511 class competition. Full data documentation in [`data/README.md`](./data/README.md).
 
 | File | Size | Records | Contents |
 |---|---|---|---|
@@ -142,7 +142,7 @@ Full step-by-step EDA, feature engineering, and model selection is in [`final_pr
 
 ## Academic Information
 
-**Course**: INFO 521 - Foundation of Data Science  
+**Course**: INFO 511 - Foundation of Data Science  
 **Term**: 2024-2025  
 **Institution**: University of Arizona  
 **Competition**: CodaBench Healthcare Equity Explorer

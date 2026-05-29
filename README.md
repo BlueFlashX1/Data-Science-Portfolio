@@ -23,7 +23,7 @@ Each project below documents a deliberate model-selection decision and the real-
 
 ### [Healthcare Readmission Prediction Competition](./projects/data-science/foundation-of-data-science/)
 
-**30-day hospital readmission prediction** · _INFO 521 Final Project_
+**30-day hospital readmission prediction** · _INFO 511 Final Project_
 
 Random Forest classifier with patient-frequency encoding on synthetic electronic health record (EHR) data: 587,801 training encounters and 125,958 dev encounters. Scored ROC AUC 0.901 on the dev-phase leaderboard (5th of 40) and 0.858 on the final held-out test (13th of 35) after comparing 9 algorithms with stratified cross-validation.
 
