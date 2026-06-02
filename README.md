@@ -7,7 +7,7 @@
 
 ---
 
-**Highlight**: 30-day hospital readmission prediction with a Random Forest classifier on a class competition. ROC AUC 0.901 on the dev-phase leaderboard (5th of 40) and 0.858 on the final held-out test (13th of 35), across 587,801 training and 125,958 dev rows of synthetic electronic health record (EHR) data. ROC AUC is a classifier ranking score where 1.0 is perfect.
+**Highlight**: 30-day hospital readmission prediction with a Random Forest classifier on a class competition. ROC AUC 0.858 on the final held-out test (13th of 35), holding from 0.901 on the dev-phase leaderboard (5th of 40), across 587,801 training and 125,958 dev rows of synthetic electronic health record (EHR) data. ROC AUC is a classifier ranking score where 1.0 is perfect.
 
 **Navigation**: [Projects](#featured-projects) • [Skills](#skills) • [Connect](#connect)
 
@@ -43,9 +43,9 @@ Placed 8th/15 on the test set (F1-score 0.672, a balanced precision/recall metri
 
 **Why Conv1D, then RoBERTa fine-tuning in the post-grading study**: Reddit emotion cues live in bigrams and trigrams, which Conv1D with kernel size 3 captures cleanly (kernel 3 won the dev sweep over 5 and 7). The follow-up 4-variant study showed end-to-end fine-tuning of RoBERTa (not pretraining or model size alone) was the lever that pushed dev F1 from 0.65 to 0.83.
 
-**Outcome**: The submitted model finished 8th/15 with the 3rd-tightest dev-to-test gap, validating calibration-aware training over dev-score chasing. The post-grading study identified RoBERTa fine-tuning as a path to ~0.83 dev F1 (a hypothetical top-3 placement), confirming the rare-class problem was a representation issue, not an architecture one.
+**Outcome**: The submitted model finished 8th/15 with the 3rd-tightest dev-to-test gap, validating calibration-aware training over dev-score chasing. It never got the rare classes off the floor, though: even 5x duplication of the rarest examples only nudged anger to F1 0.154 on test, while annoyance and disapproval stayed at zero. The post-grading study confirmed that was a representation problem, not an architecture one: end-to-end RoBERTa fine-tuning started predicting the classes the submitted model left at zero and lifted dev F1 to ~0.83 (a hypothetical top-3 placement).
 
-**Tech**: Python • Keras / TensorFlow • Conv1D CNN • 5-seed ensemble • EDA augmentation • RoBERTa fine-tuning (post-grading study) · [Read the project →](./projects/deep-learning/emotion-classification-info557/)
+**Tech**: Python • Keras / TensorFlow • Conv1D CNN • 5-seed ensemble • 5x rare-class duplication • RoBERTa fine-tuning (post-grading study) · [Read the project →](./projects/deep-learning/emotion-classification-info557/)
 
 ---
 
@@ -53,11 +53,11 @@ Placed 8th/15 on the test set (F1-score 0.672, a balanced precision/recall metri
 
 **Machine-learning classification of evolutionary traits across 1,087 animal families** · _INFO 523 Final Project_
 
-Classification across 5 superphyla comparing binary trait presence/absence vs. continuous evolutionary origin rates. Used SHAP (SHapley Additive exPlanations) for feature importance and balanced metrics to handle class imbalance.
+Classification across 5 superphyla (Ecdysozoa, Lophotrochozoa, Deuterostomia, Basal Metazoa, Basal Bilateria) comparing binary trait presence/absence vs. continuous evolutionary origin rates. The headline finding: data representation (evolutionary rates vs. sparse binary presence) drove accuracy more than model choice did. Used SHAP (SHapley Additive exPlanations) for feature importance and balanced metrics to handle class imbalance.
 
 **Why Logistic Regression over Random Forest and Decision Trees**: Evolutionary-rate features were continuous and approximately linear with respect to taxonomic class, which Logistic Regression's decision boundary fits well. With ~1,087 families and class imbalance across 5 superphyla, Logistic Regression's calibrated probabilities and interpretable per-trait coefficients gave stronger signal than tree-based models, which over-fit on sparse rare-class samples.
 
-**Outcome**: ~50% balanced accuracy on 5-class taxonomy showed that sexually-selected traits carry real but limited predictive signal for taxonomic classification. The deeper finding: data representation (continuous evolutionary rates vs. sparse binary presence) mattered more than model choice. The method generalizes to any trait dataset where evolutionary rates are available.
+**Outcome**: the best model (Logistic Regression on evolutionary-rate data) reached macro F1 0.31 and balanced accuracy 0.32 on the 5-class taxonomy (chance ≈ 0.20), versus macro F1 ~0.13 on the binary data. That is real but limited signal from sexually-selected traits. The deeper finding: data representation (continuous evolutionary rates vs. sparse binary presence) mattered more than model choice. The method generalizes to any trait dataset where evolutionary rates are available.
 
 **Tech**: Python • Scikit-learn • SHAP • Stratified K-fold cross-validation · [Read the project →](./projects/data-science/data-mining-final-project/)
 
@@ -69,7 +69,7 @@ Classification across 5 superphyla comparing binary trait presence/absence vs. c
 |---|---|---|
 | [**Healthcare Analytics with SQL**](./projects/database-systems/sql-nosql-databases-info579/) | Third Normal Form (3NF) schema design and 14 analytical SQL reports across 1,171 patients and 53,346 encounters from Synthea synthetic EHR data, covering clinical quality, provider utilization, and readmissions. End-to-end reproducible via Docker. | MySQL · Python · CTEs · correlated subqueries |
 | [**Data Visualization Portfolio**](./projects/r-analytics/data-visualization-portfolio/) | Wildlife predation, occupational safety, and housing economics analyses with chart-selection rationale (alluvial diagrams, line graphs, grouped bars) | R · ggplot2 · ggalluvial · RMarkdown |
-| [**AI4HC Capstone: ER Simulator Showcase Poster**](./projects/capstone/ai4hc-info698/) | Light/dark theme HTML poster and Python print-export pipeline (headless Chrome → 48×36 in PDF) for a 6-person team capstone at the University of Arizona AI Core | HTML · CSS · Python |
+| [**AI4HC Capstone: Rural Health Kiosk Showcase Poster**](./projects/capstone/ai4hc-info698/) | Light/dark theme HTML poster and Python print-export pipeline (headless Chrome → 48×36 in PDF) for a 6-person team capstone at the University of Arizona AI Core | HTML · CSS · Python |
 
 ---
 

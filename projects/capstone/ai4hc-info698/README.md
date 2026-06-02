@@ -1,6 +1,6 @@
 [← Back to Capstone Projects](../README.md)
 
-# AI4HC Capstone: ER Simulator Showcase Poster
+# AI4HC Capstone: Rural Health Kiosk Showcase Poster
 
 [![Course Project](https://img.shields.io/badge/Course-Capstone-blue?style=for-the-badge)](https://arizona.edu)
 [![INFO 698](https://img.shields.io/badge/INFO%20698-Graduate%20Capstone-red?style=for-the-badge)](https://arizona.edu)
@@ -10,7 +10,7 @@
 ![CSS](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white)
 ![Information Design](https://img.shields.io/badge/Information-Design-purple?style=flat-square)
 
-> Healthcare AI training simulator, built by a 6-person team capstone. My role was the showcase poster and the avatar source footage. University of Arizona, INFO 698, Spring 2026.
+> Rural Health Kiosk: an AI-powered healthcare access system for underserved rural communities, built by a 6-person team capstone. My role was the showcase poster and the avatar source footage. University of Arizona, INFO 698, Spring 2026.
 
 **View the live poster:** [light theme](https://matthewqilanthompson.github.io/Data-Science-Portfolio/projects/capstone/ai4hc-info698/index_v1.html) · [dark theme](https://matthewqilanthompson.github.io/Data-Science-Portfolio/projects/capstone/ai4hc-info698/index_dark.html) · [print PDF](./iShowcase_Final.pdf)
 
@@ -22,9 +22,9 @@ The poster (polished from Abhiram Varma Nandimandalam's initial HTML draft at [i
 
 ## What This Was
 
-A 6-person team capstone for the UofA AI Core, building an AI-powered training simulator for emergency-room learners. The team product is a .NET 8 web app with a RAG-backed chat tutor over a medical knowledge base, a HeyGen streaming avatar, and a multiple-choice quiz generator.
+For a 6-person AI-for-Healthcare capstone (UofA AI Core), I built the showcase poster and the Python print-export pipeline behind it (headless-Chrome render at 4608×3456 px, exported to a print-ready 48×36 in PDF), and recorded the avatar source footage.
 
-I wasn't on the engineering side. My job on this team was design and the avatar source.
+The team's product, the Rural Health Kiosk (an AI-powered healthcare access system for underserved rural communities), which my teammates engineered, is a .NET 8 web app with a RAG-backed chat tutor over a medical knowledge base, a HeyGen streaming avatar, and a multiple-choice quiz generator. I wasn't on the engineering side; my contribution was the poster, the print pipeline, and being the avatar source.
 
 ---
 

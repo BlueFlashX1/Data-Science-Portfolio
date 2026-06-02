@@ -163,9 +163,9 @@ I had started with a stacked bar chart over 10+ categories. Readers cannot accur
 
 I built an alluvial diagram for cause-of-fatality flows. Text aesthetics were hard to read at default sizes. I considered replacing labels with a legend, but legends do not communicate where the flow starts. I kept the inline text labels and explained the diagram briefly in the caption.
 
-### Pie chart label alignment (open issue)
+### Pie-slice label placement
 
-Course feedback suggested moving legend labels into each pie slice. After researching, I could only get them partially aligned. Noted as a fix for a future revision.
+Course feedback suggested moving the legend labels into each pie slice. I got them only partially aligned and judged the external legend cleaner and less error-prone for this data, so I kept it. A readability call, not a blocker.
 
 ---
 

@@ -18,7 +18,7 @@
 
 ## Competition Results
 
-**ROC AUC 0.901 model**, 5th/40 in the development phase and 13th/35 on the final held-out test.
+**ROC AUC 0.858 on the final held-out test** (13th of 35), down only slightly from 0.901 in development (5th of 40).
 
 | Phase           | Ranking    | ROC AUC | Participants |
 | --------------- | ---------- | ------- | ------------ |
@@ -83,7 +83,7 @@ Synthetic Arizona patient encounter records (Synthea-generated EHR) provided for
 |---|---|---|---|
 | [`data/train.csv`](./data/train.csv) | 88MB | 587,801 | Training set with features + target |
 | [`data/dev.csv`](./data/dev.csv) | 19MB | 125,958 | Development/validation set with target |
-| [`data/dev(renamed).csv`](./data/dev\(renamed\).csv) | 19MB | 125,958 | Second dev split snapshot |
+| [`data/dev(renamed).csv`](./data/dev%28renamed%29.csv) | 19MB | 125,958 | Second dev split snapshot |
 | [`data/test.csv`](./data/test.csv) | 19MB | features only | Held-out test set |
 | [`data/submission.csv`](./data/submission.csv) | 7MB | predictions | Final submission scored on the leaderboard |
 

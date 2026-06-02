@@ -46,6 +46,8 @@ Comparing which traits predict taxonomy using two different data representations
 
 _Evolutionary rates provided clearer feature importance than binary presence/absence data._
 
+**Why rate data wins**: on the binary data, SHAP showed the model leaned almost entirely on a single feature (the "sexually-selected" flag). On evolutionary-rate data, the signal spread across Visual, Competition, Auditory, and Female-choice traits, a more honest and generalizable signal.
+
 ---
 
 ## What I Applied
@@ -65,7 +67,7 @@ _Evolutionary rates provided clearer feature importance than binary presence/abs
 | Finding | Detail |
 |---|---|
 | **Evolutionary rates > Binary data** | Continuous origin rates provided a stronger signal than sparse binary presence/absence data |
-| **Modest accuracy (~50%)** | Classification task was challenging due to data sparsity and class imbalance |
+| **Best model: macro F1 0.31, balanced accuracy 0.32** | Logistic Regression on evolutionary-rate data, vs. macro F1 0.13 on binary data: a 2.4× macro-F1 edge for rate data. Modest in absolute terms (5-class chance ≈ 0.20), but real signal. Raw accuracy was 0.50, inflated by the ~84% Arthropoda imbalance, which is why balanced metrics are reported. |
 | **Key predictors** | Visual, Competition, and Auditory traits (identified via SHAP analysis) |
 | **Class imbalance matters** | Balanced accuracy and macro F1 instead of regular accuracy |
 
@@ -73,10 +75,10 @@ _Evolutionary rates provided clearer feature importance than binary presence/abs
 
 | Model | Data Type | Result |
 |---|---|---|
-| **Logistic Regression** | Evolutionary rates | Best performance |
-| Random Forest | Evolutionary rates | Lower accuracy |
-| Decision Tree | Evolutionary rates | Lower but interpretable |
-| All models | Binary data | Poor (insufficient signal) |
+| **Logistic Regression** | Evolutionary rates | **macro F1 0.31, balanced acc 0.32 (best)** |
+| Random Forest | Evolutionary rates | macro F1 0.23, balanced acc 0.32 |
+| Decision Tree | Evolutionary rates | macro F1 0.09, balanced acc 0.23 |
+| All models | Binary data | macro F1 0.09–0.13, balanced acc 0.28–0.30 |
 
 ---
 
@@ -86,6 +88,8 @@ _Evolutionary rates provided clearer feature importance than binary presence/abs
 | --------------------------------------------------------------------- | -------------- | ----------------------------- |
 | [`family_related_data.csv`](./data/family_related_data.csv)           | 1,087 families | Binary trait presence/absence |
 | [`animals_rateof_evolution.csv`](./data/animals_rateof_evolution.csv) | 84 estimates   | Evolutionary origin rates     |
+
+_Why the size gap: the binary file records trait presence/absence per **family** (1,087 rows); the evolutionary-rate file holds maximum-likelihood origin-rate estimates aggregated at the **phylum** level, one row per phylogenetic-tree replicate (84 rows). They're model-derived summaries, not per-family observations._
 
 **Traits analyzed**: Auditory (A), Gustatory (G), Olfactory (O), Tactile (T), Visual (V), Male competition (C), Female competition (K), Intersexual conflict (S), Female choice (F), Male choice (M)
 
@@ -97,7 +101,7 @@ Full codebook: [`data/README.md`](./data/README.md)
 
 ## Challenges Solved
 
-The clearest result was that the two datasets behaved very differently. The binary presence/absence data was sparse and dominated by Arthropoda (~84% of samples), and SHAP showed the model leaned almost entirely on a single feature, the "sexually selected" flag. The evolutionary rate data was more balanced, and its signal spread across visual, competition, auditory, and female choice traits. So rate-based features predicted taxonomy better than binary presence, though even the better dataset only reached around 50% balanced accuracy. The signal in this kind of trait data is real but limited.
+The clearest result was that the two datasets behaved very differently. The binary presence/absence data was sparse and dominated by Arthropoda (~84% of samples), and SHAP showed the model leaned almost entirely on a single feature, the "sexually selected" flag. The evolutionary rate data was more balanced, and its signal spread across visual, competition, auditory, and female choice traits. So rate-based features predicted taxonomy better than binary presence, though even the better dataset only reached balanced accuracy ~0.32 and macro F1 ~0.31 (the 50% figure people often quote is raw accuracy, inflated by class imbalance; the 0.20 five-class chance baseline is the fair comparison). The signal in this kind of trait data is real but limited.
 
 A lot of the project changed from my original proposal. I had planned to predict at the class/family level, but the data was too sparse, so I grouped phyla into five superphyla instead. I log-transformed and standardized the evolutionary rates rather than binarizing them, and I switched the evaluation metrics to balanced accuracy and macro F1 instead of ROC-AUC, since the classes were so uneven. SHAP also started as a secondary check but became central. It was what showed how heavily the binary model leaned on that one SS flag.
 

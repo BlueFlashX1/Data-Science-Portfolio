@@ -26,6 +26,8 @@ I finished **8th of 15** on the final test leaderboard with F1 0.672, up from 10
 | Development      | 10/18  | 0.7218   | from-scratch CNN, course-techniques-only             |
 | Test (final)     | 8/15   | 0.672    | 0.050 dev-to-test gap, third smallest on the board   |
 
+> Three F1 numbers appear in this writeup, all for the same submitted model: **0.7218** training-time (inflated, see Evaluation), **0.6506** honest dev re-check (`check.py`), and **0.672** actual test. When I say "the result," I mean the **0.672** test score.
+
 ![CodaBench test-phase leaderboard, competition 13676](./images/leaderboard-emotion-test.png)
 
 _CodaBench test-phase leaderboard for competition 13676. Username `matthewthompson` at rank 8 with Micro F1 0.672. Top 7 visible; full leaderboard had 15 participants. Per-class F1 columns are also visible (admiration through approval), matching the Per-Class Test Results section below._

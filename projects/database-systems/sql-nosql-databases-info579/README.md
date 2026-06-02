@@ -18,9 +18,11 @@
 
 ## Project Overview
 
-Final project for INFO 579 (SQL & NoSQL Databases). The course covered both relational and document stores; this project focused on the SQL/relational track. I designed normalized database schemas and wrote complex SQL queries to analyze synthetic EHR data, building 14 analytical reports addressing clinical quality, provider utilization, readmissions, and profitability.
+Final project for INFO 579 (SQL & NoSQL Databases). The course covered both relational and document stores; this project focused on the SQL/relational track. I designed normalized database schemas and wrote complex SQL queries to analyze synthetic EHR data, building 9 fully documented analytical reports (plus 5 schema-defined) addressing clinical quality, provider utilization, readmissions, and profitability.
 
 **Key Metrics**: 1,171 patients • 53,346 encounters • 8,376 conditions • 67MB Synthea EHR data
+
+**Bottom line**: a reproducible, normalized MySQL warehouse over Synthea EHR data that turns raw records into operational analytics. For example, it surfaces a provider-workload imbalance (one GP handling 60%+ more encounters than any peer) and corrects a naive mortality metric into a defensible 30-day rate.
 
 ### Database Schema
 

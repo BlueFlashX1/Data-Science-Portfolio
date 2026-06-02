@@ -10,7 +10,7 @@
 
 ---
 
-## [AI4HC Capstone: ER Simulator Showcase Poster](./ai4hc-info698/)
+## [AI4HC Capstone: Rural Health Kiosk Showcase Poster](./ai4hc-info698/)
 
 **INFO 698 - Graduate Capstone** | Spring 2026
 
@@ -18,8 +18,8 @@
 ![CSS](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white)
 ![Python](https://img.shields.io/badge/Python_3-3776AB?style=flat-square&logo=python&logoColor=white)
 
-6-person team capstone building an AI-powered emergency-room training simulator (.NET 8 web app + RAG tutor + HeyGen avatar + quiz generator). My contributions were the showcase poster (HTML/CSS, two themes) and the print-export pipeline (headless Chrome → 48×36 in PDF). The README is explicit about which parts of the team product I built vs. didn't build.
+6-person team capstone building the Rural Health Kiosk, an AI-powered healthcare access system for underserved rural communities (.NET 8 web app + RAG tutor + HeyGen avatar + quiz generator). My contributions were the showcase poster (HTML/CSS, two themes) and the print-export pipeline (headless Chrome → 48×36 in PDF). The README is explicit about which parts of the team product I built vs. didn't build.
 
 ---
 
-**Institution**: University of Arizona, M.S. Data Science, 2024–2025
+**Institution**: University of Arizona, M.S. Data Science, Spring 2026
