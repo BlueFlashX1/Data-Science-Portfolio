@@ -233,7 +233,7 @@ One General Practice provider (Gaynell126 Streich926) handles 3,217 encounters, 
 
 Of 1,171 patients: 326 are high-coverage (≥$10K), 309 medium ($5K–$10K), 536 low (<$5K). Roughly 46% of patients have low healthcare coverage.
 
-## 14 Analytical Reports
+## Analytical Reports (9 documented + 5 schema-defined)
 
 1. Provider Utilization
 2. Inpatient LOS by Provider

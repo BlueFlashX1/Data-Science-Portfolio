@@ -17,7 +17,7 @@
 ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
 ![Pandas](https://img.shields.io/badge/Pandas-150458?style=flat-square&logo=pandas&logoColor=white)
 
-3NF schema over 67MB of Synthea synthetic EHR data (1,171 patients, 53,346 encounters, 8 base tables, 12 foreign-key constraints). 14 analytical reports covering clinical quality, provider utilization, readmissions, and profitability. End-to-end reproducible via Docker (`./setup.sh`).
+3NF schema over 67MB of Synthea synthetic EHR data (1,171 patients, 53,346 encounters, 8 base tables, 12 foreign-key constraints). 9 documented analytical reports (plus 5 schema-defined) covering clinical quality, provider utilization, readmissions, and profitability. End-to-end reproducible via Docker (`./setup.sh`).
 
 ---
 

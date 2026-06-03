@@ -67,7 +67,7 @@ Classification across 5 superphyla (Ecdysozoa, Lophotrochozoa, Deuterostomia, Ba
 
 | Project | What it shows | Tech |
 |---|---|---|
-| [**Healthcare Analytics with SQL**](./projects/database-systems/sql-nosql-databases-info579/) | Third Normal Form (3NF) schema design and 14 analytical SQL reports across 1,171 patients and 53,346 encounters from Synthea synthetic EHR data, covering clinical quality, provider utilization, and readmissions. End-to-end reproducible via Docker. | MySQL · Python · CTEs · correlated subqueries |
+| [**Healthcare Analytics with SQL**](./projects/database-systems/sql-nosql-databases-info579/) | Third Normal Form (3NF) schema design and 9 documented analytical SQL reports (plus 5 schema-defined) across 1,171 patients and 53,346 encounters from Synthea synthetic EHR data, covering clinical quality, provider utilization, and readmissions. End-to-end reproducible via Docker. | MySQL · Python · CTEs · correlated subqueries |
 | [**Data Visualization Portfolio**](./projects/r-analytics/data-visualization-portfolio/) | Wildlife predation, occupational safety, and housing economics analyses with chart-selection rationale (alluvial diagrams, line graphs, grouped bars) | R · ggplot2 · ggalluvial · RMarkdown |
 | [**AI4HC Capstone: Rural Health Kiosk Showcase Poster**](./projects/capstone/ai4hc-info698/) | Light/dark theme HTML poster and Python print-export pipeline (headless Chrome → 48×36 in PDF) for a 6-person team capstone at the University of Arizona AI Core | HTML · CSS · Python |
 
@@ -89,7 +89,7 @@ Classification across 5 superphyla (Ecdysozoa, Lophotrochozoa, Deuterostomia, Ba
 
 | Domain | Where applied |
 |---|---|
-| **Healthcare Analytics** | Readmission prediction (synthetic electronic health record data, ROC AUC 0.858 on held-out test, 0.901 on dev) and Third Normal Form (3NF) database design (1,171 patients, 53,346 encounters, 14 analytical SQL reports) |
+| **Healthcare Analytics** | Readmission prediction (synthetic electronic health record data, ROC AUC 0.858 on held-out test, 0.901 on dev) and Third Normal Form (3NF) database design (1,171 patients, 53,346 encounters, 9 documented + 5 schema-defined SQL reports) |
 | **Biological / Life-sciences Data** | Trait-based classification across 1,087 animal families (Master's project) and quantitative research at Oklahoma State University (NSF ON-RaMP, grasshopper coloration and behavior) and Maryland Sea Grant (NSF REU, marine microbial abundance) |
 
 ---
