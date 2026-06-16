@@ -23,7 +23,7 @@ Each project below documents a deliberate model-selection decision and the real-
 
 ### [Healthcare Readmission Prediction Competition](./projects/data-science/foundation-of-data-science/)
 
-**30-day hospital readmission prediction** · _INFO 511 Final Project_
+**30-day hospital readmission prediction** · _Graduate project · University of Arizona_
 
 Random Forest classifier with patient-frequency encoding on synthetic electronic health record (EHR) data: 587,801 training encounters and 125,958 dev encounters. Scored ROC AUC 0.901 on the dev-phase leaderboard (5th of 40) and 0.858 on the final held-out test (13th of 35) after comparing 9 algorithms with stratified cross-validation.
 
@@ -37,7 +37,7 @@ Random Forest classifier with patient-frequency encoding on synthetic electronic
 
 ### [Multi-Label Emotion Classification with Transformer Fine-Tuning](./projects/deep-learning/emotion-classification-info557/)
 
-**14-label text classification competition** · _INFO 557 Graduate Project_
+**14-label text classification competition** · _Graduate project · University of Arizona_
 
 Placed 8th/15 on the test set (F1-score 0.672, a balanced precision/recall metric where 1.0 is perfect) with the 3rd-tightest dev-to-test generalization gap (-0.05) on the leaderboard. Built a 5-seed 1D convolutional neural network (Conv1D / CNN) on a 14-class GoEmotions subset of Reddit text with calibrated binary cross-entropy (BCE) loss and label smoothing.
 
@@ -51,7 +51,7 @@ Placed 8th/15 on the test set (F1-score 0.672, a balanced precision/recall metri
 
 ### [Trait-Based Prediction of Animal Taxa](./projects/data-science/data-mining-final-project/)
 
-**Machine-learning classification of evolutionary traits across 1,087 animal families** · _INFO 523 Final Project_
+**Machine-learning classification of evolutionary traits across 1,087 animal families** · _Graduate project · University of Arizona_
 
 Classification across 5 superphyla (Ecdysozoa, Lophotrochozoa, Deuterostomia, Basal Metazoa, Basal Bilateria) comparing binary trait presence/absence vs. continuous evolutionary origin rates. The headline finding: data representation (evolutionary rates vs. sparse binary presence) drove accuracy more than model choice did. Used SHAP (SHapley Additive exPlanations) for feature importance and balanced metrics to handle class imbalance.
 
@@ -69,7 +69,7 @@ Classification across 5 superphyla (Ecdysozoa, Lophotrochozoa, Deuterostomia, Ba
 |---|---|---|
 | [**Healthcare Analytics with SQL**](./projects/database-systems/sql-nosql-databases-info579/) | Third Normal Form (3NF) schema design and 9 documented analytical SQL reports (plus 5 schema-defined) across 1,171 patients and 53,346 encounters from Synthea synthetic EHR data, covering clinical quality, provider utilization, and readmissions. End-to-end reproducible via Docker. | MySQL · Python · CTEs · correlated subqueries |
 | [**Data Visualization Portfolio**](./projects/r-analytics/data-visualization-portfolio/) | Wildlife predation, occupational safety, and housing economics analyses with chart-selection rationale (alluvial diagrams, line graphs, grouped bars) | R · ggplot2 · ggalluvial · RMarkdown |
-| [**AI4HC Capstone: Rural Health Kiosk Showcase Poster**](./projects/capstone/ai4hc-info698/) | Light/dark theme HTML poster and Python print-export pipeline (headless Chrome → 48×36 in PDF) for a 6-person team capstone at the University of Arizona AI Core | HTML · CSS · Python |
+| [**AI4HC Capstone: Rural Health Kiosk Showcase Poster**](./projects/capstone/ai4hc-info698/) | Light/dark theme HTML poster and Python print-export pipeline (headless Chrome → 48×36 in PDF) for a team capstone at the University of Arizona AI Core | HTML · CSS · Python |
 
 ---
 
