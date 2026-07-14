@@ -7,7 +7,7 @@
 
 ---
 
-**Highlight**: 30-day hospital readmission prediction with a Random Forest classifier on a class competition. ROC AUC 0.858 on the final held-out test (13th of 35), holding from 0.901 on the dev-phase leaderboard (5th of 40), across 587,801 training and 125,958 dev rows of synthetic electronic health record (EHR) data. ROC AUC is a classifier ranking score where 1.0 is perfect.
+**Highlights**: Third Normal Form (3NF) database design and 9 analytical SQL reports across **53,346 patient encounters**, surfacing a provider workload imbalance and a high-risk patient cohort. And a Random Forest predicting 30-day hospital readmission at **ROC AUC 0.858** on the final held-out test (13th of 35), holding from 0.901 on the dev-phase leaderboard (5th of 40), across 587,801 training rows of synthetic electronic health record (EHR) data. ROC AUC is a classifier ranking score where 1.0 is perfect.
 
 **Navigation**: [Projects](#featured-projects) • [Skills](#skills) • [Connect](#connect)
 
@@ -20,6 +20,20 @@
 ## Featured Projects
 
 Each project below documents a deliberate model-selection decision and the real-world outcome it produced. Full methodology, code, and reproducibility details live in each project's own README.
+
+### [Healthcare Analytics with SQL](./projects/database-systems/sql-nosql-databases-info579/)
+
+**Relational database design and analytical reporting on 53,346 patient encounters** · _Graduate project · University of Arizona_
+
+Designed Third Normal Form (3NF) schemas across 6 entities for 1,171 patients and 53,346 encounters from a 67MB Synthea synthetic electronic health record (EHR) dataset, then wrote 9 documented analytical reports (plus 5 schema-defined) against 5 business objectives: profitability, clinical quality, provider utilization, readmission reduction, and strategic expansion. End-to-end reproducible via Docker.
+
+**Why 3NF, and why SQL over pandas**: the source EHR data arrived denormalized, with patient, provider, encounter, and condition attributes repeated across rows — which makes update anomalies inevitable and analytical queries slow. Normalizing to 3NF eliminated the redundancy and let each business question be answered by a query against the schema rather than a bespoke script. The reporting logic lives in SQL (multi-table joins, common table expressions, correlated subqueries, temporal analysis with DATEDIFF / DATE_ADD) because it belongs next to the data, stays reproducible, and can be handed to anyone who reads SQL.
+
+**Outcome**: the reports surfaced findings an operations team could act on. Provider workload was badly imbalanced — the busiest provider handled 3,000+ encounters while peers stayed under 2,000 — and a cohort of high-risk, high-frequency emergency patients was flagged for follow-up. Clinical-quality reporting put viral sinusitis at 63% of cases and the emergency 30-day mortality rate at 3.57 per 1,000. A Python (pandas) validation step on load flagged orphan records that failed to reconcile across related tables, so no report ever ran on data that didn't tie out.
+
+**Tech**: MySQL • SQL (joins, CTEs, correlated subqueries, temporal analysis) • 3NF schema design • Python / pandas (validation) • Docker · [Read the project →](./projects/database-systems/sql-nosql-databases-info579/)
+
+---
 
 ### [Healthcare Readmission Prediction Competition](./projects/data-science/foundation-of-data-science/)
 
@@ -67,7 +81,6 @@ Classification across 5 superphyla (Ecdysozoa, Lophotrochozoa, Deuterostomia, Ba
 
 | Project | What it shows | Tech |
 |---|---|---|
-| [**Healthcare Analytics with SQL**](./projects/database-systems/sql-nosql-databases-info579/) | Third Normal Form (3NF) schema design and 9 documented analytical SQL reports (plus 5 schema-defined) across 1,171 patients and 53,346 encounters from Synthea synthetic EHR data, covering clinical quality, provider utilization, and readmissions. End-to-end reproducible via Docker. | MySQL · Python · CTEs · correlated subqueries |
 | [**Data Visualization Portfolio**](./projects/r-analytics/data-visualization-portfolio/) | Wildlife predation, occupational safety, and housing economics analyses with chart-selection rationale (alluvial diagrams, line graphs, grouped bars) | R · ggplot2 · ggalluvial · RMarkdown |
 | [**AI4HC Capstone: Rural Health Kiosk Showcase Poster**](./projects/capstone/ai4hc-info698/) | Light/dark theme HTML poster and Python print-export pipeline (headless Chrome → 48×36 in PDF) for a team capstone at the University of Arizona AI Core | HTML · CSS · Python |
 
@@ -77,13 +90,15 @@ Classification across 5 superphyla (Ecdysozoa, Lophotrochozoa, Deuterostomia, Ba
 
 | Category             | Tools & Libraries                                                                                                                   |
 | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| **Languages**        | Python (machine-learning pipelines, data processing) • R (statistical analysis, visualization) • SQL / Structured Query Language (database queries, analytics) |
+| **SQL & Databases**  | SQL / Structured Query Language (multi-table joins, aggregations, temporal analysis) • MySQL • Database design (Third Normal Form / 3NF) • Common Table Expressions (CTEs) • Correlated subqueries • ETL |
+| **Data Quality**     | Data validation & reconciliation • integrity checks (orphan-record detection) • data-leakage detection • cross-validation |
+| **Languages**        | SQL • Python (machine-learning pipelines, data processing) • R (statistical analysis, visualization) |
+| **Data Analysis**    | Pandas (data manipulation, wrangling and preparation) • NumPy (numerical computing) • tidyverse (data transformation) • dplyr (data wrangling) • Excel |
+| **Visualization & Reporting** | ggplot2 (statistical plots) • Matplotlib • ggalluvial (flow diagrams) • viridis (color palettes) • analytical report writing |
+| **Statistics**       | Linear regression • ANOVA • hypothesis testing • experimental design • repeatability analysis |
 | **Machine Learning** | Scikit-learn (model training, evaluation) • Random Forest (classification) • Logistic Regression • SHAP / SHapley Additive exPlanations (model explainability) |
 | **Deep Learning**    | Keras / TensorFlow (neural network architecture) • Hugging Face Transformers • RoBERTa fine-tuning • Convolutional neural networks (CNNs) • Multi-label classification |
-| **Data Analysis**    | Pandas (data manipulation, data wrangling and preparation) • NumPy (numerical computing) • tidyverse (data transformation) • dplyr (data wrangling) |
-| **Visualization**    | ggplot2 (statistical plots) • Matplotlib (data visualization) • ggalluvial (flow diagrams) • viridis (color palettes) |
-| **Databases**        | MySQL (relational databases) • Database design (Third Normal Form / 3NF) • Common Table Expressions (CTEs) • Correlated subqueries (analytical queries) |
-| **Development**      | Git (version control) • Jupyter (interactive analysis) • RMarkdown (reproducible reports) • Quarto (publishing workflows) |
+| **Development**      | Git (version control) • Docker • Jupyter (interactive analysis) • RMarkdown (reproducible reports) • Quarto (publishing workflows) |
 
 ### Domain Experience
 
