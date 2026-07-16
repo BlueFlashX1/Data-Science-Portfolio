@@ -42,11 +42,11 @@ The 8 base tables and their foreign-key relationships:
 
 | Category              | Techniques                                                            |
 | --------------------- | --------------------------------------------------------------------- |
-| **Joins**             | Multi-table joins (4+), LEFT/INNER variations, self-joins             |
-| **Temporal Analysis** | `DATEDIFF`, `DATE_ADD` for 30-day readmission tracking                |
+| **Joins**             | Multi-table joins (up to 3 tables, incl. compound-key), LEFT/INNER      |
+| **Temporal Analysis** | `DATE_ADD` (14-day follow-up window), `TIMESTAMPDIFF` (inpatient LOS)  |
 | **Advanced Queries**  | CTEs (Common Table Expressions), correlated subqueries                |
 | **Aggregation**       | `GROUP BY` + `HAVING`, `CASE` for categorization                      |
-| **ETL**               | `LOAD DATA INFILE` bulk import, Python-Pandas preprocessing           |
+| **ETL**               | Batched parameterized `INSERT` (`executemany`), Pandas preprocessing   |
 
 ### Database Design
 
