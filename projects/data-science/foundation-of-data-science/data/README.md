@@ -19,7 +19,7 @@ Full raw dataset as a single `.zip`: [CyVerse download](https://data.cyverse.org
 
 ## Notable features
 
-- **`patient_id`**: record key; engineered into a patient-frequency count, which became the strongest predictor.
+- **`patient_id`**: record key; engineered into a patient-frequency count, which replaced the leaking aggregate feature.
 - **Clinical measures**: medication counts, procedure costs, pain scores, patient height; contained substantial missing data (mean-imputed).
 - **Symptom flags**: chronic pain, hypertension, diabetes, asthma, depression; constant-valued in this dataset and dropped as uninformative.
 - **Zip code**: dropped (not meaningful without distance calculations).
