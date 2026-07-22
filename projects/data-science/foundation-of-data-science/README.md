@@ -2,17 +2,13 @@
 
 # Healthcare Readmission Risk Prediction
 
-[![Course Project](https://img.shields.io/badge/Course-Final%20Project-blue?style=for-the-badge)](https://www.codabench.org/competitions/6813/)
-![INFO 511](https://img.shields.io/badge/INFO%20511-Foundation%20of%20DS-red?style=for-the-badge)
-[![University of Arizona](https://img.shields.io/badge/University%20of-Arizona-navy?style=for-the-badge)](https://arizona.edu)
-
 ![Python](https://img.shields.io/badge/Python-3.9+-3776AB?style=flat-square&logo=python&logoColor=white)
 ![Scikit-learn](https://img.shields.io/badge/Scikit--learn-F7931E?style=flat-square&logo=scikit-learn&logoColor=white)
 ![Pandas](https://img.shields.io/badge/Pandas-150458?style=flat-square&logo=pandas&logoColor=white)
 
-> **Class competition for predicting 30-day hospital readmissions using synthetic EHR data.** University of Arizona, INFO 511
+Built a Random Forest model to predict 30-day hospital readmission risk from synthetic EHR data (587,801 training rows) for a class competition against dozens of other submissions. An early version of the model scored a suspicious perfect 1.0 ROC AUC, no train/test gap at all. Tracing that down to leaked target data, fixing it, and re-validating turned out to be the most useful part of the project (full story below).
 
-**Leaderboard**: [CodaBench Competition 6813](https://www.codabench.org/competitions/6813/) (login-gated; CodaBench requires an account to view any competition page). Final rankings and scoring are documented in the Competition Results section below.
+**Leaderboard**: [CodaBench Competition 6813](https://www.codabench.org/competitions/6813/) (login-gated; CodaBench requires an account to view any competition page). Final rankings and scoring are documented below.
 
 ---
 
@@ -33,45 +29,43 @@ My cross-validated AUC (~0.86) predicted the final test AUC (0.858) almost exact
 
 ---
 
+## The Data Leakage Catch
+
+While checking an early version of the model for overfitting, it returned a perfect 1.0 ROC AUC, with no gap between train and test. A perfect score isn't a result, it's a warning sign.
+
+I traced it to a feature that aggregated `readmitted_within_30_days` by patient, but only counted rows where the value was already 1, so the target was leaking directly into the features. I removed that aggregation, rebuilt the feature set, and re-ran cross-validation. The corrected score came back with a small, expected gap (~0.04) between train and test, and it's the version that went on to predict the final held-out test AUC (0.858) almost exactly.
+
+Catching that before it reached a leaderboard, rather than after, is the calibration check that mattered most in this project.
+
+---
+
+## Skills Applied
+
+| Category            | Techniques                                                                                          |
+| ------------------- | ----------------------------------------------------------------------------------------------------- |
+| **Feature engineering** | Frequency encoding (`patient_id` -> encounter count), mean imputation at scale, dropping uninformative and leaky features |
+| **Model selection**  | Compared 9 algorithms: Logistic Regression, Decision Tree, Random Forest, Gradient Boosting, HistGradientBoosting, AdaBoost, ExtraTrees, Bagging, KNeighbors |
+| **Validation**       | Cross-validation, leakage detection via an implausibly perfect score, train/test gap analysis      |
+| **Class imbalance**  | `class_weight='balanced'` to reduce bias from the unbalanced target                                 |
+
+---
+
 ## Project Overview
 
-Final project for INFO 511 (Foundation of Data Science): a CodaBench class competition to predict 30-day hospital readmissions on a Synthea-generated EHR dataset. Submitted model: Random Forest (n_estimators=200, class_weight='balanced').
+Final project for INFO 511 (Foundation of Data Science): a CodaBench class competition to predict 30-day hospital readmissions on a Synthea-generated EHR dataset. Submitted model: Random Forest (`n_estimators=200`, `class_weight='balanced'`), chosen for a close ROC AUC score to HistGradientBoosting with a slightly lower standard deviation.
 
 **Key Metrics**: 587,801 train rows • 125,958 dev rows • 9 algorithms compared • Final test ROC AUC 0.858 (13th/35)
 
 ---
 
-## What I Applied
+## Feature Engineering & Data Quality
 
-### Feature Engineering
-
-| Decision                       | Reasoning                                                               |
-| ------------------------------ | ----------------------------------------------------------------------- |
-| **Patient frequency encoding** | Transformed patient_id into encounter count per patient (key predictor) |
-| **Dropped zip code**           | Not meaningful without distance calculation                             |
-| **Dropped symptom columns**    | All values were identical (0), so uninformative                           |
-| **Mean imputation**            | Large sample size made mean imputation appropriate                      |
-
-### Data Quality Challenges
-
-- **Missing data**: Identified and handled significant gaps in medication counts, procedure costs, pain scores, patient height
-- **Uninformative features**: Removed symptom columns (chronic pain, hypertension, diabetes, asthma, depression) with identical values
-
-### Model Comparison
-
-Evaluated 9 algorithms: Logistic Regression, Decision Tree, Random Forest, Gradient Boosting, HistGradientBoosting, AdaBoost, ExtraTrees, Bagging, KNeighbors
-
-**Random Forest** provided the best balance of performance and stability for this dataset.
-
----
-
-## Challenges Solved
-
-The biggest lesson from this project was how much the way data is cleaned and represented affects model performance.
-
-My first idea was to group on `patient_id` to tally each patient's readmissions. It scored around 0.69. I'd focused too much on *who* the patient was rather than the other factors behind a readmission. I redid it, encoding `patient_id` as a frequency count instead of grouping on it, and dropped the columns that weren't informative. That version performed much better.
-
-While checking the model for overfitting, an earlier version returned a perfect 1.0 score with no train/test gap. A perfect score is a warning sign, not a result. It meant data had leaked into the features. I traced it to an aggregation that tallied `readmitted_within_30_days` only where the value was 1, removed that code, and re-validated to a legitimate cross-validation score with a small (~0.04) gap.
+| Decision                       | Reasoning                                                                |
+| ------------------------------- | ------------------------------------------------------------------------- |
+| **Patient frequency encoding** | Transformed `patient_id` into encounter count per patient (key predictor); an earlier attempt that grouped on `patient_id` directly scored only ~0.69 |
+| **Dropped zip code**           | Not meaningful without a distance calculation, and didn't correlate with readmission |
+| **Dropped symptom columns**    | `has_chronic_pain`, `has_hypertension`, `has_diabetes`, `has_asthma`, `has_depression` all had a single identical value, so uninformative |
+| **Mean imputation**            | Handled missing medication counts, procedure costs, pain scores, and patient height; appropriate given the large sample size |
 
 ---
 
@@ -91,7 +85,8 @@ Target variable: `readmitted_within_30_days` (binary).
 
 ---
 
-## Project Structure
+<details>
+<summary>Project structure</summary>
 
 ```text
 foundation-of-data-science/
@@ -113,9 +108,10 @@ foundation-of-data-science/
     └── scoring_dev/                    # Development scoring tools
 ```
 
----
+</details>
 
-## How to Reproduce
+<details>
+<summary>How to reproduce</summary>
 
 Requires Python 3.9+.
 
@@ -138,17 +134,8 @@ python train_predict.py predict \
 
 Full step-by-step EDA, feature engineering, and model selection is in [`final_project_process.ipynb`](./final_project_process.ipynb). A browser-readable markdown export is at [`final_project_process.md`](./final_project_process.md).
 
----
-
-## Academic Information
-
-**Course**: INFO 511 - Foundation of Data Science  
-**Term**: 2024-2025  
-**Institution**: University of Arizona  
-**Competition**: CodaBench Healthcare Equity Explorer
+</details>
 
 ---
 
-<p align="center">
-  <em>University of Arizona, Data Science Portfolio</em>
-</p>
+<sub>Class project, INFO 511 (Foundation of Data Science), University of Arizona, 2024-2025. Competition: CodaBench Healthcare Equity Explorer.</sub>

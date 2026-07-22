@@ -2,122 +2,75 @@
 
 # AI4HC Capstone: Rural Health Kiosk Showcase Poster
 
-[![Course Project](https://img.shields.io/badge/Course-Capstone-blue?style=for-the-badge)](https://arizona.edu)
-[![INFO 698](https://img.shields.io/badge/INFO%20698-Graduate%20Capstone-red?style=for-the-badge)](https://arizona.edu)
-[![University of Arizona](https://img.shields.io/badge/University%20of-Arizona-navy?style=for-the-badge)](https://arizona.edu)
-
 ![HTML](https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white)
 ![CSS](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white)
-![Information Design](https://img.shields.io/badge/Information-Design-purple?style=flat-square)
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
 
-> Rural Health Kiosk: an AI-powered healthcare access system for underserved rural communities, built by a 6-person team capstone. My role was the showcase poster and the avatar source footage. University of Arizona, INFO 698, Spring 2026.
+Designed the showcase poster for a 6-person AI-for-Healthcare capstone team, then wrote the Python pipeline that rendered it into a 48x36 in, print-ready PDF matching the on-screen version exactly.
 
-**View the live poster:** [light theme](https://matthewqilanthompson.github.io/Data-Science-Portfolio/projects/capstone/ai4hc-info698/index_v1.html) · [dark theme](https://matthewqilanthompson.github.io/Data-Science-Portfolio/projects/capstone/ai4hc-info698/index_dark.html) · [print PDF](./iShowcase_Final.pdf)
-
-**Team codebase:** [UA-AICore/Emergency-Room-Simulator-Repository](https://github.com/UA-AICore/Emergency-Room-Simulator-Repository)
-
-The poster (polished from Abhiram Varma Nandimandalam's initial HTML draft at [isjustabhi/AI4HC](https://github.com/isjustabhi/AI4HC)) and the print-export pipeline I authored are in this folder.
+**View:** [light theme](https://matthewqilanthompson.github.io/Data-Science-Portfolio/projects/capstone/ai4hc-info698/index_v1.html) · [dark theme](https://matthewqilanthompson.github.io/Data-Science-Portfolio/projects/capstone/ai4hc-info698/index_dark.html) · [print PDF](./iShowcase_Final.pdf) · [team codebase](https://github.com/UA-AICore/Emergency-Room-Simulator-Repository)
 
 ---
 
-## What This Was
+## What I built
 
-For a 6-person AI-for-Healthcare capstone (UofA AI Core), I built the showcase poster and the Python print-export pipeline behind it (headless-Chrome render at 4608×3456 px, exported to a print-ready 48×36 in PDF), and recorded the avatar source footage.
+**The poster: one visual for the whole system.** Took Abhiram Varma Nandimandalam's initial HTML draft ([isjustabhi/AI4HC](https://github.com/isjustabhi/AI4HC)) and developed it into the team's final capstone poster, distilling the entire product (the RAG pipeline, the HeyGen avatar integration, the quiz engine, the learner flow) into a single layout a viewer could read in under a minute. Two theme variants: light for the project slide demo, dark for the printed banner.
 
-The team's product, the Rural Health Kiosk (an AI-powered healthcare access system for underserved rural communities), which my teammates engineered, is a .NET 8 web app with a RAG-backed chat tutor over a medical knowledge base, a HeyGen streaming avatar, and a multiple-choice quiz generator. I wasn't on the engineering side; my contribution was the poster, the print pipeline, and being the avatar source.
+**The print pipeline.** Wrote [`scripts/export_poster.py`](./scripts/export_poster.py), a Python pipeline that renders the poster HTML in headless Chrome at 4608x3456 px, screenshots it, and embeds the PNG losslessly into a 48x36 in PDF with print-shop metadata (title, author, subject, keywords). The team printed straight from this PDF for the iShowcase event, and the physical poster matched the on-screen render exactly.
 
----
-
-## My Contributions
-
-**1. The showcase poster.**
-
-- Took Abhiram Varma Nandimandalam's initial HTML draft ([isjustabhi/AI4HC](https://github.com/isjustabhi/AI4HC)) and polished it into the team's final capstone poster (layout, theme variants, CSS iteration)
-- HTML/CSS source so we could iterate in a browser; exported to a 4×3 ft print-ready PDF via [`scripts/export_poster.py`](./scripts/export_poster.py), a Python pipeline I wrote that renders the HTML in headless Chrome at 4608×3456 px, screenshots it, and embeds the PNG losslessly into a 48×36 in PDF with print-shop metadata
-- The team printed from this PDF for the iShowcase event and the physical poster came out matching the on-screen render exactly
-- Two variants: a light version for the project slide demo, a dark version for the printed banner
-- Summarizes the team's system in one visual: the RAG pipeline, the avatar integration, the quiz engine, the learner flow
-- View live: [light theme](https://matthewqilanthompson.github.io/Data-Science-Portfolio/projects/capstone/ai4hc-info698/index_v1.html) · [dark theme](https://matthewqilanthompson.github.io/Data-Science-Portfolio/projects/capstone/ai4hc-info698/index_dark.html). Or [`iShowcase_Final.pdf`](./iShowcase_Final.pdf) for the print version.
-
-**2. Avatar source footage.**
-
-- Recorded the 1-minute source clip of myself for the team's HeyGen avatar
-- Handed the footage to the project coordinator, who handled the HeyGen API wiring
-- I didn't write that integration code; my contribution was being the source
-
-That's it. The codebase, the RAG service, the API integration, and the quiz engine were all teammate work.
+**Avatar source footage.** Recorded the 1-minute source clip used for the team's HeyGen avatar and handed it to the project coordinator, who wired the HeyGen integration.
 
 ---
 
-## Project Structure
+## What I didn't build
+
+The team's product, the Rural Health Kiosk (an AI-powered healthcare access system for underserved rural communities), is a .NET 8 web app with a RAG-backed chat tutor over a medical knowledge base, a HeyGen streaming avatar, and a multiple-choice quiz engine, all built by the engineering members of the team. My contribution was the poster, the print pipeline, and the avatar source footage; the codebase isn't mine.
+
+---
+
+## Skills applied
+
+| Category | Techniques |
+|---|---|
+| Information design | Distilling a multi-service system (RAG pipeline, avatar integration, quiz engine) into one poster layout |
+| Front-end | HTML5/CSS3, theme variants, print-vs-screen layout rules |
+| Build automation | Python, headless Chrome scripting, `img2pdf`, print-shop PDF metadata |
+| Collaboration | 6-person cross-functional capstone team, healthcare-AI domain |
+
+---
+
+<details>
+<summary>Repo structure</summary>
 
 ```text
 ai4hc-info698/
-├── README.md                           # Project documentation
-├── index_v1.html                       # Poster source, unified version (open in a browser to render it as displayed)
-├── index_dark.html                     # Earlier dark-theme variant of the poster source
-├── iShowcase_Final.pdf                 # Final printed showcase poster (3.2MB)
-├── AI4HC_poster_dark.pdf               # Dark-theme variant of the print PDF (3.6MB)
-├── system_workflow.png                 # System architecture diagram embedded in the poster
-├── qr-final-codira.png                 # QR code from the poster (links to the live demo)
-├── UA_logo.svg                         # UA branding asset (referenced by both HTML variants)
+├── index_v1.html            # Poster source, unified version
+├── index_dark.html          # Dark-theme variant of the poster source
+├── iShowcase_Final.pdf      # Final printed showcase poster
+├── AI4HC_poster_dark.pdf    # Dark-theme variant of the print PDF
+├── system_workflow.png      # System architecture diagram embedded in the poster
+├── qr-final-codira.png      # QR code from the poster (links to the live demo)
+├── UA_logo.svg              # UA branding asset
 └── scripts/
-    └── export_poster.py                # Headless Chrome + img2pdf pipeline rendering HTML to 48×36 in print-ready PDF
+    └── export_poster.py     # Headless Chrome + img2pdf pipeline
 ```
 
----
+</details>
 
-## What I Didn't Build
+<details>
+<summary>Rebuild the print PDF</summary>
 
-To be explicit: the .NET web app, the RAG service backed by the medical knowledge base, the HeyGen streaming avatar integration, and the multiple-choice quiz engine were all built by the engineering members of the team (Ameya, hginman, hcp62, and others). My only contribution to the codebase side was the avatar source recording. The poster and its build pipeline are mine; the rest isn't.
-
----
-
-## How to View
-
-| Format | Link |
-|---|---|
-| Live poster, light theme | [matthewqilanthompson.github.io/.../index_v1.html](https://matthewqilanthompson.github.io/Data-Science-Portfolio/projects/capstone/ai4hc-info698/index_v1.html) |
-| Live poster, dark theme | [matthewqilanthompson.github.io/.../index_dark.html](https://matthewqilanthompson.github.io/Data-Science-Portfolio/projects/capstone/ai4hc-info698/index_dark.html) |
-| Print-ready PDF (48×36 in) | [`iShowcase_Final.pdf`](./iShowcase_Final.pdf) (3.2MB) |
-| Dark-theme print PDF | [`AI4HC_poster_dark.pdf`](./AI4HC_poster_dark.pdf) (3.6MB) |
-| Poster HTML source | [`index_v1.html`](./index_v1.html), [`index_dark.html`](./index_dark.html) |
-
-## How to Rebuild the Print PDF
-
-The PDF is regenerated from `index_v1.html` by [`scripts/export_poster.py`](./scripts/export_poster.py). Requires Python 3.9+, Chrome (or Chromium), and `img2pdf`.
+Requires Python 3.9+, Chrome or Chromium, and `img2pdf`.
 
 ```bash
 pip3 install img2pdf
-python3 scripts/export_poster.py                                 # default → AI4HC_poster_4x3ft_landscape.pdf
-python3 scripts/export_poster.py --out AI4HC_slide_poster.pdf    # custom output
-python3 scripts/export_poster.py --keep-png                      # keep the intermediate 4608×3456 px PNG
+python3 scripts/export_poster.py
 ```
 
-The script renders the HTML in headless Chrome at 4608×3456 px, screenshots it, then embeds the PNG losslessly into a 48×36 in PDF with print-shop metadata. Total runtime ~10 seconds.
+Renders the HTML in headless Chrome at 4608x3456 px, screenshots it, then embeds the PNG losslessly into a 48x36 in PDF. Runtime is about 10 seconds. Flags: `--out <path>` for a custom filename, `--keep-png` to keep the intermediate PNG.
+
+</details>
 
 ---
 
-## Tech Stack
-
-| Category | Tools |
-|---|---|
-| **Poster source** | HTML5, CSS3 (custom layout, theme variants) |
-| **Print pipeline** | Python 3, headless Chrome / Chromium, `img2pdf` |
-| **Page geometry** | 48×36 in landscape at 96 DPI (4608×3456 px) |
-| **Non-code contributions** | Information design, technical communication, avatar source footage |
-
----
-
-## Academic Information
-
-**Course**: INFO 698, AI for Healthcare Capstone
-**Team**: UofA AI Core (6 members)
-**Term**: Spring 2026
-**Institution**: University of Arizona
-
----
-
-<p align="center">
-  <em>University of Arizona, Data Science Portfolio</em>
-</p>
+<sub>Graduate capstone, INFO 698 (AI for Healthcare), University of Arizona, Spring 2026, 6-person team (UofA AI Core).</sub>

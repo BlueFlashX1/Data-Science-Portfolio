@@ -2,16 +2,12 @@
 
 # Trait-Based Prediction of Animal Taxa
 
-[![Course Project](https://img.shields.io/badge/Course-Final%20Project-blue?style=for-the-badge)](https://info-523-su25.github.io/final-project-thompson/)
-[![INFO 523](https://img.shields.io/badge/INFO%20523-Data%20Mining-red?style=for-the-badge)](https://datamineaz.org/)
-[![University of Arizona](https://img.shields.io/badge/University%20of-Arizona-navy?style=for-the-badge)](https://arizona.edu)
-
 ![Python](https://img.shields.io/badge/Python-3.12-3776AB?style=flat-square&logo=python&logoColor=white)
 ![Scikit-learn](https://img.shields.io/badge/Scikit--learn-F7931E?style=flat-square&logo=scikit-learn&logoColor=white)
 ![SHAP](https://img.shields.io/badge/SHAP-Explainability-FF6B6B?style=flat-square)
 ![Quarto](https://img.shields.io/badge/Quarto-Website-75AADB?style=flat-square&logo=quarto&logoColor=white)
 
-> **ML classification project using sexually selected traits to predict animal taxonomy.** University of Arizona, INFO 523
+Compared two ways of encoding animal trait data, binary presence/absence vs. evolutionary origin rates, to see which one better predicts an animal's higher-level taxonomic group from sexually selected traits, across 1,087 families.
 
 **[View Live Website](https://info-523-su25.github.io/final-project-thompson/)** | **[Analysis Notebook](./index.ipynb)**
 
@@ -21,36 +17,30 @@
 
 **Can sexually selected traits predict higher-level taxonomic groups (superphyla), and which traits matter most?**
 
-I compared binary presence/absence data vs. evolutionary origin rates across 1,087 animal families to determine which data representation works best for taxonomic classification.
+**Evolutionary-rate features beat binary presence/absence by 2.4x on macro F1 (0.31 vs 0.13), a modest but real signal above the ~0.20 chance baseline for 5 classes.** Best model: Logistic Regression on rate data (macro F1 0.31, balanced accuracy 0.32).
+
+This is where biology and data science meet: the features aren't generic columns, they're domain-informed trait categories (sexually selected, visual, competition, auditory, female choice), and that domain framing is what let SHAP surface a real signal instead of noise.
 
 ---
 
-## Results Preview
-
-### Class Distribution
+## What Surfaced
 
 <p align="center">
   <img src="./images/Plots/phylum_distribution.png" alt="Distribution of families across phyla" width="600">
 </p>
 
-_Dataset has 1,087 animal families across 5 superphyla. Class imbalance required balanced metrics._
-
-### SHAP Feature Importance
-
-Comparing which traits predict taxonomy using two different data representations:
+_Dataset has 1,087 animal families across 5 superphyla. Class imbalance (Arthropoda ~84%) required balanced metrics._
 
 |                Evolutionary Rates (Better)                |                Binary Presence/Absence                 |
-| :-------------------------------------------------------: | :----------------------------------------------------: |
+| :---------------------------------------------------------: | :--------------------------------------------------------: |
 | <img src="./images/Plots/SHAP_evolution.png" width="350"> | <img src="./images/Plots/SHAP_family.png" width="350"> |
-|    Visual (V), Competition (C), Auditory (A) strongest    |               Sparse data = weak signal                |
+|    Visual (V), Competition (C), Auditory (A) strongest    |               Sparse data, weak signal                |
 
-_Evolutionary rates provided clearer feature importance than binary presence/absence data._
-
-**Why rate data wins**: on the binary data, SHAP showed the model leaned almost entirely on a single feature (the "sexually-selected" flag). On evolutionary-rate data, the signal spread across Visual, Competition, Auditory, and Female-choice traits, a more honest and generalizable signal.
+On the binary data, SHAP showed the model leaned almost entirely on one feature (the "sexually selected" flag). On evolutionary-rate data, the signal spread across Visual, Competition, Auditory, and Female-choice traits: a more honest and generalizable signal.
 
 ---
 
-## What I Applied
+## Skills Applied
 
 | Category | Techniques |
 |---|---|
@@ -60,16 +50,18 @@ _Evolutionary rates provided clearer feature importance than binary presence/abs
 | **Explainability** | SHAP values for feature importance ranking |
 | **Evaluation** | Balanced accuracy, macro F1 (instead of accuracy / ROC-AUC, given the class imbalance) |
 | **Feature engineering** | Domain-driven grouping of phyla into 5 superphyla |
-| **Reproducibility** | Quarto website (Jupyter notebook + .qmd source → HTML site) |
+| **Reproducibility** | Quarto website (Jupyter notebook + .qmd source, rendered to an HTML site) |
 
-### Findings
+---
+
+## Findings
 
 | Finding | Detail |
 |---|---|
-| **Evolutionary rates > Binary data** | Continuous origin rates provided a stronger signal than sparse binary presence/absence data |
-| **Best model: macro F1 0.31, balanced accuracy 0.32** | Logistic Regression on evolutionary-rate data, vs. macro F1 0.13 on binary data: a 2.4× macro-F1 edge for rate data. Modest in absolute terms (5-class chance ≈ 0.20), but real signal. Raw accuracy was 0.50, inflated by the ~84% Arthropoda imbalance, which is why balanced metrics are reported. |
-| **Key predictors** | Visual, Competition, and Auditory traits (identified via SHAP analysis) |
-| **Class imbalance matters** | Balanced accuracy and macro F1 instead of regular accuracy |
+| **Evolutionary rates > Binary data** | Continuous origin rates gave a stronger signal than sparse binary presence/absence data |
+| **Best model: macro F1 0.31, balanced accuracy 0.32** | Logistic Regression on evolutionary-rate data, vs. macro F1 0.13 on binary data (a 2.4x macro-F1 edge). Raw accuracy was 0.50, inflated by the ~84% Arthropoda imbalance, which is why balanced metrics are reported instead. |
+| **Key predictors** | Visual, Competition, and Auditory traits (identified via SHAP) |
+| **Class imbalance matters** | Balanced accuracy and macro F1 used instead of raw accuracy throughout |
 
 ### Models Tested
 
@@ -78,16 +70,16 @@ _Evolutionary rates provided clearer feature importance than binary presence/abs
 | **Logistic Regression** | Evolutionary rates | **macro F1 0.31, balanced acc 0.32 (best)** |
 | Random Forest | Evolutionary rates | macro F1 0.23, balanced acc 0.32 |
 | Decision Tree | Evolutionary rates | macro F1 0.09, balanced acc 0.23 |
-| All models | Binary data | macro F1 0.09–0.13, balanced acc 0.28–0.30 |
+| All models | Binary data | macro F1 0.09-0.13, balanced acc 0.28-0.30 |
 
 ---
 
 ## Dataset
 
-| File                                                                  | Records        | Description                   |
-| --------------------------------------------------------------------- | -------------- | ----------------------------- |
-| [`family_related_data.csv`](./data/family_related_data.csv)           | 1,087 families | Binary trait presence/absence |
-| [`animals_rateof_evolution.csv`](./data/animals_rateof_evolution.csv) | 84 estimates   | Evolutionary origin rates     |
+| File | Records | Description |
+|---|---|---|
+| [`family_related_data.csv`](./data/family_related_data.csv) | 1,087 families | Binary trait presence/absence |
+| [`animals_rateof_evolution.csv`](./data/animals_rateof_evolution.csv) | 84 estimates | Evolutionary origin rates |
 
 _Why the size gap: the binary file records trait presence/absence per **family** (1,087 rows); the evolutionary-rate file holds maximum-likelihood origin-rate estimates aggregated at the **phylum** level, one row per phylogenetic-tree replicate (84 rows). They're model-derived summaries, not per-family observations._
 
@@ -101,15 +93,14 @@ Full codebook: [`data/README.md`](./data/README.md)
 
 ## Challenges Solved
 
-The clearest result was that the two datasets behaved very differently. The binary presence/absence data was sparse and dominated by Arthropoda (~84% of samples), and SHAP showed the model leaned almost entirely on a single feature, the "sexually selected" flag. The evolutionary rate data was more balanced, and its signal spread across visual, competition, auditory, and female choice traits. So rate-based features predicted taxonomy better than binary presence, though even the better dataset only reached balanced accuracy ~0.32 and macro F1 ~0.31 (the 50% figure people often quote is raw accuracy, inflated by class imbalance; the 0.20 five-class chance baseline is the fair comparison). The signal in this kind of trait data is real but limited.
+The two datasets behaved very differently. The binary data was sparse and dominated by Arthropoda (~84% of samples), and SHAP showed the model leaned almost entirely on the "sexually selected" flag. The evolutionary-rate data was more balanced, and its signal spread across Visual, Competition, Auditory, and Female-choice traits, which is why rate-based features predicted taxonomy better than binary presence.
 
-A lot of the project changed from my original proposal. I had planned to predict at the class/family level, but the data was too sparse, so I grouped phyla into five superphyla instead. I log-transformed and standardized the evolutionary rates rather than binarizing them, and I switched the evaluation metrics to balanced accuracy and macro F1 instead of ROC-AUC, since the classes were so uneven. SHAP also started as a secondary check but became central. It was what showed how heavily the binary model leaned on that one SS flag.
-
-If I did this again, I'd remove the SS traits and redo modeling for the family data, since the model relied on SS so heavily that it masked the other traits. The bigger limitation, though, is data quality: both datasets were too sparse and imbalanced to generalize well, and that would need to improve before this approach could go further.
+Next time: drop the SS trait from the family-level model, since it was masking every other signal, and prioritize collecting less sparse, less imbalanced trait data before pushing model complexity further.
 
 ---
 
-## Project Structure
+<details>
+<summary>Repo structure</summary>
 
 ```text
 data-mining-final-project/
@@ -132,9 +123,12 @@ data-mining-final-project/
 └── docs/                              # Generated Quarto website (regenerated by `quarto render`)
 ```
 
----
+**Other resources**: [Proposal](./proposal.qmd) (original research questions and methodology), [Presentation](./presentation.qmd) (key findings and visualizations), [Data Codebook](./data/README.md) (complete variable descriptions).
 
-## How to Reproduce
+</details>
+
+<details>
+<summary>Reproduce it</summary>
 
 Requires Python 3.10+ and [Quarto 1.5+](https://quarto.org/docs/get-started/).
 
@@ -142,38 +136,17 @@ Requires Python 3.10+ and [Quarto 1.5+](https://quarto.org/docs/get-started/).
 # 1. Install Python deps
 pip install -r requirements.txt
 
-# 2. Render the full website (notebook + .qmd pages → docs/)
+# 2. Render the full website (notebook + .qmd pages -> docs/)
 quarto render
 
 # Or render just the main analysis notebook
 quarto render index.ipynb
 ```
 
-`quarto render` produces the static site in [`docs/`](./docs/) (the same site published at [info-523-su25.github.io/final-project-thompson/](https://info-523-su25.github.io/final-project-thompson/)). Full render takes ~30 seconds; single-notebook render is ~3 seconds.
+`quarto render` produces the static site in [`docs/`](./docs/), the same site published at [info-523-su25.github.io/final-project-thompson/](https://info-523-su25.github.io/final-project-thompson/). Full render takes ~30 seconds; single-notebook render is ~3 seconds.
+
+</details>
 
 ---
 
-## Project Resources
-
-| Resource                                                                | Description                                 |
-| ----------------------------------------------------------------------- | ------------------------------------------- |
-| [Live Website](https://info-523-su25.github.io/final-project-thompson/) | Full interactive analysis and presentation  |
-| [Analysis Notebook](./index.ipynb)                                      | Jupyter notebook with all code (99 cells)   |
-| [Proposal](./proposal.qmd)                                              | Original research questions and methodology |
-| [Presentation](./presentation.qmd)                                      | Key findings and visualizations             |
-| [Data Codebook](./data/README.md)                                       | Complete variable descriptions              |
-
----
-
-## Academic Information
-
-**Course**: INFO 523 - Data Mining & Machine Learning  
-**Term**: Summer 2025  
-**Institution**: University of Arizona  
-**Acknowledgment**: Project template inspired by Mine Çetinkaya-Rundel @ Duke University
-
----
-
-<p align="center">
-  <a href="https://info-523-su25.github.io/final-project-thompson/">View the Full Interactive Analysis</a>
-</p>
+<sub>Course project, INFO 523 (Data Mining & Machine Learning), University of Arizona, Summer 2025. Project template inspired by Mine Çetinkaya-Rundel @ Duke University.</sub>
