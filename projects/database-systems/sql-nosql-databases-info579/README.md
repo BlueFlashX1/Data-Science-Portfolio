@@ -2,73 +2,87 @@
 
 # Healthcare Analytics with SQL
 
-[![Course Project](https://img.shields.io/badge/Course-Final%20Project-blue?style=for-the-badge)](./reports/INFO579-Final-Project-Report-Thompson.pdf)
-[![INFO 579](https://img.shields.io/badge/INFO%20579-SQL%20%26%20NoSQL-red?style=for-the-badge)](https://arizona.edu)
-[![University of Arizona](https://img.shields.io/badge/University%20of-Arizona-navy?style=for-the-badge)](https://arizona.edu)
-
 ![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=flat-square&logo=mysql&logoColor=white)
 ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
 ![Pandas](https://img.shields.io/badge/Pandas-150458?style=flat-square&logo=pandas&logoColor=white)
 
-> **Course project on database design and SQL analytics for healthcare data.** University of Arizona, INFO 579
+Built a normalized MySQL warehouse from ~65MB of synthetic EHR data (1,171 patients, 53,346 encounters) and wrote the SQL to answer operational questions a health system actually asks: which providers are overloaded, which patients are highest risk, and whether the standard metrics even measure the right thing.
 
-**[View Full Report (PDF)](./reports/INFO579-Final-Project-Report-Thompson.pdf)** (8.1MB)
+**[View the full report (PDF)](./reports/INFO579-Final-Project-Report-Thompson.pdf)** (8.1MB)
 
 ---
 
-## Project Overview
+## What the analysis surfaced
 
-Final project for INFO 579 (SQL & NoSQL Databases). The course covered both relational and document stores; this project focused on the SQL/relational track. I designed normalized database schemas and wrote complex SQL queries to analyze synthetic EHR data, building 6 documented analytical reports addressing clinical quality, provider utilization, readmissions, and profitability.
+- **A provider workload imbalance.** One General Practice provider handled 3,217 encounters, over 60% more than the next busiest, and all of the top 10 by volume were General Practice. That is a staffing signal worth putting in front of management.
+- **A misleading mortality metric, corrected.** A raw death-rate-by-visit-type ranked routine, scheduled visits highest. Recomputed as 30-day mortality per 1,000 encounters, emergency and inpatient care rose to the top, which actually reflects risk.
+- **A data-integrity problem caught at load time.** About 10.13% of observation rows referenced encounter IDs that did not exist in the encounter table. The loader caught every one instead of silently corrupting the joins downstream.
 
-**Key Metrics**: 1,171 patients • 53,346 encounters • 8,376 conditions • ~65MB Synthea EHR data
+![Top 10 providers by encounter count](./images/top_providers.png)
 
-**Bottom line**: a reproducible, normalized MySQL warehouse over Synthea EHR data that turns raw records into operational analytics. For example, it surfaces a provider-workload imbalance (one GP handling 60%+ more encounters than any peer) and corrects a naive mortality metric into a defensible 30-day rate.
+---
 
-### Database Schema
+## Skills applied
+
+| Category              | Techniques                                                            |
+| --------------------- | --------------------------------------------------------------------- |
+| **Joins**             | Multi-table joins (up to 3 tables, incl. compound-key), LEFT / INNER   |
+| **Temporal analysis** | `DATE_ADD` (14-day follow-up window), `TIMESTAMPDIFF` (inpatient LOS)  |
+| **Advanced queries**  | CTEs (Common Table Expressions), correlated subqueries                |
+| **Aggregation**       | `GROUP BY` + `HAVING`, `CASE` for categorization                      |
+| **ETL**               | Batched parameterized `INSERT` (`executemany`), Pandas preprocessing   |
+| **Schema design**     | 3NF over 8 base tables + 2 junction tables, 12 foreign-key constraints |
+
+The reporting logic lives in SQL rather than a pandas script on purpose: it sits next to the data, stays reproducible, and can be handed to anyone who reads SQL. Normalizing the denormalized Synthea export to 3NF removed the repeated patient/provider/encounter attributes that make update anomalies inevitable and analytical queries slow.
+
+---
+
+## Business objectives and findings
+
+The project answered five business questions, each with its own report:
+
+| Objective                | Key finding                                                                                       |
+| ------------------------ | ------------------------------------------------------------------------------------------------- |
+| **Profitability**        | Top patient costs reached $1.1M; medication reconciliation and renal dialysis were most common    |
+| **Clinical quality**     | Viral sinusitis most prevalent (63%); emergency 30-day mortality 3.57 per 1,000 encounters        |
+| **Provider utilization** | Severe workload imbalance (top provider 3,000+ encounters vs. under 2,000 for the rest)           |
+| **Readmissions**         | Flagged high-risk ER patients (3+ visits) for intervention                                        |
+| **Expansion**            | Identified 5 inactive specialties for reallocation                                                |
+
+<details>
+<summary>Sample charts from the populated database</summary>
+
+**Top conditions by patient count**
+
+![Top 10 conditions](./images/top_conditions.png)
+
+Viral upper-respiratory infections lead, followed by cardiometabolic findings (BMI 30+, prediabetes, hypertension). Pregnancy-related conditions appear in the bottom half.
+
+**Top procedures by volume**
+
+![Top 10 procedures](./images/top_procedures.png)
+
+Medication Reconciliation leads at 5,632 occurrences. The top procedures are non-surgical: medication management, renal dialysis, obstetric monitoring, immunotherapy, intramuscular injection.
+
+**Patient coverage distribution**
+
+![Coverage distribution](./images/coverage_distribution.png)
+
+Of 1,171 patients, 326 are high-coverage (>=$10K), 309 medium ($5K to $10K), and 536 low (<$5K). Roughly 46% have low healthcare coverage.
+
+</details>
+
+---
+
+## The data model
 
 The 8 base tables and their foreign-key relationships:
 
 ![ER diagram of base tables](./images/schema_er_diagram.png)
 
-`diagnosis` and `treatment` are junction tables for the many-to-many relationships (patient ⇄ medical_condition, patient ⇄ procedures).
+`diagnosis` and `treatment` are junction tables for the many-to-many relationships (patient to medical_condition, patient to procedures). In the diagram, `Condition` and `Procedure` are shortened labels for the SQL tables `medical_condition` and `procedures`.
 
-> Note: the diagram labels **`Condition`** and **`Procedure`** correspond to the SQL tables **`medical_condition`** and **`procedures`** (plural). The visual labels were shortened for readability; the actual schema uses the longer/plural names.
-
----
-
-## What I Applied
-
-### SQL Techniques
-
-| Category              | Techniques                                                            |
-| --------------------- | --------------------------------------------------------------------- |
-| **Joins**             | Multi-table joins (up to 3 tables, incl. compound-key), LEFT/INNER      |
-| **Temporal Analysis** | `DATE_ADD` (14-day follow-up window), `TIMESTAMPDIFF` (inpatient LOS)  |
-| **Advanced Queries**  | CTEs (Common Table Expressions), correlated subqueries                |
-| **Aggregation**       | `GROUP BY` + `HAVING`, `CASE` for categorization                      |
-| **ETL**               | Batched parameterized `INSERT` (`executemany`), Pandas preprocessing   |
-
-### Database Design
-
-- **3NF Normalization**: 8 entity tables with 2 junction tables for many-to-many relationships
-- **Foreign Keys**: 12 FK constraints with cascading relationships (patient→encounter→provider)
-- **Schema Verified**: Record counts verified via AUTO_INCREMENT values in MySQL dump
-
-### Business Insights
-
-| Objective                | Key Finding                                                                                       |
-| ------------------------ | ------------------------------------------------------------------------------------------------- |
-| **Profitability**        | Top patient costs reached $1.1M; medication reconciliation, renal dialysis most common procedures |
-| **Clinical Quality**     | Viral sinusitis most prevalent (63%); emergency 30-day mortality: 3.57/1,000 encounters           |
-| **Provider Utilization** | Severe workload imbalance (top provider: 3,000+ encounters vs <2,000 for others)                  |
-| **Readmissions**         | Flagged high-risk ER patients (≥3 visits) for intervention                                        |
-| **Expansion**            | 5 inactive specialties identified for reallocation                                                |
-
----
-
-## Healthcare Dataset
-
-**6 Entities • ~65MB Total • Synthea Synthetic EHR Data**
+**Source data: 6 Synthea entities, ~65MB, 446,783 rows loaded across 8 tables.**
 
 | Entity           | File                                          | Size  | Records | Description               |
 | ---------------- | --------------------------------------------- | ----- | ------- | ------------------------- |
@@ -81,61 +95,20 @@ The 8 base tables and their foreign-key relationships:
 
 ---
 
-## Project Structure
+## Engineering notes
 
-```text
-sql-nosql-databases-info579/
-├── README.md                                          # Project documentation
-├── docker-compose.yml                                 # MySQL 8 container (port 13306, auto-applies schema)
-├── setup.sh                                           # One-command reproduction: docker + loader + reports
-├── requirements.txt                                   # Python dependencies (pandas, mysql-connector-python, matplotlib)
-├── relationship_verify.py                             # Pandas data-integrity check (pre-schema exploration)
-├── scripts/
-│   ├── load_csvs.py                                   # Synthea CSV → MySQL loader (8 tables, FK-ordered)
-│   └── generate_charts.py                             # Regenerates the 4 analytical chart PNGs from DB data
-├── images/                                            # PNGs embedded in this README
-│   ├── schema_er_diagram.png
-│   ├── top_conditions.png
-│   ├── top_procedures.png
-│   ├── top_providers.png
-│   └── coverage_distribution.png
-├── data/                                              # 6 healthcare CSVs (~65MB total)
-│   ├── patients.csv
-│   ├── encounters.csv
-│   ├── conditions.csv
-│   ├── procedures.csv
-│   ├── observations.csv
-│   └── providers.csv
-├── sql/
-│   ├── 00_schema.sql                                  # 3NF schema: 8 base tables + 14 rpt_ tables + FK constraints
-│   ├── analytical_reports/                            # Section 7: 6 analytical reports
-│   │   ├── 7_1_provider_utilization.sql
-│   │   ├── 7_2_inpatient_los_by_provider.sql
-│   │   ├── 7_3_top_patients_by_cost.sql
-│   │   ├── 7_4_procedure_volume_costs.sql
-│   │   ├── 7_5_post_procedure_followup_14d.sql       # uses CTE + correlated EXISTS
-│   │   └── 7_6_er_frequenters.sql
-│   ├── sql_skill_demos/                               # Section 8: 9 required SQL skill demonstrations
-│   │   ├── 2_inner_join_diagnosis_patient_condition.sql
-│   │   ├── 3_left_outer_join_encounter_activity.sql
-│   │   ├── 4_single_row_subquery.sql
-│   │   ├── 5_multi_row_subquery_highrisk_er.sql      # uses CTE
-│   │   ├── 6_aggregation.sql
-│   │   ├── 7_not_in_subquery.sql
-│   │   ├── 8_case_statement.sql
-│   │   ├── 9_not_exists_inactive_providers.sql
-│   │   └── 10_not_null_subquery.sql
-│   └── archived_partial_dump_3of14.sql                # Historical mysqldump (3 of 14 rpt_ tables); kept for reference
-└── reports/
-    ├── INFO579-Final-Project-Report-Thompson.pdf      # Complete analysis (8.1MB)
-    └── methodology_section.pdf                        # Methodology excerpt
-```
+**Loading 446K rows across 8 tables.** The loader uses batched `executemany()` inserts (1,000 rows per call) rather than row by row, with a fallback: if a batch hits a foreign-key error, it retries that batch row by row so the valid rows still land and only the bad references are skipped and counted. Loads are foreign-key ordered, and re-runs are safe because each table is truncated and reloaded (idempotent).
+
+**Dirty foreign-key data (10.13% orphan observations).** A `LEFT JOIN` orphan check against the encounter table showed that about 10.13% of observation rows referenced an `encounter_id` with no matching encounter. That count itself became a data-quality finding worth reporting. On load, because `observation.encounter_id` carries a real foreign-key constraint, those rows raise integrity errors, and the loader's row-by-row fallback catches, skips, and counts each one, so the load finishes with clean referential integrity instead of aborting or storing dangling references. The pure-SQL version of this taught in the course does the same job by staging the CSV with `LOAD DATA INFILE` and then `INSERT ... SELECT` with a `LEFT JOIN`, so unmatched keys land as visible NULLs; I rebuilt it as a Python loader here so the whole pipeline reproduces with one command.
+
+**A provider key that actually holds.** The provider data had repeated `organization_id` values, so the encounter-to-provider relationship uses a composite foreign key on `(provider_id, organization_id)` rather than either column alone.
+
+**A metric that was measuring the wrong thing.** A death-rate-by-encounter-class metric first ranked ambulatory, wellness, and outpatient highest. Those are usually scheduled visits, so a raw count there was not a meaningful measure of risk. Recomputing it as death within 30 days of a visit, per 1,000 encounters, moved emergency and inpatient to the top, which made sense.
 
 ---
 
-## How to Reproduce
-
-### With Docker
+<details>
+<summary>Reproduce it (Docker, one command)</summary>
 
 Prerequisites: Docker Desktop or OrbStack, Python 3.9+.
 
@@ -143,146 +116,58 @@ Prerequisites: Docker Desktop or OrbStack, Python 3.9+.
 ./setup.sh
 ```
 
-Runtime ~30s. Populates `Final_Project` on `127.0.0.1:13306`.
-
-Port 13306 was chosen over 3306 to avoid collision with a local MySQL install. Port 33060 was avoided because OrbStack auto-wraps it as MySQL X Protocol, which breaks standard clients.
+Runtime ~30s. Populates `Final_Project` on `127.0.0.1:13306` (port 13306 avoids collision with a local MySQL install; 33060 is avoided because OrbStack wraps it as MySQL X Protocol).
 
 ```bash
 # connect
 docker compose exec mysql mysql -u root -pportfolio_demo_pw Final_Project
-
 # stop (data persists)
 docker compose down
-
 # reset (deletes volume)
 docker compose down -v
 ```
 
-### Without Docker
-
-Requires MySQL 8+ running locally and Python 3.9+.
+**Without Docker** (MySQL 8+ and Python 3.9+ local):
 
 ```bash
 pip install -r requirements.txt
-
 mysql -u root -p -e "CREATE DATABASE Final_Project;"
 mysql -u root -p Final_Project < sql/00_schema.sql
-
 python scripts/load_csvs.py --user root --database Final_Project
-
-for f in sql/analytical_reports/*.sql; do
-  mysql -u root -p Final_Project < "$f"
-done
-
-# optional skill demos
-for f in sql/sql_skill_demos/*.sql; do
-  mysql -u root -p Final_Project < "$f"
-done
+for f in sql/analytical_reports/*.sql; do mysql -u root -p Final_Project < "$f"; done
 ```
 
-### Loader behavior
+Loader details: column-name mapping between Synthea CSVs and the schema, ISO-8601 datetime conversion, NULL handling for empty cells, foreign-key load ordering, 1,000-row batches, idempotent re-runs. Password comes from `$MYSQL_PASSWORD` or an interactive prompt.
 
-Column-name mapping between Synthea CSVs and the schema, ISO-8601 datetime conversion (`2010-01-23T17:45:28Z` → `2010-01-23 17:45:28`), NULL handling for empty cells, foreign-key load ordering, batch inserts (1000 rows per call), idempotent re-runs (TRUNCATEs each table first). Analytical queries are idempotent (`DROP TABLE IF EXISTS` before `CREATE TABLE AS`).
+</details>
 
-Password: `$MYSQL_PASSWORD` env var, or interactive prompt if unset.
+<details>
+<summary>Repo structure and query index</summary>
 
-Each `.sql` file begins with a header comment describing the query.
-
-### Row counts
-
-The 8 base tables hold 446,783 rows:
-
-| Table | Rows |
-|---|---:|
-| patient | 1,171 |
-| provider | 5,855 |
-| encounter | 53,346 |
-| medical_condition | 8,376 |
-| procedures | 34,981 |
-| observation | 299,697 |
-| diagnosis | 8,376 |
-| treatment | 34,981 |
-
----
-
-## Sample analytical findings
-
-These charts come from running the queries against the populated database. Regenerate them anytime with `MYSQL_PASSWORD=portfolio_demo_pw python scripts/generate_charts.py --host 127.0.0.1 --port 13306 --user root --database Final_Project`.
-
-### Top conditions by patient count
-
-![Top 10 conditions](./images/top_conditions.png)
-
-Viral upper-respiratory infections lead, followed by cardiometabolic findings (BMI 30+, prediabetes, hypertension). Pregnancy-related conditions appear in the bottom half.
-
-### Top procedures by volume
-
-![Top 10 procedures](./images/top_procedures.png)
-
-Medication Reconciliation leads at 5,632 occurrences. The top procedures are non-surgical interventions: medication management, renal dialysis, obstetric monitoring, immunotherapy, intramuscular injection.
-
-### Top providers by encounter count
-
-![Top 10 providers](./images/top_providers.png)
-
-One General Practice provider (Gaynell126 Streich926) handles 3,217 encounters, over 60% more than the second-busiest. All top 10 are General Practice, suggesting workload imbalance toward GPs vs. specialists.
-
-### Patient coverage distribution
-
-![Coverage distribution](./images/coverage_distribution.png)
-
-Of 1,171 patients: 326 are high-coverage (≥$10K), 309 medium ($5K–$10K), 536 low (<$5K). Roughly 46% of patients have low healthcare coverage.
-
-## Report Tables (14 declared: 9 with documented queries, 5 schema-only)
-
-1. Provider Utilization
-2. Inpatient LOS by Provider
-3. Top Patients by Cost
-4. Procedure Volume & Costs
-5. 14-Day Follow-up Rates
-6. ER Frequent Users
-7. Diagnosis-Patient-Condition Mapping
-8. Encounter Activity Tracking
-9. High-Risk ER Patients by Provider
-10. Inactive Providers by Specialty
-11. Coverage Categories
-12. Deceased Patient Encounters
-13. Patients without Diagnoses
-14. 30-Day Mortality Rates
+```text
+sql-nosql-databases-info579/
+├── docker-compose.yml        # MySQL 8 container, auto-applies schema
+├── setup.sh                  # one-command reproduction
+├── scripts/
+│   ├── load_csvs.py          # Synthea CSV -> MySQL loader (8 tables, FK-ordered, batched)
+│   └── generate_charts.py    # regenerates the analytical chart PNGs
+├── data/                     # 6 healthcare CSVs (~65MB)
+├── sql/
+│   ├── 00_schema.sql         # 3NF schema: 8 base tables + rpt_ tables + FK constraints
+│   ├── analytical_reports/   # the 6 business-question reports (Section 7)
+│   └── sql_skill_demos/      # 9 SQL skill demonstrations (Section 8)
+└── reports/                  # final report PDF + methodology excerpt
+```
 
 **Queries by section:**
-- [Section 7: 6 Analytical Reports](./sql/analytical_reports/)
-- [Section 8: 9 SQL Skill Demonstrations](./sql/sql_skill_demos/)
-- [Schema definition (8 base + 14 rpt tables + 12 FKs)](./sql/00_schema.sql)
+- [Section 7: 6 analytical reports](./sql/analytical_reports/)
+- [Section 8: 9 SQL skill demonstrations](./sql/sql_skill_demos/)
+- [Schema definition](./sql/00_schema.sql)
 
-> **Reports vs. report tables (why the counts differ):** The **6 analytical reports** are the six business-question reports in Section 7 (`sql/analytical_reports/`), all reproduced by `setup.sh`. That is the report count used everywhere else. Separately, the schema declares **14 `rpt_` tables**, of which **9 have a populating query in this repo** (5 come from the Section 7 reports — report 7.3 returns a ranked result set rather than a `CREATE TABLE`, so it does not add a table — plus 4 come from the Section 8 SQL skill demonstrations) and **5 are schema-only stubs** (`rpt_condition_prevalence`, `rpt_inner_encounter_provider`, `rpt_proc_readmit_30d`, `rpt_provider_readmit_30d`, `rpt_readmissions_30d`) that are declared for completeness but have no query in the repo. So: 6 reports (report unit); 14 declared / 9 populated / 5 schema-only (table unit). The numbered list above is the table count.
+**Reports vs. report tables (the counts measure different things):** The **6 analytical reports** are the six business-question reports in Section 7, all reproduced by `setup.sh`. Separately, the schema declares **14 `rpt_` tables**, of which 9 have a populating query in this repo (5 from the Section 7 reports, since report 7.3 returns a ranked result set rather than a table, plus 4 from the Section 8 skill demonstrations) and 5 are schema-only stubs declared for completeness. So: 6 reports (report unit); 14 declared / 9 populated / 5 schema-only (table unit).
 
----
-
-## Challenges Solved
-
-### Bulk loading vs row-by-row inserts
-
-For loading the data, I started by inserting rows one at a time. Then I found I could import the CSV files directly with LOAD DATA INFILE, which let me bulk insert every row at once. It went well after a few tweaks. The provider data also had some duplicate organization_id values, so I made a unique key on the paired provider_id and organization_id. That way I could still use both of them as foreign keys.
-
-### Dirty foreign-key data (10.13% orphan rows)
-
-For the observation data, I loaded it into a staging table first, then used INSERT and SELECT to move it into the real observation table while doing a LEFT JOIN on encounter_id. Any mismatched encounter_id would come in as NULL instead of breaking the load. I did a bit of investigation, and around 10.13% of the encounter_id values in the observation CSV were not found in the encounter table. I decided to keep these as NULL for future insights later if interested.
-
-### Misleading mortality metric
-
-One result I went back and corrected was the death rate by encounter class. At first it showed the top three as ambulatory, wellness, and outpatient. But those are typically scheduled visits, so a raw count there didn't really make sense as a measure of risk. I re-checked it using death within 30 days of a visit, as a rate per 1,000 encounters. That showed emergency and inpatient at the top instead, which made more sense.
+</details>
 
 ---
 
-## Academic Information
-
-**Course**: INFO 579 - SQL & NoSQL Databases  
-**Term**: 2024-2025  
-**Institution**: University of Arizona
-
----
-
-<p align="center">
-  <em>University of Arizona, Data Science Portfolio</em>
-</p>
+<sub>Graduate project, INFO 579 (SQL & NoSQL Databases), University of Arizona.</sub>
