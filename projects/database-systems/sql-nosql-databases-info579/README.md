@@ -18,9 +18,9 @@
 
 ## Project Overview
 
-Final project for INFO 579 (SQL & NoSQL Databases). The course covered both relational and document stores; this project focused on the SQL/relational track. I designed normalized database schemas and wrote complex SQL queries to analyze synthetic EHR data, building 9 fully documented analytical reports (plus 5 schema-defined) addressing clinical quality, provider utilization, readmissions, and profitability.
+Final project for INFO 579 (SQL & NoSQL Databases). The course covered both relational and document stores; this project focused on the SQL/relational track. I designed normalized database schemas and wrote complex SQL queries to analyze synthetic EHR data, building 6 documented analytical reports addressing clinical quality, provider utilization, readmissions, and profitability.
 
-**Key Metrics**: 1,171 patients • 53,346 encounters • 8,376 conditions • 67MB Synthea EHR data
+**Key Metrics**: 1,171 patients • 53,346 encounters • 8,376 conditions • ~65MB Synthea EHR data
 
 **Bottom line**: a reproducible, normalized MySQL warehouse over Synthea EHR data that turns raw records into operational analytics. For example, it surfaces a provider-workload imbalance (one GP handling 60%+ more encounters than any peer) and corrects a naive mortality metric into a defensible 30-day rate.
 
@@ -68,7 +68,7 @@ The 8 base tables and their foreign-key relationships:
 
 ## Healthcare Dataset
 
-**6 Entities • 67MB Total • Synthea Synthetic EHR Data**
+**6 Entities • ~65MB Total • Synthea Synthetic EHR Data**
 
 | Entity           | File                                          | Size  | Records | Description               |
 | ---------------- | --------------------------------------------- | ----- | ------- | ------------------------- |
@@ -99,7 +99,7 @@ sql-nosql-databases-info579/
 │   ├── top_procedures.png
 │   ├── top_providers.png
 │   └── coverage_distribution.png
-├── data/                                              # 6 healthcare CSVs (67MB total)
+├── data/                                              # 6 healthcare CSVs (~65MB total)
 │   ├── patients.csv
 │   ├── encounters.csv
 │   ├── conditions.csv
@@ -233,7 +233,7 @@ One General Practice provider (Gaynell126 Streich926) handles 3,217 encounters, 
 
 Of 1,171 patients: 326 are high-coverage (≥$10K), 309 medium ($5K–$10K), 536 low (<$5K). Roughly 46% of patients have low healthcare coverage.
 
-## Analytical Reports (9 documented + 5 schema-defined)
+## Report Tables (14 declared: 9 with documented queries, 5 schema-only)
 
 1. Provider Utilization
 2. Inpatient LOS by Provider
@@ -255,7 +255,7 @@ Of 1,171 patients: 326 are high-coverage (≥$10K), 309 medium ($5K–$10K), 536
 - [Section 8: 9 SQL Skill Demonstrations](./sql/sql_skill_demos/)
 - [Schema definition (8 base + 14 rpt tables + 12 FKs)](./sql/00_schema.sql)
 
-> **A note on documented coverage:** The schema declares 14 `rpt_` tables; the final report PDF documents the SQL queries for **9 of them** (sections 7.1–7.6 + four `CREATE TABLE` statements in section 8). The remaining 5 (`rpt_condition_prevalence`, `rpt_inner_encounter_provider`, `rpt_proc_readmit_30d`, `rpt_provider_readmit_30d`, `rpt_readmissions_30d`) appear in the schema but their queries were not included in the final report; they're declared for completeness but not reproducible from this repo alone. The numbered list above counts both: 9 documented + 5 schema-only.
+> **Reports vs. report tables (why the counts differ):** The **6 analytical reports** are the six business-question reports in Section 7 (`sql/analytical_reports/`), all reproduced by `setup.sh`. That is the report count used everywhere else. Separately, the schema declares **14 `rpt_` tables**, of which **9 have a populating query in this repo** (5 come from the Section 7 reports — report 7.3 returns a ranked result set rather than a `CREATE TABLE`, so it does not add a table — plus 4 come from the Section 8 SQL skill demonstrations) and **5 are schema-only stubs** (`rpt_condition_prevalence`, `rpt_inner_encounter_provider`, `rpt_proc_readmit_30d`, `rpt_provider_readmit_30d`, `rpt_readmissions_30d`) that are declared for completeness but have no query in the repo. So: 6 reports (report unit); 14 declared / 9 populated / 5 schema-only (table unit). The numbered list above is the table count.
 
 ---
 

@@ -18,7 +18,7 @@
 
 ## Competition Results
 
-**ROC AUC 0.858 on the final held-out test** (13th of 35), down only slightly from 0.901 in development (5th of 40).
+**ROC AUC 0.858 on the final held-out test**, down only slightly from 0.901 in development.
 
 | Phase           | Ranking    | ROC AUC | Participants |
 | --------------- | ---------- | ------- | ------------ |

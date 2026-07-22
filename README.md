@@ -7,7 +7,7 @@
 
 ---
 
-**Highlights**: Third Normal Form (3NF) database design and 9 analytical SQL reports across **53,346 patient encounters**, surfacing a provider workload imbalance and a high-risk patient cohort. And a Random Forest predicting 30-day hospital readmission at **ROC AUC 0.858** on the final held-out test (13th of 35), holding from 0.901 on the dev-phase leaderboard (5th of 40), across 587,801 training rows of synthetic electronic health record (EHR) data. ROC AUC is a classifier ranking score where 1.0 is perfect.
+**Highlights**: Third Normal Form (3NF) database design and 6 analytical SQL reports across **53,346 patient encounters**, surfacing a provider workload imbalance and a high-risk patient cohort. And a Random Forest predicting 30-day hospital readmission at **ROC AUC 0.858** on the final held-out test, holding from 0.901 on the dev-phase leaderboard, across 587,801 training rows of synthetic electronic health record (EHR) data. ROC AUC is a classifier ranking score where 1.0 is perfect.
 
 **Navigation**: [Projects](#featured-projects) • [Skills](#skills) • [Connect](#connect)
 
@@ -25,7 +25,7 @@ Each project below documents a deliberate model-selection decision and the real-
 
 **Relational database design and analytical reporting on 53,346 patient encounters** · _Graduate project · University of Arizona_
 
-Designed Third Normal Form (3NF) schemas across 6 entities for 1,171 patients and 53,346 encounters from a 67MB Synthea synthetic electronic health record (EHR) dataset, then wrote 9 documented analytical reports (plus 5 schema-defined) against 5 business objectives: profitability, clinical quality, provider utilization, readmission reduction, and strategic expansion. End-to-end reproducible via Docker.
+Designed Third Normal Form (3NF) schemas across 6 entities for 1,171 patients and 53,346 encounters from a ~65MB Synthea synthetic electronic health record (EHR) dataset, then wrote 6 documented analytical reports against 5 business objectives: profitability, clinical quality, provider utilization, readmission reduction, and strategic expansion. End-to-end reproducible via Docker.
 
 **Why 3NF, and why SQL over pandas**: the source EHR data arrived denormalized, with patient, provider, encounter, and condition attributes repeated across rows — which makes update anomalies inevitable and analytical queries slow. Normalizing to 3NF eliminated the redundancy and let each business question be answered by a query against the schema rather than a bespoke script. The reporting logic lives in SQL (multi-table joins, common table expressions, correlated subqueries, temporal analysis with DATE_ADD and TIMESTAMPDIFF) because it belongs next to the data, stays reproducible, and can be handed to anyone who reads SQL.
 
@@ -104,7 +104,7 @@ Classification across 5 superphyla (Ecdysozoa, Lophotrochozoa, Deuterostomia, Ba
 
 | Domain | Where applied |
 |---|---|
-| **Healthcare Analytics** | Readmission prediction (synthetic electronic health record data, ROC AUC 0.858 on held-out test, 0.901 on dev) and Third Normal Form (3NF) database design (1,171 patients, 53,346 encounters, 9 documented + 5 schema-defined SQL reports) |
+| **Healthcare Analytics** | Readmission prediction (synthetic electronic health record data, ROC AUC 0.858 on held-out test, 0.901 on dev) and Third Normal Form (3NF) database design (1,171 patients, 53,346 encounters, 6 documented analytical SQL reports) |
 | **Biological / Life-sciences Data** | Trait-based classification across 1,087 animal families (Master's project) and quantitative research at Oklahoma State University (NSF ON-RaMP, grasshopper coloration and behavior) and Maryland Sea Grant (NSF REU, marine microbial abundance) |
 
 ---
